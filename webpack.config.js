@@ -45,6 +45,15 @@ var config = {
             {
                 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
                 use: "file-loader",
+            },
+            {
+                test: /\.(js|vue)$/,
+                loader: 'eslint-loader',
+               // enforce: 'pre',//是否在loader前监测，vue中我设为否
+                include: [path.join(__dirname, 'src')],
+                options: {
+                    formatter: require('eslint-friendly-formatter')//错误输出格式
+                }
             }
         ]
     },
@@ -97,7 +106,7 @@ if (isProd) {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
-    ])
+    ]);
 }
 
 module.exports = config;

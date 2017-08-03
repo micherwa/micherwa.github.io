@@ -3,14 +3,18 @@
     <img src="./assets/logo.png">
     <h1>hello</h1>
     <div class="flex-wrapper">
-        <div class="flex-item">
+        <div class="flex-item" @click="tap">
             flex-item1
             <img src="./assets/icon-eye-close.png" />
         </div>
 
-        <div class="flex-item">
+        <div class="flex-item" @click="tap">
             flex-item2
             <img src="./assets/icon-eye-open.png" />
+        </div>
+        <div class="flex-item" @click="tap">
+            flex-item3
+            <img src="./assets/icon-arrow-rt.png" />
         </div>
     </div>
   </div>
@@ -22,19 +26,28 @@ export default {
     data () {
         return {
             msg: 'Welcome to Your Vue.js App'
+        };
+    },
+    methods: {
+        tap (e) {
+            console.log(e.target);
+        },
+        dd () {
+            var a;
+            let aa = 1;
         }
     }
-}
+};
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
 }
 
 h1, h2 {
