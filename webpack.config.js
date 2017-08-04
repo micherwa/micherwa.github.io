@@ -40,7 +40,10 @@ var config = {
             },
             {
                 test: /\.(png|jpg|gif|svg|ico)$/,
-                use: ['url-loader?limit=4096&name=[path][name].[ext]?[hash:7]', 'image-webpack-loader']
+                use: [
+                        'url-loader?limit=4096&name=[path][name].[ext]?[chunkhash]',
+                        'image-webpack-loader'
+                     ]
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
@@ -49,7 +52,6 @@ var config = {
             {
                 test: /\.(js|vue)$/,
                 loader: 'eslint-loader',
-               // enforce: 'pre',//是否在loader前监测，vue中我设为否
                 include: [path.join(__dirname, 'src')],
                 options: {
                     formatter: require('eslint-friendly-formatter')//错误输出格式
@@ -90,9 +92,11 @@ var config = {
                 collapseInlineTagWhitespace: true,
                 removeRedundantAttributes: true
             }
-        }),
+        })
     ],
     devServer: {
+        // 主入口为 /src/index.html
+        contentBase: './src',
         historyApiFallback: true, //不跳转
         noInfo: true
     },
@@ -103,10 +107,19 @@ var config = {
 }
 
 if (isProd) {
-    config.devtool = '#source-map'
+    config.devtool = '#source-map';
+    //把vue中内联的css拆出来，以外联引用
+    config.module.rules[0].options = {
+        loaders: {
+            sass: ExtractTextPlugin.extract({
+              use: ['css-loader','sass-loader'],
+              fallback: 'vue-style-loader'
+            }),
+        }
+    };
+
     // http://vue-loader.vuejs.org/en/workflow/production.html
     config.plugins = (config.plugins || []).concat([
-
         new ExtractTextPlugin({
             filename: '[name].[chunkhash].css',
             allChunks: true
@@ -129,6 +142,7 @@ if (isProd) {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         }),
+        // 启用作用域提升
         new webpack.optimize.ModuleConcatenationPlugin()
     ]);
 }
