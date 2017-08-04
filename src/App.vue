@@ -13,7 +13,7 @@
             <img src="./assets/icon-eye-open.png" />
         </div>
         <div class="flex-item" @click="tap">
-            flex-item3
+            flex-item4
             <img src="./assets/icon-arrow-rt.png" />
         </div>
     </div>
@@ -33,8 +33,6 @@ export default {
             console.log(e.target);
         },
         dd () {
-            var a;
-            let aa = 1;
         }
     }
 };
