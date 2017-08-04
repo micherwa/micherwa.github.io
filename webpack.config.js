@@ -13,7 +13,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: '[name].[chunkhash].js'
+        filename: 'build.js'
     },
     module: {
         rules: [
@@ -41,7 +41,7 @@ var config = {
             {
                 test: /\.(png|jpg|gif|svg|ico)$/,
                 use: [
-                        'url-loader?limit=4096&name=[path][name].[ext]?[chunkhash]',
+                        'url-loader?limit=4096&name=[path][name].[ext]?[hash:7]',
                         'image-webpack-loader'
                      ]
             },
@@ -83,7 +83,7 @@ var config = {
             )
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, './src/index.html'),
+            template: './index.html',
             inject: true,
             minify: {
                 minifyJS: true,
@@ -96,7 +96,7 @@ var config = {
     ],
     devServer: {
         // 主入口为 /src/index.html
-        contentBase: './src',
+        // contentBase: './src',
         historyApiFallback: true, //不跳转
         noInfo: true
     },
@@ -104,7 +104,7 @@ var config = {
         hints: false
     },
     devtool: '#eval-source-map'
-}
+};
 
 if (isProd) {
     config.devtool = '#source-map';
@@ -121,7 +121,7 @@ if (isProd) {
     // http://vue-loader.vuejs.org/en/workflow/production.html
     config.plugins = (config.plugins || []).concat([
         new ExtractTextPlugin({
-            filename: '[name].[chunkhash].css',
+            filename: '[name].[hash:7].css',
             allChunks: true
         }),
         new webpack.DefinePlugin({
