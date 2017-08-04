@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-new Vue({ // eslint-disable-line no-new
-    el: '#app',
+// eslint-disable-next-line no-new
+new Vue({
     render: h => h(App)
-});
+}).$mount('#app');

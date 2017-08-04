@@ -13,7 +13,7 @@ var config = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: 'build.js'
+        filename: '[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -23,11 +23,11 @@ var config = {
             },
             {
                 test: /\.(css)$/,
-                use: ExtractTextPlugin.extract('css-loader')
+                use: ExtractTextPlugin.extract('style-loader!css-loader')
             },
             {
                 test: /\.(scss)$/,
-                use: ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader')
+                use: ExtractTextPlugin.extract('style-loader!css-loader!postcss-loader!sass-loader')
             },
             {
                 test: /\.js$/,
@@ -71,6 +71,27 @@ var config = {
             'vue$': 'vue/dist/vue.esm.js'
         }
     },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: ({ resource }) => (
+                resource &&
+                resource.indexOf('node_modules') >= 0 &&
+                resource.match(/\.js$/)
+            )
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, './src/index.html'),
+            inject: true,
+            minify: {
+                minifyJS: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                collapseInlineTagWhitespace: true,
+                removeRedundantAttributes: true
+            }
+        }),
+    ],
     devServer: {
         historyApiFallback: true, //不跳转
         noInfo: true
@@ -85,11 +106,13 @@ if (isProd) {
     config.devtool = '#source-map'
     // http://vue-loader.vuejs.org/en/workflow/production.html
     config.plugins = (config.plugins || []).concat([
-        new ExtractTextPlugin('[name].[hash:7].css'),
+
+        new ExtractTextPlugin({
+            filename: '[name].[chunkhash].css',
+            allChunks: true
+        }),
         new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
+            'process.env.NODE_ENV': JSON.stringify('production')
         }),
         new CopyWebpackPlugin([
             {
@@ -105,7 +128,8 @@ if (isProd) {
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
-        })
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]);
 }
 
