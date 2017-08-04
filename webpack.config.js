@@ -23,11 +23,11 @@ var config = {
             },
             {
                 test: /\.(css)$/,
-                use: ExtractTextPlugin.extract('style-loader!css-loader')
+                use: ExtractTextPlugin.extract('css-loader')
             },
             {
                 test: /\.(scss)$/,
-                use: ExtractTextPlugin.extract('style-loader!css-loader!postcss-loader!sass-loader')
+                use: ExtractTextPlugin.extract('css-loader!postcss-loader!sass-loader')
             },
             {
                 test: /\.js$/,
