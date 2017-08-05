@@ -7,6 +7,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var isProd = process.env.NODE_ENV === 'production';
 
 var config = {
+    // 定义主入口从 src 下开始找，忽略根目录的index.html
     context: path.join(__dirname, './src'),
     entry: {
         app: './main.js'
@@ -39,11 +40,8 @@ var config = {
                 use: 'vue-html-loader'
             },
             {
-                test: /\.(png|jpg|gif|svg|ico)$/,
-                use: [
-                        'url-loader?limit=4096&name=[path][name].[ext]?[hash:7]',
-                        'image-webpack-loader'
-                     ]
+                test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
+                use: ['url-loader?limit=4096&name=[path][name].[ext]?[hash:7]', 'image-webpack-loader']
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
@@ -95,7 +93,7 @@ var config = {
         })
     ],
     devServer: {
-        // 主入口为 /src/index.html
+        // 本地环境主入口为 /src/index.html
         contentBase: './src',
         historyApiFallback: true, //不跳转
         noInfo: true
@@ -108,6 +106,7 @@ var config = {
 
 if (isProd) {
     config.devtool = '#source-map';
+    // 打包后，对于根目录下的index.html，须配置绝对引用路径
     config.output.publicPath = '/dist/';
     //把vue中内联的css拆出来，以外联引用
     config.module.rules[0].options = {

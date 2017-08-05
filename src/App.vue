@@ -17,6 +17,7 @@
             <img src="./assets/icon-arrow-rt.png" />
         </div>
     </div>
+    <img src="./assets/test2.png" class="img-responsive">
   </div>
 </template>
 
@@ -33,6 +34,7 @@ export default {
             console.log(e.target);
         },
         dd () {
+            // var a = 1;
         }
     }
 };
@@ -64,6 +66,12 @@ li {
 
 a {
   color: #42b983;
+}
+
+.img-responsive {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
 }
 
 .flex-wrapper {
