@@ -82,7 +82,7 @@ var config = {
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
-            inject: true,
+            inject: true, //允许插件把css和js分别插入head与body
             minify: {
                 minifyJS: true,
                 removeComments: true,
