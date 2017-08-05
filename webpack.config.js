@@ -7,13 +7,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var isProd = process.env.NODE_ENV === 'production';
 
 var config = {
+    context: path.join(__dirname, './src'),
     entry: {
-        app: './src/main.js'
+        app: './main.js'
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: 'build.js'
+        filename: '[name].[hash:7].js'
     },
     module: {
         rules: [
@@ -96,7 +96,7 @@ var config = {
     ],
     devServer: {
         // 主入口为 /src/index.html
-        // contentBase: './src',
+        contentBase: './src',
         historyApiFallback: true, //不跳转
         noInfo: true
     },
@@ -108,6 +108,7 @@ var config = {
 
 if (isProd) {
     config.devtool = '#source-map';
+    config.output.publicPath = '/dist/';
     //把vue中内联的css拆出来，以外联引用
     config.module.rules[0].options = {
         loaders: {

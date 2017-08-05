@@ -13,7 +13,7 @@
             <img src="./assets/icon-eye-open.png" />
         </div>
         <div class="flex-item" @click="tap">
-            flex-item4
+            flex-item3
             <img src="./assets/icon-arrow-rt.png" />
         </div>
     </div>
