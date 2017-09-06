@@ -149,7 +149,9 @@ if (isProd) {
             minimize: true
         }),
         // 启用作用域提升
-        new webpack.optimize.ModuleConcatenationPlugin()
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        // 压缩打包后moment的大小
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|zh/)
     ]);
 }
 
