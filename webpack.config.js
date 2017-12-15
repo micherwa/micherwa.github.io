@@ -3,6 +3,8 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+var ip = require('ip');
 
 var isProd = process.env.NODE_ENV === 'production';
 
@@ -47,7 +49,7 @@ var config = {
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
-                use: ['url-loader?limit=4096&name=[path][name].[ext]?[hash:7]', 'image-webpack-loader']
+                use: ['url-loader?limit=4096&name=[path][name].[ext]?[hash:7]']
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
@@ -64,6 +66,7 @@ var config = {
         ]
     },
     resolve: {
+        extensions: ['*', '.vue', '.js'],
         alias: {
             'src': path.join(__dirname, './src'),
             'css': path.join(__dirname, './src/css'),
@@ -74,6 +77,7 @@ var config = {
             'filters': path.join(__dirname, './src/filters'),
             'utils': path.join(__dirname, './src/utils'),
             'views': path.join(__dirname, './src/views'),
+            'services': path.join(__dirname, './src/services'),
             'vue$': 'vue/dist/vue.esm.js'
         }
     },
@@ -100,13 +104,33 @@ var config = {
         new ExtractTextPlugin({
             filename: '[name].[chunkhash].css',
             allChunks: true
+        }),
+        // 注入webpack运行的环境变量（是否为开发环境）
+        new webpack.DefinePlugin({
+            __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'false'))
+        }),
+        // 启用作用域提升,让代码文件更小、运行的更快
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        // 压缩打包后moment的大小，只引入中英文版本
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|zh/),
+        // 按需加载，只压缩用到的方法
+        new LodashModuleReplacementPlugin({
+            'shorthands': true
         })
     ],
     devServer: {
         // 本地环境主入口为 /src/index.html
         contentBase: './src',
         historyApiFallback: true, //不跳转
-        noInfo: true
+        noInfo: true,
+        host: ip.address(),
+        port: 8080,
+        proxy: {
+            '/mock': {
+                target: 'http://localhost:9090'
+            },
+            changeOrigin: true
+        },
     },
     performance: {
         hints: false
@@ -142,17 +166,32 @@ if (isProd) {
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             compress: {
-                warnings: false
+                warnings: false,
+                // 去除vue和js中的console.*函数
+                drop_console: true
             }
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         }),
-        // 启用作用域提升
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        // 压缩打包后moment的大小
-        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|zh/)
+        // optimize module ids by occurrence count
+        new webpack.optimize.OccurrenceOrderPlugin()
     ]);
+}
+
+if (!isProd) {
+    // mock server startup
+    var db = require('./mock/db.js');
+    var jsonServer = require('json-server');
+    var server = jsonServer.create();
+    var router = jsonServer.router(db);
+    var middlewares = jsonServer.defaults();
+
+    server.use(middlewares);
+    server.use('/mock', router);
+    server.listen(9090, function() {
+        console.log('Mock API Server is running!')
+    });
 }
 
 module.exports = config;
