@@ -15,7 +15,7 @@ var config = {
         app: './main.js'
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './blog'),
         filename: '[name].[chunkhash].js',
         // 打包后，对于根目录下的index.html，须配置绝对引用路径
         publicPath: isProd ? '/blog/' : '/'
