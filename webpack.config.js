@@ -16,7 +16,9 @@ var config = {
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].[chunkhash].js'
+        filename: '[name].[chunkhash].js',
+        // 打包后，对于根目录下的index.html，须配置绝对引用路径
+        publicPath: isProd ? '/dist/' : '/'
     },
     module: {
         rules: [
@@ -140,8 +142,6 @@ var config = {
 
 if (isProd) {
     config.devtool = '#source-map';
-    // 打包后，对于根目录下的index.html，须配置绝对引用路径
-    config.output.publicPath = '/dist/';
     //把vue中内联的css拆出来，以外联引用
     config.module.rules[0].options = {
         loaders: {
