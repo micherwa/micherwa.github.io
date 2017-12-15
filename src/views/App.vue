@@ -4,6 +4,7 @@
   </div>
 </template>
 
+<style lang="scss" src="css/app.scss"></style>
 <script>
 export default {
     created () {

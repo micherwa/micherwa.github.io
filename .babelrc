@@ -3,5 +3,13 @@
         ['env', { 'modules': false }],
         "stage-3"
     ],
-    plugins: ['lodash']
+    plugins: [
+        'lodash',
+        ["component",
+            [{
+              "libraryName": "element-ui",
+              "styleLibraryName": "theme-chalk"
+            }]
+        ]
+    ]
 }
