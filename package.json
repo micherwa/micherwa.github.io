@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --inline",
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "rimraf blog && cross-env NODE_ENV=production webpack --progress --hide-modules",
     "eslint": "eslint --fix --ext js,vue src"
   },
   "dependencies": {

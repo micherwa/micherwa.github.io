@@ -160,7 +160,7 @@ if (isProd) {
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, 'src/assets'),
-                to: path.join(__dirname, 'dist/assets')
+                to: path.join(__dirname, 'blog/assets')
             }
         ]),
         new webpack.optimize.UglifyJsPlugin({
