@@ -1,0 +1,9 @@
+.home {
+    height: 100%;
+    .flex-wrapper {
+        display: flex;
+        .flex-item {
+            flex: 1;
+        }
+    }
+}
