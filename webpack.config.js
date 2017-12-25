@@ -15,10 +15,10 @@ var config = {
         app: './main.js'
     },
     output: {
-        path: path.resolve(__dirname, './blog'),
+        path: path.resolve(__dirname, './homepage'),
         filename: '[name].[chunkhash].js',
         // 打包后，对于根目录下的index.html，须配置绝对引用路径
-        publicPath: isProd ? '/blog/' : '/'
+        publicPath: isProd ? '/homepage/' : '/'
     },
     module: {
         rules: [
@@ -160,7 +160,7 @@ if (isProd) {
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, 'src/assets'),
-                to: path.join(__dirname, 'blog/assets')
+                to: path.join(__dirname, 'homepage/assets')
             }
         ]),
         new webpack.optimize.UglifyJsPlugin({

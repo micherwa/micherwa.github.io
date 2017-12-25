@@ -1,6 +1,6 @@
 {
-  "name": "blog-tech",
-  "description": "micherwa's technology blog",
+  "name": "homepage",
+  "description": "micherwa's homepage",
   "version": "1.0.0",
   "author": "Jaked <530974640@qq.com>",
   "main": "webpack.config.js",
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --inline",
-    "build": "rimraf blog && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "rimraf homepage && cross-env NODE_ENV=production webpack --progress --hide-modules",
     "eslint": "eslint --fix --ext js,vue src"
   },
   "dependencies": {

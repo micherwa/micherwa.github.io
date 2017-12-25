@@ -3,7 +3,7 @@ import Vue from 'vue';
 import App from './views/App.vue';
 import VueRouter from 'vue-router';
 import routes from './views/routes';
-import store from './store/index';
+// import store from './store/index';
 import { Row, Col } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -20,6 +20,6 @@ const router = new VueRouter({
 // eslint-disable-next-line no-new
 new Vue({
     router,
-    store,
+    // store,
     render: h => h(App)
 }).$mount('#app');
