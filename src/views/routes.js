@@ -1,7 +1,7 @@
-import HomeRoutes from './home';
+import HomepageRoutes from './homepage';
 
 let routes = [
-    ...HomeRoutes
+    ...HomepageRoutes
 ];
 
 export default routes;
