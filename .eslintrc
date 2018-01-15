@@ -37,7 +37,8 @@
     "env": {
         "browser": true,
         "es6": true,
-        "amd": true
+        "amd": true,
+        "jquery": true
     },
     // 如果想使用自定义的全局变量，可以在这里定义
     "globals": {

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+// import $ from 'jquery';
 
 export default {
     data () {
@@ -19,5 +20,9 @@ export default {
         tap (e) {
             console.log(e.target);
         }
+    },
+
+    mounted () {
+        console.log($('.homepage').html());
     }
 };

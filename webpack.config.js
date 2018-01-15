@@ -80,6 +80,8 @@ var config = {
             'utils': path.join(__dirname, './src/utils'),
             'views': path.join(__dirname, './src/views'),
             'services': path.join(__dirname, './src/services'),
+            'libs': path.join(__dirname, './src/libs'),
+            'jquery': path.resolve(__dirname, './node_modules/jquery/src/jquery'),
             'vue$': 'vue/dist/vue.esm.js'
         }
     },
@@ -161,6 +163,10 @@ if (isProd) {
             {
                 from: path.join(__dirname, 'src/assets'),
                 to: path.join(__dirname, 'homepage/assets')
+            },
+            {
+                from: path.join(__dirname, 'src/libs'),
+                to: path.join(__dirname, 'homepage/libs')
             }
         ]),
         new webpack.optimize.UglifyJsPlugin({
