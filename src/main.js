@@ -4,9 +4,9 @@ import App from './views/App.vue';
 import VueRouter from 'vue-router';
 import routes from './views/routes';
 // import store from './store/index';
-import 'libs/preloader/style.scss';
 import $ from 'jquery';
-import 'libs/preloader';
+import 'libs/preloader/preloader.js';
+import 'libs/preloader/style.css';
 
 // 注册vue组件
 Vue.use(VueRouter);

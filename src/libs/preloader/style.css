@@ -1,16 +1,12 @@
-.is-preloader {
-    .page-wrapper {
-        visibility: visible;
-        opacity: 1;
-        transition: all 0.5s;
-    }
+.is-preloader .page-wrapper {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.5s;
 }
 
-.preloading {
-    .page-wrapper {
-        visibility: hidden;
-        opacity: 0;
-    }
+.preloading .page-wrapper {
+    visibility: hidden;
+    opacity: 0;
 }
 
 /**********************
