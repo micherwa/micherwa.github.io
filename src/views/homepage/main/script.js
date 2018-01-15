@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 
 export default {
     data () {
@@ -16,12 +16,10 @@ export default {
     },
 
     methods: {
-        tap (e) {
-            console.log(e.target);
-        }
+
     },
 
     mounted () {
-        console.log($('.homepage').html());
+
     }
 };

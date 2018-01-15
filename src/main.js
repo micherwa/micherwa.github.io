@@ -31,7 +31,7 @@ $(document).ready(function () {
         var screenbg = $('#preloader').data('screenbg');
         $('#preloader').fakeLoader({
             // Time in milliseconds for fakeLoader disappear
-            timeToHide: 2000,
+            timeToHide: 1500,
             // Default zIndex
             zIndex: '9999',
             // Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'

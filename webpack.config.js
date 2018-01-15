@@ -163,10 +163,6 @@ if (isProd) {
             {
                 from: path.join(__dirname, 'src/assets'),
                 to: path.join(__dirname, 'homepage/assets')
-            },
-            {
-                from: path.join(__dirname, 'src/libs'),
-                to: path.join(__dirname, 'homepage/libs')
             }
         ]),
         new webpack.optimize.UglifyJsPlugin({
