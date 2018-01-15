@@ -6,6 +6,7 @@ import routes from './views/routes';
 // import store from './store/index';
 import 'libs/preloader/style.scss';
 import $ from 'jquery';
+import 'libs/preloader';
 
 // 注册vue组件
 Vue.use(VueRouter);
