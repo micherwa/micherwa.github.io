@@ -1,3 +1,9 @@
+.page-wrapper {
+    visibility: hidden;
+    position: relative;
+    height: 100%;
+}
+
 .is-preloader .page-wrapper {
     visibility: visible;
     opacity: 1;
@@ -5,7 +11,6 @@
 }
 
 .preloading .page-wrapper {
-    visibility: hidden;
     opacity: 0;
 }
 

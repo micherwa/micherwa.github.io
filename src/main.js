@@ -23,18 +23,21 @@ new Vue({
     render: h => h(App)
 }).$mount('#app');
 
-/* eslint-disable */
-$(document).ready( function ( $ ) {
+// draw preloader
+$(document).ready(function () {
     if ($('#preloader')) {
-        $("#preloader").show();
-        var spinner = $('#preloader').data('spinner'),
-        screenbg = $('#preloader').data('screenbg');
-        $("#preloader").fakeLoader({
-            timeToHide: 1000, //Time in milliseconds for fakeLoader disappear
-            zIndex: "9999",//Default zIndex
-            spinner: spinner,//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-            bgColor: screenbg //Hex, RGB or RGBA colors
+        $('#preloader').show();
+        var spinner = $('#preloader').data('spinner');
+        var screenbg = $('#preloader').data('screenbg');
+        $('#preloader').fakeLoader({
+            // Time in milliseconds for fakeLoader disappear
+            timeToHide: 2000,
+            // Default zIndex
+            zIndex: '9999',
+            // Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+            spinner: spinner,
+            // Hex, RGB or RGBA colors
+            bgColor: screenbg
         });
     }
 });
-/* eslint-enable */
