@@ -1,15 +1,21 @@
 import 'babel-polyfill';
 import Vue from 'vue';
+import 'components';
 import App from './views/App.vue';
 import VueRouter from 'vue-router';
 import routes from './views/routes';
 // import store from './store/index';
+import { Container, Main, Footer, Header } from 'element-ui';
 import $ from 'jquery';
 import 'libs/preloader/preloader.js';
 import 'libs/preloader/style.css';
 
 // 注册vue组件
 Vue.use(VueRouter);
+Vue.use(Container);
+Vue.use(Main);
+Vue.use(Footer);
+Vue.use(Header);
 
 const router = new VueRouter({
     routes: routes,
