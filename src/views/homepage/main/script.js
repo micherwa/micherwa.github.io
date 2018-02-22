@@ -6,27 +6,27 @@ export default {
             naviList: [
                 {
                     title: 'item1',
-                    achor: '#item1',
+                    achor: '#test1',
                     active: true
                 },
                 {
                     title: 'item2',
-                    achor: '#item2',
+                    achor: '#test2',
                     active: false
                 },
                 {
                     title: 'item3',
-                    achor: '#item3',
+                    achor: '#test3',
                     active: false
                 },
                 {
                     title: 'item4',
-                    achor: '#item4',
+                    achor: '#test4',
                     active: false
                 },
                 {
                     title: 'item5',
-                    achor: '#item5',
+                    achor: '#test5',
                     active: false
                 }
             ]

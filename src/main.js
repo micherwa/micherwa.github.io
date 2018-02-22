@@ -5,7 +5,10 @@ import App from './views/App.vue';
 import VueRouter from 'vue-router';
 import routes from './views/routes';
 // import store from './store/index';
+
 import { Container, Main, Footer, Header } from 'element-ui';
+import 'element-ui/lib/theme-chalk/display.css';
+
 import $ from 'jquery';
 import 'libs/preloader/preloader.js';
 import 'libs/preloader/style.css';
