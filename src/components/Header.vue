@@ -174,16 +174,13 @@
                 const itemCount = $('#navCollapse').find('li').length;
                 $('#navCollapse').show().stop(true).animate({
                     'height': itemCount * itemHeight
-                }, 500, () => {
-                    console.log('show done');
-                });
+                }, 500);
             },
 
             hideNaviList () {
                 $('#navCollapse').stop(true).animate({
                     'height': 0
                 }, 500, () => {
-                    console.log('hide done');
                     $('#navCollapse').hide();
                 });
             }
