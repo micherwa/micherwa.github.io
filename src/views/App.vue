@@ -1,10 +1,9 @@
 <template>
-  <div id="app">
+    <div id="app">
       <router-view></router-view>
-  </div>
+    </div>
 </template>
 
-<style lang="scss" src="css/app.scss"></style>
 <script>
 export default {
     created () {

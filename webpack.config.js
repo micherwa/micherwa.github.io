@@ -15,10 +15,10 @@ var config = {
         app: './main.js'
     },
     output: {
-        path: path.resolve(__dirname, './homepage'),
+        path: path.resolve(__dirname, './blog'),
         filename: '[name].[chunkhash].js',
         // 打包后，对于根目录下的index.html，须配置绝对引用路径
-        publicPath: isProd ? '/homepage/' : '/'
+        publicPath: isProd ? '/blog/' : '/'
     },
     module: {
         rules: [
@@ -70,17 +70,7 @@ var config = {
     resolve: {
         extensions: ['*', '.vue', '.js'],
         alias: {
-            'src': path.join(__dirname, './src'),
-            'css': path.join(__dirname, './src/css'),
-            'assets': path.join(__dirname, './src/assets'),
-            'components': path.join(__dirname, './src/components'),
-            'constants': path.join(__dirname, './src/constants'),
-            'directives': path.join(__dirname, './src/directives'),
-            'filters': path.join(__dirname, './src/filters'),
-            'utils': path.join(__dirname, './src/utils'),
-            'views': path.join(__dirname, './src/views'),
-            'services': path.join(__dirname, './src/services'),
-            'libs': path.join(__dirname, './src/libs'),
+            '@': path.join(__dirname, './src'),
             'jquery': path.resolve(__dirname, './node_modules/jquery/src/jquery'),
             'vue$': 'vue/dist/vue.esm.js'
         }
@@ -162,7 +152,7 @@ if (isProd) {
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, 'src/assets'),
-                to: path.join(__dirname, 'homepage/assets')
+                to: path.join(__dirname, 'blog/assets')
             }
         ]),
         new webpack.optimize.UglifyJsPlugin({
