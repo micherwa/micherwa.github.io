@@ -1,14 +1,9 @@
 <template>
-    <el-footer class="footer">
+    <div class="footer">
         footer
-    </el-footer>
+    </div>
 </template>
-<style lang="scss">
-    .footer {
-        width: 100%;
-        background-color: blue;
-    }
-</style>
+
 <script type="text/javascript">
     export default {
         name: 'Footer',
@@ -31,3 +26,10 @@
         }
     };
 </script>
+
+<style lang="scss">
+    .footer {
+        width: 100%;
+        background-color: blue;
+    }
+</style>

@@ -6,21 +6,17 @@ import VueRouter from 'vue-router';
 import routers from '@/routers';
 // import store from './store/index';
 
-import { Container, Main, Footer, Header } from 'element-ui';
-import 'element-ui/lib/theme-chalk/display.css';
-
 import $ from 'jquery';
 import '@/libs/preloader/preloader.js';
 import '@/libs/preloader/style.css';
+
+import '@/libs/bootstrap/css/bootstrap.css';
+import '@/libs/bootstrap/js/bootstrap.js';
 
 import '@/styles/app.scss';
 
 // 注册vue组件
 Vue.use(VueRouter);
-Vue.use(Container);
-Vue.use(Main);
-Vue.use(Footer);
-Vue.use(Header);
 
 const router = new VueRouter({
     routes: routers,

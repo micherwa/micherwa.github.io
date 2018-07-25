@@ -1,29 +1,82 @@
 <template>
-    <el-header class="header clearfix">
+    <div class="header clearfix">
         <a class="logo pull-left" href="javascript:;">logo</a>
 
-        <ul class="nav pull-right clearfix hidden-xs-only">
-            <li v-for="(nav, index) in naviList" @click="handleClickNavItem(nav, index)"
-             class="pull-left nav-item" :class="[nav.active ? 'active': '']" :key="index">
+        <ul class="nav pull-right clearfix hidden-sm">
+            <li
+                class="pull-left nav-item" :class="[nav.active ? 'active': '']"
+                v-for="(nav, index) in naviList" :key="index">
                 <a class="c-5a" href="javascript:;">{{nav.title}}</a>
             </li>
         </ul>
-        <div class="hidden-sm-and-up pull-right nav-toggle flex-center m-t-17"
-         @click="showNaviList">
+        <div
+            class="pull-right nav-toggle visible-sm"
+            @click="showNaviList">
             <span class="toggle-icon"></span>
             <ul class="nav nav-collapse" id="navCollapse">
-                <li v-for="(nav, index) in naviList"
-                 @click.stop="handleClickNavItem(nav, index)"
-                 class="pull-left nav-item"
-                 :class="[nav.active ? 'active': '']"
-                 :key="index">
+                <li
+                    class="pull-left nav-item" :class="[nav.active ? 'active': '']"
+                    v-for="(nav, index) in naviList" :key="index">
                     <a class="c-5a" href="javascript:;">{{nav.title}}</a>
                 </li>
             </ul>
         </div>
 
-    </el-header>
+    </div>
 </template>
+
+<script type="text/javascript">
+    import $ from 'jquery';
+
+    export default {
+        name: 'Header',
+
+        data () {
+            return {
+                naviList: [
+                    {
+                        title: 'HOME',
+                        routerName: 'home',
+                        active: true
+                    },
+                    {
+                        title: 'ABOUT',
+                        routerName: 'about',
+                        active: false
+                    },
+                    {
+                        title: 'TAGS',
+                        routerName: 'tags',
+                        active: false
+                    }
+                ]
+            };
+        },
+
+        created () {
+
+        },
+
+        methods: {
+            showNaviList () {
+                const itemHeight = $('#navCollapse').find('li').height();
+                const itemCount = $('#navCollapse').find('li').length;
+                $('#navCollapse').show().stop(true).animate({
+                    'height': itemCount * itemHeight
+                }, 500);
+            },
+
+            hideNaviList () {
+                $('#navCollapse').stop(true).animate({
+                    'height': 0
+                }, 500, () => {
+                    $('#navCollapse').hide();
+                });
+            }
+        }
+    };
+</script>
+
 <style lang="scss" scoped>
     .header {
         width: 100%;
@@ -132,58 +185,3 @@
         }
     }
 </style>
-<script type="text/javascript">
-    import $ from 'jquery';
-
-    export default {
-        name: 'Header',
-        props: {
-            naviList: {
-                type: Array,
-                default: []
-            }
-        },
-
-        data () {
-            return {
-
-            };
-        },
-
-        created () {
-
-        },
-
-        methods: {
-            handleClickNavItem (nav, index) {
-                this.$emit('navActived', index);
-
-                const distanceFromTop = $(nav.achor).offset().top - 80;
-                $('body').animate({
-                    'scrollTop': distanceFromTop
-                }, 700);
-
-                if ($('#navCollapse').height() === 0) {
-                    return;
-                }
-                this.hideNaviList();
-            },
-
-            showNaviList () {
-                const itemHeight = $('#navCollapse').find('li').height();
-                const itemCount = $('#navCollapse').find('li').length;
-                $('#navCollapse').show().stop(true).animate({
-                    'height': itemCount * itemHeight
-                }, 500);
-            },
-
-            hideNaviList () {
-                $('#navCollapse').stop(true).animate({
-                    'height': 0
-                }, 500, () => {
-                    $('#navCollapse').hide();
-                });
-            }
-        }
-    };
-</script>

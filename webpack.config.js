@@ -118,12 +118,12 @@ var config = {
         historyApiFallback: true, //不跳转
         noInfo: true,
         host: ip.address(),
-        port: 8080,
+        port: 8088,
         proxy: {
-            '/mock': {
-                target: 'http://localhost:9090'
-            },
-            changeOrigin: true
+            // '/mock': {
+            //     target: 'http://localhost:9090'
+            // },
+            // changeOrigin: true
         },
     },
     performance: {
@@ -169,21 +169,6 @@ if (isProd) {
         // optimize module ids by occurrence count
         new webpack.optimize.OccurrenceOrderPlugin()
     ]);
-}
-
-if (!isProd) {
-    // mock server startup
-    var db = require('./mock/db.js');
-    var jsonServer = require('json-server');
-    var server = jsonServer.create();
-    var router = jsonServer.router(db);
-    var middlewares = jsonServer.defaults();
-
-    server.use(middlewares);
-    server.use('/mock', router);
-    server.listen(9090, function() {
-        console.log('Mock API Server is running!')
-    });
 }
 
 module.exports = config;
