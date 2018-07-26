@@ -1,33 +1,30 @@
 <template>
-    <div class="header clearfix">
-        <a class="logo pull-left" href="javascript:;">logo</a>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Micherwa Blog</a>
+            </div>
 
-        <ul class="nav pull-right clearfix hidden-sm">
-            <li
-                class="pull-left nav-item" :class="[nav.active ? 'active': '']"
-                v-for="(nav, index) in naviList" :key="index">
-                <a class="c-5a" href="javascript:;">{{nav.title}}</a>
-            </li>
-        </ul>
-        <div
-            class="pull-right nav-toggle visible-sm"
-            @click="showNaviList">
-            <span class="toggle-icon"></span>
-            <ul class="nav nav-collapse" id="navCollapse">
-                <li
-                    class="pull-left nav-item" :class="[nav.active ? 'active': '']"
-                    v-for="(nav, index) in naviList" :key="index">
-                    <a class="c-5a" href="javascript:;">{{nav.title}}</a>
-                </li>
-            </ul>
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li v-for="(item, $index) in naviList" :key="$index">
+                            <a :href="item.href">{{item.title}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-    </div>
+    </nav>
 </template>
 
 <script type="text/javascript">
-    import $ from 'jquery';
-
     export default {
         name: 'Header',
 
@@ -36,18 +33,15 @@
                 naviList: [
                     {
                         title: 'HOME',
-                        routerName: 'home',
-                        active: true
+                        href: '/home'
                     },
                     {
                         title: 'ABOUT',
-                        routerName: 'about',
-                        active: false
+                        href: '/about'
                     },
                     {
                         title: 'TAGS',
-                        routerName: 'tags',
-                        active: false
+                        href: '/tags'
                     }
                 ]
             };
@@ -58,130 +52,117 @@
         },
 
         methods: {
-            showNaviList () {
-                const itemHeight = $('#navCollapse').find('li').height();
-                const itemCount = $('#navCollapse').find('li').length;
-                $('#navCollapse').show().stop(true).animate({
-                    'height': itemCount * itemHeight
-                }, 500);
-            },
 
-            hideNaviList () {
-                $('#navCollapse').stop(true).animate({
-                    'height': 0
-                }, 500, () => {
-                    $('#navCollapse').hide();
-                });
-            }
         }
     };
 </script>
 
-<style lang="scss" scoped>
-    .header {
+<style lang="scss">
+    .navbar-custom {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        background-color: #fff;
-        position: fixed;
-        z-index: 1000;
-        box-shadow: inset 0 -1px 1px -1px #d8d8d8;
+        z-index: 3;
 
-        .logo {
-            width: 100px;
-            height: 50px;
-            margin-top: 5px;
-            background-color: #f9f9f9;
+        .navbar-brand {
+            font-weight: 800;
+            color: white;
+            height: 56px;
+            line-height: 25px;
+
+            &:hover {
+                color: rgba(255, 255, 255, 0.8);
+            }
         }
 
         .nav {
-            .nav-item {
-                height: 100%;
-                position: relative;
+            li {
                 a {
-                    display: block;
-                    padding: 20px;
-                }
-                &::after {
-                    position: absolute;
-                    top: 28px;
-                    left: 4px;
-                    width: 9px;
-                    height: 2px;
-                    background-color: #17bed2;
-                    opacity: 0;
-                    content: " ";
-                }
-                &:hover {
-                    &::after {
-                        opacity: 1;
-                        transition-duration: 400ms;
-                        transition-property: all;
-                        transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    line-height: 20px;
+                    font-weight: 800;
+                    letter-spacing: 1px;
+
+                    &:active {
+                        background: rgba(0, 0, 0, 0.12);
                     }
-                }
-            }
-            .nav-item.active {
-                &::after {
-                    opacity: 1;
-                    transition-duration: 400ms;
-                    transition-property: all;
-                    transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
                 }
             }
         }
+    }
 
-        .nav-toggle {
-            width: 25px;
-            height: 25px;
-            position: relative;
-            .toggle-icon {
-                position: absolute;
-                top: 3px;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                border-radius: 2px;
-                background-color: #515151;
-            }
-            &::before {
-                position: absolute;
-                top: 11px;
-                left: 0;
-                content: '';
-                background-color: #515151;
-                width: 100%;
-                height: 2px;
-                border-radius: 2px;
-            }
-            &::after {
-                position: absolute;
-                bottom: 3px;
-                left: 0;
-                content: '';
-                background-color: #515151;
-                width: 100%;
-                height: 2px;
-                border-radius: 2px;
+    @media only screen and (min-width: 768px) {
+        .navbar-custom {
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            body {
+                font-size: 20px;
             }
 
-            .nav-collapse {
-                display: none;
-                height: 0;
-                position: fixed;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                overflow: hidden;
-                .nav-item {
-                    height: 40px;
-                    line-height: 30px;
-                    width: 100%;
-                    background-color: #fff;
-                    a { padding: 5px 20px; }
-                    &::after {
-                        top: 20px;
+            .navbar-brand {
+                color: #fff;
+                padding: 20px;
+                line-height: 20px;
+
+                &:hover, &:focus {
+                    color: rgba(255, 255, 255, 0.8);
+                }
+            }
+
+            .nav {
+                li {
+                    a {
+                        color: #fff;
+                        padding: 20px;
+
+                        &:hover, &:focus {
+                            color: rgba(255, 255, 255, 0.8);
+                        }
+
+                        &:active {
+                            background: none;
+                        }
                     }
                 }
             }
+        }
+    }
+
+    @media only screen and (min-width: 1170px) {
+        .navbar-custom {
+            transition: background-color 0.3s;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+        }
+        .navbar-custom.is-fixed {
+            /* when the user scrolls down, we hide the header right above the viewport */
+            position: fixed;
+            top: -61px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid #f2f2f2;
+            transition: transform 0.3s;
+        }
+        .navbar-custom.is-fixed .navbar-brand {
+            color: #404040;
+        }
+        .navbar-custom.is-fixed .navbar-brand:hover,
+        .navbar-custom.is-fixed .navbar-brand:focus {
+            color: #0085a1;
+        }
+        .navbar-custom.is-fixed .nav li a {
+            color: #404040;
+        }
+        .navbar-custom.is-fixed .nav li a:hover,
+        .navbar-custom.is-fixed .nav li a:focus {
+            color: #0085a1;
+        }
+        .navbar-custom.is-visible {
+            /* if the user changes the scrolling direction, we show the header */
+            transform: translate3d(0, 100%, 0);
         }
     }
 </style>

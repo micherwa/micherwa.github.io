@@ -1,7 +1,39 @@
 @import "reset";
-@import "common";
 @import "margin-padding";
 
 #app {
     height: 100%;
+}
+
+.c-333 {color: #333;}
+.c-666 {color: #666;}
+.c-999 {color: #999;}
+.c-4d { color: #4d4d4d; }
+.c-7b { color: #7b7b7b; }
+.c-5a { color: #5a5a5a; }
+
+@for $i from 10 through 18 {
+    .f#{$i} {
+        font-size: $i + px !important;
+    }
+}
+.f0 { font-size: 0px !important; }
+.f20 { font-size: 20px !important; }
+
+.bold {font-weight: bold;}
+
+.box-sizing {
+    width:100%;
+    box-sizing: border-box;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
 }

@@ -18,6 +18,7 @@
     "rules": {
         // 使用4格缩进
         "indent": ["error", 4],
+        "no-tabs": 0,
         // 使用单引号
         "quotes": ["error", "single"],
         // 使用绝等于
@@ -26,7 +27,7 @@
         "semi": ["error", "always"],
 
         // 禁止在代码行后使用内联注释
-        no-inline-comments: "error",
+        "no-inline-comments": "error",
 
         // 可以使用let v1,v2,v3连续(1不可以)
         "one-var": "off",
