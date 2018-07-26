@@ -18,7 +18,7 @@ var config = {
         path: path.resolve(__dirname, './blog'),
         filename: '[name].[chunkhash].js',
         // 打包后，对于根目录下的index.html，须配置绝对引用路径
-        // publicPath: isProd ? '/blog' : '/'
+        publicPath: isProd ? '/blog' : '/'
     },
     module: {
         rules: [
