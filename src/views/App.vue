@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    mounted () {
+    created () {
         const elBase = document.querySelector('base');
         elBase.setAttribute('href', __DEV__ ? '/' : '/blog');
     }
