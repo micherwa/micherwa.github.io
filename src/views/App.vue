@@ -8,8 +8,7 @@
 <script>
 export default {
     created () {
-        const elBase = document.querySelector('base');
-        elBase.setAttribute('href', __DEV__ ? '/' : '/blog');
+
     }
 };
 </script>
