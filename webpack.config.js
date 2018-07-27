@@ -16,7 +16,7 @@ var config = {
     },
     output: {
         path: path.resolve(__dirname, './blog'),
-        filename: '[name].[chunkhash].js',
+        filename: '[name].[chunkhash:7].js',
         // 打包后，对于根目录下的index.html，须配置绝对引用路径
         publicPath: isProd ? '/blog' : '/'
     },
@@ -96,7 +96,7 @@ var config = {
             }
         }),
         new ExtractTextPlugin({
-            filename: '[name].[chunkhash].css',
+            filename: '[name].[chunkhash:7].css',
             allChunks: true
         }),
         // 注入webpack运行的环境变量（是否为开发环境）
