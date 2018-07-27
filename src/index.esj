@@ -4,7 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>弥勰瓦的博客 | Micherwa blog</title>
-    <base href="/">
+    <% if (__DEV__) { %>
+        <base href="/">
+    <% } else { %>
+        <base href="/blog">
+    <% } %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
     <meta name="renderer" content="webkit">
@@ -16,6 +20,8 @@
 <body class="is-preloader preloading">
     <div id="preloader" data-spinner="spinner3" data-screenbg="#fff"></div>
     <div class="page-wrapper" id="app"></div>
+
+    <%= __DEV__ %>
 </body>
 
 </html>
