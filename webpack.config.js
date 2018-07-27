@@ -101,7 +101,7 @@ var config = {
         }),
         // 注入webpack运行的环境变量（是否为开发环境）
         new webpack.DefinePlugin({
-            __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'false'))
+            __DEV__: JSON.stringify(process.env.NODE_ENV === 'development')
         }),
         // 启用作用域提升,让代码文件更小、运行的更快
         new webpack.optimize.ModuleConcatenationPlugin(),
@@ -144,10 +144,11 @@ if (isProd) {
         }
     };
 
-    // http://vue-loader.vuejs.org/en/workflow/production.html
     config.plugins = (config.plugins || []).concat([
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+            }
         }),
         new CopyWebpackPlugin([
             {

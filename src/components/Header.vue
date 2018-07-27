@@ -15,7 +15,8 @@
                 <div class="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li v-for="(item, $index) in naviList" :key="$index">
-                            <a :href="item.href">{{item.title}}</a>
+                            <!-- <a :href="item.href">{{item.title}}</a> -->
+                            <router-link :to="{name: item.routeName}">{{item.title}}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -33,15 +34,15 @@
                 naviList: [
                     {
                         title: 'HOME',
-                        href: '/home'
+                        routeName: 'home'
                     },
                     {
                         title: 'ABOUT',
-                        href: '/about'
+                        routeName: 'about'
                     },
                     {
                         title: 'TAGS',
-                        href: '/tags'
+                        routeName: 'tags'
                     }
                 ]
             };

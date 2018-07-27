@@ -7,8 +7,9 @@
 
 <script>
 export default {
-    created () {
-
+    mounted () {
+        const elBase = document.querySelector('base');
+        elBase.setAttribute('href', __DEV__ ? '/' : '/blog');
     }
 };
 </script>
