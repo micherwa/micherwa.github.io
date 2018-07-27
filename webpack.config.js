@@ -105,8 +105,6 @@ var config = {
         }),
         // 启用作用域提升,让代码文件更小、运行的更快
         new webpack.optimize.ModuleConcatenationPlugin(),
-        // 压缩打包后moment的大小，只引入中英文版本
-        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|zh/),
         // 按需加载，只压缩用到的方法
         new LodashModuleReplacementPlugin({
             'shorthands': true

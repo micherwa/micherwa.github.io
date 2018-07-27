@@ -8,7 +8,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Micherwa Blog</a>
+                <a class="navbar-brand" href="/"></a>
+                <router-link class="navbar-brand" :to="{name: 'index'}">Micherwa Blog</router-link>
             </div>
 
             <div id="huxblog_navbar">
