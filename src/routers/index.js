@@ -4,6 +4,10 @@ import Tags from '@/views/tags/main/index';
 
 export default [
     {
+        path: '/',
+        redirect: '/home'
+    },
+    {
         path: '/home',
         name: 'home',
         component: Home,
