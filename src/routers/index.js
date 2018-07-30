@@ -5,11 +5,11 @@ import Tags from '@/views/tags/main/index';
 import BlogRouters from './blog';
 
 export default [
-    {
-        path: '/',
-        name: 'index',
-        redirect: 'home'
-    },
+    // {
+    //     path: '/',
+    //     name: 'index',
+    //     redirect: 'home'
+    // },
     {
         path: '/home',
         name: 'home',
