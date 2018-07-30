@@ -13,6 +13,7 @@ import '@/libs/preloader/style.css';
 import '@/libs/bootstrap/css/bootstrap.css';
 import '@/libs/bootstrap/js/bootstrap.js';
 
+import 'font-awesome/css/font-awesome.css';
 import '@/styles/app.scss';
 
 // 注册vue组件
