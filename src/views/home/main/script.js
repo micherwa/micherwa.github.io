@@ -1,31 +1,11 @@
 import data from '@/data';
+import socialData from '@/data/social';
 
 export default {
     data () {
         return {
             dataList: data,
-            socialList: [
-                {
-                    url: 'https://www.zhihu.com/people/micherwa',
-                    icon: '',
-                    title: '知'
-                },
-                {
-                    url: 'https://segmentfault.com/u/micherwa',
-                    icon: '',
-                    title: 'sf'
-                },
-                {
-                    url: 'https://weibo.com/jaked',
-                    icon: 'fa-weibo',
-                    title: ''
-                },
-                {
-                    url: 'https://github.com/micherwa',
-                    icon: 'fa-github',
-                    title: ''
-                }
-            ]
+            socialList: socialData
         };
     },
 

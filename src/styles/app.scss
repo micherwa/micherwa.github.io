@@ -6,6 +6,20 @@
     height: 100%;
 }
 
+a {
+    color: #404040;
+
+    &:hover, &:focus {
+        color: #0085a1;
+    }
+
+    img {
+        &:hover, &:focus {
+            cursor: zoom-in;
+        }
+    }
+}
+
 .c-333 {color: #333;}
 .c-666 {color: #666;}
 .c-999 {color: #999;}
