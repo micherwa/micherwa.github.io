@@ -41,7 +41,7 @@
                         </h5>
                         <div class="short-about">
                             <img src="~@/assets/avatar-me.jpg">
-                            <p>Code within fit & delicacy<br>除了代码，唯有健身与美食不可辜负</p>
+                            <p>Code within fit & delicacy<br>除了代码,唯有健身与美食不可辜负</p>
                             <ul class="list-inline">
                                 <li v-for="(item, $index) in socialList" :key="$index">
                                     <a :href="item.url" target="_blank">

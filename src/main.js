@@ -20,8 +20,7 @@ import '@/styles/app.scss';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    routes: routers,
-    mode: 'history'
+    routes: routers
 });
 
 // eslint-disable-next-line no-new
