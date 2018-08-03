@@ -1,6 +1,5 @@
 // class= "p-r-1 p-t-1 p-b-1 p-l-1"
-// 生产1-30px
-
+// 生成0-30px
 @for $i from 0 through 30 {
     .p-t-#{$i} {
         padding-top: $i + px !important;
@@ -17,7 +16,7 @@
 }
 
 // class= "m-r-1 m-t-1 m-b-1 m-l-1"
-// 生产1-30px
+// 生成0-30px
 @for $i from 0 through 30 {
     .m-t-#{$i} {
         margin-top: $i + px !important;

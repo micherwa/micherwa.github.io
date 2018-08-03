@@ -19,6 +19,7 @@
                     <div class="post-preview" v-for="(item, $index) in dataList" :key="$index">
                         <router-link :to="{name: item.routeName}">
                             <h2 class="post-title">{{item.title}}</h2>
+                            <h3 class="post-subtitle" v-if="item.subTitle">{{item.subTitle}}</h3>
                             <div class="post-content-preview">{{item.descript}}</div>
                         </router-link>
                         <p class="post-meta">Posted on {{item.date}}</p>

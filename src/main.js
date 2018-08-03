@@ -4,7 +4,6 @@ import '@/components';
 import App from '@/views/app.vue';
 import VueRouter from 'vue-router';
 import routers from '@/routers';
-// import store from './store/index';
 
 import $ from 'jquery';
 import '@/libs/preloader/preloader.js';
@@ -26,7 +25,6 @@ const router = new VueRouter({
 // eslint-disable-next-line no-new
 new Vue({
     router,
-    // store,
     render: h => h(App)
 }).$mount('#app');
 

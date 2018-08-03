@@ -1,9 +1,9 @@
-import UpgradingElemeToPwa from '@/views/blogs/2017/upgrading-eleme-to-pwa.vue';
+import FrontEndCodeCriterion1 from '@/views/blogs/2018/front-end-code-criterion-1.vue';
 
 export default [
     {
-        path: '/2017/upgrading-eleme-to-pwa',
-        name: 'upgrading-eleme-to-pwa',
-        component: UpgradingElemeToPwa
+        path: '/2018/front-end-code-criterion-1',
+        name: 'front-end-code-criterion-1',
+        component: FrontEndCodeCriterion1
     }
 ];
