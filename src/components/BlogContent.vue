@@ -55,7 +55,7 @@
             initParentOffsetTop () {
                 const parent = document.querySelector('.post-container');
                 // 是否要-60(顶部nav高度)待定
-                this.parentOffsetTop = parent.offsetTop;
+                this.parentOffsetTop = parent.offsetTop - 20;
             },
 
             initCatalogList () {
