@@ -1,7 +1,7 @@
 import data from '@/data';
 import socialData from '@/data/social';
 
-const MAX_DESCRIPT_LENGTH = 80;
+const MAX_DESCRIPT_LENGTH = 100;
 
 export default {
     data () {
