@@ -28,6 +28,7 @@
 
                 <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 sidebar-container">
                     <section>
+                        <hr class="hidden-sm hidden-xs">
                         <h5>
                             <router-link :to="{name: 'tags'}">TAGS</router-link>
                         </h5>
@@ -37,6 +38,7 @@
                     </section>
 
                     <section class="visible-md visible-lg">
+                        <hr class="hidden-sm hidden-xs">
                         <h5>
                             <router-link :to="{name: 'about'}">ABOUT</router-link>
                         </h5>

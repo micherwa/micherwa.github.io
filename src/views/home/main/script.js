@@ -18,7 +18,6 @@ export default {
     methods: {
         init () {
             data.forEach(item => {
-                console.log(item.descript.length);
                 if (item.descript.length > MAX_DESCRIPT_LENGTH) {
                     item.descript = item.descript.substr(0, MAX_DESCRIPT_LENGTH) + '...';
                 }

@@ -1,0 +1,622 @@
+// navbar
+.navbar-custom {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+
+    .navbar-brand {
+        font-weight: 800;
+        color: white;
+        height: 56px;
+        line-height: 25px;
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    .nav {
+        li {
+            a {
+                text-transform: uppercase;
+                font-size: 12px;
+                line-height: 20px;
+                font-weight: 800;
+                letter-spacing: 1px;
+
+                &:active {
+                    background: rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-custom {
+        background: transparent;
+        border-bottom: 1px solid transparent;
+        body {
+            font-size: 20px;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            padding: 20px;
+            line-height: 20px;
+
+            &:hover, &:focus {
+                color: rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        .nav {
+            li {
+                a {
+                    color: #fff;
+                    padding: 20px;
+
+                    &:hover, &:focus {
+                        color: rgba(255, 255, 255, 0.8);
+                    }
+
+                    &:active {
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1170px) {
+    .navbar-custom {
+        transition: background-color 0.3s;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+    }
+    .navbar-custom.is-fixed {
+        /* when the user scrolls down, we hide the header right above the viewport */
+        position: fixed;
+        top: -61px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid #f2f2f2;
+        transition: transform 0.3s;
+    }
+    .navbar-custom.is-fixed .navbar-brand {
+        color: #404040;
+    }
+    .navbar-custom.is-fixed .navbar-brand:hover,
+    .navbar-custom.is-fixed .navbar-brand:focus {
+        color: #0085a1;
+    }
+    .navbar-custom.is-fixed .nav li a {
+        color: #404040;
+    }
+    .navbar-custom.is-fixed .nav li a:hover,
+    .navbar-custom.is-fixed .nav li a:focus {
+        color: #0085a1;
+    }
+    .navbar-custom.is-visible {
+        /* if the user changes the scrolling direction, we show the header */
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+
+// 头部封面图
+.intro-header {
+    background: no-repeat center center;
+    background-color: #ccc;
+    background-attachment: scroll;
+    background-size: cover;
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .intro-header {
+        margin-bottom: 20px;
+        /* response on desktop */
+
+        .site-heading, .post-heading, .page-heading {
+            padding: 85px 0 55px;
+            color: #fff;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .intro-header {
+        .site-heading, .post-heading, .page-heading {
+            padding: 150px 0;
+        }
+
+        .site-heading {
+            padding: 95px 0 70px;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .intro-header {
+        .site-heading {
+            padding: 150px 0;
+        }
+
+        .site-heading, .page-heading {
+            text-align: center;
+
+            h1 {
+                margin-top: 0;
+                font-size: 50px;
+            }
+
+            .subheading {
+                font-size: 18px;
+                line-height: 1.1;
+                display: block;
+                font-weight: 300;
+                margin: 10px 0 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .intro-header {
+        .site-heading, .page-heading {
+            h1 {
+                font-size: 80px;
+            }
+        }
+
+        .post-heading {
+            h1 {
+                font-size: 30px;
+                margin-bottom: 24px;
+            }
+
+            .subheading, .meta {
+                line-height: 1.1;
+                display: block;
+            }
+
+            .subheading {
+                font-size: 17px;
+                line-height: 1.4;
+                font-weight: normal;
+                margin: 10px 0 30px;
+                margin-top: -5px;
+            }
+
+            .meta {
+                font-family: 'Lora', 'Times New Roman', serif;
+                font-style: italic;
+                font-weight: 300;
+                font-size: 18px;
+
+                a {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .intro-header {
+        .post-heading {
+            h1 {
+                font-size: 55px;
+            }
+
+            .subheading {
+                font-size: 30px;
+            }
+
+            .meta {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+// 首页列表
+.post-preview {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+
+    > a {
+        color: #404040;
+
+        &:hover, &:focus {
+            text-decoration: none;
+            color: #0085a1;
+        }
+
+        .post-title {
+            font-size: 21px;
+            line-height: 1.3;
+            margin-top: 30px;
+            margin-bottom: 8px;
+        }
+
+        .post-subtitle {
+            font-size: 15px;
+            line-height: 1.3;
+            margin: 0;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .post-content-preview {
+            font-size: 13px;
+            font-style: italic;
+            color: #a3a3a3;
+
+            &:hover {
+                color: #0085a1;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .post-title {
+                font-size: 26px;
+                line-height: 1.3;
+                margin-bottom: 10px;
+            }
+            .post-subtitle {
+                font-size: 16px;
+            }
+
+            .post-content-preview {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .post-meta {
+        font-family: 'Lora', 'Times New Roman', serif;
+        color: #ccc;
+        font-size: 16px;
+        font-style: italic;
+        margin-top: 0;
+
+        > a {
+            text-decoration: none;
+            color: #404040;
+
+            &:hover, &:focus {
+                color: #0085a1;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .post-meta {
+            font-size: 18px;
+        }
+    }
+}
+
+.sidebar-container {
+    color: #bfbfbf;
+    font-size: 14px;
+
+    h5 {
+        color: #ccc;
+        padding-bottom: 1em;
+
+        a {
+            color: #ccc !important;
+            text-decoration: none;
+        }
+    }
+
+    a {
+        color: #bfbfbf !important;
+
+        &:hover, &:active {
+            color: #0085a1 !important;
+        }
+    }
+
+    .tags {
+        a {
+            border-color: #bfbfbf;
+
+            &:hover, &:active {
+                border-color: #0085a1;
+            }
+        }
+    }
+
+    .short-about {
+        img {
+            width: 80%;
+            display: block;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-top: 0px;
+            margin-bottom: 20px;
+        }
+
+        .list-inline {
+            > li {
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .sidebar-container {
+        padding-right: 5%;
+    }
+}
+
+.tags {
+  margin-bottom: -5px;
+
+    a, .tag {
+        display: inline-block;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 999em;
+        padding: 0 10px;
+        color: #ffffff;
+        line-height: 24px;
+        font-size: 12px;
+        text-decoration: none;
+        margin: 0 1px;
+        margin-bottom: 6px;
+
+        &:hover, &:active {
+            color: #fff;
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .tags {
+        a, .tag {
+            margin-right: 5px;
+        }
+    }
+}
+
+
+// 博客正文
+.post-container {
+    h1, h2, h3 {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    p {
+        margin: 1.5em 0;
+    }
+
+    a {
+        color: #337ab7;
+
+        &:hover, &:focus {
+            color: #0085a1;
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 30px 0 10px;
+    }
+
+    h5 {
+        font-size: 19px;
+        font-weight: 600;
+        color: gray;
+    }
+
+    h5 + p {
+      margin-top: 5px;
+    }
+
+    h6 {
+        font-size: 16px;
+        font-weight: 600;
+        color: gray;
+    }
+
+    h6 + p {
+      margin-top: 5px;
+    }
+
+    ul， ol {
+        margin-bottom: 40px;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 1.5em auto 1.6em auto;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .post-container {
+        padding-right: 5%;
+    }
+}
+
+@media (min-width: 768px) {
+    .post-container {
+        padding-right: 5%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .post-container {
+        ul， ol {
+            padding-left: 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .post-container {
+        ul， ol {
+            padding-left: 20px;
+
+            ul, ol {
+                margin-bottom: 5px;
+            }
+        }
+
+        li {
+            p {
+                margin: 0;
+                margin-bottom: 5px;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                line-height: 2;
+                margin-top: 20px;
+            }
+        }
+
+        .pager {
+            li {
+                width: 48%;
+
+                > a {
+                    width: 100%;
+
+                    > span {
+                        color: #cccccc;
+                        font-weight: normal;
+                        letter-spacing: 0.5px;
+                    }
+                }
+            }
+
+            li.next {
+                float: right;
+            }
+
+            li.previous {
+                float: left;
+            }
+
+
+        }
+    }
+}
+
+// 右侧快捷导航目录
+.side-catalog {
+    display: block;
+    overflow: auto;
+    height: 100%;
+    padding-bottom: 40px;
+    width: 195px;
+
+    &.fixed {
+        position: fixed;
+        top: -21px;
+    }
+
+    .catalog-body {
+        position: relative;
+        list-style: none;
+        height: auto;
+        overflow: hidden;
+        padding-left: 0px;
+        padding-right: 5px;
+        text-indent: 0;
+
+        li {
+            position: relative;
+            list-style: none;
+
+            a {
+                padding-left: 10px;
+                max-width: 180px;
+                display: inline-block;
+                vertical-align: middle;
+                height: 30px;
+                line-height: 30px;
+                overflow: hidden;
+                text-decoration: none;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .h1_nav, .h2_nav, .h3_nav {
+            margin-left: 0;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .h4_nav, .h5_nav, .h6_nav {
+            margin-left: 10px;
+            font-size: 12px;
+
+            a {
+                max-width: 170px;
+            }
+        }
+
+        .active {
+            border-radius: 4px;
+            background-color: #F5F5F5;
+
+            a {
+                color: #0085a1!important;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+  .side-catalog {
+    display: none;
+  }
+}
+
+
+// footer
+footer {
+    font-size: 20px;
+    padding: 50px 0 65px;
+
+    .list-inline {
+        margin: 0;
+        padding: 0;
+    }
+
+    .copyright {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 0;
+
+        a {
+            color: #337ab7;
+
+            &:hover, &:focus {
+                color: #0085a1;
+            }
+        }
+    }
+}
