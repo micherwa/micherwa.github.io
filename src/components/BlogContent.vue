@@ -21,6 +21,8 @@
 </template>
 
 <script type="text/javascript">
+    import WindowScroll from '@/utils/window-scroll';
+
     export default {
         name: 'BlogContent',
 
@@ -122,6 +124,11 @@
             },
 
             onScroll () {
+                if (WindowScroll.isReachBottom()) {
+                    this.setCatalogActive(this.catalogList.length - 1);
+                    return;
+                }
+
                 const nodeList = document.querySelectorAll('.b-jump');
                 const distance = document.documentElement.scrollTop || document.body.scrollTop;
 
