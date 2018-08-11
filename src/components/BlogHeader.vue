@@ -45,7 +45,7 @@
     .blog-header {
         .intro-header {
             position: relative;
-            background-image: url('~@/assets/blog-header-bg.jpg');
+            background-image: url('~@/assets/header-bg-blog.jpg');
         }
     }
 </style>
