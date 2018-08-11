@@ -19,7 +19,14 @@ import '@/styles/app.scss';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    routes: routers
+    routes: routers,
+    scrollBehavior (to, from, savedPosition) {
+        if (to.hash) {
+            return { selector: to.hash };
+        }
+
+        return { x: 0, y: 0 };
+    }
 });
 
 // eslint-disable-next-line no-new
