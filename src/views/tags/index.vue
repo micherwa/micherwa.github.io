@@ -6,7 +6,7 @@
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <div class="site-heading">
                             <h1>Tags</h1>
-                            <span class="subheading"></span>
+                            <span class="subheading">Catching up time</span>
                         </div>
                     </div>
                 </div>

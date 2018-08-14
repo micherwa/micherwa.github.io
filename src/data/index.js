@@ -8,6 +8,30 @@ export default [
         tags: ['言论与感想']
     },
     {
+        title: '前端工程代码规范（四）',
+        subTitle: 'JS',
+        routeName: 'front-end-code-criterion-4',
+        descript: '缩进与分号 使用soft tab（4个空格）。每条语句结尾都需要有分号。',
+        date: '2018-05-26',
+        tags: ['前端代码规范']
+    },
+    {
+        title: '前端工程代码规范（三）',
+        subTitle: 'CSS, SCSS',
+        routeName: 'front-end-code-criterion-3',
+        descript: '缩进与分号 使用soft tab（4个空格）。每个属性声明末尾都要加分号。',
+        date: '2018-05-26',
+        tags: ['前端代码规范']
+    },
+    {
+        title: '前端工程代码规范（二）',
+        subTitle: 'HTML',
+        routeName: 'front-end-code-criterion-2',
+        descript: '总原则 缩进使用soft tab（4个空格）；属性名全小写，用中划线做分隔符；在属性上，使用双引号，而非单引号；不要在自动闭合标签结尾处使用斜线。',
+        date: '2018-05-26',
+        tags: ['前端代码规范']
+    },
+    {
         title: '前端工程代码规范（一）',
         subTitle: '命名规则与工程约定',
         routeName: 'front-end-code-criterion-1',
