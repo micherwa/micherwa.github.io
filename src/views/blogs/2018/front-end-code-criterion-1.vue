@@ -1,9 +1,22 @@
 <template>
     <div class="blog-container">
-        <BlogHeader title="前端工程代码规范（一）" subTitle="命名规则与工程约定" date="2018-05-26"></BlogHeader>
+        <BlogHeader
+            title="前端工程代码规范（一）" subTitle="命名规则与工程约定"
+            date="2018-05-26" :tags="['前端代码规范']">
+        </BlogHeader>
 
         <BlogContent>
             <div slot="content">
+                <blockquote>
+                    <p>
+                        这篇文章转自我在segmentfault上发表的
+                        <a href="https://segmentfault.com/a/1190000015040583" target="_blank">
+                            前端工程代码规范系列文章
+                        </a>
+                        ，共4篇。
+                    </p>
+                </blockquote>
+
                 <h2>
                     前言
                 </h2>
@@ -16,7 +29,7 @@
                             <a href="http://alloyteam.github.io/CodeGuide/" rel="nofollow noreferrer">
                                 腾讯alloyteam团队
                             </a>
-                            ，里面有许多的认同点。与此同时，做了些许改进，为了更适合自己团队，已经达成共识的代码习惯，仅供参考。
+                            ，里面有许多的认同点。在此基础上做了些许改进，为了更适合自己团队，那些已经达成共识的代码习惯。仅供参考。
                         </br>
                     </br>
                 </p>

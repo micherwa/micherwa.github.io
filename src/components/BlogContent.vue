@@ -4,7 +4,9 @@
             <slot name="content"></slot>
         </div>
 
-        <div class="col-lg-2 col-lg-offset-0 visible-lg-block sidebar-container catalog-container">
+        <div
+            class="col-lg-2 col-lg-offset-0 visible-lg-block sidebar-container catalog-container"
+            v-if="useCatalog">
             <div class="side-catalog">
                 <hr class="hidden-sm hidden-xs">
                 <h5>CATALOG</h5>
@@ -82,45 +84,8 @@
                 // 获取需要滚动的距离
                 let offsetTop = jumpEl[idx].offsetTop + this.parentOffsetTop;
                 let distance = document.documentElement.scrollTop || document.body.scrollTop;
-                // 平滑滚动，时长500ms，每10ms一跳，共50跳
-                let step = offsetTop / 50;
-                if (offsetTop > distance) {
-                    let newOffsetTop = offsetTop - distance;
-                    step = newOffsetTop / 50;
-                    this.smoothDown(distance, offsetTop, step);
-                } else {
-                    let newOffsetTop = distance - offsetTop;
-                    step = newOffsetTop / 50;
-                    this.smoothUp(distance, offsetTop, step);
-                }
-            },
 
-            smoothDown (distance, offsetTop, step) {
-                if (distance < offsetTop) {
-                    distance += step;
-                    document.body.scrollTop = distance;
-                    document.documentElement.scrollTop = distance;
-                    setTimeout(() => {
-                        this.smoothDown(distance, offsetTop, step);
-                    }, 10);
-                } else {
-                    document.body.scrollTop = offsetTop;
-                    document.documentElement.scrollTop = offsetTop;
-                }
-            },
-
-            smoothUp (distance, offsetTop, step) {
-                if (distance > offsetTop) {
-                    distance -= step;
-                    document.body.scrollTop = distance;
-                    document.documentElement.scrollTop = distance;
-                    setTimeout(() => {
-                        this.smoothUp(distance, offsetTop, step);
-                    }, 10);
-                } else {
-                    document.body.scrollTop = offsetTop;
-                    document.documentElement.scrollTop = offsetTop;
-                }
+                WindowScroll.smoothScroll(offsetTop, distance);
             },
 
             onScroll () {

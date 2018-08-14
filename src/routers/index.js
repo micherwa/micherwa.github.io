@@ -1,6 +1,6 @@
-import Home from '@/views/home/main/index';
+import Home from '@/views/home/index';
 import About from '@/views/about/index';
-import Tags from '@/views/tags/main/index';
+import Tags from '@/views/tags/index';
 
 import BlogRouters from './blog';
 
@@ -17,7 +17,7 @@ export default [
         component: About
     },
     {
-        path: '/tags',
+        path: '/tags/:name?',
         name: 'tags',
         component: Tags
     },

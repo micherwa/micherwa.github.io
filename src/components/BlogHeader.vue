@@ -5,6 +5,14 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <div class="post-heading">
+                            <div class="tags">
+                                <router-link
+                                    class="tag"
+                                    v-for="(tagName, $index) in tags" :key="$index"
+                                    :to="{ name: 'tags', params: { name: tagName } }" :title="tagName">
+                                    {{tagName}}
+                                </router-link>
+                            </div>
                             <h1>{{title}}</h1>
                             <h2 class="subheading">{{subTitle}}</h2>
                             <span class="meta">Posted on {{date}}</span>
@@ -32,6 +40,10 @@
             date: {
                 type: String,
                 default: ''
+            },
+            tags: {
+                type: Array,
+                default: () => []
             },
             showMask: {
                 type: Boolean,

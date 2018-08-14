@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="about-container">
         <header class="intro-header">
             <div class="container">
                 <div class="row">
@@ -44,6 +44,8 @@
                             从事前端开发相关工作 (其中有一年iOS原生开发经验)。
                         </p>
 
+                        <p>健身与美食的爱好者，闲暇时间乐于阅读，还有电影。</p>
+
                         <p>
                             一些开源项目：
                             <ul>
@@ -63,53 +65,40 @@
 </template>
 
 <script>
-
-export default {
-    data () {
-        return {
-            socialList: [
-                { href: 'http://micherwa.cc/blog/#/', name: '博客、' },
-                { href: 'https://segmentfault.com/u/micherwa', name: 'SegmentFault、' },
-                { href: 'https://www.zhihu.com/people/micherwa', name: '知乎、' },
-                { href: 'https://github.com/micherwa', name: 'Github、' },
-                { href: 'https://weibo.com/jaked', name: '微博' }
-            ],
-            openSourceList: [
-                {
-                    href: 'https://github.com/hbteam/weex-droplet-ui',
-                    name: '水滴UI',
-                    descript: '一个轻量级weex UI组件库'
-                },
-                {
-                    href: 'https://github.com/micherwa/vue2-mobile-seed',
-                    name: 'vue2-mobile-seed',
-                    descript: '基于vue2的H5移动端种子工程'
-                },
-                {
-                    href: 'https://github.com/micherwa/vue2-typescript-seed',
-                    name: 'vue2-typescript-seed',
-                    descript: '基于vue2.5+typescript2.6+vuex3的种子工程'
-                }
-            ]
-        };
-    },
-
-    created () {
-
-    },
-
-    methods: {
-
-    },
-
-    mounted () {
-
-    }
-};
+    export default {
+        data () {
+            return {
+                socialList: [
+                    { href: 'http://micherwa.cc/blog/#/', name: '博客、' },
+                    { href: 'https://segmentfault.com/u/micherwa', name: 'SegmentFault、' },
+                    { href: 'https://www.zhihu.com/people/micherwa', name: '知乎、' },
+                    { href: 'https://github.com/micherwa', name: 'Github、' },
+                    { href: 'https://weibo.com/jaked', name: '微博' }
+                ],
+                openSourceList: [
+                    {
+                        href: 'https://github.com/hbteam/weex-droplet-ui',
+                        name: '水滴UI',
+                        descript: '一个轻量级weex UI组件库'
+                    },
+                    {
+                        href: 'https://github.com/micherwa/vue2-mobile-seed',
+                        name: 'vue2-mobile-seed',
+                        descript: '基于vue2的H5移动端种子工程'
+                    },
+                    {
+                        href: 'https://github.com/micherwa/vue2-typescript-seed',
+                        name: 'vue2-typescript-seed',
+                        descript: '基于vue2.5+typescript2.6+vuex3的种子工程'
+                    }
+                ]
+            };
+        }
+    };
 </script>
 
 <style lang="scss">
-    .about {
+    .about-container {
         .intro-header {
             background-image: url('~@/assets/header-bg-about.jpg');
         }

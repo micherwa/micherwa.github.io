@@ -1,3 +1,43 @@
+// 平滑滚动
+const smoothScroll = (offsetTop, distance, jumpCount = 50) => {
+    // 预设时长500ms，每10ms一跳，50跳
+    let newOffsetTop = Math.abs(offsetTop - distance);
+    let step = newOffsetTop / jumpCount;
+    if (offsetTop > distance) {
+        smoothDown(distance, offsetTop, step);
+    } else {
+        smoothUp(distance, offsetTop, step);
+    }
+};
+
+const smoothDown = (distance, offsetTop, step) => {
+    if (distance < offsetTop) {
+        distance += step;
+        document.body.scrollTop = distance;
+        document.documentElement.scrollTop = distance;
+        setTimeout(() => {
+            smoothDown(distance, offsetTop, step);
+        }, 10);
+    } else {
+        document.body.scrollTop = offsetTop;
+        document.documentElement.scrollTop = offsetTop;
+    }
+};
+
+const smoothUp = (distance, offsetTop, step) => {
+    if (distance > offsetTop) {
+        distance -= step;
+        document.body.scrollTop = distance;
+        document.documentElement.scrollTop = distance;
+        setTimeout(() => {
+            smoothUp(distance, offsetTop, step);
+        }, 10);
+    } else {
+        document.body.scrollTop = offsetTop;
+        document.documentElement.scrollTop = offsetTop;
+    }
+};
+
 // 是否已滚动底部
 const isReachBottom = () => {
     return getScrollTop() + getWindowHeight() >= getScrollHeight();
@@ -39,5 +79,6 @@ const getWindowHeight = () => {
 };
 
 export default {
+    smoothScroll,
     isReachBottom
 };
