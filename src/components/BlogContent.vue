@@ -1,22 +1,24 @@
 <template>
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
-            <slot name="content"></slot>
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+                <slot name="content"></slot>
+            </div>
 
-        <div
-            class="col-lg-2 col-lg-offset-0 visible-lg-block sidebar-container catalog-container"
-            v-if="useCatalog">
-            <div class="side-catalog">
-                <hr class="hidden-sm hidden-xs">
-                <h5>CATALOG</h5>
-                <ul class="catalog-body">
-                    <li
-                        :class="[item.className, item.active ? 'active': '']"
-                        v-for="(item, $index) in catalogList" :key="$index">
-                        <a href="javascript:;" @click="handleJump(item.idx)">{{item.title}}</a>
-                    </li>
-                </ul>
+            <div
+                class="col-lg-2 col-lg-offset-0 visible-lg-block sidebar-container catalog-container"
+                v-if="useCatalog">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>CATALOG</h5>
+                    <ul class="catalog-body">
+                        <li
+                            :class="[item.className, item.active ? 'active': '']"
+                            v-for="(item, $index) in catalogList" :key="$index">
+                            <a href="javascript:;" @click="handleJump(item.idx)">{{item.title}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

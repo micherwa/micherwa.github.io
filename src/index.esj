@@ -16,7 +16,7 @@
     <% } %>
 </head>
 
-<body class="is-preloader preloading">
+<body class="is-preloader preloading" ontouchstart>
     <div id="preloader" data-spinner="spinner3" data-screenbg="#fff"></div>
     <div class="page-wrapper" id="app"></div>
 </body>

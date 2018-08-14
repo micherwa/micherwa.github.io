@@ -44,14 +44,14 @@
                 </p>
 
                 <p>
-                    这种趋势发展下去，<b>长期来看，未来只有两种工作：API 之上的工作和 API 之下的工作</b>。 API 之上就是制定 API 规则、给 API 下达指令的人。API 之下就是接受 API 指令进行工作的人。
+                    这种趋势发展下去，<code>长期来看，未来只有两种工作：API 之上的工作和 API 之下的工作</code>。 API 之上就是制定 API 规则、给 API 下达指令的人。API 之下就是接受 API 指令进行工作的人。
                 </p>
 
                 <p>
                     福布斯杂志根据莱因哈特的观点，绘制了一张趋势图。
                 </p>
 
-                <img src="~@/assets/blog/bg2018081301.jpg" class="img-responsive">
+                <img src="~@/assets/blog/bg2018081301.jpg">
 
                 <p>
                     2005年，亚马逊推出

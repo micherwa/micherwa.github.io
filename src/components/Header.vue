@@ -8,11 +8,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"></a>
                 <router-link class="navbar-brand" :to="{path: '/'}">Micherwa Blog</router-link>
             </div>
 
-            <div id="huxblog_navbar">
+            <div id="mobileNavbar">
                 <div class="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li v-for="(item, $index) in naviList" :key="$index">
@@ -52,6 +51,7 @@
 
         mounted () {
             this.animateHeader();
+            this.animateToggle();
         },
 
         methods: {
@@ -90,6 +90,46 @@
                         }
                     });
                 }
+            },
+
+            animateToggle () {
+                const $toggle = document.querySelector('.navbar-toggle');
+                const $navbar = document.querySelector('#mobileNavbar');
+                const $collapse = document.querySelector('.navbar-collapse');
+
+                const mobileToggle = {
+                    close: function () {
+                        $navbar.className = ' ';
+                        // wait until animation end.
+                        setTimeout(() => {
+                            // prevent frequently toggle
+                            if ($navbar.className.indexOf('in') < 0) {
+                                $collapse.style.height = '0px';
+                            }
+                        }, 400);
+                    },
+                    open: function () {
+                        $collapse.style.height = 'auto';
+                        $navbar.className += ' in';
+                    }
+                };
+
+                // Bind Event
+                $toggle.addEventListener('click', (e) => {
+                    if ($navbar.className.indexOf('in') > 0) {
+                        mobileToggle.close();
+                    } else {
+                        mobileToggle.open();
+                    }
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (e.target === $toggle || e.target.className === 'icon-bar') {
+                        return;
+                    }
+
+                    mobileToggle.close();
+                });
             }
         }
     };
