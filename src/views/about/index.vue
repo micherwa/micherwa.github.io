@@ -41,7 +41,7 @@
                             (一个轻量级weex UI组件库)、
                             <a href="http://www.lingduohome.com/" target="_blank">窝牛装修</a> 与
                             <a href="https://www.liba.com/" target="_blank">篱笆网</a>
-                            从事前端开发相关工作 (其中有一年iOS原生开发经验)。
+                            从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
                         </p>
 
                         <p>健身爱好者，也喜爱美食，闲暇时间乐于阅读和电影。</p>
@@ -84,7 +84,7 @@
                     {
                         href: 'https://github.com/micherwa/vue2-mobile-seed',
                         name: 'vue2-mobile-seed',
-                        descript: '基于vue2的H5移动端种子工程'
+                        descript: '基于vue2+webpack4的H5移动端种子工程'
                     },
                     {
                         href: 'https://github.com/micherwa/vue2-typescript-seed',
