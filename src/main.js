@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import Vue from 'vue';
 import '@/components';
 import App from '@/views/app.vue';
