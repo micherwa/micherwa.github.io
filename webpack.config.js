@@ -15,7 +15,6 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 var config = {
-    // 定义主入口从 src 下开始找
     context: path.join(__dirname, './src'),
     entry: {
         app: './main.js'
@@ -69,7 +68,6 @@ var config = {
         }
     },
     plugins: [
-        // 注入webpack运行的环境变量（是否为开发环境）
         new webpack.DefinePlugin({
             __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'false'))
         }),
@@ -118,23 +116,12 @@ if (isDev) {
         devtool: 'cheap-source-map',
         devServer: {
             hot: true,
-            // 本地环境主入口为 /src/index.html
             contentBase: './src',
-            //支持H5 History Mode模式，开启后刷新页面不会跳转404
-            // historyApiFallback: true,
             noInfo: true,
             host: devServerHost,
             port: devServerPort,
-            proxy: {
-                // '/mock': {
-                //     target: 'http://localhost:9000'
-                // },
-                // changeOrigin: true
-            },
+            proxy: {},
             clientLogLevel: 'warning',
-            // compress: true,
-            // open: true,
-            // quiet: true, // necessary for FriendlyErrorsPlugin
             overlay: { warnings: false, errors: true },
             watchOptions: { poll: false }
         },
@@ -143,7 +130,6 @@ if (isDev) {
             // https://github.com/ampedandwired/html-webpack-plugin
             new HtmlWebpackPlugin({
                 template: './index.esj',
-                // 允许插件把css和js分别插入head与body
                 inject: true
             })
         ]
@@ -185,7 +171,6 @@ if (isProd) {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: './index.esj',
-                // 允许插件把css和js分别插入head与body
                 inject: true,
                 minify: {
                     // more options: https://github.com/kangax/html-minifier#options-quick-reference
@@ -243,18 +228,6 @@ if (isProd) {
                         test: /[\\/]node_modules[\\/]/,
                         priority: 10,
                         chunks: 'initial' // 只打包初始时依赖的第三方
-                    },
-                    // mintUI: {
-                    //     name: 'chunk-mintUI', // 单独将 mintUI 拆包
-                    //     priority: 20, // 权重要大于 libs 和 app 不然会被打包进 libs 或者 app
-                    //     test: /[\\/]node_modules[\\/]mint-ui[\\/]/
-                    // },
-                    commons: {
-                        name: 'chunk-comomns',
-                        test: path.join(__dirname, 'src/components'), // 可自定义拓展你的规则
-                        minChunks: 3, // 最小公用次数
-                        priority: 5,
-                        reuseExistingChunk: true
                     }
                 }
             },

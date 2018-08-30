@@ -1,29 +1,26 @@
 ## blog-tech
 
-> `vue2 webpack3`
+> `vue2 webpack4`
 
 
 ## 运行环境
 
-> `nodejs v6.11.0` `npm 3.10.10`
+> `nodejs v8.9.0` `npm 5.5.1`
 
 
 ## 技术栈
 
-> `vue2` `vue-router` `sass` `webpack3` `es6` `lodash`
+> `vue2` `vue-router` `sass` `webpack4` `es6` `lodash`
 
 
 ## 构建命令
 
 ```
 # install packages
-yarn == yarn install
+npm install
 
-# add/remove/upgrade packages
-yarn add/remove/upgrade package-name -D
-
-# serve with hot reload at localhost:8080
-npm start
+# serve with hot reload at 0.0.0.0:8090
+npm run dev
 
 # build for production with minification
 npm run build
@@ -35,8 +32,8 @@ npm run eslint
 ## 命名规则
 
 ```
-1. 文件夹命名：aB；
-2. 文件命名（js、css、vue、html）：aB.*；
+1. 文件夹命名：a-b；
+2. 文件命名（js、css、vue、html）：a-b.*；
 3. 样式class命名：a-b；
 4. image命名：a-b；
 5. js变量命名：aB；
@@ -62,4 +59,3 @@ npm run eslint
 ```
 安装chrome扩展程序重新启动即可，详见：https://github.com/vuejs/vue-devtools
 ```
-
