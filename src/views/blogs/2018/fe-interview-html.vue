@@ -1,8 +1,8 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="前端面试题整理——HTML篇" subTitle=""
-            date="2018-09-08" :tags="['面试题整理']">
+            title="前端面试题——HTML篇" subTitle=""
+            date="2018-09-08" :tags="['面试题']">
         </BlogHeader>
 
         <BlogContent :useCatalog="true">
