@@ -3,8 +3,19 @@ import FrontEndCodeCriterion2 from '@/views/blogs/2018/front-end-code-criterion-
 import FrontEndCodeCriterion3 from '@/views/blogs/2018/front-end-code-criterion-3.vue';
 import FrontEndCodeCriterion4 from '@/views/blogs/2018/front-end-code-criterion-4.vue';
 import BelowOfApi from '@/views/blogs/2018/below-of-api.vue';
+import FeInterviewHtml from '@/views/blogs/2018/fe-interview-html.vue';
 
 export default [
+    {
+        path: '/2018/fe-interview-html',
+        name: 'fe-interview-html',
+        component: FeInterviewHtml
+    },
+    {
+        path: '/2018/below-of-api',
+        name: 'below-of-api',
+        component: BelowOfApi
+    },
     {
         path: '/2018/front-end-code-criterion-1',
         name: 'front-end-code-criterion-1',
@@ -24,10 +35,5 @@ export default [
         path: '/2018/front-end-code-criterion-4',
         name: 'front-end-code-criterion-4',
         component: FrontEndCodeCriterion4
-    },
-    {
-        path: '/2018/below-of-api',
-        name: 'below-of-api',
-        component: BelowOfApi
     }
 ];
