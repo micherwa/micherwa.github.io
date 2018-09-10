@@ -63,7 +63,12 @@
                 </p>
 
                 <h2>不定宽高的垂直水平居中</h2>
-                <p>详见：</p>
+                <p>
+                    传送门：
+                    <router-link :to="{ name: 'center-of-horizontal-and-vertical'}">
+                        CSS中不定宽高的垂直水平居中
+                    </router-link>
+                </p>
 
                 <h2>对BFC规范的理解？</h2>
                 <p>
@@ -73,13 +78,13 @@
                 </p>
 
                 <h2>伪类与伪元素的区别</h2>
-                <p>详见：</p>
+                <p>传送门：</p>
 
                 <h2>盒子模型中box-sizing的运用</h2>
-                <p>详见：</p>
+                <p>传送门：</p>
 
                 <h2>圣杯布局与双飞翼布局的原理以及实现</h2>
-                <p>详见：</p>
+                <p>传送门：</p>
 
                 <h2>a标签上四个伪类的正确执行顺序</h2>
                 <p><code>L-V-H-A</code> ：link > visited > hover > active</p>

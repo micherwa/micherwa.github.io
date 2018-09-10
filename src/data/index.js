@@ -54,5 +54,13 @@ export default [
         descript: '随着前端团队人员的逐步扩大，需要有一份规范来约束代码的书写。无论人数多少，代码都应该同出一门。主要参考了腾讯alloyteam团队，里面有许多的认同点。在此基础上做了些许改进，为了更适合自己团队，那些已经达成共识的代码习惯。仅供参考。',
         date: '2018-05-26',
         tags: ['前端代码规范']
+    },
+    {
+        title: 'CSS中不定宽高的垂直水平居中',
+        subTitle: '5种方式的代码呈现',
+        routeName: 'center-of-horizontal-and-vertical',
+        descript: '',
+        date: '2017-12-04',
+        tags: ['CSS']
     }
 ];
