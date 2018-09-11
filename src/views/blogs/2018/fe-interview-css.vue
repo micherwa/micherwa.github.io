@@ -78,7 +78,12 @@
                 </p>
 
                 <h2>伪类与伪元素的区别</h2>
-                <p>传送门：</p>
+                <p>
+                    传送门：
+                    <router-link :to="{ name: 'pseudo-class-and-element'}">
+                        伪类与伪元素的区别
+                    </router-link>
+                </p>
 
                 <h2>盒子模型中box-sizing的运用</h2>
                 <p>传送门：</p>

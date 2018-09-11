@@ -27,6 +27,12 @@
                     <pre class="hljs css"><code class=""><span class="hljs-selector-class">.center-tb-cell</span> {<br>    <span class="hljs-attribute">display</span>: table-cell;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">vertical-align</span>: middle;<br>}</code></pre>
                 </p>
 
+                <h2>绝对定位 + 四个方向拉住</h2>
+                <p>
+                    使用绝对布局，设置<code>margin:auto;</code>，并设置top、left、right、bottom的值<strong>相等即可</strong>，不一定要都是0。
+                    <pre class="hljs css"><code class=""><span class="hljs-selector-class">.main</span><br></span>    <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">350px</span>;<br>    <span class="hljs-attribute">margin</span>: auto;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;<br>}</code></pre>
+                </p>
+
                 <h2>::after</h2>
                 <p>
                     <pre class="hljs scss"><code class=""><span class="hljs-selector-class">.center-ib</span> {<br>    <span class="hljs-attribute">text-align</span>: center;<br>    &amp;::after {<br>        <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;<br>        <span class="hljs-attribute">display</span>: inline-block;<br>        <span class="hljs-attribute">vertical-align</span>: middle;<br>        <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    }<br>    <span class="hljs-selector-tag">img</span> {<br>        <span class="hljs-attribute">vertical-align</span>: middle;<br>    }<br>}</code></pre>

@@ -51,7 +51,7 @@
                     福布斯杂志根据莱因哈特的观点，绘制了一张趋势图。
                 </p>
 
-                <img src="~@/assets/blog/bg2018081301.jpg">
+                <img src="~@/assets/blog/bg-2018081301.jpg">
 
                 <p>
                     2005年，亚马逊推出

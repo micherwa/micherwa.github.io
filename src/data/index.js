@@ -62,5 +62,13 @@ export default [
         descript: '',
         date: '2017-12-04',
         tags: ['CSS']
+    },
+    {
+        title: '伪类与伪元素的区别',
+        subTitle: '',
+        routeName: 'pseudo-class-and-element',
+        descript: '本文将介绍伪类与伪元素的区别，以及一些常用的场景，最后会附上一些css3中新增的伪类',
+        date: '2017-11-16',
+        tags: ['CSS']
     }
 ];
