@@ -70,5 +70,13 @@ export default [
         descript: '本文将介绍伪类与伪元素的区别，以及一些常用的场景，最后会附上一些css3中新增的伪类',
         date: '2017-11-16',
         tags: ['CSS']
+    },
+    {
+        title: '盒子模型中的box-sizing',
+        subTitle: '',
+        routeName: 'box-sizing-in-box-modal',
+        descript: '本文将介绍现在浏览器中box-sizing的用法，它已被广泛应用于移动端布局。',
+        date: '2017-07-15',
+        tags: ['CSS']
     }
 ];

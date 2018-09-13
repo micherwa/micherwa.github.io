@@ -212,12 +212,12 @@ if (isProd) {
             }),
             // keep module.id stable when vender modules does not change
             new webpack.HashedModuleIdsPlugin(),
-            new CopyWebpackPlugin([
-                {
-                    from: path.join(__dirname, 'src/assets'),
-                    to: path.join(__dirname, 'blog/assets')
-                }
-            ])
+            // new CopyWebpackPlugin([
+            //     {
+            //         from: path.join(__dirname, 'src/assets'),
+            //         to: path.join(__dirname, 'blog/assets')
+            //     }
+            // ])
         ],
         optimization: {
             splitChunks: {
