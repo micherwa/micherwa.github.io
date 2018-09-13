@@ -9,11 +9,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache">
-    <% if (__DEV__) { %>
+<!--     <% if (__DEV__) { %>
         <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
     <% } else { %>
         <link rel="shortcut icon" type="image/x-icon" href="/blog/assets/favicon.ico" />
-    <% } %>
+    <% } %> -->
 </head>
 
 <body class="is-preloader preloading" ontouchstart>

@@ -130,7 +130,8 @@ if (isDev) {
             // https://github.com/ampedandwired/html-webpack-plugin
             new HtmlWebpackPlugin({
                 template: './index.esj',
-                inject: true
+                inject: true,
+                favicon: './assets/favicon.ico'
             })
         ]
     });
@@ -172,6 +173,7 @@ if (isProd) {
                 filename: 'index.html',
                 template: './index.esj',
                 inject: true,
+                favicon: './assets/favicon.ico',
                 minify: {
                     // more options: https://github.com/kangax/html-minifier#options-quick-reference
                     minifyJS: true,
