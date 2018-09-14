@@ -16,6 +16,14 @@ export default [
         tags: ['面试题']
     },
     {
+        title: 'CSS布局之圣杯布局',
+        subTitle: '',
+        routeName: 'layout-of-grail',
+        descript: '本文将介绍CSS中的经典布局——圣杯布局的原理以及两种实现方法：浮动和flex。',
+        date: '2018-08-23',
+        tags: ['CSS']
+    },
+    {
         title: '「阮一峰网络日志」API之下',
         subTitle: '',
         routeName: 'below-of-api',

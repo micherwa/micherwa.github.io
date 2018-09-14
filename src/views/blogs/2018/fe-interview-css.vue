@@ -95,10 +95,10 @@
 
                 <h2>圣杯布局与双飞翼布局的原理以及实现</h2>
                 <p>
-                    传送门：
-                    <!-- <router-link :to="{ name: 'pseudo-class-and-element'}">
-                        伪类与伪元素的区别
-                    </router-link> -->
+                    两者的实现效果类似，具体可参考
+                    <router-link :to="{ name: 'layout-of-grail'}">
+                        这篇文章
+                    </router-link>
                 </p>
 
                 <h2>a标签上四个伪类的正确执行顺序</h2>
@@ -111,10 +111,10 @@
                     解决方案2：input:-webkit-autofill { background-color: transparent; }
                 </p>
 
-                <h2>iOS safari 如何阻止 回弹效果 ？</h2>
+                <!-- <h2>iOS safari 如何阻止 回弹效果 ？</h2>
                 <p>
                     <pre class="hljs javascript"><code class="">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br></span>    <span class="hljs-keyword">var</span> stopScrolling = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{<br>        event.preventDefault();<br>    }<br>    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'touchstart'</span>, stopScrolling, <span class="hljs-literal">false</span>);<br>    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'touchmove'</span>, stopScrolling, <span class="hljs-literal">false</span>);<br>});</code></pre>
-                </p>
+                </p> -->
 
                 <h2>如果需要手动写动画，你认为最小时间间隔是多久？</h2>
                 <p>

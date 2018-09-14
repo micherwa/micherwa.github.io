@@ -5,7 +5,7 @@
             date="2017-07-15" :tags="['CSS']">
         </BlogHeader>
 
-        <BlogContent :useCatalog="true">
+        <BlogContent :useCatalog="false">
             <div slot="content">
                 <blockquote>
                     <p>
