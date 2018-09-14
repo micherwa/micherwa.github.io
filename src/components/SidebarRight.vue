@@ -6,7 +6,12 @@
                 <router-link :to="{name: 'tags'}">TAGS</router-link>
             </h5>
             <div class="tags">
-                <a href="/tags/#知乎" title="知乎">知乎</a>
+                <router-link
+                    class="tag"
+                    v-for="(tag, $index) in tags" :key="$index"
+                    :to="{ name: 'tags', params: { name: tag.name } }" :title="tag.name">
+                    {{tag.name}}
+                </router-link>
             </div>
         </section>
 
@@ -36,13 +41,15 @@
 
 <script type="text/javascript">
     import socialData from '@/data/social';
+    import tagsData from '@/data/tags';
 
     export default {
         name: 'SidebarRight',
 
         data () {
             return {
-                socialList: socialData
+                socialList: socialData,
+                tags: tagsData
             };
         }
     };

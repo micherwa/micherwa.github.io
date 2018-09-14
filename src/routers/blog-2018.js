@@ -6,9 +6,14 @@ import BelowOfApi from '@/views/blogs/2018/below-of-api.vue';
 import LayoutOfGrail from '@/views/blogs/2018/layout-of-grail.vue';
 import FeInterviewHTML from '@/views/blogs/2018/fe-interview-html.vue';
 import FeInterviewCSS from '@/views/blogs/2018/fe-interview-css.vue';
-
+import FeInterviewRelatedToComputer from '@/views/blogs/2018/fe-interview-related-to-computer.vue';
 
 export default [
+    {
+        path: '/2018/fe-interview-related-to-computer',
+        name: 'fe-interview-related-to-computer',
+        component: FeInterviewRelatedToComputer
+    },
     {
         path: '/2018/fe-interview-css',
         name: 'fe-interview-css',

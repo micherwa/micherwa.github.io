@@ -126,9 +126,20 @@
 
                 <h2>一个高度自适应的div，里面有两个div，一个高度100px，另一个高度自适应</h2>
                 <p>
-                    方案1： .sub { height: calc(100%-100px); }<br>
-                    方案2： .container { position:relative; } .sub { position: absolute; top: 100px; bottom: 0; }<br>
-                    方案3： .container { display:flex; flex-direction:column; } .sub { flex:1; }
+                    <ul>
+                        <li>方案1： .sub { height: calc(100%-100px); }</li>
+                        <li>方案2： .container { position:relative; } .sub { position: absolute; top: 100px; bottom: 0; }</li>
+                        <li>方案3： .container { display:flex; flex-direction:column; } .sub { flex:1; }</li>
+                    </ul>
+                </p>
+
+                <h2>如果设计中使用了非标准的字体，要如何去实现？</h2>
+                <p>
+                    <ul>
+                        <li>图片替代</li>
+                        <li>web fonts在线字库，如Google Webfonts，Typekit 等等</li>
+                        <li>@font-face</li>
+                    </ul>
                 </p>
             </div>
         </BlogContent>

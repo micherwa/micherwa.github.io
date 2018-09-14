@@ -1,5 +1,13 @@
 export default [
     {
+        title: '前端面试题——计算机相关',
+        subTitle: '',
+        routeName: 'fe-interview-related-to-computer',
+        descript: '',
+        date: '2018-09-14',
+        tags: ['面试题']
+    },
+    {
         title: '前端面试题——CSS篇',
         subTitle: '',
         routeName: 'fe-interview-css',
@@ -8,7 +16,7 @@ export default [
         tags: ['面试题']
     },
     {
-        title: '前端面试题整理——HTML篇',
+        title: '前端面试题——HTML篇',
         subTitle: '',
         routeName: 'fe-interview-html',
         descript: '',
