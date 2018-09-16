@@ -7,8 +7,14 @@ import LayoutOfGrail from '@/views/blogs/2018/layout-of-grail.vue';
 import FeInterviewHTML from '@/views/blogs/2018/fe-interview-html.vue';
 import FeInterviewCSS from '@/views/blogs/2018/fe-interview-css.vue';
 import FeInterviewRelatedToComputer from '@/views/blogs/2018/fe-interview-related-to-computer.vue';
+import FeInterviewJavascript from '@/views/blogs/2018/fe-interview-javascript.vue';
 
 export default [
+    {
+        path: '/2018/fe-interview-javascript',
+        name: 'fe-interview-javascript',
+        component: FeInterviewJavascript
+    },
     {
         path: '/2018/fe-interview-related-to-computer',
         name: 'fe-interview-related-to-computer',

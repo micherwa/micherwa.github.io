@@ -1,5 +1,13 @@
 export default [
     {
+        title: '前端面试题——Javascript篇',
+        subTitle: '',
+        routeName: 'fe-interview-javascript',
+        descript: '',
+        date: '2018-09-16',
+        tags: ['面试题']
+    },
+    {
         title: '前端面试题——计算机相关',
         subTitle: '',
         routeName: 'fe-interview-related-to-computer',
@@ -94,5 +102,21 @@ export default [
         descript: '本文将介绍现在浏览器中box-sizing的用法，它已被广泛应用于移动端布局。',
         date: '2017-07-15',
         tags: ['CSS']
+    },
+    {
+        title: '重温js事件的触发机制',
+        subTitle: '',
+        routeName: 'event-principle-in-javascript',
+        descript: '',
+        date: '2017-08-21',
+        tags: ['Javascript']
+    },
+    {
+        title: 'Javascript中this的用法',
+        subTitle: '',
+        routeName: 'how-to-use-this',
+        descript: '',
+        date: '2017-06-12',
+        tags: ['Javascript']
     }
 ];

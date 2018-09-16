@@ -79,28 +79,29 @@
                     </ul>
                 </p>
 
-                <h2>什么是reflow和repaint？</h2>
+                <h2>重绘和回流的区别与关系，以及如何对其进行最小化？</h2>
                 <p>
-                    <strong>reflow</strong>：
                     <ul>
                         <li>
-                            如果JS文件中有修改DOM的地方，浏览器会<strong>倒回去把已经渲染过的元素重新渲染一遍</strong>，这个回退的过程叫reflow。在加载JS文件时，浏览器会阻止页面的渲染，因此将js放在页面底部比较好。
+                            <strong>重绘(repaint)</strong>：当渲染树中的元素外观（如：颜色）发生改变，不影响布局时，产生重绘
                         </li>
                         <li>
-                            常见的能引起reflow的行为：改变窗囗大小，改变文字大小，添加/删除样式表，脚本操作DOM，设置style属性等等。
+                            <strong>回流(reflow)</strong>：当渲染树中的元素的布局（如：尺寸、位置、隐藏/状态状态）发生改变时，产生重绘回流
                         </li>
                         <li>
-                            reflow是不可避免的，只能尽量减小，常用的方法有：
+                            <strong>区别</strong>：回流必将引起重绘，而重绘不一定会引起回流。JS获取Layout属性值（如：offsetLeft、scrollTop、getComputedStyle等）也会引起回流。因为浏览器需要通过回流计算最新值
+                        </li>
+                        <li>
+                            <strong>最小化重绘和回流</strong>：
                             <ol>
-                                <li>尽量不用行内样式style属性，操作元素样式的时候用添加去掉class类的方式</li>
-                                <li>给元素加动画的时候，可以把该元素的定位设置成absolute或者fixed，这样不会影响其他元素</li>
+                                <li>需要对元素进行复杂的操作时，可以先隐藏(display:"none")，完成后再显示</li>
+                                <li>需要创建多个DOM节点时，使用DocumentFragment创建完后一次性的加入document</li>
+                                <li>缓存Layout属性值，如：let left = elem.offsetLeft; 这样，多次使用 left 只产生一次回流</li>
+                                <li>尽量避免用table布局（table元素一旦触发回流就会导致table里所有的其它元素回流）</li>
+                                <li>避免使用css表达式(expression)，因为每次调用都会重新计算值（包括加载页面）</li>
+                                <li>尽量使用 css 属性简写，如：用 border 代替 border-width, border-style, border-color</li>
+                                <li>尽量少在html中添加style属性，定义css的class来代替</li>
                             </ol>
-                        </li>
-                    </ul>
-                    <strong>repaint</strong>：
-                    <ul>
-                        <li>
-                            repaint(重绘)和reflow相似。它会在元素改变样式的时候触发，比reflow造成的影响要小，所以能触发repaint解决的时候就不要触发reflow。
                         </li>
                     </ul>
                 </p>
