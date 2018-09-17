@@ -1,5 +1,13 @@
 export default [
     {
+        title: '前端面试题——算法篇',
+        subTitle: '',
+        routeName: 'fe-interview-algorithm',
+        descript: '',
+        date: '2018-09-20',
+        tags: ['面试题']
+    },
+    {
         title: '前端面试题——Javascript篇',
         subTitle: '',
         routeName: 'fe-interview-javascript',
@@ -96,12 +104,20 @@ export default [
         tags: ['CSS']
     },
     {
-        title: '盒子模型中的box-sizing',
+        title: 'Javascript中call与apply的用法和区别',
         subTitle: '',
-        routeName: 'box-sizing-in-box-modal',
-        descript: '本文将介绍现在浏览器中box-sizing的用法，它已被广泛应用于移动端布局。',
-        date: '2017-07-15',
-        tags: ['CSS']
+        routeName: 'call-and-apply-in-javascript',
+        descript: '',
+        date: '2017-11-10',
+        tags: ['Javascript']
+    },
+    {
+        title: 'Javascript中实现异步编程的方法',
+        subTitle: '',
+        routeName: 'async-in-javascript',
+        descript: '',
+        date: '2017-11-06',
+        tags: ['Javascript']
     },
     {
         title: '重温js事件的触发机制',
@@ -112,11 +128,51 @@ export default [
         tags: ['Javascript']
     },
     {
+        title: 'Javascript对象的浅拷贝与深拷贝',
+        subTitle: '',
+        routeName: 'copy-object-in-javascript',
+        descript: '',
+        date: '2017-08-15',
+        tags: ['Javascript']
+    },
+    {
+        title: '盒子模型中的box-sizing',
+        subTitle: '',
+        routeName: 'box-sizing-in-box-modal',
+        descript: '本文将介绍现在浏览器中box-sizing的用法，它已被广泛应用于移动端布局。',
+        date: '2017-07-15',
+        tags: ['CSS']
+    },
+    {
+        title: 'Javascript中的跨域解决方案',
+        subTitle: '',
+        routeName: 'cross-domain-in-javascript',
+        descript: '',
+        date: '2017-07-12',
+        tags: ['Javascript']
+    },
+    {
+        title: 'Javascript中的Event loop(事件循环)',
+        subTitle: '',
+        routeName: 'event-loop-in-javascript',
+        descript: '',
+        date: '2017-07-06',
+        tags: ['Javascript']
+    },
+    {
         title: 'Javascript中this的用法',
         subTitle: '',
-        routeName: 'how-to-use-this',
+        routeName: 'how-to-use-this-in-javascript',
         descript: '',
         date: '2017-06-12',
+        tags: ['Javascript']
+    },
+    {
+        title: 'Javascript中如何实现继承',
+        subTitle: '',
+        routeName: 'inherit-in-javascript',
+        descript: '',
+        date: '2017-06-04',
         tags: ['Javascript']
     }
 ];

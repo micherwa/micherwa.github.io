@@ -1,0 +1,22 @@
+<template>
+    <div class="blog-container">
+        <BlogHeader
+            title="Javascript中实现异步编程的方法" subTitle=""
+            date="2017-11-06" :tags="['Javascript']">
+        </BlogHeader>
+
+        <BlogContent :useCatalog="true">
+            <div slot="content">
+
+            </div>
+        </BlogContent>
+    </div>
+</template>
+
+<script>
+    export default {
+        created () {
+
+        }
+    };
+</script>

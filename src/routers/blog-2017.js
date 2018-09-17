@@ -3,8 +3,44 @@ import PseudoClassAndElement from '@/views/blogs/2017/pseudo-class-and-element.v
 import BoxSizingInBoxModal from '@/views/blogs/2017/box-sizing-in-box-modal.vue';
 import HowToUseThisInJavascript from '@/views/blogs/2017/how-to-use-this-in-javascript.vue';
 import EventPrincipleInJavascript from '@/views/blogs/2017/event-principle-in-javascript.vue';
+import EventLoopInJavascript from '@/views/blogs/2017/event-loop-in-javascript.vue';
+import CrossDomainInJavascript from '@/views/blogs/2017/cross-domain-in-javascript.vue';
+import AsyncInJavascript from '@/views/blogs/2017/async-in-javascript.vue';
+import CallAndApplyInJavascript from '@/views/blogs/2017/call-and-apply-in-javascript.vue';
+import InheritInJavascript from '@/views/blogs/2017/inherit-in-javascript.vue';
+import CopyObjectInJavascript from '@/views/blogs/2017/copy-object-in-javascript.vue';
 
 export default [
+    {
+        path: '/2017/copy-object-in-javascript',
+        name: 'copy-object-in-javascript',
+        component: CopyObjectInJavascript
+    },
+    {
+        path: '/2017/inherit-in-javascript',
+        name: 'inherit-in-javascript',
+        component: InheritInJavascript
+    },
+    {
+        path: '/2017/call-and-apply-in-javascript',
+        name: 'call-and-apply-in-javascript',
+        component: CallAndApplyInJavascript
+    },
+    {
+        path: '/2017/async-in-javascript',
+        name: 'async-in-javascript',
+        component: AsyncInJavascript
+    },
+    {
+        path: '/2017/cross-domain-in-javascript',
+        name: 'cross-domain-in-javascript',
+        component: CrossDomainInJavascript
+    },
+    {
+        path: '/2017/event-loop-in-javascript',
+        name: 'event-loop-in-javascript',
+        component: EventLoopInJavascript
+    },
     {
         path: '/2017/event-principle-in-javascript',
         name: 'event-principle-in-javascript',

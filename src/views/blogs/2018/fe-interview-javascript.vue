@@ -84,15 +84,52 @@
                     </ul>
                 </p>
 
+                <h2>跨域的解决方案有哪些？</h2>
+                <p>
+                    <ul class="p-l-0">
+                        图像Ping、JSONP、CORS、反向代理、window.name + iframe、设置document.domain(只适用于主域相同子域不同)、window.postMessage
+                    </ul>
+                    具体可参考：
+                    <router-link :to="{ name: 'cross-domain-in-javascript' }">这篇文章</router-link>
+                </p>
+
+                <h2>解释一下JavaScript中的事件循环</h2>
+                <p>
+                    <ul>
+                        <li>Javascript是单线程的，所有同步任务都在主线程上执行，形成一个执行栈。</li>
+                        <li>主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。</li>
+                        <li>一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
+                        <li>主线程不断重复上面的第三步。</li>
+                    </ul>
+                    具体可参考：
+                    <router-link :to="{ name: 'event-loop-in-javascript' }">这篇文章</router-link>
+                </p>
+
                 <h2>Javascript中实现异步编程的方法有哪些？</h2>
                 <p>
-                    回调函数、事件监听、发布/订阅、Promises对象、Async函数[ES7]
+                    <ul class="pl-l-0">
+                        回调函数、事件监听、发布/订阅、Promises对象、Async函数[ES7]
+                    </ul>
+                    具体可参考：
+                    <router-link :to="{ name: 'async-in-javascript' }">这篇文章</router-link>
                 </p>
 
                 <h2>什么是闭包（closure），为什么要用它？</h2>
                 <p>
                     闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量，利用闭包可以突破作用链域。
                     特点：函数内再嵌套函数，内部函数可以引用外层的参数和变量，参数和变量不会被垃圾回收机制回收。
+                    作用：
+                    <ul>
+                        <li>
+                            匿名自执行函数  (function (){ ... })();   创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。
+                        </li>
+                        <li>
+                            缓存, 可保留函数内部的值
+                        </li>
+                        <li>
+                            实现封装和模板
+                        </li>
+                    </ul>
                 </p>
 
                 <h2>介绍Javascript的事件机制</h2>
@@ -113,6 +150,20 @@
                     </ul>
                     具体可参考
                     <router-link :to="{ name: 'event-principle-in-javascript'}">
+                        这篇文章
+                    </router-link>
+                </p>
+
+                <h2>谈谈Javascript对象的浅拷贝与深拷贝</h2>
+                <p>
+                    概念的理解：
+                    <ul>
+                        <li>深拷贝和浅拷贝只针对像Object, Array这样的引用类型数据</li>
+                        <li>浅拷贝是对对象引用地址进行拷贝，拷贝后，改其中一个对象的属性，则另一个对象的属性也会改变</li>
+                        <li>深拷贝会新开一个引用地址进行拷贝，拷贝后，修改一个对象的属性，不会改变另一个对象的属性</li>
+                    </ul>
+                    具体可参考
+                    <router-link :to="{ name: 'copy-object-in-javascript'}">
                         这篇文章
                     </router-link>
                 </p>
@@ -236,10 +287,51 @@
 
                 <h2>介绍call和apply的用法和区别</h2>
                 <p>
-                    传送门：
-                    <!-- <router-link :to="{ name: 'call-and-apply-in-javascript'}">
+                    <ul>
+                        <li>用法：都能继承另一个对象的方法和属性</li>
+                        <li>
+                            区别：参数列表不一样
+                            <ol>
+                                <li>Function.apply(obj, args) args是一个数组,作为参数传给Function</li>
+                                <li>Function.call(obj, arg1, arg2,...)  arg*是参数列表</li>
+                            </ol>
+                        </li>
+                        <li>apply的一个妙用：可以将一个数组默认的转化为一个参数列表。例如：有一个数组arr要push进一个新的数组中去, 如果用call的话需要把数组中的元素一个个取出来再push, 而用apply只有Array.prototype.push.apply(this, arr)</li>
+                    </ul>
+                    具体可参考
+                    <router-link :to="{ name: 'call-and-apply-in-javascript'}">
                         这篇文章
-                    </router-link> -->
+                    </router-link>
+                </p>
+
+                <h2>Javascript中如何实现继承</h2>
+                <p>
+                    <ul>
+                        <li>
+                            构造函数绑定：使用 call 或 apply 方法，将父对象的构造函数绑定在子对象上
+                            <pre class="hljs qml"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span>(<span class="hljs-params">name,color</span>)</span>{<br> 　Animal.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);<br> 　<span class="hljs-keyword">this</span>.name = name;<br> 　<span class="hljs-keyword">this</span>.color = <span class="hljs-built_in">color</span>;<br>}</code></pre>
+                        </li>
+                        <li>
+                            实例继承：将子对象的 prototype 指向父对象的一个实例
+                            <pre class="hljs actionscript"><code class=""><span class="hljs-type">Cat</span>.proto<span class="hljs-keyword">type</span> = new <span class="hljs-type">Animal</span>();<br><span class="hljs-type">Cat</span>.proto<span class="hljs-keyword">type</span>.constructor = <span class="hljs-type">Cat</span>;</code></pre>
+                        </li>
+                        <li>
+                            拷贝继承：如果把父对象的所有属性和方法，拷贝进子对象
+                            <pre class="hljs actionscript"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extend</span><span class="hljs-params">(Child, Parent)</span> </span>{<br>  　<span class="hljs-keyword">var</span> p = Parent.prototype;<br>  　<span class="hljs-keyword">var</span> c = Child.prototype;<br>  　<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> p) {<br>      c[i] = p[i];<br>    }<br>    c.uber = p;<br>}</code></pre>
+                        </li>
+                        <li>
+                            原型继承：将子对象的 prototype 指向父对象的 prototype
+                            <pre class="hljs php"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extend</span><span class="hljs-params">(Child, Parent)</span> </span>{<br>    <span class="hljs-keyword">var</span> F = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{};<br>  　F.prototype = <span class="hljs-keyword">Parent</span>.prototype;<br>  　Child.prototype = <span class="hljs-keyword">new</span> F();<br>  　Child.prototype.constructor = Child;<br>  　Child.uber = <span class="hljs-keyword">Parent</span>.prototype;<br>}</code></pre>
+                        </li>
+                        <li>
+                            ES6 语法糖 extends：class ColorPoint extends Point {}
+                            <pre class="hljs scala"><code class=""><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ColorPoint</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Point</span> </span>{<br>    constructor(x, y, color) {<br>        <span class="hljs-comment">// 调用父类的constructor(x, y)</span><br>        <span class="hljs-keyword">super</span>(x, y);<br>        <span class="hljs-keyword">this</span>.color = color;<br>    }<br>    toString() {<br>        <span class="hljs-comment">// 调用父类的toString()</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.color + ' ' + <span class="hljs-keyword">super</span>.toString();<br>    }<br>}</code></pre>
+                        </li>
+                    </ul>
+                    具体可参考
+                    <router-link :to="{ name: 'inherit-in-javascript'}">
+                        这篇文章
+                    </router-link>
                 </p>
 
                 <h2>介绍函数节流的原理和应用场景</h2>
