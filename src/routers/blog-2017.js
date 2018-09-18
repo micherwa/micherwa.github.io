@@ -9,8 +9,20 @@ import AsyncInJavascript from '@/views/blogs/2017/async-in-javascript.vue';
 import CallAndApplyInJavascript from '@/views/blogs/2017/call-and-apply-in-javascript.vue';
 import InheritInJavascript from '@/views/blogs/2017/inherit-in-javascript.vue';
 import CopyObjectInJavascript from '@/views/blogs/2017/copy-object-in-javascript.vue';
+import ArrayDeDuplicateInJavascript from '@/views/blogs/2017/array-de-duplicate-in-javascript.vue';
+import ExportAndExportDefaultInEs6 from '@/views/blogs/2017/export-and-export-default-in-es6.vue';
 
 export default [
+    {
+        path: '/2017/export-and-export-default-in-es6',
+        name: 'export-and-export-default-in-es6',
+        component: ExportAndExportDefaultInEs6
+    },
+    {
+        path: '/2017/array-de-duplicate-in-javascript',
+        name: 'array-de-duplicate-in-javascript',
+        component: ArrayDeDuplicateInJavascript
+    },
     {
         path: '/2017/copy-object-in-javascript',
         name: 'copy-object-in-javascript',

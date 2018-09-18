@@ -8,6 +8,14 @@ export default [
         tags: ['面试题']
     },
     {
+        title: 'Javascript中的哈希表',
+        subTitle: '',
+        routeName: 'hash-table-in-javascript',
+        descript: '',
+        date: '2018-09-18',
+        tags: ['算法']
+    },
+    {
         title: '前端面试题——Javascript篇',
         subTitle: '',
         routeName: 'fe-interview-javascript',
@@ -120,18 +128,26 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: '重温js事件的触发机制',
+        title: '重温JavaScript事件的触发机制',
         subTitle: '',
         routeName: 'event-principle-in-javascript',
-        descript: '',
+        descript: 'DOM事件流：将事件分为三个阶段：捕获阶段、目标阶段、冒泡阶段。先调用捕获阶段的处理函数，其次调用目标阶段的处理函数，最后调用冒泡阶段的处理函数。',
         date: '2017-08-21',
+        tags: ['Javascript']
+    },
+    {
+        title: 'ES6中 export 和 export default 的差异',
+        subTitle: '',
+        routeName: 'export-and-export-default-in-es6',
+        descript: 'export与export default均可用于导出常量、函数、文件、模块等。在一个文件或模块中，export、import可以有多个，export default仅有一个。通过export方式导出，在导入时要加{}，export default则不能加',
+        date: '2017-08-16',
         tags: ['Javascript']
     },
     {
         title: 'Javascript对象的浅拷贝与深拷贝',
         subTitle: '',
         routeName: 'copy-object-in-javascript',
-        descript: '',
+        descript: '深拷贝和浅拷贝只针对像Object, Array这样的引用类型数据。浅拷贝是对对象引用地址进行拷贝，拷贝后，改其中一个对象的属性，则源对象的属性也会改变',
         date: '2017-08-15',
         tags: ['Javascript']
     },
@@ -158,6 +174,14 @@ export default [
         descript: '',
         date: '2017-07-06',
         tags: ['Javascript']
+    },
+    {
+        title: 'Javascript中数组去重的5种方法',
+        subTitle: '',
+        routeName: 'array-de-duplicate-in-javascript',
+        descript: '',
+        date: '2017-06-22',
+        tags: ['算法']
     },
     {
         title: 'Javascript中this的用法',
