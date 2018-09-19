@@ -87,7 +87,7 @@
                 <h2>跨域的解决方案有哪些？</h2>
                 <p>
                     <ul class="p-l-0">
-                        图像Ping、JSONP、CORS、反向代理、window.name + iframe、设置document.domain(只适用于主域相同子域不同)、window.postMessage
+                        CORS、反向代理、JSONP、设置document.domain(只适用于主域相同子域不同)、window.name + iframe、window.postMessage
                     </ul>
                     具体可参考：
                     <router-link :to="{ name: 'cross-domain-in-javascript' }">这篇文章</router-link>
