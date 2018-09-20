@@ -3,7 +3,6 @@ import PseudoClassAndElement from '@/views/blogs/2017/pseudo-class-and-element.v
 import BoxSizingInBoxModal from '@/views/blogs/2017/box-sizing-in-box-modal.vue';
 import HowToUseThisInJavascript from '@/views/blogs/2017/how-to-use-this-in-javascript.vue';
 import EventPrincipleInJavascript from '@/views/blogs/2017/event-principle-in-javascript.vue';
-import EventLoopInJavascript from '@/views/blogs/2017/event-loop-in-javascript.vue';
 import CrossDomainInJavascript from '@/views/blogs/2017/cross-domain-in-javascript.vue';
 import AsyncInJavascript from '@/views/blogs/2017/async-in-javascript.vue';
 import CallAndApplyInJavascript from '@/views/blogs/2017/call-and-apply-in-javascript.vue';
@@ -47,11 +46,6 @@ export default [
         path: '/2017/cross-domain-in-javascript',
         name: 'cross-domain-in-javascript',
         component: CrossDomainInJavascript
-    },
-    {
-        path: '/2017/event-loop-in-javascript',
-        name: 'event-loop-in-javascript',
-        component: EventLoopInJavascript
     },
     {
         path: '/2017/event-principle-in-javascript',

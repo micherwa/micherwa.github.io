@@ -96,6 +96,14 @@ export default [
         tags: ['前端代码规范']
     },
     {
+        title: 'Javascript中的Event loop(事件循环)',
+        subTitle: '',
+        routeName: 'event-loop-in-javascript',
+        descript: 'JavaScript语言在设计之初，就确定了它是一种非阻塞的单线程的脚本语言。单线程，同一个时间只能做一件事，这样可以提高效率。作为浏览器的脚本语言，JavaScript的主要目的是与用户互动，以及操作DOM。',
+        date: '2018-03-06',
+        tags: ['Javascript']
+    },
+    {
         title: 'CSS中不定宽高的垂直水平居中',
         subTitle: '5种方式的代码呈现',
         routeName: 'center-of-horizontal-and-vertical',
@@ -147,7 +155,7 @@ export default [
         title: 'Javascript对象的浅拷贝与深拷贝',
         subTitle: '',
         routeName: 'copy-object-in-javascript',
-        descript: '深拷贝和浅拷贝只针对像Object, Array这样的引用类型数据。浅拷贝是对对象引用地址进行拷贝，拷贝后，改其中一个对象的属性，则源对象的属性也会改变',
+        descript: '深拷贝和浅拷贝只针对像Object, Array这样的引用类型数据。浅拷贝是对对象引用地址进行拷贝，拷贝后，改其中一个对象的属性，则源对象的属性也会改变。',
         date: '2017-08-15',
         tags: ['Javascript']
     },
@@ -163,16 +171,8 @@ export default [
         title: 'Javascript中的跨域解决方案',
         subTitle: '',
         routeName: 'cross-domain-in-javascript',
-        descript: '',
+        descript: '这里说的跨域，是指通过js在不同的域之间进行数据传输或通信。比如用ajax向一个不同的域请求数据，或者通过js获取页面中不同域的框架中(iframe)的数据。只要协议、域名、端口有任何一个不同，都被当作是不同的域。',
         date: '2017-07-12',
-        tags: ['Javascript']
-    },
-    {
-        title: 'Javascript中的Event loop(事件循环)',
-        subTitle: '',
-        routeName: 'event-loop-in-javascript',
-        descript: '',
-        date: '2017-07-06',
         tags: ['Javascript']
     },
     {

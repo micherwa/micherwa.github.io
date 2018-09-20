@@ -1,3 +1,4 @@
+import EventLoopInJavascript from '@/views/blogs/2018/event-loop-in-javascript.vue';
 import FrontEndCodeCriterion1 from '@/views/blogs/2018/front-end-code-criterion-1.vue';
 import FrontEndCodeCriterion2 from '@/views/blogs/2018/front-end-code-criterion-2.vue';
 import FrontEndCodeCriterion3 from '@/views/blogs/2018/front-end-code-criterion-3.vue';
@@ -71,5 +72,10 @@ export default [
         path: '/2018/front-end-code-criterion-4',
         name: 'front-end-code-criterion-4',
         component: FrontEndCodeCriterion4
-    }
+    },
+    {
+        path: '/2018/event-loop-in-javascript',
+        name: 'event-loop-in-javascript',
+        component: EventLoopInJavascript
+    },
 ];
