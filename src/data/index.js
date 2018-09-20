@@ -7,14 +7,14 @@ export default [
         date: '2018-09-20',
         tags: ['面试题']
     },
-    {
-        title: 'Javascript中的哈希表',
-        subTitle: '',
-        routeName: 'hash-table-in-javascript',
-        descript: '',
-        date: '2018-09-18',
-        tags: ['算法']
-    },
+    // {
+    //     title: 'Javascript中的哈希表',
+    //     subTitle: '',
+    //     routeName: 'hash-table-in-javascript',
+    //     descript: '',
+    //     date: '2018-09-18',
+    //     tags: ['算法']
+    // },
     {
         title: '前端面试题——Javascript篇',
         subTitle: '',
@@ -119,22 +119,22 @@ export default [
         date: '2017-11-16',
         tags: ['CSS']
     },
-    {
-        title: 'Javascript中call与apply的用法和区别',
-        subTitle: '',
-        routeName: 'call-and-apply-in-javascript',
-        descript: '',
-        date: '2017-11-10',
-        tags: ['Javascript']
-    },
-    {
-        title: 'Javascript中实现异步编程的方法',
-        subTitle: '',
-        routeName: 'async-in-javascript',
-        descript: '',
-        date: '2017-11-06',
-        tags: ['Javascript']
-    },
+    // {
+    //     title: 'Javascript中call与apply的用法和区别',
+    //     subTitle: '',
+    //     routeName: 'call-and-apply-in-javascript',
+    //     descript: '',
+    //     date: '2017-11-10',
+    //     tags: ['Javascript']
+    // },
+    // {
+    //     title: 'Javascript中实现异步编程的方法',
+    //     subTitle: '',
+    //     routeName: 'async-in-javascript',
+    //     descript: '',
+    //     date: '2017-11-06',
+    //     tags: ['Javascript']
+    // },
     {
         title: '重温JavaScript事件的触发机制',
         subTitle: '',
@@ -183,20 +183,20 @@ export default [
         date: '2017-06-22',
         tags: ['算法']
     },
-    {
-        title: 'Javascript中this的用法',
-        subTitle: '',
-        routeName: 'how-to-use-this-in-javascript',
-        descript: '',
-        date: '2017-06-12',
-        tags: ['Javascript']
-    },
-    {
-        title: 'Javascript中如何实现继承',
-        subTitle: '',
-        routeName: 'inherit-in-javascript',
-        descript: '',
-        date: '2017-06-04',
-        tags: ['Javascript']
-    }
+    // {
+    //     title: 'Javascript中this的用法',
+    //     subTitle: '',
+    //     routeName: 'how-to-use-this-in-javascript',
+    //     descript: '',
+    //     date: '2017-06-12',
+    //     tags: ['Javascript']
+    // },
+    // {
+    //     title: 'Javascript中如何实现继承',
+    //     subTitle: '',
+    //     routeName: 'inherit-in-javascript',
+    //     descript: '',
+    //     date: '2017-06-04',
+    //     tags: ['Javascript']
+    // }
 ];
