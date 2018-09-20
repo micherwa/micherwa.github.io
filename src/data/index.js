@@ -105,7 +105,7 @@ export default [
     },
     {
         title: 'CSS中不定宽高的垂直水平居中',
-        subTitle: '5种方式的代码呈现',
+        subTitle: '9种方式的代码呈现',
         routeName: 'center-of-horizontal-and-vertical',
         descript: '',
         date: '2017-12-04',
@@ -176,7 +176,7 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: 'Javascript中数组去重的5种方法',
+        title: 'Javascript数组去重',
         subTitle: '',
         routeName: 'array-de-duplicate-in-javascript',
         descript: '',
