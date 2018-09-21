@@ -119,14 +119,14 @@ export default [
         date: '2017-11-16',
         tags: ['CSS']
     },
-    // {
-    //     title: 'Javascript中call与apply的用法和区别',
-    //     subTitle: '',
-    //     routeName: 'call-and-apply-in-javascript',
-    //     descript: '',
-    //     date: '2017-11-10',
-    //     tags: ['Javascript']
-    // },
+    {
+        title: 'Javascript中call与apply的用法和区别',
+        subTitle: '',
+        routeName: 'call-and-apply-in-javascript',
+        descript: 'call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。',
+        date: '2017-11-10',
+        tags: ['Javascript']
+    },
     // {
     //     title: 'Javascript中实现异步编程的方法',
     //     subTitle: '',
