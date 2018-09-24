@@ -10,8 +10,14 @@ import InheritInJavascript from '@/views/blogs/2017/inherit-in-javascript.vue';
 import CopyObjectInJavascript from '@/views/blogs/2017/copy-object-in-javascript.vue';
 import ArrayDeDuplicateInJavascript from '@/views/blogs/2017/array-de-duplicate-in-javascript.vue';
 import ExportAndExportDefaultInEs6 from '@/views/blogs/2017/export-and-export-default-in-es6.vue';
+import WhenCanNotUseArrowFunction from '@/views/blogs/2017/when-can-not-use-arrow-function.vue';
 
 export default [
+    {
+        path: '/2017/when-can-not-use-arrow-function',
+        name: 'when-can-not-use-arrow-function',
+        component: WhenCanNotUseArrowFunction
+    },
     {
         path: '/2017/export-and-export-default-in-es6',
         name: 'export-and-export-default-in-es6',

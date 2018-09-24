@@ -136,6 +136,14 @@ export default [
     //     tags: ['Javascript']
     // },
     {
+        title: '什么时候 “不该” 用箭头函数',
+        subTitle: '',
+        routeName: 'when-can-not-use-arrow-function',
+        descript: '',
+        date: '2017-09-12',
+        tags: ['Javascript']
+    },
+    {
         title: '重温JavaScript事件的触发机制',
         subTitle: '',
         routeName: 'event-principle-in-javascript',
