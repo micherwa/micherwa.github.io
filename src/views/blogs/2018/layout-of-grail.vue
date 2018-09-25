@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="CSS布局之圣杯布局" subTitle=""
+            title="圣杯布局的原理以及实现" subTitle=""
             date="2018-08-23" :tags="['CSS']">
         </BlogHeader>
 

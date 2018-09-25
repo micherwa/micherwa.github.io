@@ -11,8 +11,14 @@ import FeInterviewRelatedToComputer from '@/views/blogs/2018/fe-interview-relate
 import FeInterviewJavascript from '@/views/blogs/2018/fe-interview-javascript.vue';
 import FeInterviewAlgorithm from '@/views/blogs/2018/fe-interview-algorithm.vue';
 import HashTableInJavascript from '@/views/blogs/2018/hash-table-in-javascript.vue';
+import HowToUseThisInJavascript from '@/views/blogs/2018/how-to-use-this-in-javascript.vue';
 
 export default [
+    {
+        path: '/2018/how-to-use-this-in-javascript',
+        name: 'how-to-use-this-in-javascript',
+        component: HowToUseThisInJavascript
+    },
     {
         path: '/2018/hash-table-in-javascript',
         name: 'hash-table-in-javascript',

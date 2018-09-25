@@ -48,7 +48,7 @@ export default [
         tags: ['面试题']
     },
     {
-        title: 'CSS布局之圣杯布局',
+        title: '圣杯布局的原理以及实现',
         subTitle: '',
         routeName: 'layout-of-grail',
         descript: '本文将介绍CSS中的经典布局——圣杯布局的原理以及两种实现方法：浮动和flex。',
@@ -62,6 +62,14 @@ export default [
         descript: '虽然标题里面有 API，但是本文谈的不是编程，而是更重要的事情。很多公司的组织架构，都有一个中层。高层领导和基层员工之间，存在大量的中层干部。公司越大，中层干部越多。2015年，硅谷创业家莱因哈特（Peter Reinhardt）观察到一个现象：硅谷科技公司正在变得越来越大，但是公司的中层几乎没有变大。原因就在于，大公司正在用 API 替代掉中层干部。',
         date: '2018-08-13',
         tags: ['言论与感想']
+    },
+    {
+        title: 'this的原理以及用法',
+        subTitle: '',
+        routeName: 'how-to-use-this-in-javascript',
+        descript: '',
+        date: '2018-06-20',
+        tags: ['Javascript']
     },
     {
         title: '前端工程代码规范（四）',
@@ -128,7 +136,7 @@ export default [
         tags: ['Javascript']
     },
     // {
-    //     title: 'Javascript中实现异步编程的方法',
+    //     title: '实现异步编程的方法',
     //     subTitle: '',
     //     routeName: 'async-in-javascript',
     //     descript: '',
@@ -160,7 +168,7 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: 'Javascript对象的浅拷贝与深拷贝',
+        title: '对象的浅拷贝与深拷贝',
         subTitle: '',
         routeName: 'copy-object-in-javascript',
         descript: '深拷贝和浅拷贝只针对像Object, Array这样的引用类型数据。浅拷贝是对对象引用地址进行拷贝，拷贝后，改其中一个对象的属性，则源对象的属性也会改变。',
@@ -192,15 +200,7 @@ export default [
         tags: ['算法']
     },
     // {
-    //     title: 'Javascript中this的用法',
-    //     subTitle: '',
-    //     routeName: 'how-to-use-this-in-javascript',
-    //     descript: '',
-    //     date: '2017-06-12',
-    //     tags: ['Javascript']
-    // },
-    // {
-    //     title: 'Javascript中如何实现继承',
+    //     title: '如何实现继承',
     //     subTitle: '',
     //     routeName: 'inherit-in-javascript',
     //     descript: '',

@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="Javascript中如何实现继承" subTitle=""
+            title="如何实现继承" subTitle=""
             date="2017-06-04" :tags="['Javascript']">
         </BlogHeader>
 
