@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="Javascript中的跨域解决方案" subTitle=""
+            title="前端跨域解决方案" subTitle=""
             date="2017-07-12" :tags="['Javascript']">
         </BlogHeader>
 

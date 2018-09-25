@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="前端面试题——CSS篇" subTitle=""
+            title="前端面试题——CSS" subTitle=""
             date="2018-09-09" :tags="['面试题']">
         </BlogHeader>
 

@@ -1,6 +1,6 @@
 export default [
     {
-        title: '前端面试题——算法篇',
+        title: '前端面试题——算法',
         subTitle: '',
         routeName: 'fe-interview-algorithm',
         descript: '',
@@ -16,7 +16,7 @@ export default [
     //     tags: ['算法']
     // },
     {
-        title: '前端面试题——Javascript篇',
+        title: '前端面试题——Javascript',
         subTitle: '',
         routeName: 'fe-interview-javascript',
         descript: '',
@@ -32,7 +32,7 @@ export default [
         tags: ['面试题']
     },
     {
-        title: '前端面试题——CSS篇',
+        title: '前端面试题——CSS',
         subTitle: '',
         routeName: 'fe-interview-css',
         descript: '',
@@ -40,7 +40,7 @@ export default [
         tags: ['面试题']
     },
     {
-        title: '前端面试题——HTML篇',
+        title: '前端面试题——HTML',
         subTitle: '',
         routeName: 'fe-interview-html',
         descript: '',
@@ -120,7 +120,7 @@ export default [
         tags: ['CSS']
     },
     {
-        title: 'Javascript中call与apply的用法和区别',
+        title: 'call与apply的用法和区别',
         subTitle: '',
         routeName: 'call-and-apply-in-javascript',
         descript: 'call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。',
@@ -139,7 +139,7 @@ export default [
         title: '什么时候 “不该” 用箭头函数',
         subTitle: '',
         routeName: 'when-can-not-use-arrow-function',
-        descript: '',
+        descript: 'ES6中的箭头函数，改变了我们写代码的方式，使得JS的易用性得到了提升。但是最近，常会看到有同学问，某一段代码用了箭头函数后产生了问题，是不是箭头函数还不够完善？',
         date: '2017-09-12',
         tags: ['Javascript']
     },
@@ -176,7 +176,7 @@ export default [
         tags: ['CSS']
     },
     {
-        title: 'Javascript中的跨域解决方案',
+        title: '前端跨域解决方案',
         subTitle: '',
         routeName: 'cross-domain-in-javascript',
         descript: '这里说的跨域，是指通过js在不同的域之间进行数据传输或通信。比如用ajax向一个不同的域请求数据，或者通过js获取页面中不同域的框架中(iframe)的数据。只要协议、域名、端口有任何一个不同，都被当作是不同的域。',
@@ -184,8 +184,8 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: 'Javascript数组去重',
-        subTitle: '',
+        title: '数组的去重',
+        subTitle: '9中方法的代码呈现',
         routeName: 'array-de-duplicate-in-javascript',
         descript: '',
         date: '2017-06-22',

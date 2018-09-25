@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="Javascript中call与apply的用法和区别" subTitle=""
+            title="call与apply的用法和区别" subTitle=""
             date="2017-11-10" :tags="['Javascript']">
         </BlogHeader>
 
