@@ -12,8 +12,14 @@ import FeInterviewJavascript from '@/views/blogs/2018/fe-interview-javascript.vu
 import FeInterviewAlgorithm from '@/views/blogs/2018/fe-interview-algorithm.vue';
 import HashTableInJavascript from '@/views/blogs/2018/hash-table-in-javascript.vue';
 import HowToUseThisInJavascript from '@/views/blogs/2018/how-to-use-this-in-javascript.vue';
+import MethodsOfArrayBeyondES5 from '@/views/blogs/2018/methods-of-array-beyond-es5.vue';
 
 export default [
+    {
+        path: '/2018/methods-of-array-beyond-es5',
+        name: 'methods-of-array-beyond-es5',
+        component: MethodsOfArrayBeyondES5
+    },
     {
         path: '/2018/how-to-use-this-in-javascript',
         name: 'how-to-use-this-in-javascript',

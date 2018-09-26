@@ -1,5 +1,13 @@
 export default [
     {
+        title: '数组的常用操作',
+        subTitle: '包含es5和es6',
+        routeName: 'methods-of-array-beyond-es5',
+        descript: '汇总Javascript中数组的常用操作，以及如何使用。',
+        date: '2018-09-26',
+        tags: ['Javascript']
+    },
+    {
         title: '前端面试题——算法',
         subTitle: '',
         routeName: 'fe-interview-algorithm',
