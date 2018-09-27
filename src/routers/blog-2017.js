@@ -8,10 +8,22 @@ import CallAndApplyInJavascript from '@/views/blogs/2017/call-and-apply-in-javas
 import InheritInJavascript from '@/views/blogs/2017/inherit-in-javascript.vue';
 import CopyObjectInJavascript from '@/views/blogs/2017/copy-object-in-javascript.vue';
 import ArrayDeDuplicateInJavascript from '@/views/blogs/2017/array-de-duplicate-in-javascript.vue';
-import ExportAndExportDefaultInEs6 from '@/views/blogs/2017/export-and-export-default-in-es6.vue';
+import ExportAndExportDefaultInES6 from '@/views/blogs/2017/export-and-export-default-in-es6.vue';
 import WhenCanNotUseArrowFunction from '@/views/blogs/2017/when-can-not-use-arrow-function.vue';
+import PublishSubscribePattern from '@/views/blogs/2017/publish-subscribe-pattern.vue';
+import asyncAwait from '@/views/blogs/2017/async-await.vue';
 
 export default [
+    {
+        path: '/2017/async-await',
+        name: 'async-await',
+        component: asyncAwait
+    },
+    {
+        path: '/2017/publish-subscribe-pattern',
+        name: 'publish-subscribe-pattern',
+        component: PublishSubscribePattern
+    },
     {
         path: '/2017/when-can-not-use-arrow-function',
         name: 'when-can-not-use-arrow-function',
@@ -20,7 +32,7 @@ export default [
     {
         path: '/2017/export-and-export-default-in-es6',
         name: 'export-and-export-default-in-es6',
-        component: ExportAndExportDefaultInEs6
+        component: ExportAndExportDefaultInES6
     },
     {
         path: '/2017/array-de-duplicate-in-javascript',

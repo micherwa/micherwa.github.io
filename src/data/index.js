@@ -67,7 +67,7 @@ export default [
         title: '「阮一峰网络日志」API之下',
         subTitle: '',
         routeName: 'below-of-api',
-        descript: '虽然标题里面有 API，但是本文谈的不是编程，而是更重要的事情。很多公司的组织架构，都有一个中层。高层领导和基层员工之间，存在大量的中层干部。公司越大，中层干部越多。2015年，硅谷创业家莱因哈特（Peter Reinhardt）观察到一个现象：硅谷科技公司正在变得越来越大，但是公司的中层几乎没有变大。原因就在于，大公司正在用 API 替代掉中层干部。',
+        descript: '虽然标题里面有 API，但是本文谈的不是编程，而是更重要的事情。很多公司的组织架构，都有一个中层。高层领导和基层员工之间，存在大量的中层干部。公司越大，中层干部越多。2015年，硅谷创业家莱因哈特（Peter Reinhardt）观察到一个现象：',
         date: '2018-08-13',
         tags: ['言论与感想']
     },
@@ -75,7 +75,7 @@ export default [
         title: 'this的原理以及用法',
         subTitle: '',
         routeName: 'how-to-use-this-in-javascript',
-        descript: '',
+        descript: '对于this，我们的大脑中总会用“复杂”和“混乱”等词汇来形容它。因为我们对于它到底指向什么而感到困扰，看起来，它就是种彻头彻尾的魔法。this，不是编写时绑定，而是在运行时绑定。它依赖于函数调用的上下文条件，',
         date: '2018-06-20',
         tags: ['Javascript']
     },
@@ -143,20 +143,28 @@ export default [
         date: '2017-11-10',
         tags: ['Javascript']
     },
-    // {
-    //     title: '实现异步编程的方法',
-    //     subTitle: '',
-    //     routeName: 'async-in-javascript',
-    //     descript: '',
-    //     date: '2017-11-06',
-    //     tags: ['Javascript']
-    // },
+    {
+        title: '实现异步编程的方法',
+        subTitle: '',
+        routeName: 'async-in-javascript',
+        descript: '要解释异步(Asynchronous)，需要先了解Javascript语言的运行机制。JavaScript是单线程的，并且是非阻塞的。所以，它将主线程中的所有任务，分为两种：同步和异步。本篇仅讨论异步模式的几种方法。',
+        date: '2017-11-06',
+        tags: ['Javascript']
+    },
     {
         title: '什么时候 “不该” 用箭头函数',
         subTitle: '',
         routeName: 'when-can-not-use-arrow-function',
         descript: 'ES6中的箭头函数，改变了我们写代码的方式，使得JS的易用性得到了提升。但是最近，常会看到有同学问，某一段代码用了箭头函数后产生了问题，是不是箭头函数还不够完善？',
         date: '2017-09-12',
+        tags: ['Javascript']
+    },
+    {
+        title: '浅谈 发布/订阅 模式',
+        subTitle: '',
+        routeName: 'publish-subscribe-pattern',
+        descript: '定义：一个目标对象管理所有相依于它的观察者对象，并且在它本身的状态改变时主动发出通知。这通常透过呼叫各观察者所提供的方法来实现。此种模式通常被用来实时事件处理系统。',
+        date: '2017-08-22',
         tags: ['Javascript']
     },
     {
@@ -181,6 +189,14 @@ export default [
         routeName: 'copy-object-in-javascript',
         descript: '深拷贝和浅拷贝只针对像Object, Array这样的引用类型数据。浅拷贝是对对象引用地址进行拷贝，拷贝后，改其中一个对象的属性，则源对象的属性也会改变。',
         date: '2017-08-15',
+        tags: ['Javascript']
+    },
+    {
+        title: 'async/await',
+        subTitle: '一种更优雅的异步写法',
+        routeName: 'async-await',
+        descript: '谈及异步回调函数的嵌套，总会让人感到烦躁，特别是当业务逻辑复杂，往往需要调用几次 ajax 才能拿到所有需要的数据。从最早的回调函数，到 Promise 对象，再到 Generator 函数，',
+        date: '2017-07-28',
         tags: ['Javascript']
     },
     {
