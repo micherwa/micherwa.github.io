@@ -28,7 +28,7 @@
 
                     <div class="one-tag-list p-b-15" v-for="(oneTag, $index) in oneTagList" :key="$index">
                         <span class="fa fa-tag listing-seperator" :id="oneTag.name">
-                            <span class="tag-text">{{oneTag.name}}</span>
+                            <span class="tag-text">{{oneTag.name}} ({{oneTag.blogList.length}})</span>
                         </span>
                         <div class="post-preview" v-for="(blog, $index) in oneTag.blogList" :key="$index">
                             <router-link :to="{name: blog.routeName}">

@@ -108,7 +108,7 @@
                 <h2>Javascript中实现异步编程的方法有哪些？</h2>
                 <p>
                     <ul class="pl-l-0">
-                        回调函数、事件监听、发布/订阅、Promises对象、Async函数[ES7]
+                        回调函数、事件监听、发布/订阅、Promise对象、Generator函数(ES6)、Async函数(ES7)
                     </ul>
                     具体可参考：
                     <router-link :to="{ name: 'async-in-javascript' }">这篇文章</router-link>

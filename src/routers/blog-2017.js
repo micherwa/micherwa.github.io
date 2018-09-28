@@ -11,13 +11,19 @@ import ArrayDeDuplicateInJavascript from '@/views/blogs/2017/array-de-duplicate-
 import ExportAndExportDefaultInES6 from '@/views/blogs/2017/export-and-export-default-in-es6.vue';
 import WhenCanNotUseArrowFunction from '@/views/blogs/2017/when-can-not-use-arrow-function.vue';
 import PublishSubscribePattern from '@/views/blogs/2017/publish-subscribe-pattern.vue';
-import asyncAwait from '@/views/blogs/2017/async-await.vue';
+import AsyncAwait from '@/views/blogs/2017/async-await.vue';
+import ConfusedOnTheRoadOfFE from '@/views/blogs/2017/confused-on-the-road-of-fe.vue';
 
 export default [
     {
+        path: '/2017/confused-on-the-road-of-fe',
+        name: 'confused-on-the-road-of-fe',
+        component: ConfusedOnTheRoadOfFE
+    },
+    {
         path: '/2017/async-await',
         name: 'async-await',
-        component: asyncAwait
+        component: AsyncAwait
     },
     {
         path: '/2017/publish-subscribe-pattern',

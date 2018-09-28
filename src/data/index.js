@@ -152,6 +152,14 @@ export default [
         tags: ['Javascript']
     },
     {
+        title: '关于前端求职的困扰',
+        subTitle: '',
+        routeName: 'confused-on-the-road-of-fe',
+        descript: '源自 SF 上的一篇回答，记录下那时的一些感悟。',
+        date: '2017-10-25',
+        tags: ['言论与感想']
+    },
+    {
         title: '什么时候 “不该” 用箭头函数',
         subTitle: '',
         routeName: 'when-can-not-use-arrow-function',
@@ -223,12 +231,12 @@ export default [
         date: '2017-06-22',
         tags: ['算法']
     },
-    // {
-    //     title: '如何实现继承',
-    //     subTitle: '',
-    //     routeName: 'inherit-in-javascript',
-    //     descript: '',
-    //     date: '2017-06-04',
-    //     tags: ['Javascript']
-    // }
+    {
+        title: '如何实现继承',
+        subTitle: '',
+        routeName: 'inherit-in-javascript',
+        descript: '',
+        date: '2017-06-04',
+        tags: ['Javascript']
+    }
 ];

@@ -7,13 +7,23 @@
 
         <BlogContent :useCatalog="true">
             <div slot="content">
-                <!--
-                    http://www.cnblogs.com/haoyijing/p/5760586.htm
 
-                    http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html
 
-                    http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html
-                -->
+                <h2>参考文献</h2>
+                <p>
+                    <ul>
+                        <li>
+                            <a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html" target="_blank">
+                                Javascript面向对象编程（二）：构造函数的继承
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html" target="_blank">
+                                Javascript面向对象编程（三）：非构造函数的继承
+                            </a>
+                        </li>
+                    </ul>
+                </p>
             </div>
         </BlogContent>
     </div>
