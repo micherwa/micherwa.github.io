@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="call与apply的用法和区别" subTitle=""
+            title="call和apply以及bind的用法和区别" subTitle=""
             date="2017-11-10" :tags="['Javascript']">
         </BlogHeader>
 
@@ -9,7 +9,7 @@
             <div slot="content">
                 <blockquote>
                     <p>
-                        call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。
+                        call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。另外，还会介绍与之类似的bind。
                     </p>
                 </blockquote>
 
@@ -146,6 +146,23 @@
                     猫成精了，想打怪兽<br>
                     奥特曼.打小怪兽.call(猫，小怪兽)<br>
                     猫也可以打小怪兽了
+                </p>
+
+                <h2>bind的使用</h2>
+                <p>
+                    <ul>
+                        <li>
+                            基本用法：<code>obj.bind(thisObj, arg1, arg2, …);</code>
+                        </li>
+                        <li>
+                            把 obj 绑定到 thisObj，这时候 thisObj 具备了 obj 的属性和方法。
+                        </li>
+                        <li>
+                            与 call 和 apply 不同的是，<strong>bind 绑定后不会立即执行</strong>。
+                        </li>
+                    </ul>
+                    <pre class="hljs perl"><code class="">function add(j, k) {<br>    <span class="hljs-keyword">return</span> j+k;<br>}<br><br>function <span class="hljs-function"><span class="hljs-keyword">sub</span>(<span class="hljs-title">j</span>, <span class="hljs-title">k</span>) </span>{<br>    <span class="hljs-keyword">return</span> j-k;<br>}<br><br>add.bind(<span class="hljs-function"><span class="hljs-keyword">sub</span>, 5, 3)</span>; // 不再返回<span class="hljs-number">8</span><br>add.bind(<span class="hljs-function"><span class="hljs-keyword">sub</span>, 5, 3)</span>(); // <span class="hljs-number">8</span></code></pre>
+                    如果 bind 的第一个参数是 null 或者 undefined，this 就指向全局对象。
                 </p>
             </div>
         </BlogContent>

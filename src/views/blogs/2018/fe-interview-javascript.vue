@@ -299,7 +299,7 @@
                         <li>apply的一个妙用：可以将一个数组默认的转化为一个参数列表。例如：有一个数组arr要push进一个新的数组中去, 如果用call的话需要把数组中的元素一个个取出来再push, 而用apply只有Array.prototype.push.apply(this, arr)</li>
                     </ul>
                     具体可参考
-                    <router-link :to="{ name: 'call-and-apply-in-javascript'}">
+                    <router-link :to="{ name: 'call-and-apply-and-bind'}">
                         这篇文章
                     </router-link>
                 </p>

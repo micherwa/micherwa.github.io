@@ -4,7 +4,7 @@ import BoxSizingInBoxModal from '@/views/blogs/2017/box-sizing-in-box-modal.vue'
 import EventPrincipleInJavascript from '@/views/blogs/2017/event-principle-in-javascript.vue';
 import CrossDomainInJavascript from '@/views/blogs/2017/cross-domain-in-javascript.vue';
 import AsyncInJavascript from '@/views/blogs/2017/async-in-javascript.vue';
-import CallAndApplyInJavascript from '@/views/blogs/2017/call-and-apply-in-javascript.vue';
+import CallAndApplyAndBind from '@/views/blogs/2017/call-and-apply-and-bind.vue';
 import InheritInJavascript from '@/views/blogs/2017/inherit-in-javascript.vue';
 import CopyObjectInJavascript from '@/views/blogs/2017/copy-object-in-javascript.vue';
 import ArrayDeDuplicateInJavascript from '@/views/blogs/2017/array-de-duplicate-in-javascript.vue';
@@ -13,8 +13,14 @@ import WhenCanNotUseArrowFunction from '@/views/blogs/2017/when-can-not-use-arro
 import PublishSubscribePattern from '@/views/blogs/2017/publish-subscribe-pattern.vue';
 import AsyncAwait from '@/views/blogs/2017/async-await.vue';
 import ConfusedOnTheRoadOfFE from '@/views/blogs/2017/confused-on-the-road-of-fe.vue';
+import InterestingCssEffect from '@/views/blogs/2017/interesting-css-effect.vue';
 
 export default [
+    {
+        path: '/2017/interesting-css-effect',
+        name: 'interesting-css-effect',
+        component: InterestingCssEffect
+    },
     {
         path: '/2017/confused-on-the-road-of-fe',
         name: 'confused-on-the-road-of-fe',
@@ -56,9 +62,9 @@ export default [
         component: InheritInJavascript
     },
     {
-        path: '/2017/call-and-apply-in-javascript',
-        name: 'call-and-apply-in-javascript',
-        component: CallAndApplyInJavascript
+        path: '/2017/call-and-apply-and-bind',
+        name: 'call-and-apply-and-bind',
+        component: CallAndApplyAndBind
     },
     {
         path: '/2017/async-in-javascript',

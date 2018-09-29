@@ -120,6 +120,14 @@ export default [
         tags: ['Javascript']
     },
     {
+        title: '一些有意思的css魔法',
+        subTitle: '',
+        routeName: 'interesting-css-effect',
+        descript: '',
+        date: '2017-12-14',
+        tags: ['CSS']
+    },
+    {
         title: 'CSS中不定宽高的垂直水平居中',
         subTitle: '9种方式的代码呈现',
         routeName: 'center-of-horizontal-and-vertical',
@@ -136,10 +144,10 @@ export default [
         tags: ['CSS']
     },
     {
-        title: 'call与apply的用法和区别',
+        title: 'call和apply以及bind的用法和区别',
         subTitle: '',
-        routeName: 'call-and-apply-in-javascript',
-        descript: 'call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。',
+        routeName: 'call-and-apply-and-bind',
+        descript: 'call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。另外，还会介绍与之类似的bind。',
         date: '2017-11-10',
         tags: ['Javascript']
     },
