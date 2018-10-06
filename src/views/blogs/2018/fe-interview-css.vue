@@ -36,13 +36,46 @@
 
                 <h2>display: none; 与 visibility: hidden; 的区别</h2>
                 <p>
-                    共同点：它们都能让元素不可见<br>
+                    共同点：
+                    <ul>
+                        <li>
+                            它们都能让元素不可见。
+                        </li>
+                        <li>
+                            但我们仍然可以通过JavaScript操作该元素，因为浏览器会解析 HTML 标签生成 DOM Tree。虽然一旦 display: none; 了，因此后续的布局、渲染工作自然没它什么事了，至于DOM操作还是可以的。
+                        </li>
+                        <li>
+                            无法获取焦点，即使通过tab键也是没办法的。
+                        </li>
+                        <li>
+                            不耽误form表单提交数据。表单提交时，依然会将隐藏的 input 元素的值提交上去。
+                        </li>
+                    </ul>
                     区别：
                     <ul>
-                        <li>display:none;会让元素完全从渲染树中消失，渲染的时候不占据任何空间；visibility: hidden;不会让元素从渲染树消失，渲染师元素继续占据空间，只是内容不可见</li>
-                        <li>display: none;是非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示；visibility:hidden;是继承属性，子孙节点消失由于继承了hidden，通过设置visibility: visible;可以让子孙节点显式</li>
-                        <li>修改常规流中元素的display通常会造成文档重排。修改visibility属性只会造成本元素的重绘</li>
-                        <li>读屏器不会读取display: none;元素内容；会读取visibility: hidden元素内容</li>
+                        <li>
+                            <code>display: none;</code> 会让元素完全从渲染树中消失，渲染的时候不占据任何空间；<code>visibility: hidden;</code> 不会让元素从渲染树消失，渲染师元素继续占据空间，只是内容不可见。
+                        </li>
+                        <li>
+                            父元素为<code>display: none;</code>，子孙元素哪怕设为显示，也没用，会表现成为 display: none;。<br>
+                            父元素为<code>visibility: hidden;</code>，而子元素可以设置为 <code>visibility: visible;</code> 是可以生效的。
+                        </li>
+                        <li>
+                            <code>display: none;</code> 的元素无法响应任何事件。<br>
+                            而设置为 <code>visibility: hidden;</code> 的元素其子元素可以为 <code>visibility: visible;</code>，因此隐藏的元素有可能位于事件冒泡的路径上。所以可在冒泡阶段响应事件。
+                        </li>
+                        <li>
+                            display 变化时将触发 reflow；而 visibility 变化则不会，只会触发 repaint。
+                        </li>
+                        <li>
+                            读屏器不会读取 display: none; 元素内容；会读取 visibility: hidden 元素内容。
+                        </li>
+                        <li>
+                            Transition 对 display 的变化无效；而对 visibility 的变化有效。
+                        </li>
+                        <li>
+                            CSS中的 counter 会忽略 <code>display: none;</code> 的元素。 而对 visibility 却不会忽略。
+                        </li>
                     </ul>
                 </p>
 

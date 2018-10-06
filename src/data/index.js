@@ -243,7 +243,7 @@ export default [
         title: '如何实现继承',
         subTitle: '',
         routeName: 'inherit-in-javascript',
-        descript: '',
+        descript: '这里说的继承，是Javascript面向对象编程(OOP)中的重要概念。但由于Javascript不是一种真正的面向对象编程语言，所以继承并非像 Java 中一个 extends 关键字，就能搞定继承的关系。',
         date: '2017-06-04',
         tags: ['Javascript']
     }
