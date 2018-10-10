@@ -14,8 +14,14 @@ import PublishSubscribePattern from '@/views/blogs/2017/publish-subscribe-patter
 import AsyncAwait from '@/views/blogs/2017/async-await.vue';
 import ConfusedOnTheRoadOfFE from '@/views/blogs/2017/confused-on-the-road-of-fe.vue';
 import InterestingCssEffect from '@/views/blogs/2017/interesting-css-effect.vue';
+import CurryFunction from '@/views/blogs/2017/curry-function.vue';
 
 export default [
+    {
+        path: '/2017/curry-function',
+        name: 'curry-function',
+        component: CurryFunction
+    },
     {
         path: '/2017/interesting-css-effect',
         name: 'interesting-css-effect',

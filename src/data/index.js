@@ -176,6 +176,14 @@ export default [
         tags: ['Javascript']
     },
     {
+        title: '函数的柯里化',
+        subTitle: '',
+        routeName: 'curry-function',
+        descript: '本文将介绍Javascript中函数柯里化的应用，柯里化是函数式编程的一个重要概念。它既能减少代码冗余，也能增加可读性，更关键的是，还能用来装逼。',
+        date: '2017-08-30',
+        tags: ['Javascript']
+    },
+    {
         title: '浅谈 发布/订阅 模式',
         subTitle: '',
         routeName: 'publish-subscribe-pattern',
