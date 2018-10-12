@@ -73,9 +73,21 @@
                     <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> persons = [{<span class="hljs-attr">name</span>: <span class="hljs-string">'kevin'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">11</span>}, {<span class="hljs-attr">name</span>: <span class="hljs-string">'daisy'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">24</span>}];<br><br><span class="hljs-keyword">let</span> getProp = _.curry(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key, obj</span>) </span>{<br>    <span class="hljs-keyword">return</span> obj[key];<br>});<br><br><span class="hljs-keyword">let</span> names2 = persons.map(getProp(<span class="hljs-string">'name'</span>));<br><span class="hljs-built_in">console</span>.log(names2); <span class="hljs-comment">// ['kevin', 'daisy']</span><br><br><span class="hljs-keyword">let</span> ages2 = persons.map(getProp(<span class="hljs-string">'age'</span>));<br><span class="hljs-built_in">console</span>.log(ages2); <span class="hljs-comment">// [11, 24]</span></code></pre>
                 </p>
 
+                <p>
+                    看另一个Memoization的例子：
+                    <pre class="hljs javascript"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">memoizeFunction</span>(<span class="hljs-params">func</span>) </span>{<br>    <span class="hljs-keyword">const</span> cache = {};<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<br>        <span class="hljs-keyword">let</span> key = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">if</span> (cache[key]) {<br>            <span class="hljs-keyword">return</span> cache[key];<br>        } <span class="hljs-keyword">else</span> {<br>            <span class="hljs-keyword">const</span> val = func.apply(<span class="hljs-literal">null</span>, <span class="hljs-built_in">arguments</span>);<br>            cache[key] = val;<br>            <span class="hljs-keyword">return</span> val;<br>        }<br>    };<br>}<br><br><span class="hljs-keyword">const</span> fibonacci = memoizeFunction(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n</span>) </span>{<br>    <span class="hljs-keyword">return</span> (n === <span class="hljs-number">0</span> || n === <span class="hljs-number">1</span>) ? n : fibonacci(n - <span class="hljs-number">1</span>) + fibonacci(n - <span class="hljs-number">2</span>);<br>});<br><br><span class="hljs-built_in">console</span>.log(fibonacci(<span class="hljs-number">100</span>)); <span class="hljs-comment">// 输出354224848179262000000</span><br><span class="hljs-built_in">console</span>.log(fibonacci(<span class="hljs-number">100</span>)); <span class="hljs-comment">// 输出354224848179262000000</span></code></pre>
+                    代码中，第2次计算 fibonacci(100) 则只需要在内存中直接读取结果。
+                </p>
+                <p>
+                    Memoization 用于优化比较耗时的计算，通过将计算结果缓存到内存中，这样对于同样的输入值，下次只需要中内存中读取结果。
+                </p>
+
                 <h2>总结</h2>
                 <p>
-                    实现柯里化的方式，基本都需要根据参数以及递归方式，让我们通过拆分参数的方式，来调用一个多参数的函数方法。虽然一开始理解起来有点云里雾里的，但一旦理解了其中的含义和具体的使用场景，你一定会对它爱不释手的。
+                    实现柯里化的方式，基本都需要根据参数以及递归方式，让我们通过拆分参数的方式，来调用一个多参数的函数方法。
+                </p>
+                <p>
+                    虽然一开始理解起来有点云里雾里的，但一旦理解了其中的含义和具体的使用场景，你一定会对它爱不释手的。
                 </p>
             </div>
         </BlogContent>
