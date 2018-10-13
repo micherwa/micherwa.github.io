@@ -24,6 +24,14 @@ export default [
     //     tags: ['算法']
     // },
     {
+        title: '前端面试题——Http',
+        subTitle: '',
+        routeName: 'fe-interview-http',
+        descript: '',
+        date: '2018-09-18',
+        tags: ['面试题']
+    },
+    {
         title: '前端面试题——Javascript',
         subTitle: '',
         routeName: 'fe-interview-javascript',
@@ -134,6 +142,14 @@ export default [
         descript: '',
         date: '2017-12-04',
         tags: ['CSS']
+    },
+    {
+        title: 'HTTP中GET与POST的区别',
+        subTitle: '',
+        routeName: 'difference-between-post-and-get-in-http',
+        descript: '最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。GET和POST本质上没有区别。GET产生一个TCP数据包；POST产生两个TCP数据包。',
+        date: '2017-11-29',
+        tags: ['Http']
     },
     {
         title: '伪类与伪元素的区别',
@@ -254,5 +270,13 @@ export default [
         descript: '这里说的继承，是Javascript面向对象编程(OOP)中的重要概念。但由于Javascript不是一种真正的面向对象编程语言，所以继承并非像 Java 中一个 extends 关键字，就能搞定继承的关系。',
         date: '2017-06-04',
         tags: ['Javascript']
+    },
+    {
+        title: 'POST提交数据的4种常见方式',
+        subTitle: '',
+        routeName: 'four-methods-in-post',
+        descript: 'HTTP/1.1 协议规定的 HTTP 请求方法有 OPTIONS、GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT 这几种。其中 POST 一般用来向服务端提交数据，本文主要讨论 POST 提交数据的几种方式。',
+        date: '2017-03-18',
+        tags: ['Http']
     }
 ];

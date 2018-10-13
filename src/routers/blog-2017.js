@@ -15,8 +15,20 @@ import AsyncAwait from '@/views/blogs/2017/async-await.vue';
 import ConfusedOnTheRoadOfFE from '@/views/blogs/2017/confused-on-the-road-of-fe.vue';
 import InterestingCssEffect from '@/views/blogs/2017/interesting-css-effect.vue';
 import CurryFunction from '@/views/blogs/2017/curry-function.vue';
+import DifferenceBetweenPostAndGetInHttp from '@/views/blogs/2017/difference-between-post-and-get-in-http.vue';
+import FourMethodsInPost from '@/views/blogs/2017/four-methods-in-post.vue';
 
 export default [
+    {
+        path: '/2017/four-methods-in-post',
+        name: 'four-methods-in-post',
+        component: FourMethodsInPost
+    },
+    {
+        path: '/2017/difference-between-post-and-get-in-http',
+        name: 'difference-between-post-and-get-in-http',
+        component: DifferenceBetweenPostAndGetInHttp
+    },
     {
         path: '/2017/curry-function',
         name: 'curry-function',
