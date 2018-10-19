@@ -1,5 +1,13 @@
 export default [
     {
+        title: '“热情假设”并不是一个好建议',
+        subTitle: '「阮一峰网络日志」',
+        routeName: 'enthusiasm-hypothesis',
+        descript: '有一本书反对了当年乔布斯的演讲中提出的观念，认为“热情假设”不是一个好的建议。',
+        date: '2018-10-19',
+        tags: ['言论与感想']
+    },
+    {
         title: '数组的常用操作',
         subTitle: '包含es5和es6',
         routeName: 'methods-of-array-beyond-es5',
@@ -72,10 +80,10 @@ export default [
         tags: ['CSS']
     },
     {
-        title: '「阮一峰网络日志」API之下',
-        subTitle: '',
+        title: 'API之下',
+        subTitle: '「阮一峰网络日志」',
         routeName: 'below-of-api',
-        descript: '虽然标题里面有 API，但是本文谈的不是编程，而是更重要的事情。很多公司的组织架构，都有一个中层。高层领导和基层员工之间，存在大量的中层干部。公司越大，中层干部越多。2015年，硅谷创业家莱因哈特（Peter Reinhardt）观察到一个现象：',
+        descript: '虽然标题里面有 API，但是本文谈的不是编程，而是更重要的事情。很多公司的组织架构，都有一个中层。高层领导和基层员工之间，存在大量的中层干部。公司越大，中层干部越多。',
         date: '2018-08-13',
         tags: ['言论与感想']
     },

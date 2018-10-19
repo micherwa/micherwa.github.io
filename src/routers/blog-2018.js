@@ -14,8 +14,14 @@ import HashTableInJavascript from '@/views/blogs/2018/hash-table-in-javascript.v
 import HowToUseThisInJavascript from '@/views/blogs/2018/how-to-use-this-in-javascript.vue';
 import MethodsOfArrayBeyondES5 from '@/views/blogs/2018/methods-of-array-beyond-es5.vue';
 import FeInterviewHttp from '@/views/blogs/2018/fe-interview-http.vue';
+import EnthusiasmHypothesis from '@/views/blogs/2018/enthusiasm-hypothesis.vue';
 
 export default [
+    {
+        path: '/2018/enthusiasm-hypothesis',
+        name: 'enthusiasm-hypothesis',
+        component: EnthusiasmHypothesis
+    },
     {
         path: '/2018/fe-interview-http',
         name: 'fe-interview-http',

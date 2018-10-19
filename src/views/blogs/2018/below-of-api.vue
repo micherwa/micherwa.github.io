@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="「阮一峰网络日志」API之下" subTitle=""
+            title="API之下" subTitle="「阮一峰网络日志」"
             date="2018-08-13" :tags="['言论与感想']">
         </BlogHeader>
 
@@ -9,12 +9,8 @@
             <div slot="content">
                 <blockquote>
                     <p>
-                        这篇文章转自
-                        <a href="http://www.ruanyifeng.com/blog/" target="_blank">
-                            阮一峰网络日志
-                        </a>
-                        中的
-                        <a href="https://segmentfault.com/a/1190000015040583" target="_blank">
+                        这篇文章转自阮一峰网络日志中的
+                        <a href="http://www.ruanyifeng.com/blog/2018/08/api-below.html" target="_blank">
                             API之下
                         </a>
                         ，细思极恐，值得一读。
