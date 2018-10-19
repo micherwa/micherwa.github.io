@@ -15,8 +15,14 @@ import HowToUseThisInJavascript from '@/views/blogs/2018/how-to-use-this-in-java
 import MethodsOfArrayBeyondES5 from '@/views/blogs/2018/methods-of-array-beyond-es5.vue';
 import FeInterviewHttp from '@/views/blogs/2018/fe-interview-http.vue';
 import EnthusiasmHypothesis from '@/views/blogs/2018/enthusiasm-hypothesis.vue';
+import SolutionOfOpenNewPage from '@/views/blogs/2018/solution-of-open-new-page.vue';
 
 export default [
+    {
+        path: '/2018/solution-of-open-new-page',
+        name: 'solution-of-open-new-page',
+        component: SolutionOfOpenNewPage
+    },
     {
         path: '/2018/enthusiasm-hypothesis',
         name: 'enthusiasm-hypothesis',
