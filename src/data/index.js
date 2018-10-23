@@ -294,5 +294,13 @@ export default [
         descript: 'HTTP/1.1 协议规定的 HTTP 请求方法有 OPTIONS、GET、HEAD、POST、PUT、DELETE、TRACE、CONNECT 这几种。其中 POST 一般用来向服务端提交数据，本文主要讨论 POST 提交数据的几种方式。',
         date: '2017-03-18',
         tags: ['Http']
+    },
+    {
+        title: '解读html头部的各种属性',
+        subTitle: '',
+        routeName: 'params-of-header-in-html',
+        descript: '',
+        date: '2016-01-12',
+        tags: ['Html']
     }
 ];

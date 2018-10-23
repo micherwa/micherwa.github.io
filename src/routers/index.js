@@ -2,6 +2,7 @@ import Home from '@/views/home/index';
 import About from '@/views/about/index';
 import Tags from '@/views/tags/index';
 
+import Blog2016Routers from './blog-2016';
 import Blog2017Routers from './blog-2017';
 import Blog2018Routers from './blog-2018';
 
@@ -22,6 +23,7 @@ export default [
         name: 'tags',
         component: Tags
     },
+    ...Blog2016Routers,
     ...Blog2017Routers,
     ...Blog2018Routers
 ];

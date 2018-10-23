@@ -5,5 +5,6 @@ export default [
     { name: '前端代码规范', rel: '3' },
     { name: '言论与感想', rel: '7' },
     { name: '算法', rel: '6' },
-    { name: 'Http', rel: '1' }
+    { name: 'Http', rel: '2' },
+    { name: 'Html', rel: '1' }
 ];
