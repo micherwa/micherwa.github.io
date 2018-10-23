@@ -138,7 +138,9 @@
 }
 
 .tags {
-  margin-bottom: -5px;
+    margin-bottom: -5px;
+    max-height: 96px;
+    overflow-y: hidden;
 
     a, .tag {
         display: inline-block;

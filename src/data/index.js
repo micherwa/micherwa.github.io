@@ -296,6 +296,22 @@ export default [
         tags: ['Http']
     },
     {
+        title: '程序员面试技巧',
+        subTitle: '一些技术之外需要注意的地方',
+        routeName: 'skill-of-programmer-interview',
+        descript: '',
+        date: '2016-04-20',
+        tags: ['言论与感想']
+    },
+    {
+        title: '关于微信公众号的研究',
+        subTitle: '',
+        routeName: 'research-of-wechat-subscription',
+        descript: '',
+        date: '2016-02-06',
+        tags: ['微信']
+    },
+    {
         title: '解读html头部的各种属性',
         subTitle: '',
         routeName: 'params-of-header-in-html',
