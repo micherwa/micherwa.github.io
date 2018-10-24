@@ -158,6 +158,28 @@
                     </ul>
                     <pre class="hljs stylus"><code class=""><span class="hljs-selector-tag">body</span> {<br>    user-select: <span class="hljs-attribute">none</span>; <span class="hljs-comment">// 页面中的文本不能被选中</span><br>}</code></pre>
                 </p>
+
+                <h2>Sticky footer</h2>
+                <p>
+                    使得当页面内容高度不够时，footer 依然显示到最下面。
+                    <pre class="hljs xml"><code class=""><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span>....<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"footer"</span>&gt;</span>....<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+                </p>
+
+                <h4>1.-margin & padding</h4>
+                <p>
+                    <pre class="hljs stylus"><code class=""><span class="hljs-selector-tag">html</span>, <span class="hljs-selector-tag">body</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>}<br><span class="hljs-variable">$footer</span>-<span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;<br><br><span class="hljs-selector-id">#content</span> {<br>    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: -<span class="hljs-variable">$footer</span>-height;<br>    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-variable">$footer</span>-height;<br>}<br><br><span class="hljs-selector-id">#footer</span> {<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-variable">$footer</span>-height;<br>    <span class="hljs-attribute">text-align</span>: center;<br>}</code></pre>
+                </p>
+
+                <h4>2.flex 布局</h4>
+                <p>
+                    <pre class="hljs stylus"><code class=""><span class="hljs-variable">$footer</span>-<span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;<br><br><span class="hljs-selector-tag">html</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>}<br><br><span class="hljs-selector-tag">body</span> {<br>    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">flex-direction</span>: column;<br>}<br><br><span class="hljs-selector-id">#content</span> {<br>    <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;<br>}<br><br><span class="hljs-selector-id">#footer</span> {<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-variable">$footer</span>-height;<br>    <span class="hljs-attribute">text-align</span>: center;<br>}</code></pre>
+                </p>
+
+                <h2>超宽的背景图片居中</h2>
+                <p>
+                    一般网站的主内容区，大致为980px或1000px，有时候会把较宽的图片作为整体背景图，居中放置，并且不要横向滚动轴，可以这么做：
+                    <pre class="hljs css"><code class=""><span class="hljs-selector-class">.wrapper</span>{<br>    <span class="hljs-attribute">min-width</span>: <span class="hljs-number">1000px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">800px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(111.jpg) no-repeat center top;<br>}<br><br><span class="hljs-selector-class">.mainContent</span>{<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">1000px</span>;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>}</code></pre>
+                </p>
             </div>
         </BlogContent>
     </div>

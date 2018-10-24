@@ -200,6 +200,14 @@ export default [
         tags: ['言论与感想']
     },
     {
+        title: 'Half pixel border',
+        subTitle: '移动端半像素的边框写法',
+        routeName: 'half-pixel-border',
+        descript: '在移动端中，对于dpr为2的设备设置border的宽度为1px时，看上去会变粗，但其实它并没有变粗。设计师口中说的1px是针对设备物理像素的，换算成css像素就是0.5px。',
+        date: '2017-10-16',
+        tags: ['CSS']
+    },
+    {
         title: '什么时候 “不该” 用箭头函数',
         subTitle: '',
         routeName: 'when-can-not-use-arrow-function',

@@ -17,8 +17,14 @@ import InterestingCssEffect from '@/views/blogs/2017/interesting-css-effect.vue'
 import CurryFunction from '@/views/blogs/2017/curry-function.vue';
 import DifferenceBetweenPostAndGetInHttp from '@/views/blogs/2017/difference-between-post-and-get-in-http.vue';
 import FourMethodsInPost from '@/views/blogs/2017/four-methods-in-post.vue';
+import HalfPixelBorder from '@/views/blogs/2017/half-pixel-border.vue';
 
 export default [
+    {
+        path: '/2017/half-pixel-border',
+        name: 'half-pixel-border',
+        component: HalfPixelBorder
+    },
     {
         path: '/2017/four-methods-in-post',
         name: 'four-methods-in-post',

@@ -126,14 +126,29 @@
                     所幸微信有个叫UnionId的机制，它可以打通服务号与订阅号，使得用户信息可以共享。这样就可以实现，即使用户只关注了订阅号，我们也可以拿到他的基本信息。
                 </p>
                 <p>
-                    做法很简单，进入<a href="https://open.weixin.qq.com/" target="_blank">https://open.weixin.qq.com</a>，找到“公众号绑定”，将订阅号和服务号，都绑定进去就可以了。
+                    做法很简单，进入<a href="https://open.weixin.qq.com/" target="_blank">https://open.weixin.qq.com</a>，找到“公众号绑定”，将订阅号和服务号，进行绑定就可以了。
                 </p>
                 <p>
                     之后再回到获取用户基本信息的回调结果，会看到多了一个参数:
                     <pre class="hljs 1c"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-string">"unionid"</span>: <span class="hljs-string">" o6_bmasdasdsad6_2sgVt7hMZOPfL"</span></code></pre>
                 </p>
                 <p>
-                    注：这个unionid的是作为用户的唯一标示用的，可以发现服务号和订阅号的openId是不同的，即使用户信息是相同的。所以，unionid的作用不言而喻了。
+                    <strong>注：这个unionid的是作为用户的唯一标示用的，可以发现服务号和订阅号的openId是不同的，即使用户信息是相同的。</strong>
+                </p>
+
+                <h2>微信支付成功后推荐关注栏规则</h2>
+                <p>
+                    公众号可以接入微信支付的API，在支付成功之后的提示页，会默认勾选 关注XX公众号。最新规则如下：
+                    <ul>
+                        <li>刷卡支付默认有推荐关注</li>
+                        <li>公众号支付和扫码支付需要5元以上才有推荐关注</li>
+                        <li>APP支付默认没有，需要申请配置，需要有一定用户规模才可以申请</li>
+                        <li>已经关注的不展示推荐栏</li>
+                        <li>服务号未设置头像的在IOS不展示推荐关注栏</li>
+                        <li>用户取消过关注的默认不勾选</li>
+                        <li>服务商模式的，需要在特约商户开发配置页设置推荐关注appid</li>
+                        <li>订阅号目前是不会有默认推荐关注的</li>
+                    </ul>
                 </p>
 
                 <h2>参考文献</h2>
