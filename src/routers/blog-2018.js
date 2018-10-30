@@ -16,8 +16,14 @@ import MethodsOfArrayBeyondES5 from '@/views/blogs/2018/methods-of-array-beyond-
 import FeInterviewHttp from '@/views/blogs/2018/fe-interview-http.vue';
 import EnthusiasmHypothesis from '@/views/blogs/2018/enthusiasm-hypothesis.vue';
 import SolutionOfOpenNewPage from '@/views/blogs/2018/solution-of-open-new-page.vue';
+import AfterReadingSoftSkill from '@/views/blogs/2018/after-reading-soft-skill.vue';
 
 export default [
+    {
+        path: '/2018/after-reading-soft-skill',
+        name: 'after-reading-soft-skill',
+        component: AfterReadingSoftSkill
+    },
     {
         path: '/2018/solution-of-open-new-page',
         name: 'solution-of-open-new-page',
