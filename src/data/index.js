@@ -1,5 +1,13 @@
 export default [
     {
+        title: '读书笔记',
+        subTitle: '《软技能：代码之外的生存指南》',
+        routeName: 'after-reading-soft-skill',
+        descript: '如果不看本书的内容，只看书名，猜猜看:这会是一本怎样的书?',
+        date: '2018-10-29',
+        tags: ['言论与感想']
+    },
+    {
         title: '“热情假设”并不是一个好建议',
         subTitle: '「阮一峰网络日志」',
         routeName: 'enthusiasm-hypothesis',
