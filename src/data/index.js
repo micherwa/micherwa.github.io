@@ -312,6 +312,14 @@ export default [
         tags: ['Http']
     },
     {
+        title: 'ssh key的使用',
+        subTitle: '',
+        routeName: 'how-to-use-ssh-key',
+        descript: '',
+        date: '2016-05-08',
+        tags: ['Git']
+    },
+    {
         title: '程序员面试技巧',
         subTitle: '一些技术之外需要注意的地方',
         routeName: 'skill-of-programmer-interview',

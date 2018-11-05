@@ -7,5 +7,6 @@ export default [
     { name: '微信', rel: '4' },
     { name: '算法', rel: '6' },
     { name: 'Http', rel: '2' },
-    { name: 'Html', rel: '1' }
+    { name: 'Html', rel: '1' },
+    { name: 'Git', rel: '15' }
 ];
