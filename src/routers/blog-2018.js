@@ -22,96 +22,96 @@ export default [
     {
         path: '/2018/after-reading-soft-skill',
         name: 'after-reading-soft-skill',
-        component: AfterReadingSoftSkill
+        component: () => import('@/views/blogs/2018/after-reading-soft-skill')
     },
     {
         path: '/2018/solution-of-open-new-page',
         name: 'solution-of-open-new-page',
-        component: SolutionOfOpenNewPage
+        component: () => import('@/views/blogs/2018/solution-of-open-new-page')
     },
     {
         path: '/2018/enthusiasm-hypothesis',
         name: 'enthusiasm-hypothesis',
-        component: EnthusiasmHypothesis
+        component: () => import('@/views/blogs/2018/enthusiasm-hypothesis')
     },
     {
         path: '/2018/fe-interview-http',
         name: 'fe-interview-http',
-        component: FeInterviewHttp
+        component: () => import('@/views/blogs/2018/fe-interview-http')
     },
     {
         path: '/2018/methods-of-array-beyond-es5',
         name: 'methods-of-array-beyond-es5',
-        component: MethodsOfArrayBeyondES5
+        component: () => import('@/views/blogs/2018/methods-of-array-beyond-es5')
     },
     {
         path: '/2018/how-to-use-this-in-javascript',
         name: 'how-to-use-this-in-javascript',
-        component: HowToUseThisInJavascript
+        component: () => import('@/views/blogs/2018/how-to-use-this-in-javascript')
     },
     {
         path: '/2018/hash-table-in-javascript',
         name: 'hash-table-in-javascript',
-        component: HashTableInJavascript
+        component: () => import('@/views/blogs/2018/hash-table-in-javascript')
     },
     {
         path: '/2018/fe-interview-algorithm',
         name: 'fe-interview-algorithm',
-        component: FeInterviewAlgorithm
+        component: () => import('@/views/blogs/2018/fe-interview-algorithm')
     },
     {
         path: '/2018/fe-interview-javascript',
         name: 'fe-interview-javascript',
-        component: FeInterviewJavascript
+        component: () => import('@/views/blogs/2018/fe-interview-javascript')
     },
     {
         path: '/2018/fe-interview-related-to-computer',
         name: 'fe-interview-related-to-computer',
-        component: FeInterviewRelatedToComputer
+        component: () => import('@/views/blogs/2018/fe-interview-related-to-computer')
     },
     {
         path: '/2018/fe-interview-css',
         name: 'fe-interview-css',
-        component: FeInterviewCSS
+        component: () => import('@/views/blogs/2018/fe-interview-css')
     },
     {
         path: '/2018/fe-interview-html',
         name: 'fe-interview-html',
-        component: FeInterviewHTML
+        component: () => import('@/views/blogs/2018/fe-interview-html')
     },
     {
         path: '/2018/layout-of-grail',
         name: 'layout-of-grail',
-        component: LayoutOfGrail
+        component: () => import('@/views/blogs/2018/layout-of-grail')
     },
     {
         path: '/2018/below-of-api',
         name: 'below-of-api',
-        component: BelowOfApi
+        component: () => import('@/views/blogs/2018/below-of-api')
     },
     {
         path: '/2018/front-end-code-criterion-1',
         name: 'front-end-code-criterion-1',
-        component: FrontEndCodeCriterion1
+        component: () => import('@/views/blogs/2018/front-end-code-criterion-1')
     },
     {
         path: '/2018/front-end-code-criterion-2',
         name: 'front-end-code-criterion-2',
-        component: FrontEndCodeCriterion2
+        component: () => import('@/views/blogs/2018/front-end-code-criterion-2')
     },
     {
         path: '/2018/front-end-code-criterion-3',
         name: 'front-end-code-criterion-3',
-        component: FrontEndCodeCriterion3
+        component: () => import('@/views/blogs/2018/front-end-code-criterion-3')
     },
     {
         path: '/2018/front-end-code-criterion-4',
         name: 'front-end-code-criterion-4',
-        component: FrontEndCodeCriterion4
+        component: () => import('@/views/blogs/2018/front-end-code-criterion-4')
     },
     {
         path: '/2018/event-loop-in-javascript',
         name: 'event-loop-in-javascript',
-        component: EventLoopInJavascript
+        component: () => import('@/views/blogs/2018/event-loop-in-javascript')
     },
 ];
