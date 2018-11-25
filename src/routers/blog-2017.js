@@ -1,123 +1,103 @@
-import CenterOfHorizontalAndVertical from '@/views/blogs/2017/center-of-horizontal-and-vertical.vue';
-import PseudoClassAndElement from '@/views/blogs/2017/pseudo-class-and-element.vue';
-import BoxSizingInBoxModal from '@/views/blogs/2017/box-sizing-in-box-modal.vue';
-import EventPrincipleInJavascript from '@/views/blogs/2017/event-principle-in-javascript.vue';
-import CrossDomainInJavascript from '@/views/blogs/2017/cross-domain-in-javascript.vue';
-import AsyncInJavascript from '@/views/blogs/2017/async-in-javascript.vue';
-import CallAndApplyAndBind from '@/views/blogs/2017/call-and-apply-and-bind.vue';
-import InheritInJavascript from '@/views/blogs/2017/inherit-in-javascript.vue';
-import CopyObjectInJavascript from '@/views/blogs/2017/copy-object-in-javascript.vue';
-import ArrayDeDuplicateInJavascript from '@/views/blogs/2017/array-de-duplicate-in-javascript.vue';
-import ExportAndExportDefaultInES6 from '@/views/blogs/2017/export-and-export-default-in-es6.vue';
-import WhenCanNotUseArrowFunction from '@/views/blogs/2017/when-can-not-use-arrow-function.vue';
-import PublishSubscribePattern from '@/views/blogs/2017/publish-subscribe-pattern.vue';
-import AsyncAwait from '@/views/blogs/2017/async-await.vue';
-import ConfusedOnTheRoadOfFE from '@/views/blogs/2017/confused-on-the-road-of-fe.vue';
-import InterestingCssEffect from '@/views/blogs/2017/interesting-css-effect.vue';
-import CurryFunction from '@/views/blogs/2017/curry-function.vue';
-import DifferenceBetweenPostAndGetInHttp from '@/views/blogs/2017/difference-between-post-and-get-in-http.vue';
-import FourMethodsInPost from '@/views/blogs/2017/four-methods-in-post.vue';
-import HalfPixelBorder from '@/views/blogs/2017/half-pixel-border.vue';
 
 export default [
     {
         path: '/2017/half-pixel-border',
         name: 'half-pixel-border',
-        component: HalfPixelBorder
+        component: () => import('@/views/blogs/2017/half-pixel-border')
     },
     {
         path: '/2017/four-methods-in-post',
         name: 'four-methods-in-post',
-        component: FourMethodsInPost
+        component: () => import('@/views/blogs/2017/four-methods-in-post')
     },
     {
         path: '/2017/difference-between-post-and-get-in-http',
         name: 'difference-between-post-and-get-in-http',
-        component: DifferenceBetweenPostAndGetInHttp
+        component: () => import('@/views/blogs/2017/difference-between-post-and-get-in-http')
     },
     {
         path: '/2017/curry-function',
         name: 'curry-function',
-        component: CurryFunction
+        component: () => import('@/views/blogs/2017/curry-function')
     },
     {
         path: '/2017/interesting-css-effect',
         name: 'interesting-css-effect',
-        component: InterestingCssEffect
+        component: () => import('@/views/blogs/2017/interesting-css-effect')
     },
     {
         path: '/2017/confused-on-the-road-of-fe',
         name: 'confused-on-the-road-of-fe',
-        component: ConfusedOnTheRoadOfFE
+        component: () => import('@/views/blogs/2017/confused-on-the-road-of-fe')
     },
     {
         path: '/2017/async-await',
         name: 'async-await',
-        component: AsyncAwait
+        component: () => import('@/views/blogs/2017/async-await')
     },
     {
         path: '/2017/publish-subscribe-pattern',
         name: 'publish-subscribe-pattern',
-        component: PublishSubscribePattern
+        component: () => import('@/views/blogs/2017/publish-subscribe-pattern')
     },
     {
         path: '/2017/when-can-not-use-arrow-function',
         name: 'when-can-not-use-arrow-function',
-        component: WhenCanNotUseArrowFunction
+        component: () => import('@/views/blogs/2017/when-can-not-use-arrow-function')
     },
     {
         path: '/2017/export-and-export-default-in-es6',
         name: 'export-and-export-default-in-es6',
-        component: ExportAndExportDefaultInES6
+        component: () => import('@/views/blogs/2017/export-and-export-default-in-es6')
     },
     {
         path: '/2017/array-de-duplicate-in-javascript',
         name: 'array-de-duplicate-in-javascript',
-        component: ArrayDeDuplicateInJavascript
+        component: () => import('@/views/blogs/2017/array-de-duplicate-in-javascript')
     },
     {
         path: '/2017/copy-object-in-javascript',
         name: 'copy-object-in-javascript',
-        component: CopyObjectInJavascript
+        component: () => import('@/views/blogs/2017/copy-object-in-javascript')
     },
     {
         path: '/2017/inherit-in-javascript',
         name: 'inherit-in-javascript',
-        component: InheritInJavascript
+        component: () => import('@/views/blogs/2017/inherit-in-javascript')
     },
     {
         path: '/2017/call-and-apply-and-bind',
         name: 'call-and-apply-and-bind',
-        component: CallAndApplyAndBind
+        component: () => import('@/views/blogs/2017/call-and-apply-and-bind')
     },
     {
         path: '/2017/async-in-javascript',
         name: 'async-in-javascript',
-        component: AsyncInJavascript
+        component: () => import('@/views/blogs/2017/async-in-javascript')
     },
     {
         path: '/2017/cross-domain-in-javascript',
         name: 'cross-domain-in-javascript',
-        component: CrossDomainInJavascript
+        component: () => import('@/views/blogs/2017/cross-domain-in-javascript')
     },
     {
         path: '/2017/event-principle-in-javascript',
         name: 'event-principle-in-javascript',
-        component: EventPrincipleInJavascript
+        component: () => import('@/views/blogs/2017/event-principle-in-javascript')
     },
     {
         path: '/2017/center-of-horizontal-and-vertical',
         name: 'center-of-horizontal-and-vertical',
-        component: CenterOfHorizontalAndVertical
+        component: () => import('@/views/blogs/2017/center-of-horizontal-and-vertical')
     },
     {
         path: '/2017/pseudo-class-and-element',
         name: 'pseudo-class-and-element',
-        component: PseudoClassAndElement
+        component: () => import('@/views/blogs/2017/pseudo-class-and-element')
     },
     {
         path: '/2017/box-sizing-in-box-modal',
         name: 'box-sizing-in-box-modal',
-        component: BoxSizingInBoxModal
+        component: () => import('@/views/blogs/2017/box-sizing-in-box-modal')
     }
 ];
