@@ -11,7 +11,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.BABEL_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 var config = {
