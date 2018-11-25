@@ -38,7 +38,7 @@ var config = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
+                test: /\.(png|jpe?g|gif|ico)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
@@ -46,11 +46,11 @@ var config = {
                 }
             },
             {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: '[name].[hash:7].[ext]'
+                    name: 'fonts/[name].[hash:7].[ext]'
                 }
             },
             {
@@ -144,8 +144,8 @@ if (isProd) {
         mode: 'production',
         devtool: 'inline-source-map',
         output: {
-            filename: '[name].[chunkhash:8].js',
-            chunkFilename: '[name].[chunkhash:8].js'
+            filename: 'js/[name].[chunkhash:8].js',
+            chunkFilename: 'js/[name].[chunkhash:8].js'
         },
         module: {
             rules: [
@@ -165,8 +165,8 @@ if (isProd) {
             }),
             // extract css into its own file
             new MiniCssExtractPlugin({
-                filename: '[name].[contenthash:8].css',
-                chunkFilename: '[name].[contenthash:8].css'
+                filename: 'css/[name].[contenthash:8].css',
+                chunkFilename: 'css/[name].[contenthash:8].css'
             }),
             // https://github.com/ampedandwired/html-webpack-plugin
             new HtmlWebpackPlugin({
