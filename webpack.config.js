@@ -120,6 +120,7 @@ if (isDev) {
             noInfo: true,
             host: devServerHost,
             port: devServerPort,
+            publicPath: '/',
             proxy: {},
             clientLogLevel: 'warning',
             overlay: { warnings: false, errors: true },
@@ -175,7 +176,6 @@ if (isProd) {
                 template: './index.esj',
                 inject: true,
                 favicon: './assets/favicon.ico',
-                path: '/blog',
                 minify: {
                     // more options: https://github.com/kangax/html-minifier#options-quick-reference
                     minifyJS: true,

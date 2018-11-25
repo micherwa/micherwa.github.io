@@ -1,12 +1,19 @@
 {
     "presets": [
-        ["env", {
-            "modules": false,
-            "targets": {
-                "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+        [
+            "env", {
+                "modules": false,
+                "targets": {
+                    "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+                }
             }
-        }],
+        ],
         "stage-3"
     ],
-    "plugins": ["lodash", "transform-runtime"]
+    "plugins": ["lodash", "transform-runtime", "syntax-dynamic-import"],
+    "env": {
+        "development":{
+            "plugins": ["dynamic-import-node"]
+        }
+    }
 }
