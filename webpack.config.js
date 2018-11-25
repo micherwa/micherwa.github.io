@@ -144,6 +144,7 @@ if (isProd) {
         mode: 'production',
         devtool: 'inline-source-map',
         output: {
+            path: path.resolve(__dirname, './blog'),
             filename: 'js/[name].[chunkhash:8].js',
             chunkFilename: 'js/[name].[chunkhash:8].js'
         },

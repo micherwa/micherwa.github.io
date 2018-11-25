@@ -64,6 +64,7 @@
 <style lang="scss">
     .home-container {
         .intro-header {
+
             background-image: url('~@/assets/header-bg-home.jpg');
         }
     }
