@@ -16,8 +16,7 @@
                     </ul>
 
                     <p class="copyright text-muted m-t-30">
-                        Copyright &copy; Micherwa Blog 2015-{{year}}.
-                        沪ICP备16037543号-1.
+                        Copyright &copy; Micherwa Blog 2015-{{year}}. 沪ICP备16037543号-1.
                     </p>
                 </div>
             </div>

@@ -60,7 +60,7 @@
         methods: {
             initParentOffsetTop () {
                 const parent = document.querySelector('.post-container');
-                // 是否要-60(顶部nav高度)待定
+                // 是否要减60(顶部nav高度)？待定
                 this.parentOffsetTop = parent.offsetTop - 20;
             },
 

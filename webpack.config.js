@@ -232,7 +232,14 @@ if (isProd) {
                         test: /[\\/]node_modules[\\/]/,
                         priority: 10,
                         chunks: 'initial' // 只打包初始时依赖的第三方
-                    }
+                    },
+                    // commons: {
+                    //     name: 'chunk-components',
+                    //     test: './components',
+                    //     minChunks: 3,
+                    //     priority: 5,
+                    //     reuseExistingChunk: true
+                    // }
                 }
             },
             runtimeChunk: 'single',
