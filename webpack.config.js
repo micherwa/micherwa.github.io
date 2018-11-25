@@ -144,6 +144,7 @@ if (isProd) {
         mode: 'production',
         devtool: 'inline-source-map',
         output: {
+            publicPath: '/blog/',
             filename: 'js/[name].[chunkhash:8].js',
             chunkFilename: 'js/[name].[chunkhash:8].js'
         },
@@ -174,7 +175,7 @@ if (isProd) {
                 template: './index.esj',
                 inject: true,
                 favicon: './assets/favicon.ico',
-                path: path.resolve(__dirname, './blog'),
+                path: '/blog',
                 minify: {
                     // more options: https://github.com/kangax/html-minifier#options-quick-reference
                     minifyJS: true,
