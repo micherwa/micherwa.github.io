@@ -1,6 +1,6 @@
-## 柳超的博客 | Micherwa Blog
+## Micherwa Blog
 
-[本博客](http://huxpro.github.io) 偏前端领域，也会记录一些生活感悟，与大家分享。
+[本博客](http://micherwa.cc) 偏前端领域，也会记录一些生活感悟，与大家分享。
 
 博客的搭建，参考了[Huxpro](https://github.com/Huxpro/huxpro.github.io)的模板，由vue2 + webpack4构建，并实现了自适应。风格上沿用了jekyll Theme。
 
