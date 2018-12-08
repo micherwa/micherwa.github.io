@@ -36,7 +36,7 @@
                             <a href="https://www.lilithgames.com/cn" target="_blank">莉莉丝游戏</a>
                             的广告技术中心，担任前端负责人 。曾在
                             <a href="https://www.youzu.com/" target="_blank">游族网络</a>
-                            的广告技术部 担任资深前端开发工程师、在
+                            的广告技术部，参与研发广告投放系统、在
                             <a href="https://www.houbank.com/home/" target="_blank">厚本金融</a>
                             参与研发
                             <a href="https://github.com/hbteam/weex-droplet-ui" target="_blank">水滴UI</a>
