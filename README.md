@@ -1,61 +1,21 @@
-## blog-tech
+## 柳超的博客 | Micherwa Blog
 
-> `vue2 webpack4`
+[本博客](http://huxpro.github.io) 偏前端领域，也会记录一些生活感悟，与大家分享。
 
-
-## 运行环境
-
-> `nodejs v8.9.0` `npm 5.5.1`
+博客的搭建，参考了[Huxpro](https://github.com/Huxpro/huxpro.github.io)的模板，由vue2 + webpack4构建，并实现了自适应。风格上沿用了jekyll Theme。
 
 
-## 技术栈
+## 个人介绍
 
-> `vue2` `vue-router` `sass` `webpack4` `es6` `lodash`
+Hi，我叫柳超，你也可以叫我 Micherwa(米协瓦)。常出没于 [博客](http://micherwa.cc)、 [SegmentFault](https://segmentfault.com/u/micherwa)、 [知乎](https://www.zhihu.com/people/micherwa)、 [Github](https://github.com/micherwa)、 [微博](https://weibo.com/jaked) 等地带。
 
+职业是软件工程师。目前在 [莉莉丝游戏](https://www.lilithgames.com/cn) 的广告技术中心，担任前端负责人 。曾在 [游族网络](https://www.youzu.com)的广告技术部，担任资深前端开发工程师、在 [厚本金融](https://www.houbank.com/home/) 参与研发 [水滴UI](https://github.com/hbteam/weex-droplet-ui) (一个轻量级的 weex UI组件库)、 在 [窝牛装修](http://www.lingduohome.com) 与 [篱笆网](https://www.liba.com) 从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
 
-## 构建命令
-
-```
-# install packages
-npm install
-
-# serve with hot reload at 0.0.0.0:8090
-npm run dev
-
-# build for production with minification
-npm run build
-
-# check and fix code rules
-npm run eslint
-```
-
-## 命名规则
-
-```
-1. 文件夹命名：a-b；
-2. 文件命名（js、css、vue、html）：a-b.*；
-3. 样式class命名：a-b；
-4. image命名：a-b；
-5. js变量命名：aB；
-6. js常量命名：A_B；
-7. js私有变量或方法：_aB；
-8. js方法的返回值如果是布尔值，方法名则以is、can、has、should等为前缀；
-9. service命名：Ab;
-10. component命名：Ab;
-```
+健身爱好者，也喜爱美食，闲暇时间乐于阅读和电影。
 
 
-## 备注
-
-```
-1. 在页面中添加img的时候，请尽量使用css background-image，避免webpack无法暂时对html img src支持不友好问题.
-2. 项目中使用EditorConfig来定义代码风格,需要安装相关编辑器的插件[查看对应编辑器插件](https://github.com/sindresorhus/editorconfig-sublime#readme)
-3.npm run eslint 会自动修复部分`js`文件错误，`vue`文件的js部分错误，`scss`文件错误无法修复
-```
-
-
-## 添加vue devtool
-
-```
-安装chrome扩展程序重新启动即可，详见：https://github.com/vuejs/vue-devtools
-```
+## 一些开源项目
+- [水滴UI](https://github.com/hbteam/weex-droplet-ui) (一个轻量级的 weex UI组件库)
+- [vue2-mobile-seed](https://github.com/micherwa/vue2-mobile-seed) (基于 vue2 + webpack4 的H5移动端种子工程)
+- [vue2-typescript-seed](https://github.com/micherwa/vue2-typescript-seed) (基于 vue2.5 + typescript2.6 + vuex3 的种子工程)
+- [react-redux-admin-antd](https://github.com/micherwa/react-redux-admin-antd) (基于 react16 + router4 + react-redux5 + antd3.10 的后台管理基础模板)

@@ -33,12 +33,14 @@
 
                         <p>
                             职业是软件工程师。目前在
-                            <a href="https://www.youzu.com/" target="_blank">游族网络</a> ·
-                            市场中心 · 广告技术部 担任资深前端开发工程师。曾在
+                            <a href="https://www.lilithgames.com/cn" target="_blank">莉莉丝游戏</a>
+                            的广告技术中心，担任前端负责人 。曾在
+                            <a href="https://www.youzu.com/" target="_blank">游族网络</a>
+                            的广告技术部 担任资深前端开发工程师、在
                             <a href="https://www.houbank.com/home/" target="_blank">厚本金融</a>
                             参与研发
                             <a href="https://github.com/hbteam/weex-droplet-ui" target="_blank">水滴UI</a>
-                            (一个轻量级weex UI组件库)、
+                            (一个轻量级的weex UI组件库)、
                             <a href="http://www.lingduohome.com/" target="_blank">窝牛装修</a> 与
                             <a href="https://www.liba.com/" target="_blank">篱笆网</a>
                             从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
@@ -79,7 +81,7 @@
                     {
                         href: 'https://github.com/hbteam/weex-droplet-ui',
                         name: '水滴UI',
-                        descript: '一个轻量级weex UI组件库'
+                        descript: '一个轻量级的weex UI组件库'
                     },
                     {
                         href: 'https://github.com/micherwa/vue2-mobile-seed',
@@ -90,6 +92,11 @@
                         href: 'https://github.com/micherwa/vue2-typescript-seed',
                         name: 'vue2-typescript-seed',
                         descript: '基于vue2.5+typescript2.6+vuex3的种子工程'
+                    },
+                    {
+                        href: 'https://github.com/micherwa/react-redux-admin-antd',
+                        name: 'react-redux-admin-antd',
+                        descript: '基于 react16 + router4 + react-redux5 + antd3.10 的后台管理基础模板'
                     }
                 ]
             };
