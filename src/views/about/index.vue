@@ -34,16 +34,9 @@
                         <p>
                             职业是软件工程师。目前在
                             <a href="https://www.lilithgames.com/cn" target="_blank">莉莉丝游戏</a>
-                            的广告技术中心，担任前端负责人 。曾在
-                            <a href="https://www.youzu.com/" target="_blank">游族网络</a>
-                            的广告技术部，参与研发广告投放系统、在
-                            <a href="https://www.houbank.com/home/" target="_blank">厚本金融</a>
-                            参与研发
+                            的广告技术中心，担任前端负责人 。曾在游族网络的广告技术部，参与研发广告投放系统、在厚本金融参与研发
                             <a href="https://github.com/hbteam/weex-droplet-ui" target="_blank">水滴UI</a>
-                            (一个轻量级的weex UI组件库)、
-                            <a href="http://www.lingduohome.com/" target="_blank">窝牛装修</a> 与
-                            <a href="https://www.liba.com/" target="_blank">篱笆网</a>
-                            从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
+                            (一个轻量级的weex UI组件库)、在<a href="http://www.lingduohome.com/" target="_blank">窝牛装修</a> 与篱笆网，从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
                         </p>
 
                         <p>健身爱好者，也喜爱美食，闲暇时间乐于阅读和电影。</p>
