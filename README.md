@@ -17,5 +17,5 @@ Hi，我叫柳超，你也可以叫我 Micherwa(米协瓦)。常出没于 [博�
 ## 一些开源项目
 - [水滴UI](https://github.com/hbteam/weex-droplet-ui) (一个轻量级的 weex UI组件库)
 - [vue2-mobile-seed](https://github.com/micherwa/vue2-mobile-seed) (基于 vue2 + webpack4 的H5移动端种子工程)
+- [react-redux-admin-antd](https://github.com/micherwa/react-redux-admin-antd) (基于 react16 + router4 + react-redux5 + antd3.10 的后台管理种子工程)
 - [vue2-typescript-seed](https://github.com/micherwa/vue2-typescript-seed) (基于 vue2.5 + typescript2.6 + vuex3 的种子工程)
-- [react-redux-admin-antd](https://github.com/micherwa/react-redux-admin-antd) (基于 react16 + router4 + react-redux5 + antd3.10 的后台管理基础模板)

@@ -82,14 +82,14 @@
                         descript: '基于vue2+webpack4的H5移动端种子工程'
                     },
                     {
+                        href: 'https://github.com/micherwa/react-redux-admin-antd',
+                        name: 'react-redux-admin-antd',
+                        descript: '基于 react16 + router4 + react-redux5 + antd3.10 的后台管理种子工程'
+                    },
+                    {
                         href: 'https://github.com/micherwa/vue2-typescript-seed',
                         name: 'vue2-typescript-seed',
                         descript: '基于vue2.5+typescript2.6+vuex3的种子工程'
-                    },
-                    {
-                        href: 'https://github.com/micherwa/react-redux-admin-antd',
-                        name: 'react-redux-admin-antd',
-                        descript: '基于 react16 + router4 + react-redux5 + antd3.10 的后台管理基础模板'
                     }
                 ]
             };
