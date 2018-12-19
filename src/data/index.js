@@ -1,4 +1,12 @@
 export default [
+    {
+        title: '再议async/await与promise的执行顺序',
+        subTitle: '',
+        routeName: 'execute-sequence-async&await-and-promise',
+        descript: '',
+        date: '2018-12-19',
+        tags: ['Javascript']
+    },
     // {
     //     title: '读书笔记',
     //     subTitle: '《软技能：代码之外的生存指南》',

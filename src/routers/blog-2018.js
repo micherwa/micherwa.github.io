@@ -1,4 +1,9 @@
 export default [
+    {
+        path: '/2018/execute-sequence-async&await-and-promise',
+        name: 'execute-sequence-async&await-and-promise',
+        component: () => import('@/views/blogs/2018/execute-sequence-async&await-and-promise')
+    },
     // {
     //     path: '/2018/after-reading-soft-skill',
     //     name: 'after-reading-soft-skill',

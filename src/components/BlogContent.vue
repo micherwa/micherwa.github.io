@@ -1,14 +1,14 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+            <div id="postContainer" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
                 <slot name="content"></slot>
             </div>
 
             <div
                 class="col-lg-2 col-lg-offset-0 visible-lg-block sidebar-container catalog-container"
-                v-if="useCatalog">
-                <div class="side-catalog">
+                id="catalogContainer" v-if="useCatalog">
+                <div class="side-catalog" :class="[isFixed ? 'fixed' : '']">
                     <hr class="hidden-sm hidden-xs">
                     <h5>CATALOG</h5>
                     <ul class="catalog-body">
@@ -40,7 +40,9 @@
         data () {
             return {
                 catalogList: [],
-                parentOffsetTop: 0
+                parentOffsetTop: 0,
+                catalogOffsetTop: 0,
+                isFixed: false
             };
         },
 
@@ -59,13 +61,16 @@
 
         methods: {
             initParentOffsetTop () {
-                const parent = document.querySelector('.post-container');
+                const parent = document.querySelector('#postContainer');
                 // 是否要减60(顶部nav高度)？待定
                 this.parentOffsetTop = parent.offsetTop - 20;
             },
 
             initCatalogList () {
-                const nodeList = document.querySelector('.post-container').querySelectorAll('h1, h2, h3, h4, h5, h6');
+                const catalogEl = document.querySelector('#catalogContainer');
+                this.catalogOffsetTop = catalogEl.offsetTop;
+
+                const nodeList = document.querySelector('#postContainer').querySelectorAll('h1, h2, h3, h4, h5, h6');
 
                 Array.prototype.forEach.call(nodeList, (el, idx) => {
                     el.setAttribute('class', 'b-jump');
@@ -91,6 +96,8 @@
             },
 
             onScroll () {
+                this.setCatalogFixed();
+
                 if (WindowScroll.isReachBottom()) {
                     this.setCatalogActive(this.catalogList.length - 1);
                     return;
@@ -111,6 +118,10 @@
                     item.active = index === idx;
                     this.catalogList.splice(idx, 1, item);
                 });
+            },
+
+            setCatalogFixed () {
+                this.isFixed = document.documentElement.scrollTop - this.catalogOffsetTop > 0;
             }
         }
     };
