@@ -82,8 +82,9 @@
                 </p>
 
                 <p>
-                    于是，我也在评论区给作者留了言，进行了讨论。@rhinel最后也证实，其实最近才发布通过了这个顺序的改进方案，具体可参考
-                    <a href="https://v8.dev/blog/fast-async" target="_blank">这篇文章</a>。不久之后，作者也在他文章的最后，补充了我们讨论的结果，供读者参考。
+                    于是，我也在评论区给作者留了言，进行了讨论。@rhinel最后也证实，其实最近才发布通过了这个顺序的改进方案，这篇
+                    <a href="https://v8.dev/blog/fast-async" target="_blank">Faster async functions and promises</a>
+                    详细解释了这个改进，以及实现效果。不久之后，作者也在他文章的最后，补充了我们讨论的结果，供读者参考。
                 </p>
 
                 <h2>总结</h2>
