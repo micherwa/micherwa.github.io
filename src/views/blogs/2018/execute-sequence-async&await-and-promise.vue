@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="再议async/await与promise的执行顺序" subTitle=""
+            title="「今日头条」前端面试题和思路解析" subTitle=""
             date="2018-12-19" :tags="['Javascript']">
         </BlogHeader>
 
@@ -83,7 +83,7 @@
 
                 <p>
                     于是，我也在评论区给作者留了言，进行了讨论。@rhinel最后也证实，其实最近才发布通过了这个顺序的改进方案，这篇
-                    <a href="https://v8.dev/blog/fast-async" target="_blank">Faster async functions and promises</a>
+                    <a href="https://v8.dev/blog/fast-async" target="_blank">《Faster async functions and promises》</a>
                     详细解释了这个改进，以及实现效果。不久之后，作者也在他文章的最后，补充了我们讨论的结果，供读者参考。
                 </p>
 

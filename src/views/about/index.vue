@@ -22,7 +22,7 @@
                         </blockquote>
 
                         <p>
-                            Hi，我叫柳超，你也可以叫我 Micherwa(米协瓦)。常出没于
+                            Hi，我叫Micherwa(米协瓦)，同事都叫我超哥。常出没于
                             <a
                                 :href="item.href" target="_blank"
                                  v-for="(item, $index) in socialList">

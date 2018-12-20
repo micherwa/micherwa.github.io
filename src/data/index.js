@@ -1,6 +1,6 @@
 export default [
     {
-        title: '再议async/await与promise的执行顺序',
+        title: '「今日头条」前端面试题和思路解析',
         subTitle: '',
         routeName: 'execute-sequence-async&await-and-promise',
         descript: '',
