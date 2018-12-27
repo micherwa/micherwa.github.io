@@ -91,9 +91,9 @@ export default [
         title: '圣杯布局的原理以及实现',
         subTitle: '',
         routeName: 'layout-of-grail',
-        descript: '本文将介绍CSS中的经典布局——圣杯布局的原理以及两种实现方法：浮动和flex。',
+        descript: '本文将介绍经典布局——圣杯布局的原理以及两种实现方法：浮动和flex。',
         date: '2018-08-23',
-        tags: ['CSS']
+        tags: ['Html']
     },
     {
         title: 'API之下',
