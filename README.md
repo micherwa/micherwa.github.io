@@ -19,3 +19,6 @@ Hi，我叫Micherwa(米协瓦)，同事都叫我超哥。常出没于 公众号 
 - [vue2-mobile-seed](https://github.com/micherwa/vue2-mobile-seed) (基于 vue2 + webpack4 的H5移动端种子工程)
 - [react-redux-admin-seed](https://github.com/micherwa/react-redux-admin-seed) (基于 react16 + router4 + react-redux5 + antd3.10 的后台管理种子工程)
 - [vue2-typescript-seed](https://github.com/micherwa/vue2-typescript-seed) (基于 vue2.5 + typescript2.6 + vuex3 的种子工程)
+
+#### PS：欢迎关注我的公众号 “超哥前端小栈”，交流更多的想法与技术。
+![wechat qrCode](https://raw.githubusercontent.com/micherwa/micherwa.github.io/master/src/assets/wechat_qrCode.jpg)
