@@ -23,6 +23,7 @@
 
                         <p>
                             Hi，我叫Micherwa(米协瓦)，同事都叫我超哥。常出没于
+                            公众号 “超哥前端小栈”、
                             <a
                                 :href="item.href" target="_blank"
                                  v-for="(item, $index) in socialList">
@@ -32,9 +33,7 @@
                         </p>
 
                         <p>
-                            职业是软件工程师。目前在
-                            <a href="https://www.lilithgames.com/cn" target="_blank">莉莉丝游戏</a>
-                            的广告技术中心，担任前端负责人 。曾在游族网络的广告技术部，参与研发广告投放系统、在厚本金融参与研发
+                            职业是软件工程师。目前在 知名游戏公司 的广告技术中心，担任前端负责人 。曾在游族网络的广告技术部，参与研发广告投放系统、在厚本金融参与研发
                             <a href="https://github.com/hbteam/weex-droplet-ui" target="_blank">水滴UI</a>
                             (一个轻量级的weex UI组件库)、在<a href="http://www.lingduohome.com/" target="_blank">窝牛装修</a> 与篱笆网，从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
                         </p>
@@ -49,6 +48,11 @@
                                     ({{item.descript}})
                                 </li>
                             </ul>
+                        </p>
+
+                        <p>
+                            PS：欢迎关注我的公众号 “超哥前端小栈”，交流更多的想法与技术。
+                            <img src="~@/assets/wechat_qrCode.jpg">
                         </p>
                     </div>
                 </div>
