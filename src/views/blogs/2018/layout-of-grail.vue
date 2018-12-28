@@ -54,11 +54,11 @@
                         <li>在container中的三列设为浮动和相对定位(后面会用到)，middle要放在最前面，footer清除浮动。</li>
                         <li>三列的左右两列分别定宽200px和220px，中间部分middle设置100%撑满</li>
                         <li>这样因为浮动的关系，middle会占据整个container，左右两块区域被挤下去了</li>
-                        <li>接下来设置left的<code>margin-left:-100%</code>，让left回到上一行最左侧</li>
-                        <li>但这会把middle给遮住了，所以这时给外层的container设置<code>padding:0 220px 0 200px;</code>，给left空出位置</li>
-                        <li>这时left并没有在最左侧，因为之前已经设置过相对定位，所以通过<code>left:-200px;</code>把left拉回最左侧</li>
-                        <li>同样的，对于right区域，设置<code>margin-right:-220px;</code>把right拉回第一行</li>
-                        <li>这时右侧空出了220px的空间，所以最后设置<code>right:-220px;</code>把right区域拉到最右侧就行了。</li>
+                        <li>接下来设置left的<code>margin-left: -100%;</code>，让left回到上一行最左侧</li>
+                        <li>但这会把middle给遮住了，所以这时给外层的container设置<code>padding: 0 220px 0 200px;</code>，给left空出位置</li>
+                        <li>这时left并没有在最左侧，因为之前已经设置过相对定位，所以通过<code>left: -200px;</code>把left拉回最左侧</li>
+                        <li>同样的，对于right区域，设置<code>margin-left: -220px;</code>把right拉回第一行</li>
+                        <li>这时右侧空出了220px的空间，所以最后设置<code>right: -220px;</code>把right区域拉到最右侧就行了。</li>
                     </ul>
                 </p>
 
@@ -73,8 +73,8 @@
                     <ul>
                         <li>header和footer同上面一样，横向撑满。footer不用再清浮动了</li>
                         <li>container中的left、middle、right依次排布即可，不用特意将middle放置到最前面</li>
-                        <li>给container设置弹性布局<code>display:flex;</code></li>
-                        <li>left和right区域定宽，middle设置<code>flex:1;</code>即可</li>
+                        <li>给container设置弹性布局<code>display: flex;</code></li>
+                        <li>left和right区域定宽，middle设置<code>flex: 1;</code>即可</li>
                     </ul>
                 </p>
 
