@@ -1,5 +1,13 @@
 export default [
     {
+        title: '「2018」年终总结',
+        subTitle: '',
+        routeName: 'annual-report',
+        descript: '',
+        date: '2018-12-30',
+        tags: ['言论与感想']
+    },
+    {
         title: '「今日头条」前端面试题和思路解析',
         subTitle: '',
         routeName: 'execute-sequence-async&await-and-promise',

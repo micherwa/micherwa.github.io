@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2018/annual-report',
+        name: 'annual-report',
+        component: () => import('@/views/blogs/2018/annual-report')
+    },
+    {
         path: '/2018/execute-sequence-async&await-and-promise',
         name: 'execute-sequence-async&await-and-promise',
         component: () => import('@/views/blogs/2018/execute-sequence-async&await-and-promise')
