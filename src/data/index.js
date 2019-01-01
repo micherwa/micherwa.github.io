@@ -1,6 +1,6 @@
 export default [
     {
-        title: '「2018」年终总结',
+        title: '2018再见！',
         subTitle: '',
         routeName: 'annual-report',
         descript: '',
