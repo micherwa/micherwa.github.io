@@ -1,6 +1,7 @@
 import Blog2016Routers from './blog-2016';
 import Blog2017Routers from './blog-2017';
 import Blog2018Routers from './blog-2018';
+import Blog2019Routers from './blog-2019';
 
 export default [
     {
@@ -21,5 +22,6 @@ export default [
     },
     ...Blog2016Routers,
     ...Blog2017Routers,
-    ...Blog2018Routers
+    ...Blog2018Routers,
+    ...Blog2019Routers
 ];

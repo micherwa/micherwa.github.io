@@ -1,5 +1,13 @@
 export default [
     {
+        title: '伪类与伪元素的区别及实战',
+        subTitle: '',
+        routeName: 'pseudo-class-and-element',
+        descript: '本文将介绍伪类与伪元素的区别，以及一些实战场景，最后会附上css3中的伪类与伪元素的列表',
+        date: '2019-01-04',
+        tags: ['CSS']
+    },
+    {
         title: '2018再见！',
         subTitle: '',
         routeName: 'annual-report',
@@ -190,14 +198,6 @@ export default [
         descript: '最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。GET和POST本质上没有区别。GET产生一个TCP数据包；POST产生两个TCP数据包。',
         date: '2017-11-29',
         tags: ['Http']
-    },
-    {
-        title: '伪类与伪元素的区别',
-        subTitle: '',
-        routeName: 'pseudo-class-and-element',
-        descript: '本文将介绍伪类与伪元素的区别，以及一些常用的场景，最后会附上一些css3中新增的伪类',
-        date: '2017-11-16',
-        tags: ['CSS']
     },
     {
         title: 'call和apply以及bind的用法和区别',
