@@ -208,7 +208,7 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: '实现异步编程的方法',
+        title: 'Javascript中的异步编程',
         subTitle: '',
         routeName: 'async-in-javascript',
         descript: '要解释异步(Asynchronous)，需要先了解Javascript语言的运行机制。JavaScript是单线程的，并且是非阻塞的。所以，它将主线程中的所有任务，分为两种：同步和异步。本篇仅讨论异步模式的几种方法。',

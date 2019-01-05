@@ -1,7 +1,7 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="实现异步编程的方法" subTitle=""
+            title="Javascript中的异步编程" subTitle=""
             date="2017-11-06" :tags="['Javascript']">
         </BlogHeader>
 
