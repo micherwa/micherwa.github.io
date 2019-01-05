@@ -16,6 +16,14 @@ export default [
         tags: ['言论与感想']
     },
     {
+        title: '「写在寒冬」分享给前端er的求职和成长建议',
+        subTitle: '',
+        routeName: 'some-suggestion-to-jser',
+        descript: '',
+        date: '2018-12-26',
+        tags: ['言论与感想']
+    },
+    {
         title: '「今日头条」前端面试题和思路解析',
         subTitle: '',
         routeName: 'execute-sequence-async&await-and-promise',

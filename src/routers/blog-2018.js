@@ -5,6 +5,11 @@ export default [
         component: () => import('@/views/blogs/2018/annual-report')
     },
     {
+        path: '/2018/some-suggestion-to-jser',
+        name: 'some-suggestion-to-jser',
+        component: () => import('@/views/blogs/2018/some-suggestion-to-jser')
+    },
+    {
         path: '/2018/execute-sequence-async&await-and-promise',
         name: 'execute-sequence-async&await-and-promise',
         component: () => import('@/views/blogs/2018/execute-sequence-async&await-and-promise')
