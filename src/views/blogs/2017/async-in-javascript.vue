@@ -7,16 +7,31 @@
 
         <BlogContent :useCatalog="true">
             <div slot="content">
+                <h2>前言</h2>
+                <p>
+                    最近，有个小伙伴问了我一段代码：
+                    <pre class="hljs typescript"><code class=""><span class="hljs-keyword">const</span> funB = <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"funB "</span>+ value);<br>};<br><br><span class="hljs-keyword">const</span> funA = <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {<br>    ...<br>    <span class="hljs-keyword">typeof</span> callback === <span class="hljs-string">"function"</span> &amp;&amp; callback(<span class="hljs-string">"is_ok!"</span>);<br>}<br><br>funA(funB);</code></pre>
+                    他不太理解这段代码中，funB函数作为funA函数的参数这样的写法。从语义上看，callback的意思是回调，那么是说funB是funA的回调嘛？
+                </p>
+
+                <p>
+                    我看了一会说，这是一种异步编程的写法，funB函数的确是funA函数的回调，它会等待funA中前面的语句都执行完，再去执行。
+                </p>
+
+                <p>
+                    嗯...额...等一下，异步编程，是什么？除了回调函数之外，还有什么？
+                </p>
+
+                <p>
+                    别急，让我们先从概念入手，再逐个理解异步编程中的方法，看看它的前世今生。
+                </p>
+
                 <h2>什么是异步？</h2>
                 <p>
-                    所谓"异步"，简单说就是一个任务分成两段，先执行第一段，然后转而执行其他任务，等做好了准备，再回过头执行第二段。<strong>这种不连续的执行，就叫做异步(Asynchronous)</strong>。相应地，连续的执行，就叫做同步(Synchronous)。
+                    所谓"异步"(Asynchronous)，可以理解为<strong>一种不连续的执行</strong>。简单地说，就是把一个任务分成两段，先执行第一段，然后转而执行其他任务，等接到通知了，再回过头执行第二段。
                 </p>
                 <p>
-                    异步编程对 JavaScript 语言太重要。JavaScript 只有一根线程，如果没有异步编程，根本没法用，非卡死不可。更具体的，可以参考
-                    <router-link :to="{ name: 'event-loop-in-javascript'}">这篇文章</router-link>。
-                </p>
-                <p>
-                    常见的异步任务有：
+                    我们都知道，JavaScript是单线程的。而异步，对于JavaScript的重要性，则体现在<strong>非阻塞</strong>这一点上。一些常见的异步有：
                     <ul>
                         <li>
                             onclick等事件 由浏览器内核的 DOM Binding 模块来处理，当事件触发的时候，回调函数会立即添加到任务队列中。
@@ -28,48 +43,61 @@
                             ajax 则会由浏览器内核的 network 模块来处理，在网络请求完成返回之后，才将回调添加到任务队列中。
                         </li>
                     </ul>
-                    本篇仅讨论异步模式的几种方法。
+                    接下来，我们一起来看看Javascript中的异步编程，具体有哪几种。
                 </p>
 
                 <h2>实现异步编程的方法</h2>
 
                 <h4>一、回调函数</h4>
                 <p>
-                    它是异步编程最基本的方法。<strong>所谓回调函数，就是把任务的第二段单独写在一个函数里面，等到重新执行这个任务的时候，就直接调用这个函数。</strong>
+                    上面不止一次提到了回调函数。它从概念上说很简单，就是<strong>把任务的第二段单独写在一个函数里面，等到重新执行这个任务的时候，就直接调用这个函数。</strong>它是异步编程中，最基本的方法。
                 </p>
                 <p>
-                    假定有两个函数f1和f2，后者等待前者的执行结果。顺序执行的话，可以这样写：<code>f1(); f2();</code>。但是，如果f1是一个很耗时的任务，该怎么办？<br>
-                    改写一下f1，把f2写成f1的回调函数：
-                    <pre class="hljs actionscript"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span><span class="hljs-params">(callback)</span></span>{<br>    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{<br>        <span class="hljs-comment">// f1的任务代码</span><br>        callback();<br>    }, <span class="hljs-number">1000</span>);<br>}<br>f1(f2);</code></pre>
-                    采用这种方式，我们把同步操作变成了异步操作，f1不会堵塞程序运行，相当于先执行程序的主要逻辑，将耗时的操作推迟执行。
+                    举个例子，假定有两个函数 f1 和 f2，后者等待前者的执行结果。顺序执行的话，可以这样写：
+                    <pre class="hljs lisp"><code class="">f1()<span class="hljs-comment">;</span><br>f2()<span class="hljs-comment">;</span></code></pre>
+                </p>
+                <p>但是，如果 f1 是一个很耗时的任务，该怎么办？</p>
+                <p>
+                    改写一下 f1，把 f2 写成 f1 的回调函数：
+                    <pre class="hljs coffeescript"><code class="">const f1 = <span class="hljs-function"><span class="hljs-params">(callback)</span> =&gt;</span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<br>        <span class="hljs-keyword">typeof</span> callback === <span class="hljs-string">"function"</span> &amp;&amp; callback();<br>    }, <span class="hljs-number">1000</span>);<br>}<br>f1(f2);</code></pre>
+                    采用这种方式，我们就把同步操作变成了异步操作。f1 并不会堵塞整个程序的运行。相当于执行完 f1 之后，通过回调通知了 f2 的执行。
                 </p>
                 <p>
-                    它的优点是：简单、容易理解和部署。<br>
-                    缺点是：不利于代码的阅读和维护，各个部分之间高度耦合，流程会很混乱，而且每个任务只能指定一个回调函数。
+                    它的优点是：简单、容易理解，写起来也简单。<br>
+                    但缺点是：不利于代码的阅读和维护，各个部分之间耦合度太高，流程不够清晰，而且每个方法只能指定一个回调函数。
                 </p>
 
                 <h4>二、事件监听</h4>
+                <p>onclick 的写法，在异步编程中，称为事件监听。它的思路是：如果任务的执行不取决于代码的顺序，而取决于某个事件是否发生，也就事件驱动模式。</p>
                 <p>
-                    换一种思路，如果任务的执行不取决于代码的顺序，而取决于某个事件是否发生呢？这就是事件驱动模式。还是以f1和f2为例：
-                    <pre class="hljs actionscript"><code class=""><span class="hljs-comment">// 采用的jQuery的写法，为f1绑定一个事件，当f1发生done事件，就执行f2</span><br>f1.on(<span class="hljs-string">'done'</span>, f2);<br><br><span class="hljs-comment">// 改写f1</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span><span class="hljs-params">()</span></span>{<br>    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{<br>        <span class="hljs-comment">// f1的任务代码，执行完成后，立即触发done事件，从而开始执行f2。</span><br>        f1.trigger(<span class="hljs-string">'done'</span>);<br>    }, <span class="hljs-number">1000</span>);<br>}</code></pre>
-                    它的优点是：比较容易理解，可以绑定多个事件，每个事件可以指定多个回调函数，而且可以”去耦合”，有利于实现模块化。<br>
-                    缺点是：整个程序都要变成事件驱动型，运行流程会变得很不清晰。
+                    还是 f1 和 f2 的例子，为了简化代码，这里采用jQuery的写法：
+                    <pre class="hljs javascript"><code><span class="hljs-comment">// 为f1绑定一个事件，当f1发生done事件，就执行f2</span><br>f1.on(<span class="hljs-string">'done'</span>, f2);<br><br><span class="hljs-comment">// 改写f1</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>{<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<br>        <span class="hljs-comment">// f1的任务代码，执行完成后，立即触发done事件</span><br>        f1.trigger(<span class="hljs-string">'done'</span>);<br>    }, <span class="hljs-number">1000</span>);<br>}</code></pre>
+                    它的优点是：比较容易理解，耦合度降低了。可以绑定多个事件，而且每个事件还能指定多个回调函数。<br>
+                    缺点是：整个程序都会变为由事件来驱动，流程会变得很不清晰。
                 </p>
 
                 <h4>三、发布/订阅</h4>
                 <p>
-                    我们假定，存在一个"信号中心"，某个任务执行完成，就向信号中心"发布"（publish）一个信号，其他任务可以向信号中心"订阅"（subscribe）这个信号，从而知道什么时候自己可以开始执行。这就叫做"发布/订阅模式"（publish-subscribe pattern），又称"观察者模式"（observer pattern）。具体可参考
-                    <router-link :to="{ name: 'publish-subscribe-pattern' }">这篇文章</router-link>。
+                    这是一种为了处理一对多的业务场景而诞生的设计模式，它也是一种异步编程的方法。vue中MVVM的实现，就有它的功劳。
                 </p>
                 <p>
-                    下面的例子，采用的是Ben Alman的Tiny Pub/Sub，这是jQuery的一个插件。
-                    <pre class="hljs actionscript"><code class=""><span class="hljs-comment">// f2向”信号中心“jQuery订阅”done”信号 </span><br>jQuery.subscribe(<span class="hljs-string">"done"</span>, f2);<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span><span class="hljs-params">()</span></span>{<br>    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{<br>        <span class="hljs-comment">// f1的任务代码，f1执行完成后，向”信号中心”jQuery发布”done”信号，从而引发f2的执行。</span><br>        jQuery.publish(<span class="hljs-string">"done"</span>);<br>    }, <span class="hljs-number">1000</span>);<br>}<br><br><span class="hljs-comment">// f2完成执行后，也可以取消订阅（unsubscribe） </span><br>jQuery.unsubscribe(<span class="hljs-string">"done"</span>, f2);</code></pre>
-                    这种方法的性质与“事件监听”类似，但是明显优于后者。因为我们可以通过查看“消息中心”，了解存在多少信号、每个信号有多少订阅者，从而监控程序的运行。
+                    关于概念，我们可以这样理解，假定存在一个"信号中心"，某个任务执行完成，就向信号中心"发布"（publish）一个信号，其他任务可以向信号中心"订阅"（subscribe）这个信号，从而知道什么时候自己可以开始执行。这就叫做"发布/订阅模式"（publish-subscribe pattern），又称"观察者模式"（observer pattern）。
+                </p>
+                <p>
+                    下面的例子，采用的是 Morgan Roderick 的
+                    <a href="https://github.com/mroderick/PubSubJS" target="_blank">PubSubJS</a>
+                    ，这是一个无依赖的JavaScript插件：
+                    <pre class="hljs coffeescript"><code class=""><span class="hljs-keyword">import</span> PubSub <span class="hljs-keyword">from</span> <span class="hljs-string">'pubsub-js'</span>;<br><br><span class="hljs-regexp">//</span> f2向 <span class="hljs-string">'PubSub'</span> 订阅信号 <span class="hljs-string">'done'</span><br>PubSub.subscribe(<span class="hljs-string">'done'</span>, f2);<br><br>const f1 = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<br>        <span class="hljs-regexp">//</span> f1执行完成后，向 <span class="hljs-string">'PubSub'</span> 发布信号 <span class="hljs-string">'done'</span>，从而执行 f2<br>        PubSub.publish(<span class="hljs-string">'done'</span>);<br>    }, <span class="hljs-number">1000</span>);<br>};<br>f1();<br><br><span class="hljs-regexp">//</span> f2 完成执行后，也可以取消订阅<br>PubSub.unsubscribe(<span class="hljs-string">"done"</span>, f2);</code></pre>
+                    这种模式有点类似于“事件监听”，但是明显优于后者。因为，我们可以通过查看“消息中心”，了解存在多少信号、每个信号有多少订阅者，从而监控程序的运行。
                 </p>
 
                 <h4>四、Promise对象</h4>
+                <p>接下来，我们聊聊与ajax相关的异步编程方法，Promise对象。</p>
                 <p>
-                    Promise对象是由CommonJS提出的一种规范，它的出现，是为了解决回调函数嵌套(<strong>回调地狱</strong>)的问题。它不是新的语法功能，而是一种新的写法，允许将回调函数的横向加载，改成纵向加载。它的思想是，每一个异步任务返回一个Promise对象，该对象有一个then方法，允许指定回调函数。
+                    Promise 是由 CommonJS 提出的一种规范，它是为了解决回调函数嵌套(<strong>回调地狱</strong>)的问题。它不是新的语法功能，而是一种新的写法，允许将回调函数的横向加载，改成纵向加载。它的思想是，每一个异步任务返回一个Promise对象，该对象有一个then方法，允许指定回调函数。
+                </p>
+                <p>
+                    继续改写 f1 和 f2：
                     <pre class="hljs javascript"><code class=""><span class="hljs-comment">// f1() 和 f2() 的链式写法</span><br>f1().then(f2);<br><br><span class="hljs-comment">// 用jQuery改写f1</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>) </span>{<br>    <span class="hljs-keyword">var</span> dfd = $.Deferred();<br>    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<br>        <span class="hljs-comment">// f1的任务代码</span><br>        dfd.resolve();<br>    }, <span class="hljs-number">500</span>);<br>    <span class="hljs-keyword">return</span> dfd.promise;<br>}</code></pre>
                     它的优点：回调函数变成了链式写法，程序的流程可以看得很清楚，而且有一整套的配套方法，可以实现许多强大的功能。比如，指定多个回调函数：<code>f1().then(f2).then(f3);</code>。再比如，指定发生错误时的回调函数：<code>f1().then(f2).fail(f3);</code>。还有就是，如果一个任务已经完成，再添加回调函数，该回调函数会立即执行。所以，你不用担心是否错过了某个事件或信号。<br>
                     缺点就是：编写和理解，都相对比较难。
