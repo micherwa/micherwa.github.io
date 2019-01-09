@@ -5,7 +5,7 @@
             date="2019-01-04" :tags="['CSS']">
         </BlogHeader>
 
-        <BlogContent :useCatalog="true">
+        <BlogContent>
             <div slot="content">
                 <h2>前言</h2>
                 <p>

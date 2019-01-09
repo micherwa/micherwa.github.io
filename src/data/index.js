@@ -1,5 +1,13 @@
 export default [
     {
+        title: '关于一个需求的解决思路',
+        subTitle: '',
+        routeName: 'thinking-of-solution',
+        descript: '',
+        date: '2019-01-09',
+        tags: ['Javascipt']
+    },
+    {
         title: '伪类与伪元素的区别及实战',
         subTitle: '',
         routeName: 'pseudo-class-and-element',
