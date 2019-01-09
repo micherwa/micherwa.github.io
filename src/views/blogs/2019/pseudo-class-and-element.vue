@@ -9,7 +9,7 @@
             <div slot="content">
                 <h2>前言</h2>
                 <p>
-                    面试前端候选人的时候，我会问这样一个有关CSS的问题：
+                    面试前端候选人的时候，我经常会问这样一个有关CSS的问题：
                 </p>
                 <blockquote>
                     <p>
@@ -42,7 +42,7 @@
                 </blockquote>
 
                 <p>
-                    从回答上来分析，虽然伪类和伪元素平时都有接触，但在概念上，都比较模糊。今天，我们就来说说伪类与伪元素的区别，以及使用场景。伪类，不是只有a标签的四种状态。伪元素，也不是只有 ::before 与 ::after。
+                    从回答上来分析，虽然伪类和伪元素平时都有接触，但在概念上，都比较模糊。今天，我们就来说说伪类与伪元素的区别，以及使用场景。伪类，不是只有a标签的四种状态。伪元素，也不是只有 ::before 与 ::after。更多的伪类与伪元素，详见文末附录。
                 </p>
 
 
@@ -116,7 +116,7 @@
                     还记得2018年圣诞节的“彩蛋事件”，在整个前端圈，轰动一时。因为按钮上的一朵云，导致不少前端er提前回家过年了。当时，彩蛋事件出现的第一时间，就吓得我赶快打开工程看了一眼，果然也中招了。为了保住饭碗，得赶紧把云朵去掉。
                 </p>
                 <p>
-                    查看了生成的html，发现原来是 button 下藏了一个 ::before。所以，赶紧把样式覆盖掉，兼容代码如下：
+                    查看了生成的html，发现原来是 button 下藏了一个 <code>::before</code>。所以，赶紧把样式覆盖掉，兼容代码如下：
                     <pre class="hljs fortran"><code class="">.ant-btn {<br>    &amp;::before {<br>        display: <span class="hljs-keyword">none</span> <span class="hljs-comment">!important;</span><br>    }<br>}</code></pre>
                 </p>
 
@@ -125,6 +125,7 @@
                     在网页中，默认的划词效果是，原字色保持不变，划过时的背景变为蓝底色。其实，这是可以用 <code>::selection</code> 来进行美化的。看下面这个例子：
                     <pre class="hljs xml"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Custom text selection color<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
                     <pre class="hljs css"><code class=""><span class="hljs-selector-pseudo">::selection</span> {<br>    <span class="hljs-attribute">color</span>: red;<br>    <span class="hljs-attribute">background-color</span>: yellow;<br>}</code></pre>
+                    效果如下：
                     <img src="~@/assets/blog/bg-20190104-03.png">
                     划过的部分美化为：红色的字体，并且底色变为了黄色。
                 </p>
@@ -134,7 +135,7 @@
                     <strong>CSS也可以实现动态的交互</strong>，并非只有JavaScript才能实现。
                 </p>
                 <p>
-                    <strong>书写的时候，要尊重规范</strong>。写伪类的时候用:，而写伪元素的时候用::。
+                    <strong>书写的时候，要尊重规范</strong>。写伪类的时候用 <code>:</code>，而写伪元素的时候用 <code>::</code>。
                 </p>
                 <p>
                     <strong>兼容性的问题，交给postcss去做。</strong>本文并未涉及兼容性的写法，包括前缀问题，可以交给autoprefixer去做。
