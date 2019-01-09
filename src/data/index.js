@@ -1,6 +1,6 @@
 export default [
     {
-        title: '关于一个需求的解决思路',
+        title: '还在恐惧读源码？看完这篇就不怕了',
         subTitle: '',
         routeName: 'thinking-of-solution',
         descript: '',
