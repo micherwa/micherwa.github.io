@@ -1,6 +1,6 @@
 export default [
     {
-        title: '还在恐惧读源码？看完这篇就不怕了',
+        title: '「读懂源码系列1」还在恐惧读源码？看完这篇就不怕了',
         subTitle: '',
         routeName: 'thinking-of-solution',
         descript: '',

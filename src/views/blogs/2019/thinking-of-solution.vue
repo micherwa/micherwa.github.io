@@ -9,10 +9,10 @@
             <div slot="content">
                 <h2>一个小需求</h2>
                 <p>
-                    事情的起因，是昨天老板提出的一个需求。
+                    事情的起因，是昨天有一个新的需求被提出。
                 </p>
                 <p>
-                    他要实现让我们自己定制的弹出层，具备按下 ESC 也能退出的功能。我把任务交给了同组的小伙伴S去实现。（这个项目用到了vue技术栈，以及饿了么的UI框架。）
+                    需求是要实现，让我们自己定制的弹出层，具备按下 ESC 也能退出的功能。我把任务交给了同组的小伙伴S去实现。（这个项目用到了vue技术栈，以及饿了么的UI框架。）
                 </p>
                 <p>
                     我开完会回来，发现他还在处理那个功能，但好像遇到了什么瓶颈。于是，我就问了他卡在了什么地方。
@@ -31,7 +31,7 @@
 
                 <h2>一种思路</h2>
                 <p>
-                    我没有直接把答案告诉他，而是给他提供了一个思路：在我们常用的 element-ui 的 el-dialog组里，有个属性叫做 <code>close-on-press-escape</code>，它的解释如下图：
+                    我没有直接把答案告诉他，而是给他提供了一个思路：在我们常用的 element-ui 的 el-dialog组件里，有个属性叫做 <code>close-on-press-escape</code>，它的解释如下图：
                     <img src="~@/assets/blog/bg-20190109-01.png">
                 </p>
                 <p>
@@ -42,12 +42,12 @@
                     <img src="~@/assets/blog/bg-20190109-03.jpg">
                 </p>
                 <p>
-                    源码是所有框架和API的根基，因为其高深度和复杂性，让人望而却步。我自己也经历过这个阶段，所以非常理解他的心情，鼓励他一起做一次尝试。
+                    源码是所有框架和API的根基，因为比较复杂深邃，所以让人很抗拒。我自己也经历过这个阶段，所以非常理解他的心情，鼓励他一起做一次尝试。
                 </p>
 
                 <h2>查找源码</h2>
                 <p>
-                    首先，我们在 node_modules 里，找到了 element-ui的文件夹，它大致长这个样子：
+                    首先，我们在 node_modules 里，找到了 element-ui 的文件夹，它大致长这个样子：
                     <img src="~@/assets/blog/bg-20190109-02.png">
 
                     接着，我们找到了 packages 里的 dialog 文件夹，再从 index 入口，找到了组件 component.vue。点进去找了半天，也只找到个 <strong>closeOnPressEscape</strong> 属性的定义，却没有实现的方法。
@@ -72,7 +72,7 @@
                 </p>
 
                 <p>
-                    哇！终于找到了！原来它的实现，是这样的：
+                    哇！终于找到了！它的实现，是这样的：
                     <pre class="hljs javascript"><code class=""><span class="hljs-comment">// handle `esc` key when the popup is shown</span><br><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'keydown'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{<br>    <span class="hljs-keyword">if</span> (event.keyCode === <span class="hljs-number">27</span>) {<br>        <span class="hljs-keyword">const</span> topPopup = getTopPopup();<br><br>        <span class="hljs-keyword">if</span> (topPopup &amp;&amp; topPopup.closeOnPressEscape) {<br>            topPopup.handleClose<br>                ? topPopup.handleClose()<br>                : (topPopup.handleAction<br>                    ? topPopup.handleAction(<span class="hljs-string">'cancel'</span>)<br>                    : topPopup.close());<br>        }<br>    }<br>});</code></pre>
                     原来，是在 window 上添加了事件监听 keydown，当监测到是 ESC 的 keyCode 时，则执行相关操作。
                 </p>
@@ -86,6 +86,7 @@
                         <li>代码方面，在 mounted 中，给 window 添加事件监听之后，要记得在 destroyed 时，去除监听。</li>
                         <li>业务方面，这是一个我们定制的通用的弹出层组件，所以在 props 中定义了一个 closeOnPressEscape 属性，以方便在某些业务场景下，不需要按 ESC 就退出这个功能的时候，直接设置它为 false 即可。</li>
                     </ul>
+                    到此为止，整个事件画上了圆满的句号。
                 </p>
 
                 <h2>源码真有那么可怕吗？</h2>
@@ -99,7 +100,7 @@
                     从以上的事例中可以看出，其实并没有。例子中的element-ui源码并不复杂，我和小伙伴S一起看源码时，他也大概都能看得明白。最后因为弄懂了背后的原理，进行简单应用，比较轻松就解决了问题。
                 </p>
                 <p>
-                    对于源码的恐惧，让我们渐渐思维固化，自己告诉自己不要去碰源码，时间长了就遗忘了还有这样一条路可走。
+                    <strong>对于源码的恐惧，让我们渐渐思维固化，自己告诉自己不要去碰源码，时间长了就遗忘了还有这样一条路可走。</strong>
                 </p>
 
                 <h2>面试中的应用</h2>
