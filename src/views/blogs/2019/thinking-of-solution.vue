@@ -2,7 +2,7 @@
     <div class="blog-container">
         <BlogHeader
             title=" 「读懂源码系列1」还在恐惧读源码？看完这篇就不怕了" subTitle=""
-            date="2019-01-09" :tags="['Javascript']">
+            date="2019-01-09" :tags="['Javascript', '源码解读']">
         </BlogHeader>
 
         <BlogContent>

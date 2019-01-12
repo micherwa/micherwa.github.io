@@ -40,11 +40,6 @@ export default [
         component: () => import('@/views/blogs/2018/methods-of-array-beyond-es5')
     },
     {
-        path: '/2018/how-to-use-this-in-javascript',
-        name: 'how-to-use-this-in-javascript',
-        component: () => import('@/views/blogs/2018/how-to-use-this-in-javascript')
-    },
-    {
         path: '/2018/hash-table-in-javascript',
         name: 'hash-table-in-javascript',
         component: () => import('@/views/blogs/2018/hash-table-in-javascript')

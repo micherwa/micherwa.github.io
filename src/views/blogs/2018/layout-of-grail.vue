@@ -1,8 +1,8 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="圣杯布局的原理以及实现" subTitle=""
-            date="2018-08-23" :tags="['Html']">
+            title="「前端面试题系列2」如何实现一个圣杯布局？" subTitle=""
+            date="2018-12-23" :tags="['Html', '面试题']">
         </BlogHeader>
 
         <BlogContent :useCatalog="true">
@@ -36,7 +36,7 @@
                         <li>中间部分的高度是三栏中最高的区域的高度。</li>
                     </ul>
                     接下来，将会介绍两种实现的方法。它们的最终效果都一样，如下图：
-                    <img src="~@/assets/blog/bg-20180823-01.png">
+                    <img src="~@/assets/blog/bg-20181223-01.png">
                 </p>
 
                 <h2>实现方法1：浮动</h2>

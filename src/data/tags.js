@@ -8,5 +8,6 @@ export default [
     { name: '算法', rel: '6' },
     { name: 'Http', rel: '2' },
     { name: 'Html', rel: '1' },
-    { name: 'Git', rel: '15' }
+    { name: 'Git', rel: '15' },
+    { name: '源码解读', rel: '9'}
 ];

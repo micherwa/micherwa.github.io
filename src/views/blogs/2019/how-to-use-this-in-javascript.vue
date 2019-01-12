@@ -1,12 +1,15 @@
 <template>
     <div class="blog-container">
         <BlogHeader
-            title="this的原理以及用法" subTitle=""
-            date="2018-06-20" :tags="['Javascript']">
+            title="「前端面试题系列4」this的原理以及用法" subTitle=""
+            date="2019-01-16" :tags="['Javascript', '面试题']">
         </BlogHeader>
 
-        <BlogContent :useCatalog="true">
+        <BlogContent>
             <div slot="content">
+                <h2>前言</h2>
+
+
                 <h2>this是什么？</h2>
                 <p>
                     对于this，我们的大脑中总会用“复杂”和“混乱”等词汇来形容它。<br>
@@ -57,7 +60,7 @@
 
                 <p>
                     这时，引擎会将函数单独保存在内存中，然后再将<strong>函数的地址</strong>赋值给 foo 属性的 value 属性。
-                    <img src="~@/assets/blog/bg-20180620-01.png">
+                    <img src="~@/assets/blog/bg-20190116-01.png">
                     可以看到，函数是一个单独的值(以地址形式赋值)，所以才可以在不同的环境中执行。
                 </p>
 
