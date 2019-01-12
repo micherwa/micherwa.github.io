@@ -8,9 +8,68 @@
         <BlogContent>
             <div slot="content">
                 <h2>前言</h2>
+                <p>这是前端面试题系列的第 4 篇，你可能错过了前面的篇章，可以在这里找到：</p>
+                <ul>
+                    <li>
+                        <a href="https://segmentfault.com/a/1190000017480929" target="_blank">今日头条 面试题和思路解析</a>
+                    </li>
+                    <li>
+                        <a href="https://segmentfault.com/a/1190000017540629" target="_blank">如何实现一个圣杯布局？</a>
+                    </li>
+                    <li>
+                        <a href="https://segmentfault.com/a/1190000017784553" target="_blank">伪类与伪元素的区别及实战</a>
+                    </li>
+                </ul>
+                <p>正文开始。</p>
+                <p>
+                    在前端的面试中，this 的指向问题，是个老生常谈的必考题。有朋友告诉我说，他看到关于 this 的题目就头晕，感觉挺复杂的。我为他解答了困惑，并整理成了这篇文章，希望能帮到有需要的同学。
+                </p>
 
+                <h2>一道面试题</h2>
+                <p>
+                    朋友遇到问题是这样的：
+                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">var</span> length = <span class="hljs-number">10</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span> (<span class="hljs-params"></span>) </span>{<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.length);<br>}<br> <br><span class="hljs-keyword">var</span> obj = {<br>    <span class="hljs-attr">length</span>: <span class="hljs-number">5</span>,<br>    <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">fn</span>) </span>{<br>        fn();<br>        <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]();<br>    }<br>};<br> <br>obj.method(fn, <span class="hljs-number">1</span>);</code></pre>
+                    问：浏览器的输出结果是什么？
+                </p>
+                <p>
+                    它的答案是：先输出一个 <code>10</code>，然后输出一个 <code>2</code>。
+                </p>
+                <p>
+                    我先把答案贴出来了。大家也可以自己先试着写一下，如果跟我的结果一样，那么可以选择跳过下面的解析，还有理论的部分，直接拉到底部，最后有 2 道习题送给大家，以作巩固。
+                </p>
 
-                <h2>this是什么？</h2>
+                <p>
+                    现在来说一下，对这道题的解析：
+                    <ul>
+                        <li>
+                            最重要的一个原则：<strong>this 永远指向，调用函数的那个对象</strong>。
+                        </li>
+                        <li>
+                            这道题中，虽然 fn 作为 method 的参数传了进来，但它的调用者并不受影响，还是 <strong>window</strong>，所以输出了 10.
+                        </li>
+                        <li>
+                            <code>arguments[0]();</code> 这条语句不太常见，可能大家有疑惑的点在这里。 需要注意的是，<strong>arguments 在Javascript中，是一种隐式的传参形式</strong>。
+                        </li>
+                        <li>
+                            obj.method方法 接收了 2 个参数，而当执行 arguments[0](); 时，this 指向了 arguments。所以 arguments 的 length，很显然就是 2 了。
+                        </li>
+                    </ul>
+                </p>
+
+                <h2>改造一下</h2>
+                <p>
+                    再来，从语义上来看，我们期望 fn() 输出的是 obj 自己的 length，也就是 5。那么该如何修改这段代码呢？
+                </p>
+                <p>
+                    其实就是让 this 指向 obj 自己。而改变 this 的指向的方法，不止一种。这里，我们可以用 call 来实现，再简化一下代码，像下面这样：
+                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">var</span> length = <span class="hljs-number">10</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span> (<span class="hljs-params"></span>) </span>{<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.length);<br>}<br><br><span class="hljs-keyword">var</span> obj = {<br>    <span class="hljs-attr">length</span>: <span class="hljs-number">5</span>,<br>    <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">fn</span>) </span>{<br>        <span class="hljs-comment">// 在这里用call 将 this 指向 obj 自己</span><br>        fn.call(<span class="hljs-keyword">this</span>);<br>    }<br>};<br> <br>obj.method(fn);</code></pre>
+                    输出的结果就是 5 了，搞定。
+                </p>
+
+                <h2>this 是什么？</h2>
+                <p>
+                    我始终觉得，面试的目的不是为了难为大家，而是要考察候选人对基础知识的理解和掌握程度。只要概念理解透彻了，this 本身也就没什么神秘的了。所以接下来，我们来回顾一下 this 到底是什么？
+                </p>
                 <p>
                     对于this，我们的大脑中总会用“复杂”和“混乱”等词汇来形容它。<br>
                     因为我们对于它到底指向什么而感到困扰，看起来，它就是种彻头彻尾的魔法。
