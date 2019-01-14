@@ -1,9 +1,9 @@
 export default [
     {
-        title: '前端面试题系列4」this的原理以及用法',
+        title: '「前端面试题系列4」this的原理以及用法',
         subTitle: '',
         routeName: 'how-to-use-this-in-javascript',
-        descript: '对于this，我们的大脑中总会用“复杂”和“混乱”等词汇来形容它。因为我们对于它到底指向什么而感到困扰，看起来，它就是种彻头彻尾的魔法。this，不是编写时绑定，而是在运行时绑定。它依赖于函数调用的上下文条件，',
+        descript: '在前端的面试中，this 的指向问题，是个老生常谈的必考题。朋友Z 告诉我说，他看到关于 this 的题目就头晕，感觉挺复杂的。我为他做了解答，并...',
         date: '2019-01-16',
         tags: ['Javascript', '面试题']
     },
@@ -227,7 +227,7 @@ export default [
         title: 'Javascript中的异步编程',
         subTitle: '',
         routeName: 'async-in-javascript',
-        descript: '要解释异步(Asynchronous)，需要先了解Javascript语言的运行机制。JavaScript是单线程的，并且是非阻塞的。所以，它将主线程中的所有任务，分为两种：同步和异步。本篇仅讨论异步模式的几种方法。',
+        descript: '最近，有个小伙伴问了我一段代码...',
         date: '2017-11-06',
         tags: ['Javascript']
     },

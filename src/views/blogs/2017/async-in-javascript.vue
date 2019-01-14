@@ -9,17 +9,17 @@
             <div slot="content">
                 <h2>前言</h2>
                 <p>
-                    最近，有个小伙伴问了我一段代码：
-                    <pre class="hljs typescript"><code class=""><span class="hljs-keyword">const</span> funB = <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"funB "</span>+ value);<br>};<br><br><span class="hljs-keyword">const</span> funA = <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {<br>    ...<br>    <span class="hljs-keyword">typeof</span> callback === <span class="hljs-string">"function"</span> &amp;&amp; callback(<span class="hljs-string">"is_ok!"</span>);<br>}<br><br>funA(funB);</code></pre>
-                    他不太理解这段代码中，funB函数作为funA函数的参数这样的写法。从语义上看，callback的意思是回调，那么是说funB是funA的回调嘛？
+                    最近，小伙伴S 问了我一段代码：
+                    <pre class="hljs coffeescript"><code class="">const funB = <span class="hljs-function"><span class="hljs-params">(value)</span> =&gt;</span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"funB "</span>+ value);<br>};<br><br>const funA = <span class="hljs-function"><span class="hljs-params">(callback)</span> =&gt;</span> {<br>    ...<br>    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {<br>        <span class="hljs-keyword">typeof</span> callback === <span class="hljs-string">"function"</span> &amp;&amp; callback(<span class="hljs-string">"is_ok!"</span>);<br>    }, <span class="hljs-number">1000</span>);<br>}<br><br>funA(funB);</code></pre>
+                    他不太理解这段代码中，funB 函数作为 funA 函数的参数这样的写法。从语义上看，callback 的意思是回调，那么是说 funB 是 funA 的回调嘛？
                 </p>
 
                 <p>
-                    我看了一会说，是的，funB函数的确是funA函数的回调，它会等待funA中前面的语句都执行完，再去执行。这是一种异步编程的写法。
+                    我给他解释说，funB 函数的确是 funA 函数的回调，它会等待 funA 中前面的语句都执行完，再去执行。这是一种异步编程的写法。
                 </p>
 
                 <p>
-                    嗯...额...等一下，异步编程，是什么？除了回调函数之外，还有什么？
+                    小伙伴S 还是有点不太理解。他问：异步编程是什么？除了回调函数之外，异步编程还有哪些？
                 </p>
 
                 <p>
