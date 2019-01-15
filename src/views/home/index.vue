@@ -17,11 +17,11 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 postlist-container m-b-15">
                     <div class="post-preview" v-for="(item, $index) in dataList" :key="$index">
-                        <router-link :to="{name: item.routeName}">
+                        <a href="javascript:;" @click.prevent="handleToPost(item)">
                             <h2 class="post-title">{{item.title}}</h2>
                             <h3 class="post-subtitle" v-if="item.subTitle">{{item.subTitle}}</h3>
                             <div class="post-content-preview">{{item.descript}}</div>
-                        </router-link>
+                        </a>
                         <p class="post-meta">Posted on {{item.date}}</p>
                     </div>
                 </div>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+    import Util from '@/utils';
     import data from '@/data';
     const MAX_DESCRIPT_LENGTH = 100;
 
@@ -55,6 +56,22 @@
                         item.descript = item.descript.substr(0, MAX_DESCRIPT_LENGTH) + '...';
                     }
                     this.dataList.push(item);
+                });
+            },
+
+            handleToPost (item) {
+                const info = {
+                    mainTitle: item.title,
+                    subTitle: item.subTitle,
+                    date: item.date,
+                    tags: item.tags
+                };
+
+                this.$router.push({
+                    name: item.routeName,
+                    query: {
+                        info: Util.utf8ToB64(JSON.stringify(info))
+                    }
                 });
             }
         }

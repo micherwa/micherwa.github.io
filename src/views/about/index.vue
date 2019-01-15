@@ -1,5 +1,6 @@
 <template>
     <div class="about-container">
+        <Title name="About Me"></Title>
         <header class="intro-header">
             <div class="container">
                 <div class="row">

@@ -28,6 +28,12 @@ const router = new VueRouter({
     }
 });
 
+// 重置 document.title
+router.beforeEach((to, from, next) => {
+    document.title = '超哥的博客 | Micherwa Blog';
+    next();
+});
+
 // eslint-disable-next-line no-new
 new Vue({
     router,
