@@ -1,5 +1,7 @@
 <template>
     <div class="home-container">
+        <BackToTop></BackToTop>
+
         <header class="intro-header">
             <div class="container">
                 <div class="row">

@@ -5,7 +5,7 @@
             <h5>
                 <router-link :to="{name: 'tags'}">TAGS</router-link>
             </h5>
-            <div class="tags">
+            <div class="tags" style="max-height: 96px;">
                 <router-link
                     class="tag"
                     v-for="(tag, $index) in tags" :key="$index"

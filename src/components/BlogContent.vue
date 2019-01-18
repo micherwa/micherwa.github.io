@@ -1,5 +1,7 @@
 <template>
     <div class="container">
+        <BackToTop></BackToTop>
+
         <div class="row">
             <div id="postContainer" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
                 <slot name="content"></slot>
@@ -20,6 +22,7 @@
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
