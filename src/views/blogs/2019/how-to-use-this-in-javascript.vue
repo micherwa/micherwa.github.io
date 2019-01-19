@@ -9,13 +9,13 @@
                 <p>这是前端面试题系列的第 4 篇，你可能错过了前面的篇章，可以在这里找到：</p>
                 <ul>
                     <li>
-                        <a href="https://segmentfault.com/a/1190000017480929" target="_blank">今日头条 面试题和思路解析</a>
+                        <a href="https://juejin.im/post/5c394da4518825253661bd4d" target="_blank">今日头条 面试题和思路解析</a>
                     </li>
                     <li>
-                        <a href="https://segmentfault.com/a/1190000017540629" target="_blank">如何实现一个圣杯布局？</a>
+                        <a href="https://juejin.im/post/5c394fece51d45524c7cc712" target="_blank">如何实现一个圣杯布局？</a>
                     </li>
                     <li>
-                        <a href="https://segmentfault.com/a/1190000017784553" target="_blank">伪类与伪元素的区别及实战</a>
+                        <a href="https://juejin.im/post/5c36fd0f6fb9a049cd5465cd" target="_blank">伪类与伪元素的区别及实战</a>
                     </li>
                 </ul>
 
@@ -35,16 +35,13 @@
                 </p>
 
                 <p>
-                    让我们来看一下，这道题的解析：
+                    让我们来解析一下原因：
                     <ul>
                         <li>
-                            请牢记一个重要的原则：<strong>this 永远指向，调用函数的那个对象</strong>。
+                            在我们这道题中，虽然 fn 作为 method 的参数传了进来，但它的调用者并不受影响，任然是 <code>window</code>，所以输出了 10。
                         </li>
                         <li>
-                            在我们这道题中，虽然 fn 作为 method 的参数传了进来，但它的调用者并不受影响，任然是 <strong>window</strong>，所以输出了 10.
-                        </li>
-                        <li>
-                            <strong>arguments[0]();</strong> 这条语句并不常见，可能大家有疑惑的点在这里。 其实，<strong>arguments 是一种特殊的对象。在函数中，我们无需指出参数名，就能访问。可以认为它是一种，隐式的传参形式</strong>。
+                            <code>arguments[0]();</code> 这条语句并不常见，可能大家有疑惑的点在这里。 其实，<strong>arguments 是一种特殊的对象。在函数中，我们无需指出参数名，就能访问。可以认为它是一种，隐式的传参形式</strong>。
                         </li>
                         <li>
                             当执行 arguments[0](); 时，其实调用了 fn()。而这时，fn 函数中 this 就指向了 arguments，这个特殊的对象。obj.method 方法接收了 2 个参数，所以 arguments 的 length，很显然就是 2 了。
@@ -65,10 +62,10 @@
                     输出的结果就是 5 了，搞定。
                 </p>
                 <p>
-                    其实 this 也没那么复杂吧，我们只需要一些简单的操作，就能控制 this 的指向了。那么，问题来了，为什么有时候 this 会失控呢？
+                    看吧，this 也没那么复杂吧，我们只需要一些简单的操作，就能控制 this 的指向了。那么，问题来了，为什么有时候 this 会失控呢？
                 </p>
                 <p>
-                    别急，让我们从理解 this 的基本概念开始，来看看 this 到底是什么？
+                    其实，这与 this 机制背后的原理有关。不过别急，让我们从理解 this 的基本概念开始，先来看看 this 到底是什么？
                 </p>
 
                 <h2>this 是什么？</h2>
@@ -141,7 +138,7 @@
 
                 <h2>this 的用法</h2>
                 <p>
-                    在理解了 this 的原理之后，我们用下面的 4 种情况，来讨论 this 的用法。同样来自 <strong>阮老师</strong> 给出的例子，个人觉得很具有代表性。
+                    在理解了 this 的原理之后，我们用下面的 5 种情况，来讨论 this 的用法。
                 </p>
 
                 <h4>1、纯粹的函数调用</h4>
@@ -167,6 +164,9 @@
                     apply() 是函数对象的一个方法，它的作用是改变函数的调用对象，它的第一个参数就表示改变后的调用这个函数的对象。因此，this 指的就是这第一个参数。
                     <pre class="hljs javascript"><code class=""><span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.x);<br>}<br><span class="hljs-keyword">var</span> o = {};<br>o.x = <span class="hljs-number">1</span>;<br>o.m = test;<br>o.m.apply(); <span class="hljs-comment">//0</span></code></pre>
                     apply() 的参数为空时，默认调用全局对象。因此，这时的运行结果为0，证明this指的是全局对象。
+                </p>
+                <p>
+                    它与上文中提到的 call 的作用是一样的，只是写法上略有区别。由于篇幅原因，我会另启一篇，来详述它们的用法。
                 </p>
 
                 <h4>5、箭头函数</h4>
