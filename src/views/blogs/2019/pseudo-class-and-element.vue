@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="「前端面试题系列3」伪类与伪元素的区别及实战" subTitle=""
-            date="2019-01-04" :tags="['CSS', '面试题']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent>
             <div slot="content">
@@ -176,8 +173,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

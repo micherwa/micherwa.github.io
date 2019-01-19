@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="2018再见！" subTitle=""
-            date="2018-12-30" :tags="['言论与感想']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent>
             <div slot="content">
@@ -130,8 +127,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="Half pixel border" subTitle="移动端半像素的边框写法"
-            date="2017-10-16" :tags="['CSS']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -51,8 +48,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

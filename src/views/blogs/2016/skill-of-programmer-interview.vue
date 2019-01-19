@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="程序员面试技巧" subTitle="一些技术之外需要注意的地方"
-            date="2016-04-20" :tags="['言论与感想']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -124,8 +121,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="函数的柯里化" subTitle=""
-            date="2017-08-30" :tags="['JavaScript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -96,8 +93,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

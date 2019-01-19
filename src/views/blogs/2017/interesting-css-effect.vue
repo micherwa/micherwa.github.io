@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="一些有意思的css效果" subTitle=""
-            date="2017-12-14" :tags="['CSS']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -187,8 +184,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="Javascript中的Event loop(事件循环)" subTitle=""
-            date="2018-03-06" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -236,8 +233,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="解读html头部的各种属性" subTitle=""
-            date="2016-01-12" :tags="['Html']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -81,8 +78,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

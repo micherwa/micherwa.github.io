@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="对象的浅拷贝与深拷贝" subTitle=""
-            date="2017-08-15" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -61,8 +58,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

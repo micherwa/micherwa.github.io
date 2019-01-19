@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="API之下" subTitle="「阮一峰网络日志」"
-            date="2018-08-13" :tags="['言论与感想']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -75,8 +72,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

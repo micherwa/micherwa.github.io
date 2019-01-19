@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="数组的去重" subTitle=""
-            date="2017-06-22" :tags="['算法']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -70,8 +67,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

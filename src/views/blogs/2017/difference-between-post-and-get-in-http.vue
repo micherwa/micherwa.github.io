@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="HTTP中GET与POST的区别" subTitle=""
-            date="2017-11-29" :tags="['Http']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -104,8 +101,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

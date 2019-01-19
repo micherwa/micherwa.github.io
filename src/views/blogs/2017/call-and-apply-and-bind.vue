@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="call和apply以及bind的用法和区别" subTitle=""
-            date="2017-11-10" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -171,8 +168,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

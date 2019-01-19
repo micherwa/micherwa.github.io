@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="细说async/await相较于Promise的优势" subTitle="一种更优雅的异步写法"
-            date="2017-07-28" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -105,8 +102,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

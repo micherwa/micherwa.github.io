@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="CSS中不定宽高的垂直水平居中" subTitle="9种方式的代码呈现"
-            date="2017-12-04" :tags="['CSS']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -65,8 +62,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

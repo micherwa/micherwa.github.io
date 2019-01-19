@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="如何实现继承" subTitle=""
-            date="2017-06-04" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -126,8 +123,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

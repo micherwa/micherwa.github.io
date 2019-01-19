@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="“热情假设”并不是一个好建议" subTitle="「阮一峰网络日志」"
-            date="2018-10-19" :tags="['言论与感想']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -67,8 +64,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

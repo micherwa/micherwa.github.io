@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="数组的常用操作" subTitle="包含es5和es6"
-            date="2018-09-26" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -191,8 +188,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

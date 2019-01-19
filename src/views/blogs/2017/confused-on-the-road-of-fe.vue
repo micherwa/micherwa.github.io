@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="关于前端求职的困扰" subTitle=""
-            date="2017-10-25" :tags="['言论与感想']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -70,8 +67,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

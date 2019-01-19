@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="ES6中 export 和 export default 的差异" subTitle=""
-            date="2017-08-16" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -45,8 +42,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

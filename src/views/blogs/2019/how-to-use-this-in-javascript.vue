@@ -1,7 +1,6 @@
 <template>
     <div class="blog-container">
-        <Title :name="info.mainTitle"></Title>
-        <BlogHeader :title="info.mainTitle" :subTitle="info.subTitle" :date="info.date" :tags="info.tags"></BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent>
             <div slot="content">
@@ -221,19 +220,7 @@
 </template>
 
 <script>
-    import Util from '@/utils';
-
     export default {
-        data () {
-            return {
-                info: {}
-            };
-        },
 
-        created () {
-            if (this.$route.query.info) {
-                this.info = Object.assign({}, JSON.parse(Util.b64ToUtf8(this.$route.query.info)));
-            }
-        }
     };
 </script>

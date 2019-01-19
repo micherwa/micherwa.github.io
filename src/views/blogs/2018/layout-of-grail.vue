@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="「前端面试题系列2」如何实现一个圣杯布局？" subTitle=""
-            date="2018-12-23" :tags="['Html', '面试题']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -93,8 +90,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

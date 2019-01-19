@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="前端面试题——计算机相关" subTitle=""
-            date="2018-09-14" :tags="['面试题']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -130,8 +127,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="POST提交数据的4种常见方式" subTitle=""
-            date="2017-03-18" :tags="['Http']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -85,8 +82,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

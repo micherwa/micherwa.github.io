@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="什么时候 “不该” 用箭头函数" subTitle=""
-            date="2017-09-12" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -67,8 +64,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

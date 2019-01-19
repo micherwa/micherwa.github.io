@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="盒子模型中的box-sizing" subTitle=""
-            date="2017-07-15" :tags="['CSS']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -64,8 +61,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

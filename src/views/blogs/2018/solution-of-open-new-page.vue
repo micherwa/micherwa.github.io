@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="window.open被浏览器拦截的解决方案" subTitle=""
-            date="2018-03-06" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -39,8 +36,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

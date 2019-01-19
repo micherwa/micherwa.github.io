@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="前端工程代码规范（三）" subTitle="CSS, SCSS"
-            date="2018-05-26" :tags="['前端代码规范']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent>
             <div slot="content">
@@ -569,8 +566,6 @@ $colorBlack: #000;
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

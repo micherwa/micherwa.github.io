@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="ssh key的使用" subTitle=""
-            date="2016-05-08" :tags="['Git']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -61,8 +58,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

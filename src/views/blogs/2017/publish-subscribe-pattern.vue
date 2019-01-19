@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="浅谈 发布/订阅 模式" subTitle=""
-            date="2017-08-22" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -35,8 +32,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

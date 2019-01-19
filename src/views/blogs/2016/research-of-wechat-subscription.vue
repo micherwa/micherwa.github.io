@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="关于微信公众号的研究" subTitle=""
-            date="2016-02-06" :tags="['微信']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -169,8 +166,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

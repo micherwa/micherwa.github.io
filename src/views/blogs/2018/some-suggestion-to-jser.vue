@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="「写在寒冬」分享给前端er的求职和成长建议" subTitle=""
-            date="2018-12-26" :tags="['言论与感想']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="false">
             <div slot="content">
@@ -102,8 +99,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

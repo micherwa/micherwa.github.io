@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="重温JavaScript事件的触发机制" subTitle=""
-            date="2017-08-21" :tags="['Javascript']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent :useCatalog="true">
             <div slot="content">
@@ -90,8 +87,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>

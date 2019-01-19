@@ -1,9 +1,6 @@
 <template>
     <div class="blog-container">
-        <BlogHeader
-            title="前端工程代码规范（二）" subTitle="HTML"
-            date="2018-05-26" :tags="['前端代码规范']">
-        </BlogHeader>
+        <BlogHeader></BlogHeader>
 
         <BlogContent>
             <div slot="content">
@@ -224,8 +221,6 @@
 
 <script>
     export default {
-        created () {
 
-        }
     };
 </script>
