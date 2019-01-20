@@ -1,5 +1,13 @@
 export default [
     {
+        title: 'Javascript 中的浮点数精度问题',
+        subTitle: '',
+        routeName: 'precision-of-float-number-in-javascript',
+        descript: '',
+        date: '2019-01-23',
+        tags: ['Javascript']
+    },
+    {
         title: '「前端面试题系列4」this的原理以及用法',
         subTitle: '',
         routeName: 'how-to-use-this-in-javascript',

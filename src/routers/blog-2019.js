@@ -1,6 +1,11 @@
 
 export default [
     {
+        path: '/2019/precision-of-float-number-in-javascript',
+        name: 'precision-of-float-number-in-javascript',
+        component: () => import('@/views/blogs/2019/precision-of-float-number-in-javascript')
+    },
+    {
         path: '/2019/how-to-use-this-in-javascript',
         name: 'how-to-use-this-in-javascript',
         component: () => import('@/views/blogs/2019/how-to-use-this-in-javascript')
