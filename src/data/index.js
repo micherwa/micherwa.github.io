@@ -1,5 +1,13 @@
 export default [
     {
+        title: 'call、apply 以及 bind 的区别和用法',
+        subTitle: '',
+        routeName: 'call-and-apply-and-bind',
+        descript: '',
+        date: '2019-01-24',
+        tags: ['Javascript']
+    },
+    {
         title: 'Javascript 中的浮点数精度问题',
         subTitle: '',
         routeName: 'precision-of-float-number-in-javascript',
@@ -222,14 +230,6 @@ export default [
         descript: '最直观的区别就是GET把参数包含在URL中，POST通过request body传递参数。GET和POST本质上没有区别。GET产生一个TCP数据包；POST产生两个TCP数据包。',
         date: '2017-11-29',
         tags: ['Http']
-    },
-    {
-        title: 'call和apply以及bind的用法和区别',
-        subTitle: '',
-        routeName: 'call-and-apply-and-bind',
-        descript: 'call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。另外，还会介绍与之类似的bind。',
-        date: '2017-11-10',
-        tags: ['Javascript']
     },
     {
         title: 'Javascript中的异步编程',

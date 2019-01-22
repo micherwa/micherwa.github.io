@@ -1,5 +1,9 @@
-
 export default [
+    {
+        path: '/2019/call-and-apply-and-bind',
+        name: 'call-and-apply-and-bind',
+        component: () => import('@/views/blogs/2019/call-and-apply-and-bind')
+    },
     {
         path: '/2019/precision-of-float-number-in-javascript',
         name: 'precision-of-float-number-in-javascript',

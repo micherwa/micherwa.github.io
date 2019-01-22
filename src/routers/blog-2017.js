@@ -66,11 +66,6 @@ export default [
         component: () => import('@/views/blogs/2017/inherit-in-javascript')
     },
     {
-        path: '/2017/call-and-apply-and-bind',
-        name: 'call-and-apply-and-bind',
-        component: () => import('@/views/blogs/2017/call-and-apply-and-bind')
-    },
-    {
         path: '/2017/async-in-javascript',
         name: 'async-in-javascript',
         component: () => import('@/views/blogs/2017/async-in-javascript')

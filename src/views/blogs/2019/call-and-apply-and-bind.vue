@@ -4,11 +4,17 @@
 
         <BlogContent :useCatalog="true">
             <div slot="content">
-                <blockquote>
-                    <p>
-                        call 和 apply 在平时的工作中并不常用，突然遇到的时候，又要回顾一下才能转过弯来。所以这回，就好好地探究一下这两个方法的区别，以及一些妙用。另外，还会介绍与之类似的bind。
-                    </p>
-                </blockquote>
+                <h2>前言</h2>
+                <p>
+                    上一篇文章
+                    <router-link :to="{ name: 'how-to-use-this-in-javascript' }">《「前端面试题系列4」this的原理以及用法》</router-link>
+                    中提到了，call 和 apply 的作用，是为了改变函数体内 this 的指向。
+                </p>
+
+
+                <p>
+                    其实，在平时的工作中，call 和 apply 的应用并不多。而一旦突然遇到的时候，又要想一下才能转过弯来。所以今天，就让我们好好地探究一下，这两个方法的区别以及一些妙用。最后，还会介绍与之类似的 bind 的用法。
+                </p>
 
                 <h2>基本作用</h2>
                 <p>
@@ -17,7 +23,7 @@
 
                 <h4>什么是执行上下文？</h4>
                 <p>
-                    我们在写一个方法的时候，经常会用到this这个关键字，它表示的就是这个方法的执行上下文，也叫执行环境。关于this的具体理解，可参考 <router-link :to="{ name: 'how-to-use-this-in-javascript' }">这篇文章</router-link>。它的总原则是，<strong>this永远指向它的调用者</strong>。
+                    我们在写一个方法的时候，经常会用到this这个关键字，它表示的就是这个方法的执行上下文，也叫执行环境。它的总原则是，<strong>this永远指向它的调用者</strong>。
                 </p>
 
                 <h4>为何要改变执行上下文？</h4>
