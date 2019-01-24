@@ -1,6 +1,6 @@
 export default [
     {
-        title: 'call、apply 以及 bind 的区别和用法',
+        title: '细说 call、apply 以及 bind 的区别和用法',
         subTitle: '',
         routeName: 'call-and-apply-and-bind',
         descript: '',
@@ -8,7 +8,7 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: 'Javascript 中的浮点数精度问题',
+        title: '细说 Javascript 中的浮点数精度问题',
         subTitle: '',
         routeName: 'precision-of-float-number-in-javascript',
         descript: '',
@@ -232,7 +232,7 @@ export default [
         tags: ['Http']
     },
     {
-        title: 'Javascript中的异步编程',
+        title: '细说 Javascript 中的异步编程',
         subTitle: '',
         routeName: 'async-in-javascript',
         descript: '最近，有个小伙伴问了我一段代码...',
@@ -304,7 +304,7 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: '细说async/await相较于Promise的优势',
+        title: '细说 async/await 相较于 Promise 的优势',
         subTitle: '一种更优雅的异步写法',
         routeName: 'async-await',
         descript: '谈及异步回调函数的嵌套，总会让人感到烦躁，特别是当业务逻辑复杂，往往需要调用几次 ajax 才能拿到所有需要的数据。从最早的回调函数，到 Promise 对象，再到 Generator 函数，',

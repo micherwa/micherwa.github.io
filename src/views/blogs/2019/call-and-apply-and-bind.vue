@@ -7,26 +7,26 @@
                 <h2>前言</h2>
                 <p>
                     上一篇文章
-                    <router-link :to="{ name: 'how-to-use-this-in-javascript' }">《「前端面试题系列4」this的原理以及用法》</router-link>
+                    <router-link :to="{ name: 'how-to-use-this-in-javascript' }">《「前端面试题系列4」this 的原理以及用法》</router-link>
                     中，提到了 call 和 apply。
                 </p>
 
                 <p>
-                    它们最主要的作用，是<strong>改变 this 的指向，即改变对象的执行上下文环境</strong>。在平时的工作中，除了在写一些基础类，或者公用库的方法的时候会用到它们，其他时候 call 和 apply 的应用场景并不多。
+                    它们最主要的作用，是<strong>改变 this 的指向</strong>。在平时的工作中，除了在写一些基础类，或者公用库方法的时候会用到它们，其他时候 call 和 apply 的应用场景并不多。
                 </p>
 
                 <p>
-                    不过，突然遇到的时候，又容易卡壳，需要想一下才能转过弯来。所以今天，就让我们好好地探究一下，这两个方法的区别以及一些妙用。最后，还会介绍与之类似的 bind 的用法。
+                    不过，突然遇到的时候，需要想一下才能转过弯来。所以今天，就让我们好好地探究一下，这两个方法的区别以及一些妙用。最后，还会介绍与之用法相似的 bind 的方法。
                 </p>
 
-                <h2>共同点</h2>
+                <h2>call 和 apply 的共同点</h2>
 
                 <p>
-                    它们的共同点是，都能够<strong>改变对象的执行上下文（执行环境）</strong>，将一个对象的方法交给另一个对象来执行，并且是立即执行的。
+                    它们的共同点是，都能够<strong>改变函数执行时的上下文</strong>，将一个对象的方法交给另一个对象来执行，并且是立即执行的。
                 </p>
 
                 <p>
-                    为何要改变执行上下文？举一个生活中的小例子：平时没时间做饭的我，今天突然想自己炖个腌笃鲜尝尝。但是没有适合的锅，而我又不想出去买。所以就问邻居借了一个锅来用，这样既达到了目的，又节省了开支，一举两得。
+                    为何要改变执行上下文？举一个生活中的小例子：平时没时间做饭的我，周末想给孩子炖个腌笃鲜尝尝。但是没有适合的锅，而我又不想出去买。所以就问邻居借了一个锅来用，这样既达到了目的，又节省了开支，一举两得。
                 </p>
 
                 <p>
@@ -34,12 +34,12 @@
                 </p>
 
                 <p>
-                    另外，它们的写法很类似，<strong>调用 call 和 apply 的对象，必须是一个函数 Function</strong>。接下来，就会说到具体的写法，也是它们区别的主要体现。
+                    另外，它们的写法也很类似，<strong>调用 call 和 apply 的对象，必须是一个函数 Function</strong>。接下来，就会说到具体的写法，那也是它们区别的主要体现。
                 </p>
 
-                <h2>区别</h2>
+                <h2>call 和 apply 的区别</h2>
                 <p>
-                    它们的区别主要体现在参数的写法上。
+                    它们的区别，主要体现在参数的写法上。先来看一下它们各自的具体写法。
                 </p>
 
                 <h4>call 的写法</h4>
@@ -49,9 +49,9 @@
                     <ul>
                         <li>调用 call 的对象，必须是个函数 Function。</li>
                         <li>call 的第一个参数，是一个对象。 Function 的调用者，将会指向这个对象。如果不传，则默认为全局对象 window。</li>
-                        <li>第二个参数开始可以接收任意个参数，每个参数会映射到相应位置的 Function 的参数上。但是如果将所有的参数作为数组传入，它们会作为一个整体映射到 Function 对应的第一个参数上，之后参数都为空。</li>
+                        <li>第二个参数开始，可以接收任意个参数。每个参数会映射到相应位置的 Function 的参数上。但是如果将所有的参数作为数组传入，它们会作为一个整体映射到 Function 对应的第一个参数上，之后参数都为空。</li>
                     </ul>
-                    <pre class="hljs javascript"><code class="">function <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a,b,<span class="hljs-built_in">c</span>)</span></span> {}<br><br><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">call</span><span class="hljs-params">(obj, <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)</span></span><br><span class="hljs-comment">// function接收到的参数实际上是 1,2,3</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">call</span><span class="hljs-params">(obj, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])</span></span><br><span class="hljs-comment">// function接收到的参数实际上是 [1,2,3],undefined,undefined</span></code></pre>
+                    <pre class="hljs javascript"><code class="">function <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a,b,<span class="hljs-built_in">c</span>)</span></span> {}<br><br><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">call</span><span class="hljs-params">(obj, <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)</span></span><br><span class="hljs-comment">// func 接收到的参数实际上是 1,2,3</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">call</span><span class="hljs-params">(obj, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])</span></span><br><span class="hljs-comment">// func 接收到的参数实际上是 [1,2,3],undefined,undefined</span></code></pre>
                 </p>
 
                 <h4>apply 的写法</h4>
@@ -59,10 +59,10 @@
                     <pre class="hljs fortran"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-function"><span class="hljs-keyword">Function</span>.<span class="hljs-title">apply</span><span class="hljs-params">(obj[,argArray])</span></span></code></pre>
                     需要注意的是：
                     <ul>
-                        <li>它只接收两个参数。</li>
+                        <li>它的调用者必须是函数 Function，并且只接收两个参数，第一个参数的规则与 call 一致。</li>
                         <li>第二个参数，<strong>必须是数组或者类数组</strong>，它们会被转换成类数组，传入 Function 中，并且会被映射到 Function 对应的参数上。这也是 call 和 apply 之间，很重要的一个区别。</li>
                     </ul>
-                    <pre class="hljs swift"><code class=""><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">apply</span><span class="hljs-params">(obj, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])</span></span><br><span class="hljs-comment">// function接收到的参数实际上是 1,2,3</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">apply</span><span class="hljs-params">(obj, {</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-number">0</span>: <span class="hljs-number">1</span>,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-number">1</span>: <span class="hljs-number">2</span>,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-number">2</span>: <span class="hljs-number">3</span>,</span></span><br><span class="hljs-function"><span class="hljs-params">    length: <span class="hljs-number">3</span></span></span><br><span class="hljs-function"><span class="hljs-params">})</span></span><br><span class="hljs-comment">// function接收到的参数实际上是 1,2,3</span></code></pre>
+                    <pre class="hljs swift"><code class=""><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">apply</span><span class="hljs-params">(obj, [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])</span></span><br><span class="hljs-comment">// func 接收到的参数实际上是 1,2,3</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span>.<span class="hljs-title">apply</span><span class="hljs-params">(obj, {</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-number">0</span>: <span class="hljs-number">1</span>,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-number">1</span>: <span class="hljs-number">2</span>,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-number">2</span>: <span class="hljs-number">3</span>,</span></span><br><span class="hljs-function"><span class="hljs-params">    length: <span class="hljs-number">3</span></span></span><br><span class="hljs-function"><span class="hljs-params">})</span></span><br><span class="hljs-comment">// func 接收到的参数实际上是 1,2,3</span></code></pre>
                 </p>
 
                 <h4>什么是类数组？</h4>
@@ -72,7 +72,7 @@
                 </p>
 
                 <p>
-                    那么，类数组是什么呢？顾名思义，就是具备与数组特征类似的对象。比如，下面的这个对象，就是一个类数组。
+                    那么，类数组是什么呢？顾名思义，就是<strong>具备与数组特征类似的对象</strong>。比如，下面的这个对象，就是一个类数组。
                     <pre class="hljs javascript"><code class=""><span class="hljs-attribute">let arrayLike</span> = {<br>    0: 1,<br>    1: 2,<br>    2: 3,<br>    length: 3<br>};</code></pre>
                 </p>
 
@@ -86,18 +86,18 @@
                 </p>
 
                 <p>
-                    但是需要注意的是，类数组无法使用 forEach、splice、push 等数组原型链上的方法，毕竟它不是真正的数组。
+                    但是需要注意的是：<strong>类数组无法使用 forEach、splice、push 等数组原型链上的方法</strong>，毕竟它不是真正的数组。
                 </p>
 
 
-                <h2>用途</h2>
+                <h2>call 和 apply 的用途</h2>
                 <p>
-                    下面会分别列举 call 和 apply 的一些使用场景。声明：例子中没有哪个场景是必须用 call 或者 apply 的，只是个人更倾向的一种偏好而已。
+                    下面会分别列举 call 和 apply 的一些使用场景。声明：例子中没有哪个场景是必须用 call 或者必须用 apply 的，只是个人习惯这么用而已。
                 </p>
                 <h4>call 的使用场景</h4>
                 <p>
                     <strong>1、对象的继承</strong>。如下面这个例子：
-                    <pre class="hljs javascript"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">superClass</span> (<span class="hljs-params"></span>) </span>{<br>    <span class="hljs-keyword">this</span>.a = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">this</span>.print = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.a);<br>   }<br>}<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subClass</span> (<span class="hljs-params"></span>) </span>{<br>    superClass.call(<span class="hljs-keyword">this</span>);<br>    <span class="hljs-keyword">this</span>.print();<br>}<br><br>subClass();<br><span class="hljs-comment">// 1</span></code></pre>
+                    <pre class="hljs javascript"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">superClass</span> (<span class="hljs-params"></span>) </span>{<br>    <span class="hljs-keyword">this</span>.a = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">this</span>.print = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.a);<br>    }<br>}<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subClass</span> (<span class="hljs-params"></span>) </span>{<br>    superClass.call(<span class="hljs-keyword">this</span>);<br>    <span class="hljs-keyword">this</span>.print();<br>}<br><br>subClass();<br><span class="hljs-comment">// 1</span></code></pre>
                     subClass 通过 call 方法，继承了 superClass 的 print 方法和 a 变量。此外，subClass 还可以扩展自己的其他方法。
                 </p>
 
