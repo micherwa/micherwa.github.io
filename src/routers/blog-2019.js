@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/arrow-function',
+        name: 'arrow-function',
+        component: () => import('@/views/blogs/2019/arrow-function')
+    },
+    {
         path: '/2019/call-and-apply-and-bind',
         name: 'call-and-apply-and-bind',
         component: () => import('@/views/blogs/2019/call-and-apply-and-bind')

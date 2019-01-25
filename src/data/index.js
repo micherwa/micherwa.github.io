@@ -1,5 +1,13 @@
 export default [
     {
+        title: '「前端面试题系列5」ES6 中箭头函数的用法',
+        subTitle: '',
+        routeName: 'arrow-function',
+        descript: '',
+        date: '2019-01-30',
+        tags: ['Javascript']
+    },
+    {
         title: '细说 call、apply 以及 bind 的区别和用法',
         subTitle: '',
         routeName: 'call-and-apply-and-bind',
