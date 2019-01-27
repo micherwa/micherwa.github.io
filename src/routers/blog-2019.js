@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/curry-function',
+        name: 'curry-function',
+        component: () => import('@/views/blogs/2019/curry-function')
+    },
+    {
         path: '/2019/arrow-function',
         name: 'arrow-function',
         component: () => import('@/views/blogs/2019/arrow-function')

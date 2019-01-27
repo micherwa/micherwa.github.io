@@ -1,14 +1,22 @@
 export default [
     {
-        title: '「前端面试题系列5」ES6 中箭头函数的用法',
+        title: '「前端面试题系列6」理解函数的柯里化',
         subTitle: '',
-        routeName: 'arrow-function',
-        descript: '',
+        routeName: 'curry-function',
+        descript: '柯里化，是函数式编程的一个重要概念。它既能减少代码冗余，也能增加可读性。另外，附带着还能用来装逼。',
         date: '2019-01-30',
         tags: ['Javascript']
     },
     {
-        title: '细说 call、apply 以及 bind 的区别和用法',
+        title: '「前端面试题系列5」ES6 中箭头函数的用法',
+        subTitle: '',
+        routeName: 'arrow-function',
+        descript: '',
+        date: '2019-02-10',
+        tags: ['Javascript']
+    },
+    {
+        title: '「干货」细说 call、apply 以及 bind 的区别和用法',
         subTitle: '',
         routeName: 'call-and-apply-and-bind',
         descript: '',
@@ -16,7 +24,7 @@ export default [
         tags: ['Javascript']
     },
     {
-        title: '细说 Javascript 中的浮点数精度问题',
+        title: '「干货」细说 Javascript 中的浮点数精度问题',
         subTitle: '',
         routeName: 'precision-of-float-number-in-javascript',
         descript: '',
@@ -269,14 +277,6 @@ export default [
         routeName: 'when-can-not-use-arrow-function',
         descript: 'ES6中的箭头函数，改变了我们写代码的方式，使得JS的易用性得到了提升。但是最近，常会看到有同学问，某一段代码用了箭头函数后产生了问题，是不是箭头函数还不够完善？',
         date: '2017-09-12',
-        tags: ['Javascript']
-    },
-    {
-        title: '函数的柯里化',
-        subTitle: '',
-        routeName: 'curry-function',
-        descript: '本文将介绍Javascript中函数柯里化的应用，柯里化是函数式编程的一个重要概念。它既能减少代码冗余，也能增加可读性，更关键的是，还能用来装逼。',
-        date: '2017-08-30',
         tags: ['Javascript']
     },
     {

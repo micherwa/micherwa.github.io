@@ -16,11 +16,6 @@ export default [
         component: () => import('@/views/blogs/2017/difference-between-post-and-get-in-http')
     },
     {
-        path: '/2017/curry-function',
-        name: 'curry-function',
-        component: () => import('@/views/blogs/2017/curry-function')
-    },
-    {
         path: '/2017/interesting-css-effect',
         name: 'interesting-css-effect',
         component: () => import('@/views/blogs/2017/interesting-css-effect')
