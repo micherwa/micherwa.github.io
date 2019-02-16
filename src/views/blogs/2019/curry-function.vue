@@ -9,7 +9,7 @@
                 <p>这是前端面试题系列的第 6 篇，你可能错过了前面的篇章，可以在这里找到：</p>
                 <ul>
                     <li>
-                        <a href="" target="_blank">ES6 中箭头函数的用法</a>
+                        <a href="https://juejin.im/post/5c612a60f265da2da15d9986" target="_blank">ES6 中箭头函数的用法</a>
                     </li>
                     <li>
                         <a href="https://juejin.im/post/5c428ce0f265da612b13dca7" target="_blank">this 的原理以及用法</a>
@@ -31,12 +31,13 @@
                     这道题要考察的，就是对函数柯里化的理解。让我们先来解析一下题目的要求：
                     <ul>
                         <li>如果传递两个参数，我们只需将它们相加并返回。</li>
-                        <li>否则，我们假设它是以sum(2)(3)的形式被调用的，所以我们返回一个匿名函数，它将传递给sum()（在本例中为2）的参数和传递给匿名函数的参数（这种情况3）。</li>
+                        <li>否则，我们假设它是以sum(2)(3)的形式被调用的，所以我们返回一个匿名函数，它将传递给sum()（在本例中为2）的参数和传递给匿名函数的参数（在本例中为3）。</li>
                     </ul>
                     所以，sum 函数可以这样写：
                     <pre class="hljs javascript"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span> (<span class="hljs-params">x</span>) </span>{<br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">arguments</span>.length == <span class="hljs-number">2</span>) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>] + <span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>];<br>    }<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">y</span>) </span>{<br>        <span class="hljs-keyword">return</span> x + y;<br>    }<br>}</code></pre>
                     arguments 的用法挺灵活的，在这里它则用于分割两种不同的情况。当参数只有一个的时候，进行柯里化的处理。
-
+                </p>
+                <p>
                     那么，到底什么是函数的柯里化呢？接下来，我们将从概念出发，探究函数柯里化的实现与用途。
                 </p>
 
@@ -57,7 +58,7 @@
                     假设有这样的需求，sum的前2个参数保持不变，最后一个参数可以随意。那么就会想到，在函数内，是否可以把前2个参数的相加过程，给抽离出来，因为参数都是相同的，没必要每次都做运算。
                 </p>
                 <p>
-                    如果先不管函数内的具体实现，调用的写法可以是这样：<code>sum(1, 2)(3);</code>或这样<code>sum(1, 2)(10);</code>。就是，先把前2个参数的运算结果拿到后，再与第3个参数相加。
+                    如果先不管函数内的具体实现，调用的写法可以是这样： <code>sum(1, 2)(3);</code> 或这样 <code>sum(1, 2)(10);</code> 。就是，先把前2个参数的运算结果拿到后，再与第3个参数相加。
                 </p>
                 <p>
                     这其实就是函数柯里化的简单应用。
@@ -101,27 +102,21 @@
 
                 <h2>柯里化的用途</h2>
                 <p>
-                    理解了柯里化的实现之后，让我们来看一下它的实际应用。从柯里化的目的出发，它能减少代码冗余，以及增加代码的可读性。
-                </p>
-                <p>
-                    比如下面这个很实用的例子：
+                    理解了柯里化的实现之后，让我们来看一下它的实际应用。柯里化的目的是，减少代码冗余，以及增加代码的可读性。来看下面这个例子：
                     <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> persons = [<br>    { <span class="hljs-attr">name</span>: <span class="hljs-string">'kevin'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">4</span> },<br>    { <span class="hljs-attr">name</span>: <span class="hljs-string">'bob'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">5</span> }<br>];<br><br><span class="hljs-comment">// 这里的 curry 函数，之前已实现</span><br><span class="hljs-keyword">let</span> getProp = curry(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key, obj</span>) </span>{<br>    <span class="hljs-keyword">return</span> obj[key];<br>});<br><br><span class="hljs-keyword">const</span> ages = persons.map(getProp(<span class="hljs-string">'age'</span>)); <span class="hljs-comment">// [4, 5]</span><br><span class="hljs-keyword">const</span> names = persons.map(getProp(<span class="hljs-string">'name'</span>)); <span class="hljs-comment">// ['kevin', 'bob']</span></code></pre>
                     在实际的业务中，我们常会遇到类似的列表数据。用 getProp 就可以很方便地，取出列表中某个 key 对应的值。
                 </p>
                 <p>
-                    另外，解释一下 map 的调用写法：
+                    另外，为了便于理解调用的写法，可以扩展一下：
                     <pre class="hljs go"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-keyword">const</span> names = persons.<span class="hljs-keyword">map</span>(getProp(<span class="hljs-string">'name'</span>));</code></pre>
                     等价于：
                     <pre class="hljs typescript"><code class=""><span class="hljs-keyword">const</span> names = persons.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {<br>    <span class="hljs-keyword">return</span> getProp(<span class="hljs-string">'name'</span>, item);<br>});</code></pre>
                 </p>
 
                 <p>
-                    最后，看一个 Memoization 的例子：
+                    最后，来看一个 Memoization 的例子。它用于优化比较耗时的计算，通过将计算结果缓存到内存中，这样对于同样的输入值，下次只需要中内存中读取结果。
                     <pre class="hljs javascript"><code class=""><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">memoizeFunction</span>(<span class="hljs-params">func</span>) </span>{<br>    <span class="hljs-keyword">const</span> cache = {};<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<br>        <span class="hljs-keyword">let</span> key = <span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">if</span> (cache[key]) {<br>            <span class="hljs-keyword">return</span> cache[key];<br>        } <span class="hljs-keyword">else</span> {<br>            <span class="hljs-keyword">const</span> val = func.apply(<span class="hljs-literal">null</span>, <span class="hljs-built_in">arguments</span>);<br>            cache[key] = val;<br>            <span class="hljs-keyword">return</span> val;<br>        }<br>    };<br>}<br><br><span class="hljs-keyword">const</span> fibonacci = memoizeFunction(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n</span>) </span>{<br>    <span class="hljs-keyword">return</span> (n === <span class="hljs-number">0</span> || n === <span class="hljs-number">1</span>) ? n : fibonacci(n - <span class="hljs-number">1</span>) + fibonacci(n - <span class="hljs-number">2</span>);<br>});<br><br><span class="hljs-built_in">console</span>.log(fibonacci(<span class="hljs-number">100</span>)); <span class="hljs-comment">// 输出354224848179262000000</span><br><span class="hljs-built_in">console</span>.log(fibonacci(<span class="hljs-number">100</span>)); <span class="hljs-comment">// 输出354224848179262000000</span></code></pre>
                     代码中，第2次计算 fibonacci(100) 则只需要在内存中直接读取结果。
-                </p>
-                <p>
-                    Memoization 用于优化比较耗时的计算，通过将计算结果缓存到内存中，这样对于同样的输入值，下次只需要中内存中读取结果。
                 </p>
 
                 <h2>总结</h2>
