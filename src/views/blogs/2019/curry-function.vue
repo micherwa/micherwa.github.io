@@ -103,14 +103,28 @@
                 <h2>柯里化的用途</h2>
                 <p>
                     理解了柯里化的实现之后，让我们来看一下它的实际应用。柯里化的目的是，减少代码冗余，以及增加代码的可读性。来看下面这个例子：
-                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> persons = [<br>    { <span class="hljs-attr">name</span>: <span class="hljs-string">'kevin'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">4</span> },<br>    { <span class="hljs-attr">name</span>: <span class="hljs-string">'bob'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">5</span> }<br>];<br><br><span class="hljs-comment">// 这里的 curry 函数，之前已实现</span><br><span class="hljs-keyword">let</span> getProp = curry(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key, obj</span>) </span>{<br>    <span class="hljs-keyword">return</span> obj[key];<br>});<br><br><span class="hljs-keyword">const</span> ages = persons.map(getProp(<span class="hljs-string">'age'</span>)); <span class="hljs-comment">// [4, 5]</span><br><span class="hljs-keyword">const</span> names = persons.map(getProp(<span class="hljs-string">'name'</span>)); <span class="hljs-comment">// ['kevin', 'bob']</span></code></pre>
+                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> persons = [<br>    { <span class="hljs-attr">name</span>: <span class="hljs-string">'kevin'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">4</span> },<br>    { <span class="hljs-attr">name</span>: <span class="hljs-string">'bob'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">5</span> }<br>];<br><br><span class="hljs-comment">// 这里的 curry 函数，之前已实现</span><br><span class="hljs-keyword">const</span> getProp = curry(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj, index</span>) </span>{<br>    <span class="hljs-keyword">const</span> args = [].slice.call(<span class="hljs-built_in">arguments</span>);<br>    <span class="hljs-keyword">return</span> obj[args[args.length - <span class="hljs-number">1</span>]];<br>});<br><br><span class="hljs-keyword">const</span> ages = persons.map(getProp(<span class="hljs-string">'age'</span>)); <span class="hljs-comment">// [4, 5]</span><br><span class="hljs-keyword">const</span> names = persons.map(getProp(<span class="hljs-string">'name'</span>)); <span class="hljs-comment">// ['kevin', 'bob']</span></code></pre>
                     在实际的业务中，我们常会遇到类似的列表数据。用 getProp 就可以很方便地，取出列表中某个 key 对应的值。
                 </p>
                 <p>
-                    另外，为了便于理解调用的写法，可以扩展一下：
-                    <pre class="hljs go"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-keyword">const</span> names = persons.<span class="hljs-keyword">map</span>(getProp(<span class="hljs-string">'name'</span>));</code></pre>
-                    等价于：
-                    <pre class="hljs typescript"><code class=""><span class="hljs-keyword">const</span> names = persons.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {<br>    <span class="hljs-keyword">return</span> getProp(<span class="hljs-string">'name'</span>, item);<br>});</code></pre>
+                    需要注意的是，<code>const names = persons.map(getProp('name'));</code> 执行这条语句时 getProp 的参数只有一个 <code>name</code>，而定义 getProp 方法时，传入 curry 的参数有2个，<code>obj</code> 和 <code>index</code>（这里必须写 2 个及以上的参数）。
+                </p>
+
+                <p>
+                    为什么要这么写？关键就在于 <code>arguments</code> 的隐式传参。
+                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> getProp = curry(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj, index</span>) </span>{<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>);<br>    <span class="hljs-comment">// 会输出4个类数组，取其中一个来看</span><br>    <span class="hljs-comment">// {</span><br>    <span class="hljs-comment">//     0: {name: "kevin", age: 4},</span><br>    <span class="hljs-comment">//     1: 0,</span><br>    <span class="hljs-comment">//     2: [</span><br>    <span class="hljs-comment">//         {name: "kevin", age: 4},</span><br>    <span class="hljs-comment">//         {name: "bob", age: 5}</span><br>    <span class="hljs-comment">//     ],</span><br>    <span class="hljs-comment">//     3: "age"</span><br>    <span class="hljs-comment">// }</span><br>});</code></pre>
+                </p>
+
+                <p>
+                    map 是 Array 的原生方法，它的用法如下：
+                    <pre class="hljs actionscript"><code class=""><span class="hljs-keyword">var</span> new_array = arr.map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span><span class="hljs-params">(currentValue[, index[, array]])</span> </span>{<br>    <span class="hljs-comment">// Return element for new_array</span><br>}[, thisArg]);<br></code></pre>
+                    所以，我们传入的 <code>name</code>，就排在了 arguments 的最后。为了拿到 <code>name</code> 对应的值，需要对类数组 arguments 做点转换，让它可以使用 Array 的原生方法。所以，最终 getProp 方法定义成了这样：
+                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> getProp = curry(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj, index</span>) </span>{<br>    <span class="hljs-keyword">const</span> args = [].slice.call(<span class="hljs-built_in">arguments</span>);<br>    <span class="hljs-keyword">return</span> obj[args[args.length - <span class="hljs-number">1</span>]];<br>});</code></pre>
+                </p>
+
+                <p>
+                    当然，还有另外一种写法，curry 的实现更好理解，但是调用的代码却变多了，大家可以根据实际情况进行取舍。
+                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> getProp = curry(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key, obj</span>) </span>{<br>    <span class="hljs-keyword">return</span> obj[key];<br>});<br><br><span class="hljs-keyword">const</span> ages = persons.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {<br>    <span class="hljs-keyword">return</span> getProp(item)(<span class="hljs-string">'age'</span>);<br>});<br><span class="hljs-keyword">const</span> names = persons.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {<br>    <span class="hljs-keyword">return</span> getProp(item)(<span class="hljs-string">'name'</span>);<br>});</code></pre>
                 </p>
 
                 <p>
