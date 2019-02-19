@@ -1,11 +1,19 @@
 export default [
     {
+        title: '「干货」细说浏览器中的事件机制',
+        subTitle: '',
+        routeName: 'event-principle',
+        descript: '',
+        date: '2019-02-18',
+        tags: ['Javascript']
+    },
+    {
         title: '「前端面试题系列6」理解函数的柯里化',
         subTitle: '',
         routeName: 'curry-function',
         descript: '柯里化，是函数式编程的一个重要概念。它既能减少代码冗余，也能增加可读性。另外，附带着还能用来装逼。',
         date: '2019-01-30',
-        tags: ['Javascript']
+        tags: ['Javascript', '面试题']
     },
     {
         title: '「前端面试题系列5」ES6 中箭头函数的用法',
@@ -13,7 +21,7 @@ export default [
         routeName: 'arrow-function',
         descript: '',
         date: '2019-02-10',
-        tags: ['Javascript']
+        tags: ['Javascript', '面试题']
     },
     {
         title: '「干货」细说 call、apply 以及 bind 的区别和用法',

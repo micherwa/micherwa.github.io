@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/event-principle',
+        name: 'event-principle',
+        component: () => import('@/views/blogs/2019/event-principle')
+    },
+    {
         path: '/2019/curry-function',
         name: 'curry-function',
         component: () => import('@/views/blogs/2019/curry-function')

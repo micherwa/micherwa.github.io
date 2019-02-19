@@ -71,11 +71,6 @@ export default [
         component: () => import('@/views/blogs/2017/cross-domain-in-javascript')
     },
     {
-        path: '/2017/event-principle-in-javascript',
-        name: 'event-principle-in-javascript',
-        component: () => import('@/views/blogs/2017/event-principle-in-javascript')
-    },
-    {
         path: '/2017/center-of-horizontal-and-vertical',
         name: 'center-of-horizontal-and-vertical',
         component: () => import('@/views/blogs/2017/center-of-horizontal-and-vertical')
