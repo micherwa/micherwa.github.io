@@ -1,6 +1,6 @@
 export default [
     {
-        title: '「干货」细说浏览器中的事件机制',
+        title: '「干货」细说浏览器中的事件机制（涉及三大主流框架）',
         subTitle: '',
         routeName: 'event-principle',
         descript: '',

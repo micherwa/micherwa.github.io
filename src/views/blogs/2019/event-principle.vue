@@ -14,10 +14,10 @@
                     他问了我这样几个问题：
                     <ul>
                         <li>
-                            了解事件流的顺序，对日常的工作有帮助么？好像平时也没怎么遇到处理事件冒泡的情况。
+                            了解事件流的顺序，对日常的工作有什么帮助么？
                         </li>
                         <li>
-                            vue 的文档中，有一个 <strong>.native</strong> 修饰符，加上它以后就可以监听原生事件了。这是为什么，背后的原理是什么？
+                            vue 的文档中，有一个修饰符 <strong>native</strong> ，把它连结在事件之后，就可以监听原生事件了。这是为什么，背后的原理是什么？
                         </li>
                         <li>
                             事件对象中有好多的属性和方法，该如何使用？
@@ -140,8 +140,8 @@
                 <p>
                     比如 href 的链接跳转，submit 的表单提交等。可以在方法的最后，加上一行 <code>return false;</code>。它会阻止通过 on 的方式，绑定的事件的默认事件。
                     <pre class="hljs actionscript"><code class="">ele.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{<br>    ……<br>    <span class="hljs-comment">// 通过返回 false 值，阻止默认事件行为</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>}</code></pre>
-                    另外，onclick 属于事件冒泡，重写 onclick 会覆盖之前的属性，不会有兼容性问题。
-                    <pre class="hljs scala"><code class=""><span class="hljs-comment">// 解绑单击事件，将 onlick 属性设为 null 即可</span><br>ele.onclik = <span class="hljs-literal">null</span>;</code></pre>
+                    另外，onclick 属于事件冒泡，重写 onclick 会覆盖之前的属性，所以解绑事件可以这么写：
+                    <pre class="hljs scala"><code class=""><span class="hljs-comment">// 解绑单击事件，将 onlick 属性设为 null 即可</span><br>ele.onclick = <span class="hljs-literal">null</span>;</code></pre>
                 </p>
 
                 <h4>2. stopPropagation 和 stopImmediatePropagation</h4>
@@ -165,9 +165,20 @@
                     这 3 件事中，只有 preventDefault 是用来阻止默认行为的。除非你还想阻止事件冒泡，否则直接用 return false; 会埋下隐患。
                 </p>
 
-                <h4>4. vue 的 native 修饰符</h4>
+                <h4>4. angular 中的 $event</h4>
+
                 <p>
-                    在 vue 的自定义组件中触发事件，需要用到修饰符 native。那是因为，我们的自定义组件，最终会渲染成 html 的原生标签。如果想让一个普通的 html 标签触发事件，那就需要对它做事件监听(addEventListener)。修饰符 native 的作用就在这里，它在背后帮我们绑定了原生事件，进行监听。
+                    angular 是个包罗万象的框架，目的是让开发者学完它的一整套之后，就能玩转世界了。它加工封装了许多原生的东西，其中就包括了 event，只是前面需要加一个 $，表示这是 angular 中的特有对象。
+                    <pre class="hljs xml"><code class="">// template<br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"doSomething($event)"</span>&gt;</span>Click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>// js<br>doSomething($event: Event) {<br>    $event.stopPropagation();<br>    ...<br>}</code></pre>
+                    $event 在这里作为一个变量，<code>显式地</code> 传入回调函数，之后就可以将 $event 当做原生的 event 来用了。
+                </p>
+
+                <h4>5. vue 中的 native 修饰符</h4>
+                <p>
+                    在 vue 的自定义组件中触发事件，需要用到修饰符 native。
+                </p>
+                <p>
+                    那是因为，我们的自定义组件，最终会渲染成 html 的原生标签。如果想让一个普通的 html 标签触发事件，那就需要对它做事件监听(addEventListener)。修饰符 native 的作用就在这里，它在背后帮我们绑定了原生事件，进行监听。
                 </p>
                 <p>
                     一个常用的场景是，配合 element-ui 做登录界面时，输完账号密码，总想按个回车就能登录。就可以像下面这样用修饰符：
@@ -175,12 +186,23 @@
                     el-input 就是自定义组件，而 keyup 就是原生事件，需要用 native 修饰符进行绑定。
                 </p>
 
-                <h4>5. react 中的合成事件</h4>
+                <h4>6. react 中的合成事件</h4>
                 <p>
-
+                    想要在 react 的事件回调中使用 event 对象，会产生困扰，打印出来发现不少原生的属性都是 null。
+                </p>
+                <p>
+                    那是因为在 react 中的事件，其实是合成事件（SyntheticEvent），并不是浏览器的原生事件，但它也符合 w3c 规范。
+                </p>
+                <p>
+                    举一个简单的例子，我们要实现一个组件，它有一个按钮，点击按钮后会显示一张图片，点击这张图片之外的任意区域，可以隐藏这张图片，但是点击该图片本身时，不会隐藏。代码如下：
+                    <pre class="hljs kotlin"><code class=""><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShowImg</span> <span class="hljs-title">extends</span> <span class="hljs-title">Component</span> </span>{<br>    <span class="hljs-keyword">constructor</span>(props) {<br>        <span class="hljs-keyword">super</span>(props);<br>        <span class="hljs-keyword">this</span>.state = {<br>          active: <span class="hljs-literal">false</span><br>        };<br>    }<br>  <br>    componentDidMount() {<br>        document.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-keyword">this</span>.hideImg.bind(this));<br>    }<br><br>    componentWillUnmount() {<br>        document.removeEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-keyword">this</span>.hideImg);<br>    }<br>    <br>    hideImg () {<br>        <span class="hljs-keyword">this</span>.setState({ active: <span class="hljs-literal">false</span> });<br>    }<br>    <br>    handleClickBtn() {<br>        <span class="hljs-keyword">this</span>.setState({ active: !<span class="hljs-keyword">this</span>.state.active });<br>    }<br>  <br>    handleClickImg (e) {<br>        e.stopPropagation();<br>    }<br><br>    render() {<br>        <span class="hljs-keyword">return</span> (<br>            &lt;div className=<span class="hljs-string">"img-wrapper"</span>&gt;<br>                &lt;button<br>                    className=<span class="hljs-string">"showImgBtn"</span><br>                    onClick={<span class="hljs-keyword">this</span>.handleClickBtn.bind(<span class="hljs-keyword">this</span>)}&gt;<br>                    显示图片<br>                &lt;/button&gt;<br>                &lt;div<br>                    className=<span class="hljs-string">"img"</span><br>                    style={{ display: <span class="hljs-keyword">this</span>.state.active ? <span class="hljs-string">'block'</span> : <span class="hljs-string">'none'</span> }}<br>                    onClick={<span class="hljs-keyword">this</span>.handleClickImg.bind(<span class="hljs-keyword">this</span>)}&gt;<br>                    &lt;img src=<span class="hljs-string">"@/assets/avatar.jpg"</span> &gt;<br>                &lt;/div&gt;<br>            &lt;/div&gt;<br>        );<br>    }<br>}</code></pre>
+                    按照之前说的原生事件机制，我们会错误地认为通过：
+                    <pre class="hljs"><code class="">handleClickImg (e) {<br>    e.stopPropagation();<br>}</code></pre>
+                    就可以阻止事件的派发了，但其实没法这么做。想要解决这个问题，当然也不复杂，就把 react 的事件和原生事件分开即可。
+                    <pre class="hljs kotlin"><code class="">componentDidMount() {<br>    document.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-keyword">this</span>.hideImg.bind(<span class="hljs-keyword">this</span>));<br>    <br>    document.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-keyword">this</span>.imgStopPropagation.bind(<span class="hljs-keyword">this</span>));<br>}<br><br>componentWillUnmount() {<br>    document.removeEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-keyword">this</span>.hideImg);<br>    <br>    document.removeEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-keyword">this</span>.imgStopPropagation);<br>}<br><br>hideImg () {<br>    <span class="hljs-keyword">this</span>.setState({ active: <span class="hljs-literal">false</span> });<br>}<br><br>imgStopPropagation (e) {<br>    e.stopPropagation();<br>}</code></pre>
                 </p>
 
-                <h4>6. 事件对象 event</h4>
+                <h4>7. 事件对象 event</h4>
                 <p>
                     当对一个元素进行事件监听的时候，它的回调函数里就会默认传递一个参数 event，它是一个对象，包含了许多属性。我列出了一些比较常用的属性：
                     <ul>
