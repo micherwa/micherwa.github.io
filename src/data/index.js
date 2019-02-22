@@ -1,6 +1,14 @@
 export default [
     {
-        title: '「干货」细说浏览器中的事件机制（涉及三大主流框架）',
+        title: '「前端面试题系列8」数组去重(详解9种方法)',
+        subTitle: '',
+        routeName: 'array-de-duplicate',
+        descript: '',
+        date: '2019-02-28',
+        tags: ['Javascript', '算法', '面试题']
+    },
+    {
+        title: '「前端面试题系列7」浏览器中的事件机制（涉及主流框架）',
         subTitle: '',
         routeName: 'event-principle',
         descript: '',
@@ -342,14 +350,6 @@ export default [
         descript: '这里说的跨域，是指通过js在不同的域之间进行数据传输或通信。比如用ajax向一个不同的域请求数据，或者通过js获取页面中不同域的框架中(iframe)的数据。只要协议、域名、端口有任何一个不同，都被当作是不同的域。',
         date: '2017-07-12',
         tags: ['Javascript']
-    },
-    {
-        title: '数组的去重',
-        subTitle: '9中方法的代码呈现',
-        routeName: 'array-de-duplicate-in-javascript',
-        descript: '',
-        date: '2017-06-22',
-        tags: ['算法']
     },
     {
         title: '如何实现继承',

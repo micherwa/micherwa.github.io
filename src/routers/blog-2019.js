@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/array-de-duplicate',
+        name: 'array-de-duplicate',
+        component: () => import('@/views/blogs/2019/array-de-duplicate')
+    },
+    {
         path: '/2019/event-principle',
         name: 'event-principle',
         component: () => import('@/views/blogs/2019/event-principle')

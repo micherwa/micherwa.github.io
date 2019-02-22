@@ -46,11 +46,6 @@ export default [
         component: () => import('@/views/blogs/2017/export-and-export-default-in-es6')
     },
     {
-        path: '/2017/array-de-duplicate-in-javascript',
-        name: 'array-de-duplicate-in-javascript',
-        component: () => import('@/views/blogs/2017/array-de-duplicate-in-javascript')
-    },
-    {
         path: '/2017/copy-object-in-javascript',
         name: 'copy-object-in-javascript',
         component: () => import('@/views/blogs/2017/copy-object-in-javascript')
