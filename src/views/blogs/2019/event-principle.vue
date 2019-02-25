@@ -4,6 +4,8 @@
 
         <BlogContent :useCatalog="true">
             <div slot="content">
+                <img src="~@/assets/blog/bg-20190228-01.jpg">
+
                 <h2>前言</h2>
 
                 <p>这是前端面试题系列的第 7 篇，你可能错过了前面的篇章，可以在这里找到：</p>
@@ -53,7 +55,7 @@
 
                 <p>
                     先从概念说起，DOM 事件流分为三个阶段：<code>捕获阶段</code>、<code>目标阶段</code>、<code>冒泡阶段</code>。先调用捕获阶段的处理函数，其次调用目标阶段的处理函数，最后调用冒泡阶段的处理函数。
-                    <img src="~@/assets/blog/bg-20170821-01.png">
+                    <img src="~@/assets/blog/bg-20190228-02.png">
                 </p>
 
                 <p>
@@ -180,9 +182,9 @@
                 <p>
                     jquery 中的 on 是事件冒泡。当用 return false; 阻止浏览器的默认行为时，会做下面这 3 件事：
                     <ul>
-                        <li>1. event.preventDefault();</li>
-                        <li>2. event.stopPropagation();</li>
-                        <li>3. 停止回调函数执行并立即返回。</li>
+                        <li>event.preventDefault();</li>
+                        <li>event.stopPropagation();</li>
+                        <li>停止回调函数执行并立即返回。</li>
                     </ul>
                     这 3 件事中，只有 preventDefault 是用来阻止默认行为的。除非你还想阻止事件冒泡，否则直接用 return false; 会埋下隐患。
                 </p>
