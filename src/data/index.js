@@ -8,7 +8,7 @@ export default [
         tags: ['Javascript', '算法', '面试题']
     },
     {
-        title: '「前端面试题系列7」浏览器中的事件机制（涉及主流框架）',
+        title: '「前端面试题系列7」Javascript 中的事件机制（从原生到框架）',
         subTitle: '',
         routeName: 'event-principle',
         descript: '',

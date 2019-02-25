@@ -8,7 +8,7 @@
                 <p>这是前端面试题系列的第 8 篇，你可能错过了前面的篇章，可以在这里找到：</p>
                 <ul>
                     <li>
-                        <a href="" target="_blank">浏览器中的事件机制（涉及主流框架）</a>
+                        <a href="https://juejin.im/post/5c727abde51d457fc564cd77" target="_blank">浏览器中的事件机制（涉及主流框架）</a>
                     </li>
                     <li>
                         <a href="https://juejin.im/post/5c677041f265da2de25b7707" target="_blank">理解函数的柯里化</a>
@@ -31,22 +31,26 @@
                 </ul>
 
                 <p>
-                    前端面试中常会问到数组去重的问题。但在平时的工作中，后端同学会处理好了给我们，一般不用我们操心。但难免会遇到疏漏，又或者我们在处理复杂交互时，还是会遇到需要去重的情况。
+                    前端面试中常会问到数组去重的问题。在平时的工作中，并不常遇到需要去重的情况，因为后端同学一般都会处理好了给我们。但我们前端也免不了在处理复杂交互的时候，还是会遇到需要去重的情况。
                 </p>
 
                 <p>
-                    我在问数组去重的时候，更多的是想考察应聘者 2 个点：对 Array 方法的熟悉程度，还有算法能力。一般我会先让应聘者说出几种方法，然后随机抽取他说的一种，让他具体地写一下。
+                    举一个工作中的小例子。假设有一个主列表数据，可以对每一条数据进行编辑。每条数据里，可以有 N 张缩略图。所有缩略图，可以根据指定条件进行过滤生成一个缩略图列表，有时候比较多，就会有翻页。通过编辑，可以弹出缩略图列表的层，这些缩略图可以多选，并且是可以分页多选。选完之后，将缩略图的信息，在主列表中更新展示出来。这时，就需要我们自己去维护主列表与缩略图的关系了，并且编辑完成后的缩略图是不可重复的，那就会遇到需要去重的情况了。
                 </p>
 
                 <p>
-                    所以，这里有一个通用的面试技巧：自己不熟悉的东西，千万别说！我就碰到过几个应聘者，一开始只说了两种方法。我随口问还有别的么？他想了一会儿，又说了一种，我就让他写，结果就没写出来，好尴尬。如果他说没有了，那我就会让他自己写最开始的方法了。
+                    我在问数组去重的时候，更多的是想考察应聘者 2 个点：对 Array 方法的熟悉程度，还有逻辑算法能力。一般我会先让应聘者说出几种方法，然后随机抽取他说的一种，让他具体地写一下。
+                </p>
+
+                <p>
+                    所以，这里有一个通用的面试技巧：自己不熟悉的东西，千万别说！我就碰到过几个应聘者，想尽可能地表现自己，说了自己不熟悉的方法，结果就没写出来，很尴尬。
                 </p>
 
                 <p>
                     ok，让我们马上开始今天的主题。会介绍 9 种不同类型的方法，一些类似的方法做了合并，写法从简到繁。
                 </p>
 
-                <h2>数组的去重</h2>
+                <h2>9 种去重方法</h2>
 
                 <p>
                     假设有一个这样的数组： <code>let originalArray = [1, '1', '1', 2,  true, 'true', false, false, null, null, {}, {}, 'abc', 'abc', undefined, undefined, NaN, NaN];</code>。
@@ -73,7 +77,7 @@
                 <h4>3、indexOf 和 includes</h4>
 
                 <p>
-                    换一种思路，建立一个新的空数组，遍历源数组，往这个空数组里塞值，每次 push 之前，先判断是否已有相同的值。
+                    建立一个新的空数组，遍历源数组，往这个空数组里塞值，每次 push 之前，先判断是否已有相同的值。
                 </p>
 
                 <p>
@@ -85,20 +89,49 @@
                 <p>
                     再来看 includes，它是在 ES7 中正式提出的。
                     <pre class="hljs coffeescript"><code class="">const resultArr = [];<br><span class="hljs-keyword">for</span> (let i = <span class="hljs-number">0</span>; i &lt; originalArray.length; i++) {<br>    <span class="hljs-keyword">if</span> (!resultArr.includes(originalArray[i])) {<br>        resultArr.push(originalArray[i]);<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
-                    includes 处理了 <code>NaN</code>，却还是没能处理 <code>{}</code>
+                    includes 处理了 <code>NaN</code>，却还是没能处理 <code>{}</code>。
                 </p>
 
                 <h4>4、sort</h4>
                 <p>
                     先将原数组排序，生成新的数组，然后遍历排序后的数组，相邻的两两进行比较，如果不同则存入新数组。
                     <pre class="hljs coffeescript"><code class="">const sortedArr = originalArray.sort();<br><br>const resultArr = [sortedArr[<span class="hljs-number">0</span>]];<br><br><span class="hljs-keyword">for</span> (let i = <span class="hljs-number">1</span>; i &lt; sortedArr.length; i++) {<br>    <span class="hljs-keyword">if</span> (sortedArr[i] !== resultArr[resultArr.length - <span class="hljs-number">1</span>]) {<br>        resultArr.push(sortedArr[i]);<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, NaN, NaN, {…}, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">undefined</span>]</code></pre>
-
+                    可以从结果看出排序的结果。同样的没有处理 <code>{}</code> 和 <code>NaN</code>。
                 </p>
 
-                <h4>4、filter + hasOwnProperty</h4>
+                <h4>5、双层 for 循环 + splice</h4>
+                <p>
+                    双层循环，外层遍历源数组，内层从 i+1 开始遍历比较，相同时删除这个值。
+                    <pre class="hljs lisp"><code class="focus">for (<span class="hljs-name">let</span> i = 0; i &lt; originalArray.length; i++) {<br>    for (<span class="hljs-name">let</span> j = (<span class="hljs-name">i</span> + <span class="hljs-number">1</span>); j &lt; originalArray.length; j++) {<br>        // 第一个等于第二个，splice去掉第二个<br>        if (<span class="hljs-name">originalArray</span>[i] === originalArray[j]) {<br>            originalArray.splice(<span class="hljs-name">j</span>, <span class="hljs-number">1</span>)<span class="hljs-comment">;</span><br>            j--;<br>        }<br>    }<br>}<br><br>console.log(<span class="hljs-name">originalArray</span>)<span class="hljs-comment">;</span><br><span class="hljs-comment">// [1, "1", 2, true, "true", false, null, {…}, {…}, "abc", undefined, NaN, NaN]</span></code></pre>
+                    splice 方法会修改源数组，所以这里我们并没有新开空数组去存储，最终输出的是修改之后的源数组。但同样的没有处理 <code>{}</code> 和 <code>NaN</code>。
+                </p>
+
+                <h4>6、原始去重</h4>
+                <p>
+                    定义一个新数组，并存放原数组的第一个元素，然后将源数组一一和新数组的元素对比，若不同则存放在新数组中。
+                    <pre class="hljs lua"><code class="">let resultArr = [originalArray[<span class="hljs-number">0</span>]];<br><span class="hljs-keyword">for</span>(var i = <span class="hljs-number">1</span>; i &lt; originalArray.length; i++){<br>    var <span class="hljs-keyword">repeat</span> = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span>(var j=<span class="hljs-number">0</span>; j &lt; resultArr.length; j++){<br>        <span class="hljs-keyword">if</span>(originalArray[i] === resultArr[j]){<br>            <span class="hljs-keyword">repeat</span> = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">break</span>;<br>        }<br>    }<br><br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">repeat</span>){<br>       resultArr.push(originalArray[i]);<br>    }<br>}<br>console.<span class="hljs-built_in">log</span>(resultArr);<br>// [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, null, {…}, {…}, <span class="hljs-string">"abc"</span>, undefined, NaN, NaN]</code></pre>
+                    这是最原始的去重方法，很好理解，但写法繁琐。同样的没有处理 <code>{}</code> 和 <code>NaN</code>。
+                </p>
+
+                <h4>7、ES5 的 reduce</h4>
+                <p>
+                    reduce 是 ES5 中方法，常用于值的累加。它的语法：
+                    <pre class="hljs css"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-selector-tag">arr</span><span class="hljs-selector-class">.reduce</span>(<span class="hljs-selector-tag">callback</span><span class="hljs-selector-attr">[, initialValue]</span>)</code></pre>
+                    reduce 的第一个参数是一个 callback，callback 中的参数分别为： Accumulator(累加器)、currentValue(当前正在处理的元素)、currentIndex(当前正在处理的元素索引，可选)、array(调用 reduce 的数组，可选)。
+                </p>
+                <p>
+                    reduce 的第二个参数，是作为第一次调用 callback 函数时的第一个参数的值。如果没有提供初始值，则将使用数组中的第一个元素。
+                </p>
 
                 <p>
-                    filter() 方法会返回一个新的数组，新数组中的元素，通过 hasOwnProperty 来检查是否为符合条件的元素。
+                    利用 reduce 的特性，再结合之前的 includes(也可以用 indexOf)，就能得到新的去重方法：
+                    <pre class="hljs coffeescript"><code class="">const reducer = <span class="hljs-function"><span class="hljs-params">(acc, cur)</span> =&gt;</span> acc.includes(cur) ? acc : [...acc, cur];<br><br>const resultArr = originalArray.reduce(reducer, []);<br><br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
+                    这里的 <code>[]</code> 就是初始值(initialValue)。acc 是累加器，在这里的作用是将没有重复的值塞入新数组（它一开始是空的）。 reduce 的写法很简单，但需要多加理解。它可以处理 <code>NaN</code>，却没能处理 <code>{}</code>。
+                </p>
+
+                <h4>8、filter + hasOwnProperty</h4>
+                <p>
+                    filter 方法会返回一个新的数组，新数组中的元素，通过 hasOwnProperty 来检查是否为符合条件的元素。
                     <pre class="hljs coffeescript"><code class="">const obj = {};<br>const resultArr = originalArray.filter(function (item) {<br>    <span class="hljs-keyword">return</span> obj.hasOwnProperty(<span class="hljs-keyword">typeof</span> item + item) ? <span class="hljs-literal">false</span> : (obj[<span class="hljs-keyword">typeof</span> item + item] = <span class="hljs-literal">true</span>);<br>});<br><br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
                     这是目前看来最完美的解决方案了。这里稍加解释一下：
                     <ul>
@@ -117,22 +150,7 @@
                     </ul>
                 </p>
 
-
-
-                <h2>for嵌套for，然后splice去重</h2>
-                <p>
-                    双层循环，外层循环元素，内层循环时比较值。值相同时，则删去这个值。
-                    <pre class="hljs javascript"><code class=""><span class="hljs-keyword">for</span> (<span class="hljs-built_in">let</span> i=<span class="hljs-number">0</span>; i &lt; arr.<span class="hljs-built_in">length</span>; i++) {<br>    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">let</span> j=i+<span class="hljs-number">1</span>; j &lt; arr.<span class="hljs-built_in">length</span>; j++) {<br>        // 第一个等于第二个，<span class="hljs-built_in">splice</span>去掉第二个<br>        <span class="hljs-keyword">if</span> (arr[i] === arr[j]) {<br>            arr.<span class="hljs-built_in">splice</span>(j, <span class="hljs-number">1</span>);<br>            j--;<br>        }<br>    }<br>}<br><br>console.<span class="hljs-built_in">log</span>(arr);</code></pre>
-                </p>
-
-                <h2>原始去重</h2>
-                <p>
-                    定义一个新数组，并存放原数组的第一个元素，然后将原数组一一和新数组的元素对比，若不同则存放在新数组中
-                    <pre class="hljs javascript"><code class="">let <span class="hljs-keyword">new</span><span class="hljs-type">Arr</span> = [arr[<span class="hljs-number">0</span>]];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">1</span>; i &lt; arr.length; i++){<br>    <span class="hljs-keyword">var</span> repeat = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j &lt; <span class="hljs-keyword">new</span><span class="hljs-type">Arr</span>.length; j++){<br>        <span class="hljs-keyword">if</span>(arr[i] == <span class="hljs-keyword">new</span><span class="hljs-type">Arr</span>[j]){<br>            repeat = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">break</span>;<br>        }<br>    }<br><br>    <span class="hljs-keyword">if</span>(!repeat){<br>       <span class="hljs-keyword">new</span><span class="hljs-type">Arr</span>.push(arr[i]);<br>    }<br>}<br>console.log(<span class="hljs-keyword">new</span><span class="hljs-type">Arr</span>);</code></pre>
-                </p>
-
-                <h4>、对象的属性</h4>
-
+                <h4>9、对象的属性</h4>
                 <p>
                     每次取出原数组的元素，然后在对象中访问这个属性，如果存在就说明重复。
                     <pre class="hljs coffeescript"><code class="">const resultArr = [];<br>const obj = {};<br><span class="hljs-keyword">for</span>(let i = <span class="hljs-number">0</span>; i &lt; originalArray.length; i++){<br>    <span class="hljs-keyword">if</span>(!obj[originalArray[i]]){<br>        resultArr.push(originalArray[i]);<br>        obj[originalArray[i]] = <span class="hljs-number">1</span>;<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
