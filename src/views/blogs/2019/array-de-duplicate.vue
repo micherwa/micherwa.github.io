@@ -31,21 +31,21 @@
                 </ul>
 
                 <p>
-                    前端面试中经常会问到数组去重的问题。因为在平时的工作中，会遇到复杂交互的情况，所以需要知道该如何解决。另外，我在问应聘者这道题的时候，更多的是想考察 2 个点：对 Array 方法的熟悉程度，还有逻辑算法能力。一般我会先让应聘者说出几种方法，然后随机抽取他说的一种，让他具体地写一下。
+                    前端面试中经常会问到数组去重的问题。因为在平时的工作中遇到复杂交互的时候，需要知道该如何解决。另外，我在问应聘者这道题的时候，更多的是想考察 2 个点：对 Array 方法的熟悉程度，还有逻辑算法能力。一般我会先让应聘者说出几种方法，然后随机抽取他说的一种，具体地写一下。
                 </p>
 
                 <p>
-                    所以，这里有一个通用的面试技巧：自己不熟悉的东西，千万别说！我就碰到过几个应聘者，想尽可能地表现自己，就说了不少方法，随机抽了一个，结果就没写出来，很尴尬。
+                    这里有一个通用的面试技巧：自己不熟悉的东西，千万别说！我就碰到过几个应聘者，想尽可能地表现自己，就说了不少方法，随机抽了一个，结果就没写出来，很尴尬。
                 </p>
 
                 <p>
-                    ok，让我们马上开始今天的主题。会介绍 10 种不同类型的方法，一些类似的方法做了合并，写法从简到繁，还会有 loadsh 源码中的方法。
+                    ok，让我们马上开始今天的主题。会介绍 10 种不同类型的方法，一些类似的方法我做了合并，写法从简到繁，其中还会有 loadsh 源码中的方法。
                 </p>
 
                 <h2>10 种去重方法</h2>
 
                 <p>
-                    假设有一个这样的数组： <code>let originalArray = [1, '1', '1', 2,  true, 'true', false, false, null, null, {}, {}, 'abc', 'abc', undefined, undefined, NaN, NaN];</code>。
+                    假设有一个这样的数组： <code>let originalArray = [1, '1', '1', 2,  true, 'true', false, false, null, null, {}, {}, 'abc', 'abc', undefined, undefined, NaN, NaN];</code>。后面的方法中的源数组，都是指的这个。
                 </p>
 
                 <h4>1、ES6 的 Set 对象</h4>
@@ -132,7 +132,7 @@
                 <p>
                     filter 方法会返回一个新的数组，新数组中的元素，通过 hasOwnProperty 来检查是否为符合条件的元素。
                     <pre class="hljs coffeescript"><code class="">const obj = {};<br>const resultArr = originalArray.filter(function (item) {<br>    <span class="hljs-keyword">return</span> obj.hasOwnProperty(<span class="hljs-keyword">typeof</span> item + item) ? <span class="hljs-literal">false</span> : (obj[<span class="hljs-keyword">typeof</span> item + item] = <span class="hljs-literal">true</span>);<br>});<br><br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
-                    这是目前看来最完美的解决方案了。这里稍加解释一下：
+                    这 <code>貌似</code> 是目前看来最完美的解决方案了。这里稍加解释一下：
                     <ul>
                         <li>
                             hasOwnProperty 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性。
@@ -149,6 +149,18 @@
                     </ul>
                 </p>
 
+                <p>
+                    <code>看似</code> 完美解决了我们源数组的去重问题，但在实际的开发中，一般不会给两个空对象给我们去重。所以稍加改变源数组，给两个空对象中加入键值对。
+                    <pre class="hljs typescript"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-keyword">let</span> originalArray = [<span class="hljs-number">1</span>, <span class="hljs-string">'1'</span>, <span class="hljs-string">'1'</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">'true'</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, {a: <span class="hljs-number">1</span>}, {a: <span class="hljs-number">2</span>}, <span class="hljs-string">'abc'</span>, <span class="hljs-string">'abc'</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">NaN</span>];</code></pre>
+                    然后再用 filter + hasOwnProperty 去重。
+                </p>
+                <p>
+                    然而，结果竟然把 <code>{a: 2}</code> 给去除了！！！这就不对了。
+                </p>
+                <p>
+                    所以，这种方法有点去重 <code>过头</code> 了，还是存在问题的。
+                </p>
+
                 <h4>10、lodash 中的 _.uniq</h4>
                 <p>
                     灵机一动，让我想到了 lodash 的去重方法 _.uniq，那就尝试一把：
@@ -162,9 +174,17 @@
                     有比较多的干扰项，去除掉之后，就会发现它用了 <code>while</code> 做循环，当遇到值相同的时候，<code>continue outer</code> 再次进入循环进行比较，将没有重复的值塞进 <code>result</code> 里，最终输出。
                 </p>
 
+                <p>
+                    另外，lodash 里还有一个 _.uniqBy 方法，它可以通过指定 key，来专门去重对象列表，感觉还挺实用的。它的源码还是指向了 <code>_.baseUniq</code>。
+                    <pre class="hljs ruby"><code class=""><span class="hljs-number">_</span>.uniqBy([{ <span class="hljs-string">'x'</span>: <span class="hljs-number">1</span> }, { <span class="hljs-string">'x'</span>: <span class="hljs-number">2</span> }, { <span class="hljs-string">'x'</span>: <span class="hljs-number">1</span> }], <span class="hljs-string">'x'</span>);<span class="hljs-regexp"><br>//</span> =&gt; [{ <span class="hljs-string">'x'</span>: <span class="hljs-number">1</span> }, { <span class="hljs-string">'x'</span>: <span class="hljs-number">2</span> }]</code></pre>
+                </p>
+
                 <h2>总结</h2>
                 <p>
-                    从上述的这些方法来看，只有 <code>filter + hasOwnProperty</code> 完美解决了去重的要求，它用的还是原生的方法。所以，我们提倡拥抱原生，因为它真的没有那么难以理解，至少在这里我觉得它比 lodash 的 _.uniq 方法好理解得多，还能解决问题。
+                    从上述的这些方法来看，只有第一种 ES6 的 Set 对象方法，才是最契合我们日常开发的去重方法了，它是原生的，写法还更简单。
+                </p>
+                <p>
+                    所以，我们提倡拥抱原生，因为它真的没有那么难以理解，至少在这里我觉得它比 lodash 里 _.uniq 的源码要好理解得多，关键是还能解决问题。
                 </p>
             </div>
         </BlogContent>
