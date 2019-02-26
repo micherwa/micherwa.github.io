@@ -31,26 +31,18 @@
                 </ul>
 
                 <p>
-                    前端面试中常会问到数组去重的问题。在平时的工作中，并不常遇到需要去重的情况，因为后端同学一般都会处理好了给我们。但我们前端也免不了在处理复杂交互的时候，还是会遇到需要去重的情况。
+                    前端面试中经常会问到数组去重的问题。因为在平时的工作中，会遇到复杂交互的情况，所以需要知道该如何解决。另外，我在问应聘者这道题的时候，更多的是想考察 2 个点：对 Array 方法的熟悉程度，还有逻辑算法能力。一般我会先让应聘者说出几种方法，然后随机抽取他说的一种，让他具体地写一下。
                 </p>
 
                 <p>
-                    举一个工作中的小例子。假设有一个主列表数据，可以对每一条数据进行编辑。每条数据里，可以有 N 张缩略图。所有缩略图，可以根据指定条件进行过滤生成一个缩略图列表，有时候比较多，就会有翻页。通过编辑，可以弹出缩略图列表的层，这些缩略图可以多选，并且是可以分页多选。选完之后，将缩略图的信息，在主列表中更新展示出来。这时，就需要我们自己去维护主列表与缩略图的关系了，并且编辑完成后的缩略图是不可重复的，那就会遇到需要去重的情况了。
+                    所以，这里有一个通用的面试技巧：自己不熟悉的东西，千万别说！我就碰到过几个应聘者，想尽可能地表现自己，就说了不少方法，随机抽了一个，结果就没写出来，很尴尬。
                 </p>
 
                 <p>
-                    我在问数组去重的时候，更多的是想考察应聘者 2 个点：对 Array 方法的熟悉程度，还有逻辑算法能力。一般我会先让应聘者说出几种方法，然后随机抽取他说的一种，让他具体地写一下。
+                    ok，让我们马上开始今天的主题。会介绍 10 种不同类型的方法，一些类似的方法做了合并，写法从简到繁，还会有 loadsh 源码中的方法。
                 </p>
 
-                <p>
-                    所以，这里有一个通用的面试技巧：自己不熟悉的东西，千万别说！我就碰到过几个应聘者，想尽可能地表现自己，说了自己不熟悉的方法，结果就没写出来，很尴尬。
-                </p>
-
-                <p>
-                    ok，让我们马上开始今天的主题。会介绍 9 种不同类型的方法，一些类似的方法做了合并，写法从简到繁。
-                </p>
-
-                <h2>9 种去重方法</h2>
+                <h2>10 种去重方法</h2>
 
                 <p>
                     假设有一个这样的数组： <code>let originalArray = [1, '1', '1', 2,  true, 'true', false, false, null, null, {}, {}, 'abc', 'abc', undefined, undefined, NaN, NaN];</code>。
@@ -129,7 +121,14 @@
                     这里的 <code>[]</code> 就是初始值(initialValue)。acc 是累加器，在这里的作用是将没有重复的值塞入新数组（它一开始是空的）。 reduce 的写法很简单，但需要多加理解。它可以处理 <code>NaN</code>，却没能处理 <code>{}</code>。
                 </p>
 
-                <h4>8、filter + hasOwnProperty</h4>
+                <h4>8、对象的属性</h4>
+                <p>
+                    每次取出原数组的元素，然后在对象中访问这个属性，如果存在就说明重复。
+                    <pre class="hljs coffeescript"><code class="">const resultArr = [];<br>const obj = {};<br><span class="hljs-keyword">for</span>(let i = <span class="hljs-number">0</span>; i &lt; originalArray.length; i++){<br>    <span class="hljs-keyword">if</span>(!obj[originalArray[i]]){<br>        resultArr.push(originalArray[i]);<br>        obj[originalArray[i]] = <span class="hljs-number">1</span>;<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
+                    但这种方法有缺陷。从结果看，它貌似只关心值，不关注类型。还把 <code>{}</code> 给处理了，但这不是正统的处理办法，所以 <strong>不推荐使用</strong>。
+                </p>
+
+                <h4>9、filter + hasOwnProperty</h4>
                 <p>
                     filter 方法会返回一个新的数组，新数组中的元素，通过 hasOwnProperty 来检查是否为符合条件的元素。
                     <pre class="hljs coffeescript"><code class="">const obj = {};<br>const resultArr = originalArray.filter(function (item) {<br>    <span class="hljs-keyword">return</span> obj.hasOwnProperty(<span class="hljs-keyword">typeof</span> item + item) ? <span class="hljs-literal">false</span> : (obj[<span class="hljs-keyword">typeof</span> item + item] = <span class="hljs-literal">true</span>);<br>});<br><br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
@@ -150,11 +149,22 @@
                     </ul>
                 </p>
 
-                <h4>9、对象的属性</h4>
+                <h4>10、lodash 中的 _.uniq</h4>
                 <p>
-                    每次取出原数组的元素，然后在对象中访问这个属性，如果存在就说明重复。
-                    <pre class="hljs coffeescript"><code class="">const resultArr = [];<br>const obj = {};<br><span class="hljs-keyword">for</span>(let i = <span class="hljs-number">0</span>; i &lt; originalArray.length; i++){<br>    <span class="hljs-keyword">if</span>(!obj[originalArray[i]]){<br>        resultArr.push(originalArray[i]);<br>        obj[originalArray[i]] = <span class="hljs-number">1</span>;<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
-                    但这种方法有缺陷。从结果看，它貌似只关心值，不关注类型。还把 <code>{}</code> 给处理了，但这不是正统的处理办法，所以 <strong>不推荐使用</strong>。
+                    灵机一动，让我想到了 lodash 的去重方法 _.uniq，那就尝试一把：
+                    <pre class="hljs perl"><code class="">console.log(<span class="hljs-number">_</span>.uni<span class="hljs-string">q(originalArray)</span>);<br><br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, true, <span class="hljs-string">"true"</span>, false, null, {…}, {…}, <span class="hljs-string">"abc"</span>, undefined, NaN, NaN]</code></pre>
+                    封装得很简单，但没有处理 <code>{}</code> 和 <code>NaN</code>。
+                </p>
+                <p>
+                    好奇心促使下，看了它的源码，指向了 _.baseUniq 文件，它的源码如下：
+                    <pre class="hljs cs"><code class=""><span class="hljs-function">function <span class="hljs-title">baseUniq</span>(<span class="hljs-params">array, iteratee, comparator</span>)</span> {<br>  <span class="hljs-keyword">let</span> index = <span class="hljs-number">-1</span><br>  <span class="hljs-keyword">let</span> includes = arrayIncludes<br>  <span class="hljs-keyword">let</span> isCommon = <span class="hljs-literal">true</span><br><br>  <span class="hljs-keyword">const</span> { length } = array<br>  <span class="hljs-keyword">const</span> result = []<br>  <span class="hljs-keyword">let</span> seen = <span class="hljs-function">result</span><br><span class="hljs-function"></span><br><span class="hljs-function">  <span class="hljs-title">if</span> (<span class="hljs-params">comparator</span>)</span> {<br>    isCommon = <span class="hljs-literal">false</span><br>    includes = arrayIncludesWith<br>  }<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (length &gt;= LARGE_ARRAY_SIZE) {<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">set</span> = iteratee ? <span class="hljs-literal">null</span> : createSet(array)<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">set</span>) {<br>      <span class="hljs-keyword">return</span> setToArray(<span class="hljs-keyword">set</span>)<br>    }<br>    isCommon = <span class="hljs-literal">false</span><br>    includes = cacheHas<br>    seen = <span class="hljs-keyword">new</span> SetCache<br>  }<br>  <span class="hljs-keyword">else</span> {<br>    seen = iteratee ? [] : result<br>  }<br>  outer:<br>  <span class="hljs-keyword">while</span> (++index &lt; length) {<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">value</span> = array[index]<br>    <span class="hljs-keyword">const</span> computed = iteratee ? iteratee(<span class="hljs-keyword">value</span>) : <span class="hljs-keyword">value</span><br><br>    <span class="hljs-keyword">value</span> = (comparator || <span class="hljs-keyword">value</span> !== <span class="hljs-number">0</span>) ? <span class="hljs-keyword">value</span> : <span class="hljs-number">0</span><br>    <span class="hljs-keyword">if</span> (isCommon &amp;&amp; computed === computed) {<br>      <span class="hljs-keyword">let</span> seenIndex = seen.<span class="hljs-function">length</span><br><span class="hljs-function">      <span class="hljs-title">while</span> (<span class="hljs-params">seenIndex--</span>)</span> {<br>        <span class="hljs-keyword">if</span> (seen[seenIndex] === computed) {<br>          <span class="hljs-keyword">continue</span> outer<br>        }<br>      }<br>      <span class="hljs-keyword">if</span> (iteratee) {<br>        seen.push(computed)<br>      }<br>      result.push(<span class="hljs-keyword">value</span>)<br>    }<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!includes(seen, computed, comparator)) {<br>      <span class="hljs-keyword">if</span> (seen !== result) {<br>        seen.push(computed)<br>      }<br>      result.push(<span class="hljs-keyword">value</span>)<br>    }<br>  }<br>  <span class="hljs-keyword">return</span> result<br>}</code></pre>
+
+                    有比较多的干扰项，去除掉之后，就会发现它用了 <code>while</code> 做循环，当遇到值相同的时候，<code>continue outer</code> 再次进入循环进行比较，将没有重复的值塞进 <code>result</code> 里，最终输出。
+                </p>
+
+                <h2>总结</h2>
+                <p>
+                    从上述的这些方法来看，只有 <code>filter + hasOwnProperty</code> 完美解决了去重的要求，它用的还是原生的方法。所以，我们提倡拥抱原生，因为它真的没有那么难以理解，至少在这里我觉得它比 lodash 的 _.uniq 方法好理解得多，还能解决问题。
                 </p>
             </div>
         </BlogContent>

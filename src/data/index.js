@@ -1,6 +1,6 @@
 export default [
     {
-        title: '「前端面试题系列8」数组去重(浓缩版)',
+        title: '「前端面试题系列8」数组去重(10 种浓缩版)',
         subTitle: '',
         routeName: 'array-de-duplicate',
         descript: '',
