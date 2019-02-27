@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/uniq-in-lodash',
+        name: 'uniq-in-lodash',
+        component: () => import('@/views/blogs/2019/uniq-in-lodash')
+    },
+    {
         path: '/2019/array-de-duplicate',
         name: 'array-de-duplicate',
         component: () => import('@/views/blogs/2019/array-de-duplicate')

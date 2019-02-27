@@ -56,14 +56,14 @@
                 </p>
 
                 <p>
-                    这是最简单快捷的去重方法，但有一个问题 <code>{}</code> 没有去重，为什么没法去重对象呢？因为它们的地址不一样呗，尽管它们长得一样，都是空对象。不要担心，后面会有方法可以解决。
+                    这是最简单快捷的去重方法，但是细心的同学会发现，这里的 <code>{}</code> 没有去重。可是又转念一想，2 个空对象的地址并不相同，所以这里并没有问题，结果 ok。
                 </p>
 
                 <h4>2、Map 的 has 方法</h4>
                 <p>
                     把源数组的每一个元素作为 key 存到 Map 中。由于 Map 中不会出现相同的 key 值，所以最终得到的就是去重后的结果。
                     <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> resultArr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; originalArray.length; i++) {<br>    <span class="hljs-comment">// 没有该 key 值</span><br>    <span class="hljs-keyword">if</span> (!map.has(originalArray[i])) {<br>        map.set(originalArray[i], <span class="hljs-literal">true</span>);<br>        resultArr.push(originalArray[i]);<br>    }<br>}<br><br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-comment">// [1, "1", 2, true, "true", false, null, {…}, {…}, "abc", undefined, NaN]</span></code></pre>
-                    但是它与 Set 一样，还是没解决 <code>{}</code> 的问题。
+                    但是它与 Set 的数据结构比较相似，结果 ok。
                 </p>
 
                 <h4>3、indexOf 和 includes</h4>
@@ -75,34 +75,34 @@
                 <p>
                     判断的方法有 2 个：indexOf 和 includes，但它们的结果之间有细微的差别。先看 indexOf。
                     <pre class="hljs coffeescript"><code class="">const resultArr = [];<br><span class="hljs-keyword">for</span> (let i = <span class="hljs-number">0</span>; i &lt; originalArray.length; i++) {<br>    <span class="hljs-keyword">if</span> (resultArr.indexOf(originalArray[i]) &lt; <span class="hljs-number">0</span>) {<br>        resultArr.push(originalArray[i]);<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN, NaN]<br></code></pre>
-                    indexOf 并不没处理 <code>{}</code> 和 <code>NaN</code>。
+                    indexOf 并不没处理 <code>NaN</code>。
                 </p>
 
                 <p>
                     再来看 includes，它是在 ES7 中正式提出的。
                     <pre class="hljs coffeescript"><code class="">const resultArr = [];<br><span class="hljs-keyword">for</span> (let i = <span class="hljs-number">0</span>; i &lt; originalArray.length; i++) {<br>    <span class="hljs-keyword">if</span> (!resultArr.includes(originalArray[i])) {<br>        resultArr.push(originalArray[i]);<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
-                    includes 处理了 <code>NaN</code>，却还是没能处理 <code>{}</code>。
+                    includes 处理了 <code>NaN</code>，结果 ok。
                 </p>
 
                 <h4>4、sort</h4>
                 <p>
                     先将原数组排序，生成新的数组，然后遍历排序后的数组，相邻的两两进行比较，如果不同则存入新数组。
                     <pre class="hljs coffeescript"><code class="">const sortedArr = originalArray.sort();<br><br>const resultArr = [sortedArr[<span class="hljs-number">0</span>]];<br><br><span class="hljs-keyword">for</span> (let i = <span class="hljs-number">1</span>; i &lt; sortedArr.length; i++) {<br>    <span class="hljs-keyword">if</span> (sortedArr[i] !== resultArr[resultArr.length - <span class="hljs-number">1</span>]) {<br>        resultArr.push(sortedArr[i]);<br>    }<br>}<br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, NaN, NaN, {…}, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">undefined</span>]</code></pre>
-                    可以从结果看出排序的结果。同样的没有处理 <code>{}</code> 和 <code>NaN</code>。
+                    从结果可以看出，对源数组进行了排序。但同样的没有处理 <code>NaN</code>。
                 </p>
 
                 <h4>5、双层 for 循环 + splice</h4>
                 <p>
                     双层循环，外层遍历源数组，内层从 i+1 开始遍历比较，相同时删除这个值。
                     <pre class="hljs lisp"><code class="focus">for (<span class="hljs-name">let</span> i = 0; i &lt; originalArray.length; i++) {<br>    for (<span class="hljs-name">let</span> j = (<span class="hljs-name">i</span> + <span class="hljs-number">1</span>); j &lt; originalArray.length; j++) {<br>        // 第一个等于第二个，splice去掉第二个<br>        if (<span class="hljs-name">originalArray</span>[i] === originalArray[j]) {<br>            originalArray.splice(<span class="hljs-name">j</span>, <span class="hljs-number">1</span>)<span class="hljs-comment">;</span><br>            j--;<br>        }<br>    }<br>}<br><br>console.log(<span class="hljs-name">originalArray</span>)<span class="hljs-comment">;</span><br><span class="hljs-comment">// [1, "1", 2, true, "true", false, null, {…}, {…}, "abc", undefined, NaN, NaN]</span></code></pre>
-                    splice 方法会修改源数组，所以这里我们并没有新开空数组去存储，最终输出的是修改之后的源数组。但同样的没有处理 <code>{}</code> 和 <code>NaN</code>。
+                    splice 方法会修改源数组，所以这里我们并没有新开空数组去存储，最终输出的是修改之后的源数组。但同样的没有处理 <code>NaN</code>。
                 </p>
 
                 <h4>6、原始去重</h4>
                 <p>
                     定义一个新数组，并存放原数组的第一个元素，然后将源数组一一和新数组的元素对比，若不同则存放在新数组中。
                     <pre class="hljs lua"><code class="">let resultArr = [originalArray[<span class="hljs-number">0</span>]];<br><span class="hljs-keyword">for</span>(var i = <span class="hljs-number">1</span>; i &lt; originalArray.length; i++){<br>    var <span class="hljs-keyword">repeat</span> = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">for</span>(var j=<span class="hljs-number">0</span>; j &lt; resultArr.length; j++){<br>        <span class="hljs-keyword">if</span>(originalArray[i] === resultArr[j]){<br>            <span class="hljs-keyword">repeat</span> = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">break</span>;<br>        }<br>    }<br><br>    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">repeat</span>){<br>       resultArr.push(originalArray[i]);<br>    }<br>}<br>console.<span class="hljs-built_in">log</span>(resultArr);<br>// [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, null, {…}, {…}, <span class="hljs-string">"abc"</span>, undefined, NaN, NaN]</code></pre>
-                    这是最原始的去重方法，很好理解，但写法繁琐。同样的没有处理 <code>{}</code> 和 <code>NaN</code>。
+                    这是最原始的去重方法，很好理解，但写法繁琐。同样的没有处理 <code>NaN</code>。
                 </p>
 
                 <h4>7、ES5 的 reduce</h4>
@@ -118,7 +118,7 @@
                 <p>
                     利用 reduce 的特性，再结合之前的 includes(也可以用 indexOf)，就能得到新的去重方法：
                     <pre class="hljs coffeescript"><code class="">const reducer = <span class="hljs-function"><span class="hljs-params">(acc, cur)</span> =&gt;</span> acc.includes(cur) ? acc : [...acc, cur];<br><br>const resultArr = originalArray.reduce(reducer, []);<br><br><span class="hljs-built_in">console</span>.log(resultArr);<br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-string">"true"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>, {…}, {…}, <span class="hljs-string">"abc"</span>, <span class="hljs-literal">undefined</span>, NaN]</code></pre>
-                    这里的 <code>[]</code> 就是初始值(initialValue)。acc 是累加器，在这里的作用是将没有重复的值塞入新数组（它一开始是空的）。 reduce 的写法很简单，但需要多加理解。它可以处理 <code>NaN</code>，却没能处理 <code>{}</code>。
+                    这里的 <code>[]</code> 就是初始值(initialValue)。acc 是累加器，在这里的作用是将没有重复的值塞入新数组（它一开始是空的）。 reduce 的写法很简单，但需要多加理解。它可以处理 <code>NaN</code>，结果 ok。
                 </p>
 
                 <h4>8、对象的属性</h4>
@@ -158,19 +158,18 @@
                     然而，结果竟然把 <code>{a: 2}</code> 给去除了！！！这就不对了。
                 </p>
                 <p>
-                    所以，这种方法有点去重 <code>过头</code> 了，还是存在问题的。
+                    所以，这种方法有点去重 <code>过头</code> 了，也是存在问题的。
                 </p>
 
                 <h4>10、lodash 中的 _.uniq</h4>
                 <p>
                     灵机一动，让我想到了 lodash 的去重方法 _.uniq，那就尝试一把：
                     <pre class="hljs perl"><code class="">console.log(<span class="hljs-number">_</span>.uni<span class="hljs-string">q(originalArray)</span>);<br><br><span class="hljs-regexp">//</span> [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-number">2</span>, true, <span class="hljs-string">"true"</span>, false, null, {…}, {…}, <span class="hljs-string">"abc"</span>, undefined, NaN, NaN]</code></pre>
-                    封装得很简单，但没有处理 <code>{}</code> 和 <code>NaN</code>。
+                    用法很简单， 可以在实际工作中正确处理去重问题。
                 </p>
                 <p>
-                    好奇心促使下，看了它的源码，指向了 _.baseUniq 文件，它的源码如下：
+                    然后，我在好奇心促使下，看了它的源码，指向了 _.baseUniq 文件，它的源码如下：
                     <pre class="hljs cs"><code class=""><span class="hljs-function">function <span class="hljs-title">baseUniq</span>(<span class="hljs-params">array, iteratee, comparator</span>)</span> {<br>  <span class="hljs-keyword">let</span> index = <span class="hljs-number">-1</span><br>  <span class="hljs-keyword">let</span> includes = arrayIncludes<br>  <span class="hljs-keyword">let</span> isCommon = <span class="hljs-literal">true</span><br><br>  <span class="hljs-keyword">const</span> { length } = array<br>  <span class="hljs-keyword">const</span> result = []<br>  <span class="hljs-keyword">let</span> seen = <span class="hljs-function">result</span><br><span class="hljs-function"></span><br><span class="hljs-function">  <span class="hljs-title">if</span> (<span class="hljs-params">comparator</span>)</span> {<br>    isCommon = <span class="hljs-literal">false</span><br>    includes = arrayIncludesWith<br>  }<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (length &gt;= LARGE_ARRAY_SIZE) {<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">set</span> = iteratee ? <span class="hljs-literal">null</span> : createSet(array)<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">set</span>) {<br>      <span class="hljs-keyword">return</span> setToArray(<span class="hljs-keyword">set</span>)<br>    }<br>    isCommon = <span class="hljs-literal">false</span><br>    includes = cacheHas<br>    seen = <span class="hljs-keyword">new</span> SetCache<br>  }<br>  <span class="hljs-keyword">else</span> {<br>    seen = iteratee ? [] : result<br>  }<br>  outer:<br>  <span class="hljs-keyword">while</span> (++index &lt; length) {<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">value</span> = array[index]<br>    <span class="hljs-keyword">const</span> computed = iteratee ? iteratee(<span class="hljs-keyword">value</span>) : <span class="hljs-keyword">value</span><br><br>    <span class="hljs-keyword">value</span> = (comparator || <span class="hljs-keyword">value</span> !== <span class="hljs-number">0</span>) ? <span class="hljs-keyword">value</span> : <span class="hljs-number">0</span><br>    <span class="hljs-keyword">if</span> (isCommon &amp;&amp; computed === computed) {<br>      <span class="hljs-keyword">let</span> seenIndex = seen.<span class="hljs-function">length</span><br><span class="hljs-function">      <span class="hljs-title">while</span> (<span class="hljs-params">seenIndex--</span>)</span> {<br>        <span class="hljs-keyword">if</span> (seen[seenIndex] === computed) {<br>          <span class="hljs-keyword">continue</span> outer<br>        }<br>      }<br>      <span class="hljs-keyword">if</span> (iteratee) {<br>        seen.push(computed)<br>      }<br>      result.push(<span class="hljs-keyword">value</span>)<br>    }<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!includes(seen, computed, comparator)) {<br>      <span class="hljs-keyword">if</span> (seen !== result) {<br>        seen.push(computed)<br>      }<br>      result.push(<span class="hljs-keyword">value</span>)<br>    }<br>  }<br>  <span class="hljs-keyword">return</span> result<br>}</code></pre>
-
                     有比较多的干扰项，去除掉之后，就会发现它用了 <code>while</code> 做循环，当遇到值相同的时候，<code>continue outer</code> 再次进入循环进行比较，将没有重复的值塞进 <code>result</code> 里，最终输出。
                 </p>
 
@@ -181,10 +180,10 @@
 
                 <h2>总结</h2>
                 <p>
-                    从上述的这些方法来看，只有第一种 ES6 的 Set 对象方法，才是最契合我们日常开发的去重方法了，它是原生的，写法还更简单。
+                    从上述的这些方法来看，ES6 开始出现的方法（如 Set、Map、includes），都能完美地解决我们日常开发中的去重需求，关键它们还都是原生的，写法还更简单。
                 </p>
                 <p>
-                    所以，我们提倡拥抱原生，因为它真的没有那么难以理解，至少在这里我觉得它比 lodash 里 _.uniq 的源码要好理解得多，关键是还能解决问题。
+                    所以，我们提倡拥抱原生，因为它们真的没有那么难以理解，至少在这里我觉得它比 lodash 里 _.uniq 的源码要好理解得多，关键是还能解决问题。
                 </p>
             </div>
         </BlogContent>

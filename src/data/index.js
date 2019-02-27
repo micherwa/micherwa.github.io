@@ -1,5 +1,13 @@
 export default [
     {
+        title: '「读懂源码系列2」lodash 中的数组去重',
+        subTitle: '',
+        routeName: 'uniq-in-lodash',
+        descript: '',
+        date: '2019-03-06',
+        tags: ['Javascipt', '源码解读']
+    },
+    {
         title: '「前端面试题系列8」数组去重(10 种浓缩版)',
         subTitle: '',
         routeName: 'array-de-duplicate',
