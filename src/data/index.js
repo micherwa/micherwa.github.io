@@ -1,6 +1,6 @@
 export default [
     {
-        title: '「读懂源码系列2」lodash 中的数组去重',
+        title: '「读懂源码系列2」我从 lodash 源码中学到的',
         subTitle: '',
         routeName: 'uniq-in-lodash',
         descript: '',
