@@ -99,7 +99,35 @@
                 </p>
 
                 <p>
-                    https://github.com/lodash/lodash/blob/master/.internal/baseIsEqualDeep.js
+                    接着就追溯到了 _.isEqual 的源码，它的实现文件是 baseIsEqualDeep.js。在里面看到一个有点绕的写法，这是一个判断。
+                    <pre class="hljs typescript"><code class=""><span class="hljs-comment">/** Used to check objects for own properties. */</span><br><span class="hljs-keyword">const</span> hasOwnProperty = <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty<br>...<br><br><span class="hljs-keyword">const</span> objIsWrapped = objIsObj &amp;&amp; hasOwnProperty.call(object, <span class="hljs-string">'__wrapped__'</span>)</code></pre>
+                    hasOwnProperty ？call ？ '__wrapped__' ？
+                </p>
+
+                <h4>知识点四、对象的 hasOwnProperty</h4>
+                <p>
+                    所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。它可以用来检测一个对象是否含有特定的自身属性；会忽略掉那些从原型链上继承到的属性。
+                    <pre class="hljs ruby"><code class="">o = new Object();<br>o.prop = <span class="hljs-string">'exists'</span>;<br>o.hasOwnProperty(<span class="hljs-string">'prop'</span>);             <span class="hljs-regexp">//</span> 返回 <span class="hljs-literal">true</span><br>o.hasOwnProperty(<span class="hljs-string">'toString'</span>);         <span class="hljs-regexp">//</span> 返回 <span class="hljs-literal">false</span><br>o.hasOwnProperty(<span class="hljs-string">'hasOwnProperty'</span>);   <span class="hljs-regexp">//</span> 返回 <span class="hljs-literal">false</span></code></pre>
+                    call 的用法可以参考这篇 <a href="https://juejin.im/post/5c493086f265da6115111ce4" target="_blank">细说 call、apply 以及 bind 的区别和用法</a>。
+                </p>
+                <p>
+                    那么 <code>hasOwnProperty.call(object, '__wrapped__')</code> 的意思就是，判断 object 这个对象上是否存在 '__wrapped__' 这个自身属性。
+                </p>
+
+                <p>
+                    __wrapped__ 是什么属性？这就要说到 lodash 的延迟计算方法 <code>_.chain</code>，它是一种函数式风格，从名字就可以看出可以实现一种链式的写法。比如下面这个例子：
+                    <pre class="hljs actionscript"><code class=""><span class="hljs-keyword">var</span> names = _.chain(users)<br>  .map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(user)</span></span>{<br>    <span class="hljs-keyword">return</span> user.user;<br>  })<br>  .join(<span class="hljs-string">" , "</span>)<br>  .value();</code></pre>
+                    如果你没有显样的调用value方法，使其立即执行的话，将会得到如下的LodashWrapper延迟表达式：
+                    <pre class="hljs groovy"><code style="word-break: break-word; white-space: initial;" class="">LodashWrapper {<span class="hljs-string">__wrapped__:</span> LazyWrapper, <span class="hljs-string">__actions__:</span> Array[<span class="hljs-number">1</span>], <span class="hljs-string">__chain__:</span> <span class="hljs-literal">true</span>, <span class="hljs-string">constructor:</span> function, <span class="hljs-string">after:</span> function…}</code></pre>
+                    因为延迟表达式的存在，因此我们可以多次增加方法链，但这并不会被执行，所以不会存在性能的问题，最后知道我们需要使用的时候，使用value显式立即执行即可。
+                </p>
+
+                <h2>总结</h2>
+                <p>
+                    源码的阅读一开始会比较困难，因为会遇到看不明白的写法，所以还是要不断地夯实基础知识，遇到看不明白的点，就多查多问。
+                </p>
+                <p>
+                    就比如一开始我不明白 value === value 的写法有什么意义，一旦明白了是为了过滤 NaN 用的，那后面就会通畅很多了。
                 </p>
             </div>
         </BlogContent>
