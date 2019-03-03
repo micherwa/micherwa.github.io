@@ -1,6 +1,6 @@
 export default [
     {
-        title: '「读懂源码系列2」我从 lodash 源码中学到的',
+        title: '「读懂源码系列2」我从 lodash 源码中学到的几个知识点',
         subTitle: '',
         routeName: 'uniq-in-lodash',
         descript: '',
