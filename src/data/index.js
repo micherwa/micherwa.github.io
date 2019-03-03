@@ -1,5 +1,13 @@
 export default [
     {
+        title: '「干货」细说 Array 的常用操作(ES5 和 ES6)',
+        subTitle: '',
+        routeName: 'array-methods-beyond-es5',
+        descript: '汇总 Javascript 中数组的常用操作，以及如何使用。',
+        date: '2019-03-13',
+        tags: ['Javascript']
+    },
+    {
         title: '「读懂源码系列2」我从 lodash 源码中学到的几个知识点',
         subTitle: '',
         routeName: 'uniq-in-lodash',
@@ -126,14 +134,6 @@ export default [
         descript: '有一本书反对了当年乔布斯的演讲中提出的观念，认为“热情假设”不是一个好的建议。',
         date: '2018-10-19',
         tags: ['言论与感想']
-    },
-    {
-        title: '数组的常用操作',
-        subTitle: '包含es5和es6',
-        routeName: 'methods-of-array-beyond-es5',
-        descript: '汇总Javascript中数组的常用操作，以及如何使用。',
-        date: '2018-09-26',
-        tags: ['Javascript']
     },
     {
         title: '前端面试题——算法',

@@ -35,11 +35,6 @@ export default [
         component: () => import('@/views/blogs/2018/fe-interview-http')
     },
     {
-        path: '/2018/methods-of-array-beyond-es5',
-        name: 'methods-of-array-beyond-es5',
-        component: () => import('@/views/blogs/2018/methods-of-array-beyond-es5')
-    },
-    {
         path: '/2018/hash-table-in-javascript',
         name: 'hash-table-in-javascript',
         component: () => import('@/views/blogs/2018/hash-table-in-javascript')

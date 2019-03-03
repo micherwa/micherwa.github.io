@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/array-methods-beyond-es5',
+        name: 'array-methods-beyond-es5',
+        component: () => import('@/views/blogs/2019/array-methods-beyond-es5')
+    },
+    {
         path: '/2019/uniq-in-lodash',
         name: 'uniq-in-lodash',
         component: () => import('@/views/blogs/2019/uniq-in-lodash')

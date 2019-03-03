@@ -4,51 +4,56 @@
 
         <BlogContent :useCatalog="true">
             <div slot="content">
-                <blockquote>
-                    <p>汇总Javascript中数组的常用操作，以及如何使用。</p>
-                </blockquote>
+                <img src="@/assets/blog/bg-20190313-01.jpg">
 
-                <h2>ES5中Array操作</h2>
+                <h2>前言</h2>
+                <p>
+                    上一篇文章 <a href="" target="_blank">「前端面试题系列8」数组去重(10 种浓缩版)</a> 中提到了不少数组的常用操作。
+                </p>
+                <p>
+                    今天，会更具体地将数组的常用操作进行归纳和汇总，以便备不时之需。每组方法都会配以示例说明，也希望对大家有所帮助。
+                </p>
 
-                <h4>1.forEach</h4>
+                <h2>ES5 中 Array 操作</h2>
+
+                <h4>1、forEach</h4>
                 <p>
                     Array 方法中最基本的一个，就是遍历，循环。基本用法：<code>[].forEach(function(item, index, array) {});</code>
                     <pre class="hljs smali"><code class="">const<span class="hljs-built_in"> array </span>= [1, 2, 3];<span class="hljs-built_in"></span><br><span class="hljs-built_in">const </span>result = [];<br><br>array.forEach(function(item) {<br>    result.push(item);<br>});<br>console.log(result); // [1, 2, 3]</code></pre>
                 </p>
 
-                <h4>2.map</h4>
+                <h4>2、map</h4>
                 <p>
-                    map方法的作用不难理解，“映射”嘛，也就是原数组被“映射”成对应的新数组。基本用法跟forEach方法类似：<code>[].map(function(item, index, array) {});</code><br>
+                    map 方法的作用不难理解，“映射”嘛，也就是原数组被 “映射” 成对应的新数组。基本用法跟 forEach 方法类似：<code>[].map(function(item, index, array) {});</code><br>
                     下面这个例子是数值项求平方：
                     <pre class="hljs actionscript"><code class=""><span class="hljs-keyword">const</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];<br><span class="hljs-keyword">const</span> arrayOfSquares = data.map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{<br>    <span class="hljs-keyword">return</span> item * item;<br>});<br>alert(arrayOfSquares); <span class="hljs-comment">// 1, 4, 9, 16</span></code></pre>
                 </p>
 
-                <h4>3.filter</h4>
+                <h4>3、filter</h4>
                 <p>
-                    filter为“过滤”、“筛选”之意。指数组filter后，返回过滤后的新数组。用法跟map极为相似：<code>[].filter(function(item, index, array) {});</code><br>
-                    filter 的 callback 函数需要返回布尔值 true 或 false，返回值只要<strong>弱等于</strong>Boolean就行，看下面这个例子：
+                    filter 为 “过滤”、“筛选” 之意。指数组 filter 后，返回过滤后的新数组。用法跟 map 极为相似：<code>[].filter(function(item, index, array) {});</code>。
+                </p>
+                <p>
+                    filter 的 callback 函数，需要返回布尔值 true 或 false。返回值只要<strong>弱等于</strong>Boolean 就行，看下面这个例子：
                     <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> data = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">const</span> arrayFilter = data.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{<br>    <span class="hljs-keyword">return</span> item;<br>});<br><span class="hljs-built_in">console</span>.log(arrayFilter); <span class="hljs-comment">// [1, 2, 3]</span></code></pre>
                 </p>
 
-                <h4>4.some 和 every</h4>
+                <h4>4、some 和 every</h4>
                 <p>
-                    some 意指“某些”，指是否“某些项”合乎条件。也就是<strong>只要有1值个让 callback 返回 true 就行了</strong>。基本用法：<code>[].som(function(item, index, array) {});</code>
+                    some 意指“某些”，指是否 “某些项” 合乎条件。也就是<strong>只要有1值个让 callback 返回 true 就行了</strong>。基本用法：<code>[].som(function(item, index, array) {});</code>
                     <pre class="hljs mipsasm"><code class="">const <span class="hljs-keyword">scores </span>= [<span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">3</span>, <span class="hljs-number">10</span>]<span class="hljs-comment">;</span><br>const current = <span class="hljs-number">7</span><span class="hljs-comment">;</span><br><br>function higherThanCurrent(<span class="hljs-keyword">score) </span>{<br>    return <span class="hljs-keyword">score </span>&gt; current<span class="hljs-comment">;</span><br>}<br><br>if (<span class="hljs-keyword">scores.some(higherThanCurrent)) </span>{<br>    alert(<span class="hljs-string">"one more"</span>)<span class="hljs-comment">;</span><br>}</code></pre>
 
-                    every 跟 some 是一对好基友，同样是返回 Boolean 值。但必须满足每1个值都要让 callback 返回 true 才行。改动一下上面 some 的例子：
+                    every 跟 some 是一对好基友，同样是返回 Boolean 值。但必须满足每 1 个值都要让 callback 返回 true 才行。改动一下上面 some 的例子：
                     <pre class="hljs applescript"><code class=""><span class="hljs-keyword">if</span> (scores.<span class="hljs-keyword">every</span>(higherThanCurrent)) {<br>    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"every is ok!"</span>);<br>} <span class="hljs-keyword">else</span> {<br>    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"oh no!"</span>);        <br>}</code></pre>
                 </p>
 
-                <h4>5.concat 和 join</h4>
+                <h4>5、concat</h4>
                 <p>
                     concat() 方法用于连接两个或多个数组。该方法不会改变现有的数组，仅会返回被连接数组的一个副本。
-                    <pre class="hljs processing"><code class=""><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-keyword">const</span> arr2 = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> arr3 = arr1.<span class="hljs-built_in">concat</span>(arr2);<br>console.<span class="hljs-built_in">log</span>(arr1); <span class="hljs-comment">//[1, 2, 3]</span><br>console.<span class="hljs-built_in">log</span>(arr3); <span class="hljs-comment">//[1, 2, 3, 4, 5]</span></code></pre>
-
-                    join() 方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的，默认使用','号分割，不改变原数组。
-                    <pre class="hljs processing"><code class=""><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br>console.<span class="hljs-built_in">log</span>(arr.<span class="hljs-built_in">join</span>());  <span class="hljs-comment">// 2,3,4</span><br>console.<span class="hljs-built_in">log</span>(arr);  <span class="hljs-comment">// [2, 3, 4]</span></code></pre>
+                    <pre class="hljs processing"><code class=""><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-keyword">const</span> arr2 = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br><span class="hljs-keyword">const</span> arr3 = arr1.<span class="hljs-built_in">concat</span>(arr2);<br>console.<span class="hljs-built_in">log</span>(arr1); <span class="hljs-comment">// [1, 2, 3]</span><br>console.<span class="hljs-built_in">log</span>(arr3); <span class="hljs-comment">// [1, 2, 3, 4, 5]</span></code></pre>
                 </p>
 
-                <h4>6.indexOf 和 lastIndexOf</h4>
+                <h4>6、indexOf 和 lastIndexOf</h4>
                 <p>
                     indexOf 方法在字符串中自古就有，string.indexOf(searchString, position)。数组这里的 indexOf 方法与之类似。<br>
                     返回整数索引值，如果没有匹配（严格匹配），返回-1. fromIndex可选，表示从这个位置开始搜索，若缺省或格式不合要求，使用默认值0，我在FireFox下测试，发现使用字符串数值也是可以的，例如"3"和3都可以。
@@ -57,7 +62,7 @@
                     <pre class="hljs lsl"><code class="">const numbers = [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">2</span>];<br>numbers.lastIndexOf(<span class="hljs-number">2</span>);     <span class="hljs-comment">// 3</span><br>numbers.lastIndexOf(<span class="hljs-number">7</span>);     <span class="hljs-comment">// -1</span><br>numbers.lastIndexOf(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>);  <span class="hljs-comment">// 3</span><br>numbers.lastIndexOf(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>);  <span class="hljs-comment">// 0</span><br>numbers.lastIndexOf(<span class="hljs-number">2</span>, <span class="hljs-number">-2</span>); <span class="hljs-comment">// 0</span><br>numbers.lastIndexOf(<span class="hljs-number">2</span>, <span class="hljs-number">-1</span>); <span class="hljs-comment">// 3</span></code></pre>
                 </p>
 
-                <h4>7.reduce 和 reduceRight</h4>
+                <h4>7、reduce 和 reduceRight</h4>
                 <p>
                     reduce 是JavaScript 1.8 中才引入的，中文意思为“归约”。基本用法：<code>reduce(callback[, initialValue])</code>。<br>
                     callback 函数接受4个参数：之前值(previousValue)、当前值(currentValue)、索引值(currentIndex)以及数组本身(array)。<br>
@@ -85,7 +90,7 @@
                     <pre class="hljs lsl"><code class=""><span class="hljs-comment">// 初始设置</span><br>index = <span class="hljs-number">3</span>, previous = initialValue = <span class="hljs-number">4</span>, current = <span class="hljs-number">3</span><br><br><span class="hljs-comment">// 第一次迭代</span><br>index = <span class="hljs-number">2</span>, previous = (<span class="hljs-number">4</span>- <span class="hljs-number">3</span>) = <span class="hljs-number">1</span>, current = <span class="hljs-number">2</span><br><br><span class="hljs-comment">// 第二次迭代</span><br>index = <span class="hljs-number">1</span>, previous = (<span class="hljs-number">1</span> - <span class="hljs-number">2</span>) = <span class="hljs-number">-1</span>, current = <span class="hljs-number">1</span><br><br><span class="hljs-comment">// 第三次迭代</span><br>index = <span class="hljs-number">0</span>, previous = (<span class="hljs-number">-1</span> + <span class="hljs-number">1</span>) = <span class="hljs-number">0</span>, current = undefined (退出)</code></pre>
                 </p>
 
-                <h4>8.push 和 pop</h4>
+                <h4>8、push 和 pop</h4>
                 <p>
                     push() 方法可向数组的末尾添加一个或多个元素，返回的是新的数组长度，会改变原数组。
                     <pre class="hljs cpp"><code class=""><span class="hljs-keyword">const</span> a = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br><span class="hljs-keyword">const</span> b = a.push(<span class="hljs-number">5</span>);<br>console.<span class="hljs-built_in">log</span>(a);  <span class="hljs-comment">// [2,3,4,5]</span><br>console.<span class="hljs-built_in">log</span>(b);  <span class="hljs-comment">// 4</span><br><span class="hljs-comment">// push方法可以一次添加多个元素push(data1, data2....)</span></code></pre>
@@ -96,7 +101,7 @@
                     <pre class="hljs cpp"><code class=""><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br>console.<span class="hljs-built_in">log</span>(arr.pop()); <span class="hljs-comment">// 4</span><br>console.<span class="hljs-built_in">log</span>(arr);  <span class="hljs-comment">// [2,3]</span></code></pre>
                 </p>
 
-                <h4>9.shift 和 unshift</h4>
+                <h4>9、shift 和 unshift</h4>
                 <p>
                     shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。返回第一个元素，改变原数组。
                     <pre class="hljs cpp"><code class=""><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br>console.<span class="hljs-built_in">log</span>(arr.shift()); <span class="hljs-comment">// 2</span><br>console.<span class="hljs-built_in">log</span>(arr);  <span class="hljs-comment">// [3,4]</span></code></pre>
@@ -106,7 +111,7 @@
                     <pre class="hljs lsl"><code class="">const arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br>console.log(arr.unshift(<span class="hljs-number">3</span>,<span class="hljs-number">6</span>)); <span class="hljs-comment">// 6</span><br>console.log(arr); <span class="hljs-comment">// [3, 6, 2, 3, 4, 5]</span><br><span class="hljs-comment">// tip:该方法可以不传参数,不传参数就是不增加元素。</span></code></pre>
                 </p>
 
-                <h4>10.slice 和 splice</h4>
+                <h4>10、slice 和 splice</h4>
                 <p>
                     slice() 返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。返回选定的元素，该方法不会修改原数组。
                     <pre class="hljs lsl"><code class="">const arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br>console.log(arr.slice(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>));  <span class="hljs-comment">// [3,4]</span><br>console.log(arr);  <span class="hljs-comment">// [2,3,4,5]</span></code></pre>
@@ -117,7 +122,7 @@
                     <pre class="hljs lsl"><code class="">const a = [<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>];<br>console.log(a.splice(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">9</span>)); <span class="hljs-comment">//[]</span><br>console.log(a);  <span class="hljs-comment">// [5, 9, 6, 7, 8]</span><br><br>const b = [<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>];<br>console.log(b.splice(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>));  <span class="hljs-comment">//[6, 7]</span><br>console.log(b); <span class="hljs-comment">//[5, 3, 8]</span></code></pre>
                 </p>
 
-                <h4>11.sort 和 reverse</h4>
+                <h4>11、sort 和 reverse</h4>
                 <p>
                     sort() 按照 Unicode code 位置排序，默认升序。
                     <pre class="hljs prolog"><code class="">const fruit = [<span class="hljs-string">'cherries'</span>, <span class="hljs-string">'apples'</span>, <span class="hljs-string">'bananas'</span>];<br>fruit.sort(); // [<span class="hljs-string">'apples'</span>, <span class="hljs-string">'bananas'</span>, <span class="hljs-string">'cherries'</span>]<br><br>const scores = [<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">21</span>, <span class="hljs-number">2</span>];<br>scores.sort(); // [<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-number">21</span>]</code></pre>
@@ -127,9 +132,23 @@
                     <pre class="hljs processing"><code class=""><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br>console.<span class="hljs-built_in">log</span>(arr.<span class="hljs-built_in">reverse</span>()); <span class="hljs-comment">// [4, 3, 2]</span><br>console.<span class="hljs-built_in">log</span>(arr);  <span class="hljs-comment">// [4, 3, 2]</span></code></pre>
                 </p>
 
-                <h2>ES6新增的Array操作</h2>
+                <h4>12、join</h4>
+                <p>
+                    join() 方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的，默认使用','号分割，不改变原数组。
+                    <pre class="hljs processing"><code class=""><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br>console.<span class="hljs-built_in">log</span>(arr.<span class="hljs-built_in">join</span>());  <span class="hljs-comment">// 2,3,4</span><br>console.<span class="hljs-built_in">log</span>(arr);  <span class="hljs-comment">// [2, 3, 4]</span></code></pre>
+                </p>
 
-                <h4>1.find 和 findIndex</h4>
+                <h4>13、isArray</h4>
+                <p>
+                    Array.isArray() 用于确定传递的值是否是一个 Array。一个比较冷门的知识点：其实 Array.prototype 也是一个数组。
+                    <pre class="hljs typescript"><code class=""><span class="hljs-built_in">Array</span>.isArray([]); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">Array</span>.isArray(<span class="hljs-built_in">Array</span>.prototype); <span class="hljs-comment">// true</span><br><br><span class="hljs-built_in">Array</span>.isArray(<span class="hljs-literal">null</span>); <span class="hljs-comment">// false</span><br><span class="hljs-built_in">Array</span>.isArray(<span class="hljs-literal">undefined</span>); <span class="hljs-comment">// false</span><br><span class="hljs-built_in">Array</span>.isArray(<span class="hljs-number">18</span>); <span class="hljs-comment">// false</span><br><span class="hljs-built_in">Array</span>.isArray(<span class="hljs-string">'Array'</span>); <span class="hljs-comment">// false</span><br><span class="hljs-built_in">Array</span>.isArray(<span class="hljs-literal">true</span>); <span class="hljs-comment">// false</span><br><span class="hljs-built_in">Array</span>.isArray({ __proto__: <span class="hljs-built_in">Array</span>.prototype });</code></pre>
+                    在公用库中，一般会这么做 isArray 的判断：
+                    <pre class="hljs typescript"><code style="word-break: break-word; white-space: initial;" class=""><span class="hljs-built_in">Object</span>.prototype.toString.call(arg) === <span class="hljs-string">'[object Array]'</span>;</code></pre>
+                </p>
+
+                <h2>ES6 新增的 Array 操作</h2>
+
+                <h4>1、find 和 findIndex</h4>
                 <p>
                     find() 传入一个回调函数，找到数组中符合当前搜索规则的第一个元素，返回这个元素，并且终止搜索。
                     <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-string">"2"</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-string">"2"</span>]<br><span class="hljs-built_in">console</span>.log(arr.find(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> <span class="hljs-keyword">typeof</span> n === <span class="hljs-string">"number"</span>)) <span class="hljs-comment">// 1</span></code></pre>
@@ -138,48 +157,58 @@
                     <pre class="hljs javascript"><code class=""><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-string">"2"</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-string">"2"</span>]<br><span class="hljs-built_in">console</span>.log(arr.findIndex(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> <span class="hljs-keyword">typeof</span> n === <span class="hljs-string">"number"</span>)) <span class="hljs-comment">// 0</span></code></pre>
                 </p>
 
-                <h4>2.fill</h4>
+                <h4>2、fill</h4>
                 <p>
                     用指定的元素填充数组，其实就是用默认内容初始化数组。基本用法：<code>[].fill(value, start, end)</code><br>
                     该函数有三个参数：填充值(value)，填充起始位置(start，可以省略)，填充结束位置(end，可以省略，实际结束位置是end-1)。
                     <pre class="hljs lsl"><code class=""><span class="hljs-comment">// 采用一个默认值，填充数组</span><br>const arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>];<br>arr1.fill(<span class="hljs-number">7</span>);<br>console.log(arr1); <span class="hljs-comment">// [7,7,7,7,7,7,7,7,7,7,7]</span><br><br><span class="hljs-comment">// 制定开始和结束位置填充，实际填充结束位置是前一位。</span><br>const arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>];<br>arr2.fill(<span class="hljs-number">7</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);<br>console.log(arr2); <span class="hljs-comment">// [1,2,7,7,7,6,7,8,9,10,11]</span><br><br><span class="hljs-comment">// 结束位置省略，从起始位置到最后。</span><br>const arr3 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>];<br>arr3.fill(<span class="hljs-number">7</span>, <span class="hljs-number">2</span>);<br>console.log(arr3); <span class="hljs-comment">// [1,2,7,7,7,7,7,7,7,7,7]</span></code></pre>
                 </p>
 
-                <h4>3.from</h4>
+                <h4>3、from</h4>
                 <p>
                     将类似数组的对象（array-like object）和可遍历（iterable）的对象转为真正的数组。
                     <pre class="hljs oxygene"></span><span class="hljs-keyword">const</span> <span class="hljs-keyword">set</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">Set</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>);<br><span class="hljs-keyword">Array</span>.from(<span class="hljs-keyword">set</span>)  <span class="hljs-comment">// [1,2,3,4]</span><br><br><span class="hljs-keyword">Array</span>.from(<span class="hljs-string">'foo'</span>); <span class="hljs-comment">// ["f", "o", "o"]</span></code></pre>
                 </p>
 
-                <h4>4.of</h4>
+                <h4>4、of</h4>
                 <p>
                     Array.of() 方法创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型。<br>
                     Array.of() 和 Array 构造函数之间的区别在于处理整数参数：Array.of(7) 创建一个具有单个元素 7 的数组，而 Array(7) 创建一个长度为7的空数组（注意：这是指一个有7个空位的数组，而不是由7个undefined组成的数组）。
                     <pre class="hljs lsl"><code class="">Array.of(<span class="hljs-number">7</span>);       <span class="hljs-comment">// [7] </span><br>Array.of(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// [1, 2, 3]</span><br><br>Array(<span class="hljs-number">7</span>);          <span class="hljs-comment">// [ , , , , , , ]</span><br>Array(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);    <span class="hljs-comment">// [1, 2, 3]</span></code></pre>
                 </p>
 
-                <h4>5.copyWithin</h4>
+                <h4>5、copyWithin</h4>
                 <p>
                     选择数组的某个下标，从该位置开始复制数组元素，默认从0开始复制。也可以指定要复制的元素范围。基本用法：<code>[].copyWithin(target, start, end)</code>
                     <pre class="hljs lsl"><code class="">const arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br>console.log(arr.copyWithin(<span class="hljs-number">3</span>));<br> <span class="hljs-comment">// [1,2,3,1,2] 从下标为3的元素开始，复制数组，所以4, 5被替换成1, 2</span><br><br>const arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br>console.log(arr1.copyWithin(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>)); <br><span class="hljs-comment">// [1,2,3,2,3] 从下标为3的元素开始，复制数组，指定复制的第一个元素下标为1，所以4, 5被替换成2, 3</span><br><br>const arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br>console.log(arr2.copyWithin(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>));<br><span class="hljs-comment">// [1,2,3,2,5] 从下标为3的元素开始，复制数组，指定复制的第一个元素下标为1，结束位置为2，所以4被替换成2</span></code></pre>
                 </p>
 
-                <h4>6.includes</h4>
+                <h4>6、includes</h4>
                 <p>
                     判断数组中是否存在该元素，参数：查找的值、起始位置，可以替换 ES5 时代的 indexOf 判断方式。
                     <pre class="hljs lsl"><code class="">const arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br>arr.includes(<span class="hljs-number">2</span>); <span class="hljs-comment">// true</span><br>arr.includes(<span class="hljs-number">4</span>); <span class="hljs-comment">// false</span></code></pre>
+                    另外，它还可以用于优化 <code>||</code> 的判断写法。
+                    <pre class="hljs r"><code class=""><span class="hljs-keyword">if</span> (method === <span class="hljs-string">'post'</span> || method === <span class="hljs-string">'put'</span> || method === <span class="hljs-string">'delete'</span>) {<br>    <span class="hljs-keyword">...</span><br>}<br><br>// 用 includes 优化 || 的写法<br><span class="hljs-keyword">if</span> ([<span class="hljs-string">'post'</span>, <span class="hljs-string">'put'</span>, <span class="hljs-string">'delete'</span>].includes(method)) {<br>    <span class="hljs-keyword">...</span><br>}</code></pre>
                 </p>
 
-                <h4>7.entries、values 和 keys</h4>
+                <h4>7、entries、values 和 keys</h4>
                 <p>
                     entries() 返回迭代器：返回键值对
                     <pre class="hljs javascript"><code class=""><span class="hljs-comment">//数组</span><br><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.entries()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// [0, 'a'] [1, 'b'] [2, 'c']</span><br><br><span class="hljs-comment">//Set</span><br><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>]);<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.entries()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// ['a', 'a'] ['b', 'b'] ['c', 'c']</span><br><br><span class="hljs-comment">//Map</span><br><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>arr.set(<span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>);<br>arr.set(<span class="hljs-string">'b'</span>, <span class="hljs-string">'b'</span>);<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.entries()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// ['a', 'a'] ['b', 'b']</span></code></pre>
 
-                    values() 返回迭代器：返回键值对的value
+                    values() 返回迭代器：返回键值对的 value
                     <pre class="hljs javascript"><code class=""><span class="hljs-comment">//数组</span><br><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.values()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">//'a' 'b' 'c'</span><br><br><span class="hljs-comment">//Set</span><br><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>]);<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.values()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// 'a' 'b' 'c'</span><br><br><span class="hljs-comment">//Map</span><br><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>arr.set(<span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>);<br>arr.set(<span class="hljs-string">'b'</span>, <span class="hljs-string">'b'</span>);<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.values()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// 'a' 'b'</span></code></pre>
 
-                    keys() 返回迭代器：返回键值对的key
+                    keys() 返回迭代器：返回键值对的 key
                     <pre class="hljs javascript"><code class=""><span class="hljs-comment">//数组</span><br><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.keys()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// 0 1 2</span><br><br><span class="hljs-comment">//Set</span><br><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>]);<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.keys()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// 'a' 'b' 'c'</span><br><br><span class="hljs-comment">//Map</span><br><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br>arr.set(<span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>);<br>arr.set(<span class="hljs-string">'b'</span>, <span class="hljs-string">'b'</span>);<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> v <span class="hljs-keyword">of</span> arr.keys()) {<br>    <span class="hljs-built_in">console</span>.log(v)<br>}<br><span class="hljs-comment">// 'a' 'b'</span></code></pre>
+                </p>
+
+                <h2>总结</h2>
+                <p>
+                    操作 Array 的数据结构，在日常工作中会经常遇到。ES6 在 Array 的操作上，也提供了更为简便实用的方法，比如 includes、find、from 等等。
+                </p>
+                <p>
+                    过去，我会习惯于用 lodash 的 _.find 方法，现在就可以选择拥抱原生了。
                 </p>
             </div>
         </BlogContent>
