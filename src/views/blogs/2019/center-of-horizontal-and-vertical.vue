@@ -4,14 +4,32 @@
 
         <BlogContent :useCatalog="true">
             <div slot="content">
-                <h2>flex</h2>
+                <h2>前言</h2>
+                <p>垂直居中，在 CSS 中是一个老生常谈的问题，面试的时候也会时常被提及。所以，今天我们就来聊聊 9 种不同的居中方法。</p>
                 <p>
-                    <pre class="hljs css"><code class=""><span class="hljs-selector-class">.center-flex</span> {<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">justify-content</span>: center;<br>    <span class="hljs-attribute">align-items</span>: center;<br>}</code></pre>
+                    有常见的 flex、transform、absolute 等等。也有 CSS3 的网格布局。还有伪元素的方法，是的，你没有看错，::after 和 ::before 也可以实现居中。
                 </p>
 
-                <h2>flex + margin</h2>
+                <h2>9 种方法呈现</h2>
+
+                <h4>1、flex</h4>
                 <p>
-                    <pre class="hljs stylus"><code class=""><span class="hljs-selector-class">.modal</span> {<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;<br>    &gt; <span class="hljs-selector-class">.content</span> {<br>        <span class="hljs-attribute">margin</span>: auto;<br>    }<br>}</code></pre>
+                    大家的第一反应，可能就是 flex 了。因为它的写法够简单直观，兼容性也没什么问题。是手机端居中方式的首选。
+                    <pre class="hljs xml"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"wrapper flex-center"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>horizontal and vertical<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+
+                    <pre class="hljs css"><code class=""><span class="hljs-selector-class">.wrapper</span> {<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">height</span>:<span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br>}<br><br><span class="hljs-selector-class">.flex-center</span> {<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">justify-content</span>: center;<br>    <span class="hljs-attribute">align-items</span>: center;<br>}</code></pre>
+                    利用到了 2 个关键属性：<code>justify-content</code> 和 <code>align-items</code>，都设置为 <code>center</code>，即可实现居中。
+                </p>
+                <p>
+                    需要注意的是，一定要把这里的 <code>flex-center</code> 挂在父级元素，才能使得其中 <code>唯一的</code> 子元素居中。
+                </p>
+
+                <h4>2、flex + margin</h4>
+                <p>
+                    这是 flex 方法的变种。父级元素设置 flex，子元素设置 <code>margin: auto;</code>。可以理解为子元素被四周的 margin “挤” 到了中间。
+                    <pre class="hljs xml"><code class=""><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"wrapper"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>horizontal and vertical<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+
+                    <pre class="hljs css"><code><span class="hljs-selector-class">.wrapper</span> {<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">height</span>:<span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br><br>    <span class="hljs-attribute">display</span>: flex;<br>}<br><br><span class="hljs-selector-class">.wrapper</span> &gt; <span class="hljs-selector-tag">p</span> {<br>    <span class="hljs-attribute">margin</span>: auto;<br>}</code></pre>
                 </p>
 
                 <h2>transform + absolute</h2>
