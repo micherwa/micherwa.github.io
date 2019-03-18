@@ -1,10 +1,27 @@
 export default [
     {
+        title: '「干货」CSS 不定宽高的垂直水平居中（最全 9 种）',
+        subTitle: '',
+        routeName: 'center-of-horizontal-and-vertical',
+        descript: '',
+        date: '2019-04-03',
+        tags: ['CSS']
+    },
+    {
+        title: '一些有趣的 CSS 魔法和布局（下）',
+        subTitle: '',
+        routerName: 'some-interest-css-2',
+        descript: '',
+        date: '2019-03-27',
+        tags: ['CSS']
+    },
+    {
         title: '一些有趣的 CSS 魔法和布局（上）',
         subTitle: '',
-        routerName: 'some-interest-css',
+        routerName: 'some-interest-css-1',
         descript: '',
-        date: '2019-0'
+        date: '2019-03-21',
+        tags: ['CSS']
     },
     {
         title: '「干货」细说 Array 的常用操作(ES5 和 ES6)',
@@ -260,14 +277,6 @@ export default [
         routeName: 'interesting-css-effect',
         descript: '',
         date: '2017-12-14',
-        tags: ['CSS']
-    },
-    {
-        title: 'CSS中不定宽高的垂直水平居中',
-        subTitle: '9种方式的代码呈现',
-        routeName: 'center-of-horizontal-and-vertical',
-        descript: '',
-        date: '2017-12-04',
         tags: ['CSS']
     },
     {

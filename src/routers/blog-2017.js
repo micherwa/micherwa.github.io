@@ -66,11 +66,6 @@ export default [
         component: () => import('@/views/blogs/2017/cross-domain-in-javascript')
     },
     {
-        path: '/2017/center-of-horizontal-and-vertical',
-        name: 'center-of-horizontal-and-vertical',
-        component: () => import('@/views/blogs/2017/center-of-horizontal-and-vertical')
-    },
-    {
         path: '/2017/box-sizing-in-box-modal',
         name: 'box-sizing-in-box-modal',
         component: () => import('@/views/blogs/2017/box-sizing-in-box-modal')
