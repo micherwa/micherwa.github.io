@@ -10,7 +10,7 @@ export default [
     {
         title: '一些有趣的 CSS 魔法和布局（下）',
         subTitle: '',
-        routerName: 'some-interest-css-2',
+        routeName: 'some-interest-css-2',
         descript: '',
         date: '2019-03-27',
         tags: ['CSS']
@@ -18,7 +18,7 @@ export default [
     {
         title: '一些有趣的 CSS 魔法和布局（上）',
         subTitle: '',
-        routerName: 'some-interest-css-1',
+        routeName: 'some-interest-css-1',
         descript: '',
         date: '2019-03-21',
         tags: ['CSS']
