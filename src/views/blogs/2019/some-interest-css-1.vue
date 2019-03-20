@@ -6,7 +6,7 @@
             <div slot="content">
                 <h2>前言</h2>
                 <p>
-                    布局和样式，是每个前端的必修课。在日常的工作中，也许会碰到一些特定的布局需求，它只要配合样式，就能实现很神奇的效果。我搜罗了一些日常开发中遇到的布局，以及浏览各大网站时碰巧发现的神奇特效。
+                    布局和样式，是每个前端的必修课。在日常的工作中，也会碰到一些特定场景的布局需求，配合上样式，就能实现一些神奇的效果。我搜罗了一些日常开发中遇到的布局，以及浏览各大网站时碰巧发现的神奇特效写法，在此做个分享。
                 </p>
 
                 <p>由于篇幅原因，会分为 2 篇。今天，会先介绍一些有趣而又实用的布局的写法。之后的一篇，将展现样式的神奇魔法。</p>
@@ -20,7 +20,9 @@
                     <pre class="hljs javascript"><code>&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"img-ratio"</span>&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://via.placeholder.com/640x384"</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre>
 
                     <pre class="hljs css"><code class=""><span class="hljs-selector-class">.img-ratio</span> {<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">75%</span>;<br>}<br><br><span class="hljs-selector-class">.img-ratio</span> &gt; <span class="hljs-selector-tag">img</span> {<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;<br>}</code></pre>
-                    可以适配不同屏幕，只要 UI 提供一张 4:3 的占位图即可。
+                    可以适配不同屏幕，只要 UI 提供一张 4:3 的占位图即可。下图展示了不同宽高，但比例相同的 2 张图，都能完美地居中显示。
+
+                    <img src="~@/assets/blog/bg-20190321-01.png">
                 </p>
                 <p>
                     它的原理是：
@@ -55,6 +57,8 @@
 
                     <pre class="hljs css"><code class=""><span class="hljs-selector-class">.wrapper</span> {<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">340px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">80px</span>;<br>    <span class="hljs-attribute">overflow</span>: hidden;<br>}<br><br><span class="hljs-selector-class">.wrapper</span> <span class="hljs-selector-tag">ul</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">96px</span>;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">white-space</span>: nowrap;<br>    <span class="hljs-attribute">overflow-x</span>: scroll;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;<br>}<br><br><span class="hljs-selector-class">.wrapper</span> <span class="hljs-selector-tag">li</span> {<br>    <span class="hljs-attribute">display</span>: inline-block;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">80px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">80px</span>;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ddd</span>;<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">80px</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;<br>    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;<br>}</code></pre>
                     它的思路是：ul 设置 <code>white-space:nowrap;</code>，li 设置 <code>display:inline-block;</code>。最外层的 div 利用高度差，把横向滚动条藏起来。
+
+                    <img src="~@/assets/blog/bg-20190321-02.png">
                 </p>
 
                 <h2>顶部导航不定宽的居中展示</h2>
