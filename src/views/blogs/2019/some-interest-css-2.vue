@@ -44,6 +44,78 @@
                 </p>
                 <p>
                     设置文本的颜色方便，但光标该怎么设置颜色？CSS3 的 <code>caret-color</code> 可以解决这个问题。
+                    <pre class="hljs css"><code class=""><span class="hljs-selector-tag">input</span>, <span class="hljs-selector-tag">textarea</span> {<br>    <span class="hljs-attribute">caret-color</span>: blue;<br>}</code></pre>
+                    它不仅对于原生的输入控件有效，对设置 contenteditable 的普通 HTML 标签也适用。
+                </p>
+                <p>
+                    不过兼容性上，safari 的 PC 版从 V11.1 开始支持，wap 版从 V11.4 也开始支持了。当然 IE 目前还没有支持。
+                </p>
+
+                <h2>禁用文本选中</h2>
+                <p>
+                    在以前，如果不想让别人选中你的页面里的内容，可以用 JS 来阻止鼠标事件。而现在，只需要一句 <code>user-select:none;</code> 的样式就可以搞定了。
+                    <pre class="hljs groovy"><code class="">body {<br>    user-<span class="hljs-string">select:</span> none; <span class="hljs-comment">// 页面中的文本不能被选中</span><br>}</code></pre>
+                    除了 IE，兼容性都不错。在 IE 6-9 上，可以通过给 body 添加 JS 代码 <code>onselectstart="return false;"</code> 来解决。
+                </p>
+                <p>
+                    反过来，<strong>对于无法被选中文本的页面，如果真想复制，也是有技巧的</strong>。方法很简单：打开 chrome 的 debug 模式，在 console 下输入 <code>document.body.innerText</code>，回车后就能愉快地复制了，嘿嘿~
+                </p>
+
+                <h2>控制表格单元格宽度</h2>
+                <p>
+                    手写原生 table 的时候，直接给单元格设置宽度并没什么作用，因为单元格的宽度是根据其内容进行调整的。但是，在使用 element-ui 的 el-table 组件时，却可以给每个单元格设置宽度。这是如何做到的呢？
+                </p>
+                <p>
+                    打开 debug，看 table 的结构，会发现在 CSS 上有个属性：<code>table-layout: fixed;</code>。
+                </p>
+                <p>
+                    table-layout 的默认值是 auto，当设置为 fixed 时，在 单元格 td 上设置的宽度就起作用了。用法很简单：
+                    <pre class="hljs css"><code class=""><span class="hljs-selector-tag">table</span> {<br>    <span class="hljs-attribute">table-layout</span>: fixed;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>}</code></pre>
+                </p>
+
+                <h2>流光效果</h2>
+                <p>
+                    某个商城上曾看到过的，鼠标 hover 出现一道流光划过的效果。用到了 CSS3 的 transform、linear-gradient、transition 等特性。
+                    <pre class="hljs javascript"><code class="">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"img-light"</span>&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"xxx.jpg"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"640"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"384"</span>&gt;</span><br></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre>
+
+                    <pre class="hljs css"><code><span class="hljs-selector-class">.img-light</span> {<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">640px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">384px</span>;<br>}<br><br><span class="hljs-selector-class">.img-light</span><span class="hljs-selector-pseudo">::after</span> {<br>    <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">skewX</span>(-25deg) <span class="hljs-built_in">translateZ</span>(0);<br>    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(90deg, hsla(0, 0%, 100%, 0), <span class="hljs-built_in">hsla</span>(0, 0%, 100%, 0.3) <span class="hljs-number">50%</span>, <span class="hljs-built_in">hsla</span>(0, 0%, 100%, 0));<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">left</span>: -<span class="hljs-number">150%</span>;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">2</span>;<br>}<br><br><span class="hljs-selector-class">.img-light</span><span class="hljs-selector-pseudo">:hover</span><span class="hljs-selector-pseudo">::after</span> {<br>    <span class="hljs-attribute">transition</span>: left <span class="hljs-number">2s</span> ease-in-out;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">150%</span>;<br>}</code></pre>
+                </p>
+
+                <h2>透传事件层</h2>
+                <p>
+                    遇到过一种情况，点击当前层无需触发自己的事件，但可以触发下面那层的事件，我把这种情况理解为“透传”。也就是，点击自身并无反应，相当于直接点击在了下面那层上。
+                </p>
+
+                <p>
+                    用 CSS3 的 <code>pointer-events</code> 实现很简单：
+                    <pre class="hljs css"><code class=""><span class="hljs-selector-tag">div</span> {<br>    <span class="hljs-attribute">pointer-events</span>: none;<br>}</code></pre>
+                    设置为 none，在 MDN 上的解释是：元素永远不会成为鼠标事件的 target。但是，当其后代元素的 pointer-events 属性指定其他值时，鼠标事件可以指向后代元素，在这种情况下，鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器。
+                </p>
+
+                <h2>美化表单的 radio 和 checkbox</h2>
+                <p>
+                    在某个博客中看到的美化 radio 和 checkbox 的写法。
+                    <pre class="hljs scss"><code class=""><span class="hljs-selector-class">.radio-beauty-container</span> {<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-variable">$bgc</span>: green;<br><br>    %common {<br>        <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span>;<br>        <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$bgc</span>;<br>        <span class="hljs-attribute">background-clip</span>: content-box;<br>    }<br>    <span class="hljs-selector-class">.radio-name</span> {<br>        <span class="hljs-attribute">vertical-align</span>: middle;<br>        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;<br>    }<br>    <span class="hljs-selector-class">.radio-beauty</span> {<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">18px</span>;<br>        <span class="hljs-attribute">height</span>: <span class="hljs-number">18px</span>;<br>        <span class="hljs-attribute">box-sizing</span>: border-box;<br>        <span class="hljs-attribute">display</span>: inline-block;<br>        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$bgc</span>;<br>        <span class="hljs-attribute">vertical-align</span>: middle;<br>        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">15px</span> <span class="hljs-number">0</span> <span class="hljs-number">3px</span>;<br>        <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;<br><br>        &amp;:hover {<br>            <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">7px</span> <span class="hljs-variable">$bgc</span>;<br>            @<span class="hljs-keyword">extend</span> %common;<br>        }<br>    }<br>    <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type="radio"]</span>:checked+<span class="hljs-selector-class">.radio-beauty</span> {<br>        @<span class="hljs-keyword">extend</span> %common;<br>    }<br>}</code></pre>
+                    其原理是：
+                    <ul>
+                        <li>
+                            伪类选择器 :checked，表示对应控件元素（单选框或是复选框）选中时的样式
+                        </li>
+                        <li>
+                            加号 + 相邻兄弟选择器，这个符号表示选择后面的兄弟节点
+                        </li>
+                        <li>
+                            两者配合，就可以轻松自如控制后面元素的显示或者隐藏，或是其他样式了
+                        </li>
+                        <li>
+                            用 label 标签控制单/复选框的选中与否，for 属性锚定对应的单选框或是复选框，然后点击这里的 label 标签元素的时候，对应的单/复选框就会选中或是取消选中。
+                        </li>
+                    </ul>
+                </p>
+
+                <h2>总结</h2>
+                <p>
+                    CSS3 有许多很赞的特性，可以呈现非常神奇且炫酷的效果。在这儿仅展示了一些我搜罗到的，觉得有意思的特效。大家如果有值得推荐的 CSS 特效，也欢迎一起探讨学习哈~
                 </p>
             </div>
         </BlogContent>
