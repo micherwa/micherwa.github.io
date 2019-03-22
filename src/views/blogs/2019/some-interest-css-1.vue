@@ -93,6 +93,15 @@
                     <pre class="hljs css"><code class=""><span class="hljs-selector-class">.wrapper</span>{<br>    <span class="hljs-attribute">min-width</span>: <span class="hljs-number">1000px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">800px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(test.jpg) no-repeat center top;<br>}<br><br><span class="hljs-selector-class">.mainContent</span>{<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">1000px</span>;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>}</code></pre>
                 </p>
 
+                <h2>::after 实现水平垂直居中</h2>
+                <p>
+                    伪元素也能用来实现居中么？当时看到的一感觉就觉得挺神奇的，看下面这个例子：
+                    <pre class="hljs javascript"><code class="">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"wrapper"</span>&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"test.png"</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre>
+
+                    <pre class="hljs css"><code class=""><span class="hljs-selector-class">.wrapper</span> {<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;<br><br>    <span class="hljs-attribute">text-align</span>: center;<br>}<br><br><span class="hljs-selector-class">.wrapper</span><span class="hljs-selector-pseudo">::after</span> {<br>    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;<br>    <span class="hljs-attribute">display</span>: inline-block;<br>    <span class="hljs-attribute">vertical-align</span>: middle;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>}<br><br><span class="hljs-selector-class">.wrapper</span> &gt; <span class="hljs-selector-tag">img</span> {<br>    <span class="hljs-attribute">vertical-align</span>: middle;<br>}</code></pre>
+                    水平方向很好理解。垂直方向，可以理解为 ::after 把 img 往下拉到了中间。
+                </p>
+
                 <h2>总结</h2>
                 <p>
                     今天介绍的内容，主要以布局为主，或是工作中遇到的，或者是在某个网站看到的，就研究了一把，顺道在此做个分享。
