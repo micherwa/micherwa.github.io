@@ -1,11 +1,43 @@
 export default [
+    // {
+    //     title: '2019再见！',
+    //     subTitle: '',
+    //     routeName: 'annual-report-2020',
+    //     descript: '',
+    //     date: '2020-01-01',
+    //     tags: ['言论与感想']
+    // },
+    {
+        title: '「读懂源码系列3」lodash 是如何实现深拷贝的',
+        subTitle: '',
+        routeName: 'clone-deep-in-lodash',
+        descript: '',
+        date: '2019-04-24',
+        tags: ['Javascipt', '源码解读']
+    },
+    {
+        title: '「干货」细说 Javascript 中的浮点数精度问题',
+        subTitle: '',
+        routeName: 'precision-of-float-number-in-javascript',
+        descript: '',
+        date: '2019-04-18',
+        tags: ['Javascript']
+    },
     {
         title: '「干货」CSS 不定宽高的垂直水平居中（最全 9 种）',
         subTitle: '',
         routeName: 'center-of-horizontal-and-vertical',
         descript: '',
-        date: '2019-04-03',
+        date: '2019-04-11',
         tags: ['CSS']
+    },
+    {
+        title: '「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现',
+        subTitle: '',
+        routeName: 'copy-of-shallow-and-deep',
+        descript: '',
+        date: '2019-04-03',
+        tags: ['Javascript', '算法', '面试题']
     },
     {
         title: '一些有趣的 CSS 魔法和布局（下）',
@@ -77,14 +109,6 @@ export default [
         routeName: 'call-and-apply-and-bind',
         descript: '',
         date: '2019-01-24',
-        tags: ['Javascript']
-    },
-    {
-        title: '「干货」细说 Javascript 中的浮点数精度问题',
-        subTitle: '',
-        routeName: 'precision-of-float-number-in-javascript',
-        descript: '',
-        date: '2019-01-23',
         tags: ['Javascript']
     },
     {

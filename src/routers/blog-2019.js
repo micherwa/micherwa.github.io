@@ -1,5 +1,20 @@
 export default [
     {
+        path: '/2019/clone-deep-in-lodash',
+        name: 'clone-deep-in-lodash',
+        component: () => import('@/views/blogs/2019/clone-deep-in-lodash')
+    },
+    {
+        path: '/2019/copy-of-shallow-and-deep',
+        name: 'copy-of-shallow-and-deep',
+        component: () => import('@/views/blogs/2019/copy-of-shallow-and-deep')
+    },
+    {
+        path: '/2019/precision-of-float-number-in-javascript',
+        name: 'precision-of-float-number-in-javascript',
+        component: () => import('@/views/blogs/2019/precision-of-float-number-in-javascript')
+    },
+    {
         path: '/2019/some-interest-css-2',
         name: 'some-interest-css-2',
         component: () => import('@/views/blogs/2019/some-interest-css-2')
@@ -48,11 +63,6 @@ export default [
         path: '/2019/call-and-apply-and-bind',
         name: 'call-and-apply-and-bind',
         component: () => import('@/views/blogs/2019/call-and-apply-and-bind')
-    },
-    {
-        path: '/2019/precision-of-float-number-in-javascript',
-        name: 'precision-of-float-number-in-javascript',
-        component: () => import('@/views/blogs/2019/precision-of-float-number-in-javascript')
     },
     {
         path: '/2019/how-to-use-this-in-javascript',
