@@ -9,7 +9,11 @@
                     上一篇文章 <a href="" target="_blank">「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现</a> 中提到了深拷贝的实现方法，从递归调用，到 JSON，再到终极方案 cloneForce。
                 </p>
                 <p>
-                    不经让我想到，lodash 中的 <code>_.cloneDeep</code> 方法，它是如何实现深拷贝的呢？今天，就让我们深入源码，来看一下 cloneDeep 是如何实现深拷贝的。
+                    不经让我想到，lodash 中的 <code>_.cloneDeep</code> 方法，它是如何实现深拷贝的呢？今天，就让我们来看一下 _.cloneDeep 是如何实现深拷贝的。
+                </p>
+
+                <p>
+                    源码中的内容比较多，为了能将知识点讲明白，也为了更好的阅读体验，将会分为上下 2 篇进行解读。今天主要会涉及位掩码、对象判断、数组和正则的深拷贝写法。ok，现在就让我们深入源码，共同探索吧~
                 </p>
 
                 <h2>_.cloneDeep 的源码实现</h2>
@@ -87,17 +91,16 @@
                     <pre class="hljs php"><code class=""><span class="hljs-keyword">if</span> (!isDeep) {<br>    <span class="hljs-keyword">return</span> copyArray(value, result)<br>}<br><br><span class="hljs-comment">// ./copyArray.js</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">copyArray</span><span class="hljs-params">(source, array)</span> </span>{<br>  let index = <span class="hljs-number">-1</span><br>  <span class="hljs-keyword">const</span> length = source.length<br><br>  <span class="hljs-keyword">array</span> || (<span class="hljs-keyword">array</span> = <span class="hljs-keyword">new</span> <span class="hljs-keyword">Array</span>(length))<br>  <span class="hljs-keyword">while</span> (++index &lt; length) {<br>    <span class="hljs-keyword">array</span>[index] = source[index]<br>  }<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">array</span><br>}</code></pre>
                 </p>
 
-                <h4>处理对象和函数</h4>
+                <h2>总结</h2>
                 <p>
-                    <pre class="hljs cs"><code class=""><span class="hljs-keyword">const</span> isArr = Array.isArray(<span class="hljs-keyword">value</span>)<br><span class="hljs-keyword">const</span> tag = getTag(<span class="hljs-keyword">value</span>)<br><br><span class="hljs-keyword">if</span> (isArr) {<br>    ... <span class="hljs-comment">// 刚才数组的处理</span><br>} <span class="hljs-keyword">else</span> {<br>    <span class="hljs-comment">// 开始处理对象</span><br>    <span class="hljs-comment">// 对象是函数的标志位</span><br>    <span class="hljs-keyword">const</span> isFunc = <span class="hljs-keyword">typeof</span> <span class="hljs-keyword">value</span> == <span class="hljs-string">'function'</span><br>    <br>    <span class="hljs-comment">// 处理 Buffer（缓冲区）对象</span><br>    <span class="hljs-keyword">if</span> (isBuffer(<span class="hljs-keyword">value</span>)) {<br>        <span class="hljs-keyword">return</span> cloneBuffer(<span class="hljs-keyword">value</span>, isDeep)<br>    }<br>    <br>    <span class="hljs-comment">// 如果 tag 是 '[object Object]'</span><br>    <span class="hljs-comment">// 或 tag 是 '[object Arguments]'</span><br>    <span class="hljs-comment">// 或 是函数但没有父对象（object 由 baseClone 传入，是 value 的父对象）</span><br>    <span class="hljs-keyword">if</span> (tag == objectTag || tag == argsTag || (isFunc &amp;&amp; !<span class="hljs-keyword">object</span>)) {<br>        <span class="hljs-comment">// 初始化 result</span><br>        <span class="hljs-comment">// 如果是原型链或函数时，设置为空对象</span><br>        <span class="hljs-comment">// 否则，新开一个对象，并将源对象的键值对依次拷贝进去</span><br>        result = (isFlat || isFunc) ? {} : initCloneObject(<span class="hljs-keyword">value</span>)<br>        <span class="hljs-keyword">if</span> (!isDeep) {<br>            <span class="hljs-comment">// 进入对象的浅拷贝</span><br>            <span class="hljs-keyword">return</span> isFlat<br>            <span class="hljs-comment">// 如果是原型链，则需要拷贝自身，还有继承的 symbols</span><br>            ? copySymbolsIn(<span class="hljs-keyword">value</span>, copyObject(<span class="hljs-keyword">value</span>, keysIn(<span class="hljs-keyword">value</span>), result))<br>            <span class="hljs-comment">// 否则，只要拷贝自身的 symbols</span><br>            : copySymbols(<span class="hljs-keyword">value</span>, Object.assign(result, <span class="hljs-keyword">value</span>))<br>        }<br>    } <span class="hljs-keyword">else</span> {<br>        <span class="hljs-comment">// 是函数或者 不是 error 或 weakmap 类型时</span><br>        <span class="hljs-keyword">if</span> (isFunc || !cloneableTags[tag]) {<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">object</span> ? <span class="hljs-keyword">value</span> : {}<br>        }<br>        <span class="hljs-comment">// 按需要初始化 cloneableTags 对象中剩余的类型</span><br>        result = initCloneByTag(<span class="hljs-keyword">value</span>, tag, isDeep)<br>    }<br>}</code></pre>
-                    一些主要的判断入口，已经加上了注释。其中，<code>isBuffer</code> 会处理 Buffer 类的拷贝，它是 Node.js 中的概念，用来创建一个专门存放二进制数据的缓存区，可以让 Node.js 处理二进制数据。
+                    位掩码技术，是一种很棒的思想，可以写出更为简洁的代码，运行得也更快。对象的判断，需要特别注意 null，它的 typeof 值 也是 object。正则的 exec() 方法会返回一个结果数组或 null，其中就会有 index 和 input 属性。
                 </p>
                 <p>
-                    在 baseClone 的外面，还定义了一个对象 cloneableTags，里面只有 error 和 weakmap 类型会返回 false，所以 <code>!cloneableTags[tag]</code> 的意思就是，不是 error 或 weakmap 类型。
+                    阅读源码的过程比较痛苦，深感自身的不足。从不懂到查阅资料，再到写出来，耗费了我大量的时间，不过写作的过程也给了我不小的收获。修行之路任重而道远，给自己打打气，继续砥砺前行吧。
                 </p>
-                <p>
-                    然后，就来看看如何初始化一个新的 Object 对象了。
 
+                <p>
+                    未完待续。。。
                 </p>
             </div>
         </BlogContent>

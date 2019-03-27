@@ -1,9 +1,9 @@
 
 export default [
     {
-        url: 'https://www.zhihu.com/people/micherwa',
+        url: 'https://juejin.im/user/5a5d4522518825732b19d364',
         icon: '',
-        title: '知'
+        title: '掘'
     },
     {
         url: 'https://segmentfault.com/u/micherwa',
@@ -11,13 +11,13 @@ export default [
         title: 'sf'
     },
     {
-        url: 'https://weibo.com/jaked',
-        icon: 'fa-weibo',
-        title: ''
-    },
-    {
         url: 'https://github.com/micherwa',
         icon: 'fa-github',
         title: ''
+    },
+    {
+        url: 'https://www.zhihu.com/people/micherwa',
+        icon: '',
+        title: '知'
     }
 ];

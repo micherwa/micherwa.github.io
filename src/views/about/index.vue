@@ -36,7 +36,7 @@
                         <p>
                             职业是软件工程师。目前在 知名游戏公司 的广告技术中心，担任前端负责人 。曾在游族网络的广告技术部，参与研发广告投放系统、在厚本金融参与研发
                             <a href="https://github.com/hbteam/weex-droplet-ui" target="_blank">水滴UI</a>
-                            (一个轻量级的weex UI组件库)、在<a href="http://www.lingduohome.com/" target="_blank">窝牛装修</a> 与篱笆网，从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
+                            (一个轻量级的weex UI组件库)、在窝牛装修与篱笆网，从事移动前端开发相关工作 (其中有一年iOS原生开发经验)。
                         </p>
 
                         <p>健身爱好者，也喜爱美食，闲暇时间乐于阅读和电影。</p>
@@ -70,6 +70,7 @@
             return {
                 socialList: [
                     { href: 'http://micherwa.cc/blog/#/', name: '博客、' },
+                    { href: 'https://juejin.im/user/5a5d4522518825732b19d364', name: '掘金、' },
                     { href: 'https://segmentfault.com/u/micherwa', name: 'SegmentFault、' },
                     { href: 'https://www.zhihu.com/people/micherwa', name: '知乎、' },
                     { href: 'https://github.com/micherwa', name: 'Github、' },

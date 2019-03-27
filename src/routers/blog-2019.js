@@ -1,8 +1,13 @@
 export default [
     {
-        path: '/2019/clone-deep-in-lodash',
-        name: 'clone-deep-in-lodash',
-        component: () => import('@/views/blogs/2019/clone-deep-in-lodash')
+        path: '/2019/clone-deep-in-lodash-2',
+        name: 'clone-deep-in-lodash-2',
+        component: () => import('@/views/blogs/2019/clone-deep-in-lodash-2')
+    },
+    {
+        path: '/2019/clone-deep-in-lodash-1',
+        name: 'clone-deep-in-lodash-1',
+        component: () => import('@/views/blogs/2019/clone-deep-in-lodash-1')
     },
     {
         path: '/2019/copy-of-shallow-and-deep',
