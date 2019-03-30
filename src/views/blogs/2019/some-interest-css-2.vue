@@ -126,7 +126,7 @@
                     你玩过《<strong>小冰冰传奇</strong>（[刀塔传奇]）》么？你玩过《<strong>剑与家园</strong>》么？
                 </p>
                 <p>
-                    你想和 <strong>薛兆丰老师</strong> 成为朋友么？有兴趣的同学，可以关注下面的公众号加我微信详聊哈~
+                    你想和 <strong>薛兆丰老师</strong> 成为朋友么？有兴趣的同学，可以 <strong>关注下面的公众号 加我微信</strong> 详聊哈~
                 </p>
             </div>
         </BlogContent>
