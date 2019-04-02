@@ -40,14 +40,14 @@ export default [
     //     date: '2019-04-11',
     //     tags: ['Javascipt', '源码解读']
     // },
-    // {
-    //     title: '「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现',
-    //     subTitle: '',
-    //     routeName: 'copy-of-shallow-and-deep',
-    //     descript: '',
-    //     date: '2019-04-03',
-    //     tags: ['Javascript', '算法', '面试题']
-    // },
+    {
+        title: '「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现',
+        subTitle: '',
+        routeName: 'copy-of-shallow-and-deep',
+        descript: '',
+        date: '2019-04-03',
+        tags: ['Javascript', '算法', '面试题']
+    },
     {
         title: '一些有趣的 CSS 魔法和布局（下）',
         subTitle: '',
