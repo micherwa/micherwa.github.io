@@ -20,6 +20,11 @@ export default [
         component: () => import('@/views/blogs/2019/precision-of-float-number-in-javascript')
     },
     {
+        path: '/2019/thinking-about-job-wanted',
+        name: 'thinking-about-job-wanted',
+        component: () => import('@/views/blogs/2019/thinking-about-job-wanted')
+    },
+    {
         path: '/2019/some-interest-css-2',
         name: 'some-interest-css-2',
         component: () => import('@/views/blogs/2019/some-interest-css-2')

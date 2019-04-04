@@ -13,7 +13,7 @@ export default [
     //     subTitle: '',
     //     routeName: 'precision-of-float-number-in-javascript',
     //     descript: '',
-    //     date: '2019-05-03',
+    //     date: '2019-05-09',
     //     tags: ['Javascript']
     // },
     // {
@@ -21,7 +21,7 @@ export default [
     //     subTitle: '',
     //     routeName: 'center-of-horizontal-and-vertical',
     //     descript: '',
-    //     date: '2019-04-24',
+    //     date: '2019-05-03',
     //     tags: ['CSS']
     // },
     // {
@@ -29,7 +29,7 @@ export default [
     //     subTitle: '',
     //     routeName: 'clone-deep-in-lodash-2',
     //     descript: '',
-    //     date: '2019-04-18',
+    //     date: '2019-04-24',
     //     tags: ['Javascipt', '源码解读']
     // },
     // {
@@ -37,16 +37,24 @@ export default [
     //     subTitle: '',
     //     routeName: 'clone-deep-in-lodash-1',
     //     descript: '',
-    //     date: '2019-04-11',
+    //     date: '2019-04-18',
     //     tags: ['Javascipt', '源码解读']
     // },
+    // {
+    //     title: '「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现',
+    //     subTitle: '',
+    //     routeName: 'copy-of-shallow-and-deep',
+    //     descript: '',
+    //     date: '2019-04-11',
+    //     tags: ['Javascript', '算法', '面试题']
+    // },
     {
-        title: '「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现',
+        title: '金三银四求职季的一些建议和思考',
         subTitle: '',
-        routeName: 'copy-of-shallow-and-deep',
+        routeName: 'thinking-about-job-wanted',
         descript: '',
         date: '2019-04-03',
-        tags: ['Javascript', '算法', '面试题']
+        tags: ['言论与感想', '面试题']
     },
     {
         title: '一些有趣的 CSS 魔法和布局（下）',
