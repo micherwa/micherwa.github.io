@@ -49,7 +49,7 @@ export default [
     //     tags: ['Javascript', '算法', '面试题']
     // },
     {
-        title: '金三银四求职季的一些建议和思考',
+        title: '面试王者的出装方案推荐——软技能篇（文末含岗位内推）',
         subTitle: '',
         routeName: 'thinking-about-job-wanted',
         descript: '',
