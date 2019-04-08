@@ -103,7 +103,7 @@
 
                 <h2>关于 996.ICU</h2>
                 <p>
-                    说起近期 github 上最火的 repo 非 <a href="https://996.icu/#/zh_CN" target="_blank">996.ICU</a> 莫属了。什么是 996.ICU ？工作 996，生病 ICU。随之又诞生了另一个与之对立的 repo，955.WLB，工作 955，work–life balance (工作与生活的平衡)。它们都呼声都很高。
+                    说起近期 github 上最火的 repo 非 <a href="https://996.icu/#/zh_CN" target="_blank">996.ICU</a> 莫属了。什么是 996.ICU ？工作 996，生病 ICU。随之又诞生了另一个与之对立的 repo，<a href="https://github.com/formulahendry/955.WLB" target="_blank">955.WLB</a>，工作 955，work–life balance (工作与生活的平衡)。它们都呼声都很高。
                 </p>
                 <img src="~@/assets/blog/bg-20190403-01.jpg">
 
