@@ -8,14 +8,14 @@ export default [
     //     tags: ['言论与感想']
     // },
 
-    {
-        title: '「干货」细说 Javascript 中的浮点数精度问题',
-        subTitle: '',
-        routeName: 'precision-of-float-number-in-javascript',
-        descript: '',
-        date: '2019-05-09',
-        tags: ['Javascript']
-    },
+    // {
+    //     title: '「干货」细说 Javascript 中的浮点数精度问题',
+    //     subTitle: '',
+    //     routeName: 'precision-of-float-number-in-javascript',
+    //     descript: '',
+    //     date: '2019-05-09',
+    //     tags: ['Javascript']
+    // },
     // {
     //     title: '「干货」CSS 不定宽高的垂直水平居中（最全 9 种）',
     //     subTitle: '',
@@ -40,14 +40,14 @@ export default [
     //     date: '2019-04-18',
     //     tags: ['Javascipt', '源码解读']
     // },
-    // {
-    //     title: '「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现',
-    //     subTitle: '',
-    //     routeName: 'copy-of-shallow-and-deep',
-    //     descript: '',
-    //     date: '2019-04-11',
-    //     tags: ['Javascript', '算法', '面试题']
-    // },
+    {
+        title: '「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现',
+        subTitle: '',
+        routeName: 'copy-of-shallow-and-deep',
+        descript: '',
+        date: '2019-04-11',
+        tags: ['Javascript', '面试题']
+    },
     {
         title: '面试王者的出装方案推荐——软技能篇（文末含岗位内推）',
         subTitle: '',
