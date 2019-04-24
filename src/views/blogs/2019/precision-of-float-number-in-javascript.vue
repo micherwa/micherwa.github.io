@@ -6,20 +6,17 @@
             <div slot="content">
                 <h2>前言</h2>
                 <p>
-                    最近，朋友 L 问了我这样一个问题：以下数据的运算结果，在 chrome 中为什么是这样的？
+                    最近，朋友 L 问了我这样一个问题：在 chrome 中的运算结果，为什么是这样的？
                     <pre class="hljs objectivec"><code class=""><span class="hljs-number">0.55</span> * <span class="hljs-number">100</span> <span class="hljs-comment">// 55.00000000000001</span><br><span class="hljs-number">0.56</span> * <span class="hljs-number">100</span> <span class="hljs-comment">// 56.00000000000001</span><br><span class="hljs-number">0.57</span> * <span class="hljs-number">100</span> <span class="hljs-comment">// 56.99999999999999</span><br><span class="hljs-number">0.58</span> * <span class="hljs-number">100</span> <span class="hljs-comment">// 57.99999999999999</span><br><span class="hljs-number">0.59</span> * <span class="hljs-number">100</span> <span class="hljs-comment">// 59</span><br><span class="hljs-number">0.60</span> * <span class="hljs-number">100</span> <span class="hljs-comment">// 60</span></code></pre>
-                    我虽然告诉了他这是由于浮点数精度问题导致的，但他还是不太明白，为何有的结果输出为整数，有的是以 ...001 的小数结尾，有的却是以 ...999 的小数结尾，跟预想中的有差异。
+                    虽然我告诉他说，这是由于浮点数精度问题导致的。但他还是不太明白，为何有的结果输出整数，有的是以 ...001 的小数结尾，有的却是以 ...999 的小数结尾，跟预想中的有差异。
                 </p>
                 <p>
-                    这其实牵涉到了计算机原理的知识，真要解释清楚什么是浮点数，恐怕得分几个章节了，想深入了解的同学，可以前往 <a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank">这篇文章</a> 细读。今天我们仅讨论解释浮点数运算结果的成因，以及如何实现我们期望的结果。
+                    这其实牵涉到了计算机原理的知识，真要解释清楚什么是浮点数，恐怕得分好几个章节了。想深入了解的同学，可以前往 <a href="https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank">这篇文章</a> 细读。今天我们仅讨论浮点数运算结果的成因，以及如何实现我们期望的结果。
                 </p>
 
                 <h2>浮点数与 IEEE 754</h2>
                 <p>
-                    首先，计算机中的小数并不都叫浮点数。我们在写程序时，用到小数的地方，用 float 类型表示，可以方便快速地对小数进行运算。
-                </p>
-                <p>
-                    小数点在数制中代表一种对齐方式，比如说你要比较 1000 和 200 哪个比较大，该怎么做呢？必须把他们右对齐：
+                    小数点在数制中代表一种对齐方式，比如要比较 1000 和 200 哪个比较大，该怎么做呢？必须把他们右对齐：
                     <pre class="hljs"><code class="">1000<br> 200</code></pre>
                     发现 1 比 0（前面补零）大，所以 1000 比较大。那么如果要比较 1000 和 200.01 呢？这时候就不是右对齐了，而应该是以小数点对齐：
                     <pre class="hljs"><code class="">1000<br> 200.01</code></pre>
@@ -27,7 +24,7 @@
                 </p>
 
                 <p>
-                    接下来的一个重要概念：<strong>计算机中小数的表示法，其实有定点和浮点两种。</strong>
+                    接下来的一个重要概念：<strong>在计算机中的小数有两种，定点 和 浮点。</strong>
                 </p>
 
                 <p>
@@ -35,21 +32,21 @@
                 </p>
 
                 <p>
-                    浮点数就是设计来克服这个缺点的，它相当于一个定点数加上一个阶码，阶码表示将这个定点数的小数点移动若干位。由于可以用阶码移动小数点，因此称为浮点数。
+                    浮点数就是设计来克服这个缺点的，它相当于一个定点数加上一个阶码，阶码表示将这个定点数的小数点移动若干位。由于可以用阶码移动小数点，因此称为浮点数。我们在写程序时，用到小数的地方，用 float 类型表示，可以方便快速地对小数进行运算。
                 </p>
 
                 <p>
                     浮点数在 Javascript 中的存储，与其他语言如 Java 和 Python 不同。所有数字（包括整数和小数）都只有一种类型 — Number。它的实现遵循 <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" target="_blank">IEEE 754 标准</a>，使用64位精度来表示浮点数。它是目前最广泛使用的格式，该格式用 64 位二进制表示像下面这样：
-                    <img src="~@/assets/blog/bg-20190509-01.png">
-                    从上图中可以看出，它分为三个部分：
+                    <img src="~@/assets/blog/bg-20190424-01.png">
+                    从上图中可以看出，这 64 位分为三个部分：
                     <ul>
                         <li>符号位：1 位用于标志位。用来表示一个数是正数还是负数</li>
-                        <li>指数位：11位用于指数。这允许指数最大到 1024</li>
+                        <li>指数位：11 位用于指数。这允许指数最大到 1024</li>
                         <li>尾数位：剩下的 52 位代表的是尾数，超出的部分自动进一舍零</li>
                     </ul>
                 </p>
 
-                <h2>浮点数是如何计算出来的？</h2>
+                <h2>精度丢哪儿去了？</h2>
                 <p>
                     问：要把小数装入计算机，总共分几步？
                 <p>
@@ -63,12 +60,12 @@
                     但第一步和第三步都有可能 <strong>丢失精度</strong>。
                 </p>
                 <p>
-                    十进制是给人看的，而需要计算机进行运算时，必须要转换为它认识的二进制才行。最后，当运算完毕后，再将结果转换回十进制，继续给人看。精度就丢失于这两次转换的过程中。
+                    十进制是给人看的。但在进行运算之前，必须先转换为计算机能处理的二进制。最后，当运算完毕后，再将结果转换回十进制，继续给人看。精度就丢失于这两次转换的过程中。
                 </p>
 
                 <h4>十进制转二进制</h4>
                 <p>
-                    来看一个简单的例子
+                    接下来，就具体说说转换的过程。来看一个简单的例子：
                     <pre class="hljs css"><code style="word-break: break-word; white-space: initial;" class="">如何将十进制的 <span class="hljs-selector-class">168.45</span> 转换为二进制？</code></pre>
                     让我们拆为两个部分来解析：
                 </p>
@@ -111,7 +108,7 @@
 
                 <h4>二进制转十进制</h4>
                 <p>
-                    它的转换方法相对简单些，按权相加法。就是将二进制每位上的数乘以权，然后相加之和即是十进制数。其中的注意点有 2 个：要知道二进制每位的权值，要能求出每位的值。
+                    它的转换方法相对简单些，按权相加法。就是将二进制每位上的数乘以权，然后相加之和即是十进制数。其中有两个注意点：要知道二进制每位的权值，要能求出每位的值。
                 </p>
                 <p>
                     所以，将刚才的二进制 10101000.0111 转换为十进制，得到的结果就是 168.4375，再四舍五入一下，即 168.45。
@@ -119,15 +116,18 @@
 
                 <h2>解决方案</h2>
                 <p>
-                    正如本文开头所提到的，在 JavaScript 中的浮点数运算，会有不少奇葩的问题。在明白了产生问题的根本原因之后，当然是想办法解决啦~
+                    正如本文开头所提到的，在 JavaScript 中进行浮点数的运算，会有不少奇葩的问题。在明白了产生问题的根本原因之后，当然是想办法解决啦~
                 </p>
                 <p>
                     一个简单粗暴的建议是，使用像 <a href="https://github.com/josdejong/mathjs/" target="_blank">mathjs</a>  这样的库。它的 API 也挺简单的：
                     <pre class="hljs lua"><code class="">// <span class="hljs-built_in">load</span> <span class="hljs-built_in">math</span>.js<br>const <span class="hljs-built_in">math</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mathjs'</span>)<br><br>// functions <span class="hljs-keyword">and</span> constants<br><span class="hljs-built_in">math</span>.round(<span class="hljs-built_in">math</span>.e, <span class="hljs-number">3</span>)             // <span class="hljs-number">2.718</span><br><span class="hljs-built_in">math</span>.<span class="hljs-built_in">atan2</span>(<span class="hljs-number">3</span>, <span class="hljs-number">-3</span>) / <span class="hljs-built_in">math</span>.<span class="hljs-built_in">pi</span>       // <span class="hljs-number">0.75</span><br><br>// expressions<br><span class="hljs-built_in">math</span>.eval(<span class="hljs-string">'12 / (2.3 + 0.7)'</span>)     // <span class="hljs-number">4</span><br><span class="hljs-built_in">math</span>.eval(<span class="hljs-string">'12.7 cm to inch'</span>)      // <span class="hljs-number">5</span> inch<br><span class="hljs-built_in">math</span>.eval(<span class="hljs-string">'sin(45 deg) ^ 2'</span>)      // <span class="hljs-number">0.5</span><br><br>// chaining<br><span class="hljs-built_in">math</span>.chain(<span class="hljs-number">3</span>)<br>    .add(<span class="hljs-number">4</span>)<br>    .multiply(<span class="hljs-number">2</span>)<br>    .done()  // <span class="hljs-number">14</span></code></pre>
-                    但如果在工程中，没有太多需要运算的情况的话，就不建议这么做了，毕竟引入三方库也是有成本的，无论是学习 API，还是引入库之后，带来打包后的文件体积增积。那么，不引入库该怎么处理浮点数呢？
+                    但如果在工程中，没有太多需要进行运算的场景的话，就不建议这么做了。毕竟引入三方库也是有成本的，无论是学习 API，还是引入库之后，带来打包后的文件体积增积。
                 </p>
                 <p>
-                    还是要从需求出发。例如，本文开头的例子。可以猜想到，需求可能是要把小数转为百分比，通常会保留两位小数。而在一些对数字较为敏感的业务场景中，可能并不希望对数字进行四舍五入，所以 toFixed() 方法就没法用了。
+                    那么，不引入库该怎么处理浮点数呢？
+                </p>
+                <p>
+                    可以从需求出发。例如，本文开头的例子。可以猜想到，需求可能是要把小数转为百分比，通常会保留两位小数。而在一些对数字较为敏感的业务场景中，可能并不希望对数字进行四舍五入，所以 toFixed() 方法就没法用了。
                 </p>
                 <p>
                     一种思路是，将小数点像右多移动 n 位，取整后再除以 (10 * n)。比如这样：
@@ -137,7 +137,7 @@
                 <p>
                     特别需要注意的是，在需要四舍五入的场景下，我们会习惯用到内置方法 <code>toFixed()</code>，但它存在一些问题：
                     <pre class="hljs objectivec"><code class=""><span class="hljs-number">1.35</span>.toFixed(<span class="hljs-number">1</span>) <span class="hljs-comment">// 1.4 正确</span><br><span class="hljs-number">1.335</span>.toFixed(<span class="hljs-number">2</span>) <span class="hljs-comment">// 1.33  错误</span><br><span class="hljs-number">1.3335</span>.toFixed(<span class="hljs-number">3</span>) <span class="hljs-comment">// 1.333 错误</span><br><span class="hljs-number">1.33335</span>.toFixed(<span class="hljs-number">4</span>) <span class="hljs-comment">// 1.3334 正确</span><br><span class="hljs-number">1.333335</span>.toFixed(<span class="hljs-number">5</span>)  <span class="hljs-comment">// 1.33333 错误</span><br><span class="hljs-number">1.3333335</span>.toFixed(<span class="hljs-number">6</span>) <span class="hljs-comment">// 1.333333 错误</span></code></pre>
-                    另外，它的返回结果类型是，<code>String</code>。不能直接拿来做运算，因为计算机会认为是 <code>字符串拼接</code>。
+                    另外，它的返回结果类型是 <code>String</code>。不能直接拿来做运算，因为计算机会认为是 <code>字符串拼接</code>。
                 </p>
 
                 <h2>总结</h2>
