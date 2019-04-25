@@ -35,7 +35,7 @@ export default [
     //     tags: ['Javascipt', '源码解读']
     // },
     {
-        title: '「干货」细说 Javascript 中的浮点数精度丢失问题',
+        title: '「干货」细说 Javascript 中的浮点数精度丢失问题（内附好课推荐）',
         subTitle: '',
         routeName: 'precision-of-float-number-in-javascript',
         descript: '',
