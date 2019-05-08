@@ -26,14 +26,14 @@ export default [
     //     date: '2019-05-21',
     //     tags: ['Javascipt', '源码解读']
     // },
-    // {
-    //     title: '「读懂源码系列3」lodash 是如何实现深拷贝的（上）',
-    //     subTitle: '',
-    //     routeName: 'clone-deep-in-lodash-1',
-    //     descript: '',
-    //     date: '2019-05-08',
-    //     tags: ['Javascipt', '源码解读']
-    // },
+    {
+        title: '「读懂源码系列3」lodash 是如何实现深拷贝的（上）',
+        subTitle: '',
+        routeName: 'clone-deep-in-lodash-1',
+        descript: '',
+        date: '2019-05-08',
+        tags: ['Javascipt', '源码解读']
+    },
     {
         title: '「干货」细说 Javascript 中的浮点数精度丢失问题（内附好课推荐）',
         subTitle: '',

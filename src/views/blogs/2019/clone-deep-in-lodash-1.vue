@@ -107,10 +107,10 @@
 
                 <h2>岗位内推</h2>
                 <p>
-                    莉莉丝游戏招 <code>中高级前端工程师</code> 啦！！！
+                    莉莉丝游戏招 <code>高级前端</code> 啦！！！
                 </p>
                 <p>
-                    你玩过《<strong>小冰冰传奇</strong>（[刀塔传奇]）》么？你玩过《<strong>剑与家园</strong>》么？新游戏《<strong>AFK arena</strong>》现已占领各大海外应用市场（<code>友情提示：要小心，这游戏有毒嗷~</code>）。​
+                    你玩过《<strong>小冰冰传奇</strong>（[刀塔传奇]）》么？你玩过《<strong>剑与家园</strong>》么？还有本篇的封面，为我司的新游戏《<strong>AFK arena</strong>》，现已占领各大海外应用市场（<code>友情提示：要小心，这游戏有毒嗷~</code>）。​
                 </p>
                 <p>
                     有兴趣的同学，可以 <strong>关注下面的公众号 加我微信</strong> 详聊哈~
