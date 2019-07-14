@@ -8,12 +8,14 @@
                 }
             }
         ],
-        "stage-3"
+        "stage-3",
     ],
     "plugins": ["lodash", "transform-runtime", "syntax-dynamic-import"],
     "env": {
         "development":{
             "plugins": ["dynamic-import-node"]
         }
-    }
+    },
+    "comments": false,
+    "sourceType": "unambiguous"
 }
