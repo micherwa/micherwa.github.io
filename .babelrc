@@ -15,7 +15,5 @@
         "development":{
             "plugins": ["dynamic-import-node"]
         }
-    },
-    "comments": false,
-    "sourceType": "unambiguous"
+    }
 }
