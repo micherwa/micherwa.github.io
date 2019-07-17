@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/config-of-sublime-text-3',
+        name: 'config-of-sublime-text-3',
+        component: () => import('@/views/blogs/2019/config-of-sublime-text-3')
+    },
+    {
         path: '/2019/clone-deep-in-lodash-2',
         name: 'clone-deep-in-lodash-2',
         component: () => import('@/views/blogs/2019/clone-deep-in-lodash-2')
