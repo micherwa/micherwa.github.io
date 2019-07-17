@@ -6,7 +6,7 @@
             <div slot="content">
                 <h2>前言</h2>
                 <p>
-                    接着上一篇文章 <a href="" target="_blank">lodash 是如何实现深拷贝的（上）</a>，今天会继续解读 _.cloneDeep 的源码，来看看 lodash 是如何处理对象、函数、循环引用等的深拷贝问题的。
+                    接着上一篇文章 <a href="https://juejin.im/post/5cbc57a2f265da0380436cca" target="_blank">lodash 是如何实现深拷贝的（上）</a>，今天会继续解读 _.cloneDeep 的源码，来看看 lodash 是如何处理对象、函数、循环引用等的深拷贝问题的。
                 </p>
 
                 <h2>baseClone 的源码实现</h2>
@@ -49,7 +49,7 @@
                 <h4>循环引用</h4>
                 <p>
                     <pre class="hljs cpp"><code class=""><span class="hljs-comment">// 如果有 stack 作为参数传入，就用参数中的 stack</span><br><span class="hljs-comment">// 不然就 new 一个 Stack</span><br><span class="hljs-built_in">stack</span> || (<span class="hljs-built_in">stack</span> = <span class="hljs-keyword">new</span> Stack)<br><span class="hljs-keyword">const</span> stacked = <span class="hljs-built_in">stack</span>.get(value)<br><span class="hljs-keyword">if</span> (stacked) {<br>    <span class="hljs-keyword">return</span> stacked<br>}<br><span class="hljs-built_in">stack</span>.<span class="hljs-built_in">set</span>(value, result)</code></pre>
-                    与 <a href="" target="_blank">「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现</a> 最后提到的 cloneForce 方案类似，利用了栈来解决循环引用的问题。
+                    与 <a href="https://juejin.im/post/5cab479cf265da039d325df4" target="_blank">「前端面试题系列9」浅拷贝与深拷贝的含义、区别及实现</a> 最后提到的 cloneForce 方案类似，利用了栈来解决循环引用的问题。
                 </p>
                 <p>
                     如果 <code>stacked</code> 有值，则表明已经在栈中存在，不然就 <code>value</code> 和 <code>result</code> 入栈。在 Stack 中的 set 方法：
