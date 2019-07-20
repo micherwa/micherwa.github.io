@@ -39,7 +39,96 @@
                     <img src="~@/assets/blog/bg-20190628-02.png">
                 </p>
 
+                <p>
+                    安装插件也十分简单，点开上图的 Package Control，会新弹出的层中搜索你想安装的包即可。
+                    <img src="~@/assets/blog/bg-20190628-03.png">
+                </p>
+
                 <p>接下来，我列举了一些非常实用的插件，并会简单介绍各自的使用场景。</p>
+
+                <h4>Material-Theme</h4>
+                <p>
+                    个人比较喜欢的主题。下载成功后，记得还需要修改 Preferences->Setting 的 Setting-User，引入主题。
+                </p>
+                <p>
+                    具体配置如下：
+                    <pre class="hljs cs"><code class="">{<br>    <span class="hljs-comment">// 引入下载的主题包</span><br>    <span class="hljs-string">"color_scheme"</span>: <span class="hljs-string">"Packages/Material Theme/schemes/Material-Theme.tmTheme"</span>,<br>    <span class="hljs-comment">// 设置主题</span><br>    <span class="hljs-string">"theme"</span>: <span class="hljs-string">"Material-Theme.sublime-theme"</span>,<br>    <span class="hljs-comment">// 用来将已修改的代码的标签高亮</span><br>    <span class="hljs-string">"highlight_modified_tabs"</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-string">"ignored_packages"</span>:<br>    [<span class="hljs-meta"></span><br><span class="hljs-meta">        <span class="hljs-meta-string">"Vintage"</span></span><br><span class="hljs-meta">    </span>],<br>    ...<br>}<br></code></pre>
+                </p>
+
+                <h4>babel</h4>
+                <p>
+                    用于 react 的语法高亮。
+                </p>
+                <p>
+                    安装后，打开 .js, .jsx 后缀的文件，打开菜单 view， Syntax -> Open all with current extension as... -> Babel -> JavaScript (Babel)，选择 babel 为默认 javascript 打开 syntax。
+                </p>
+
+                <h4>SCSS</h4>
+                <p>
+                    支持 sass 语法提示。不建议安装 SASS，SCSS 更适合 .scss 的语法支持。
+                </p>
+                <p>
+                    某些情况下它会被别的插件影响导致语法提示失效，这时我会再引入另一个插件 <code>Syntax Highlighting for Sass</code>，来解决这个问题。
+                </p>
+
+                <h4>html5</h4>
+                <p>支持hmtl5规范的插件包。</p>
+                <p>使用方法：新建 html 文档 > 输入 html5 > 敲击 tab 键 > 自动补全 html5 规范文档。</p>
+
+                <h4>git 和 git blame</h4>
+                <p>
+                    安装 git 可以在底部状态栏显示当前文件的 git 状态。
+                </p>
+                <p>
+                    而 <code>git blame</code> 则用于查看 git 记录。很赞的一点是，它可以查看每一行代码在 git 上的记录，包括 提交人、提交时间以及提交标识。
+                </p>
+
+                <h4>docblockr</h4>
+                <p>
+                    快速帮你为代码建立文档。它会解析函数，变量，和参数，根据它们自动生成文档，你只需要去填充对应的说明即可。
+                </p>
+                <p>用法：'/**' 快捷键能快速生成函数注释。</p>
+
+                <h4>EditorConfig</h4>
+                <p>控制代码的缩进等的代码规范插件。</p>
+                <p>
+                    安装好之后，在工程中创建文件.editorConfig，例如：
+                    <pre class="hljs ini"><code class=""><span class="hljs-comment"># editorconfig.org</span><br><span class="hljs-attr">root</span> = <span class="hljs-literal">true</span><br><span class="hljs-section"></span><br><span class="hljs-section">[*]</span><br><span class="hljs-attr">indent_style</span> = space<br><span class="hljs-attr">indent_size</span> = <span class="hljs-number">4</span><br><span class="hljs-attr">end_of_line</span> = lf<br><span class="hljs-attr">charset</span> = utf-<span class="hljs-number">8</span><br><span class="hljs-attr">trim_trailing_whitespace</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">insert_final_newline</span> = <span class="hljs-literal">true</span><br><span class="hljs-section"></span><span class="hljs-section">[*.md]</span><br><span class="hljs-attr">trim_trailing_whitespace</span> = <span class="hljs-literal">false</span></code></pre>
+                </p>
+
+                <h4>Bracket Highlighter</h4>
+                <p>
+                    可匹配 []、()、{}、""、''、&lt;tag&gt;&lt;/tag&gt;，高亮标记，便于查看起始和结束标记。
+                </p>
+
+                <h4>SideBarEnhancements</h4>
+                <p>
+                    增强 sublime 的右键功能，包括拷贝、粘贴、删除、重命名等。
+                </p>
+
+                <h4>AutoFileName</h4>
+                <p>
+                    可以自动补全文件名，如图片选取。比如：输入 "/" 即可看到相对于本项目文件夹的其他文件。
+                </p>
+
+                <h4>ConvertToUTF8</h4>
+                <p>
+                    将文件转码成 UTF-8。用于编辑并保存目前编码不被 Sublime Text 支持的文件，特别是中日韩用户使用的 GB2312，GBK，BIG5，EUC-KR，EUC-JP ，ANSI等。安装插件后自动转换为 UTF-8 格式。
+                </p>
+
+                <h4>GBK Support</h4>
+                <p>
+                    可识别 UTF-8 格式的中文，不识别 GBK 和 ANSI，因此打开很多含中文的文档都会出现乱码。可以通过安装插件 GBK Support，来识别 GBK 和 ANSI。
+                </p>
+                <p>
+                    用法：打开一个 GBK 的文件，直接用 GBK encoding 模式另存为即可。
+                </p>
+
+                <h4>FileDiffs</h4>
+                <p>
+                    强大的比较代码不同工具。用于比较当前文件与选中的代码、剪切板中代码、另一文件、未保存文件之间的差别。可配置为显示差别在外部比较工具，精确到行。
+                </p>
+                <p>用法：右键标签页，出现 FileDiffs Menu 或者 Diff with Tab… 选择对应文件比较即可。</p>
 
                 <h2>下载插件被“墙”？</h2>
                 <p>
@@ -58,6 +147,11 @@
                     在 "Preferences -> Package Settings -> Package Control -> Settings User" 中新添加一个项 "channels"。
                     <pre class="hljs objectivec"><code class="">"channels":[<br>    "https://raw.githubusercontent.com/SuCicada/channel_v3.json/master/channel_v3.json"<br>    ],</code></pre>
                     ok，搞定！然后就能愉快地下载插件啦~
+                </p>
+
+                <h2>总结</h2>
+                <p>
+                    sublime 用了挺久了，因为感觉很棒，正是我喜欢的风格。分享给有需要的朋友~
                 </p>
             </div>
         </BlogContent>
