@@ -8,7 +8,14 @@ export default [
     //     tags: ['言论与感想']
     // },
 
-
+    {
+        title: '「干货」用 Echart 打造你的专属可视化界面（Vue 版）',
+        subTitle: '',
+        routeName: 'skills-of-echarts-in-vue',
+        descript: '',
+        date: '2019-09-28',
+        tags: ['Javascript']
+    },
     {
         title: '「干货」我的 Sublime Text 3 私房菜',
         subTitle: '',

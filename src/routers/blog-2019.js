@@ -1,5 +1,10 @@
 export default [
     {
+        path: '/2019/skills-of-echarts-in-vue',
+        name: 'skills-of-echarts-in-vue',
+        component: () => import('@/views/blogs/2019/skills-of-echarts-in-vue')
+    },
+    {
         path: '/2019/config-of-sublime-text-3',
         name: 'config-of-sublime-text-3',
         component: () => import('@/views/blogs/2019/config-of-sublime-text-3')
