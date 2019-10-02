@@ -115,7 +115,7 @@
                 <p>
                     当然，也可以定制 tooltip的虚线，效果如下：
                     <img src="~@/assets/blog/bg-20190928-04.png">
-                    代码很简单，只需要配置 tooltip 下 axisPointer 的 lineStyle 即可，代码如下：
+                    只需要配置 tooltip 下 axisPointer 的 lineStyle 即可，代码很简单：
                     <pre class="hljs css"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="6410894"></span><span class="hljs-selector-tag">tooltip</span> : {
 <span class="line" data-start="2" data-end="2" data-id="6410894"></span>    <span class="hljs-attribute">axisPointer</span>: {
 <span class="line" data-start="3" data-end="3" data-id="6410894"></span>        lineStyle: {
@@ -128,7 +128,70 @@
 <span class="line" data-start="10" data-end="10" data-id="6410894"></span>}</code></pre>
                 </p>
 
+                <h4>3、堆叠与面积</h4>
+                <p>
+                    堆叠图与面积图在刚接触时容易混淆，它们实际上是两种不同的效果。
+                </p>
 
+                <p>
+                    堆叠图中的后一项数据会叠在前一项数据之上，像下面这样：
+                    <img src="~@/assets/blog/bg-20190928-06.png">
+                </p>
+
+                <p>
+                    可以通过设置 v-charts 提供的 extend 属性进行配置。之前也说过，它本质上就是配置 Echarts 中的 setOption。
+                </p>
+                <p>
+                    我们分别对柱状图和折线图设置了堆叠效果，可以发现 e.stack 的值是分开设置的，不然的话在数值上就会再次叠加。
+                    <pre class="hljs ruby"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="11585835"></span>&lt;ve-histogram <span class="hljs-symbol">:extend=<span class="hljs-string">"chartExtend"</span>&gt;&lt;/ve-histogram&gt;</span>
+<span class="line" data-start="2" data-end="2" data-id="11585835"></span>...
+<span class="line" data-start="3" data-end="3" data-id="11585835"></span>this.chartExtend = {
+<span class="line" data-start="4" data-end="4" data-id="11585835"></span>    <span class="hljs-symbol">series:</span> (v) =&gt; {
+<span class="line" data-start="5" data-end="5" data-id="11585835"></span>        Array.from(v).forEach((e, idx) =&gt; {
+<span class="line" data-start="6" data-end="6" data-id="11585835"></span>            <span class="hljs-keyword">if</span> (e.type === <span class="hljs-string">'bar'</span>) {
+<span class="line" data-start="7" data-end="7" data-id="11585835"></span>                e.stack = <span class="hljs-string">'bar'</span>;
+<span class="line" data-start="8" data-end="8" data-id="11585835"></span>            }
+<span class="line" data-start="9" data-end="9" data-id="11585835"></span>
+<span class="line" data-start="10" data-end="10" data-id="11585835"></span>            <span class="hljs-keyword">if</span> (e.type === <span class="hljs-string">'line'</span>) {
+<span class="line" data-start="11" data-end="11" data-id="11585835"></span>                e.stack = <span class="hljs-string">'line'</span>;
+<span class="line" data-start="12" data-end="12" data-id="11585835"></span>            }
+<span class="line" data-start="13" data-end="13" data-id="11585835"></span>        };
+<span class="line" data-start="14" data-end="14" data-id="11585835"></span>    },
+<span class="line" data-start="15" data-end="15" data-id="11585835"></span>    ...
+<span class="line" data-start="16" data-end="16" data-id="11585835"></span>};</code></pre>
+                </p>
+
+                <p>
+                    而面积图，往往在折线图中是为了突出某一块区域的对比。
+                    <img src="~@/assets/blog/bg-20190928-07.png">
+                    同样地，在 chartExend 中进行配置：
+                    <pre class="hljs ruby"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="4898210"></span>&lt;ve-line <span class="hljs-symbol">:extend=<span class="hljs-string">"chartExtend"</span>&gt;&lt;/ve-line&gt;</span>
+<span class="line" data-start="2" data-end="2" data-id="4898210"></span>...
+<span class="line" data-start="3" data-end="3" data-id="4898210"></span>this.chartExtend = {
+<span class="line" data-start="4" data-end="4" data-id="4898210"></span>    <span class="hljs-symbol">series:</span> (v) =&gt; {
+<span class="line" data-start="5" data-end="5" data-id="4898210"></span>        Array.from(v).forEach((e, idx) =&gt; {
+<span class="line" data-start="6" data-end="6" data-id="4898210"></span>            <span class="hljs-regexp">//</span> 将指定条件下的折线设置为面积图
+<span class="line" data-start="7" data-end="7" data-id="4898210"></span>            <span class="hljs-keyword">if</span> (...) {
+<span class="line" data-start="8" data-end="8" data-id="4898210"></span>                e.areaStyle = <span class="hljs-string">'line'</span>;
+<span class="line" data-start="9" data-end="9" data-id="4898210"></span>            }
+<span class="line" data-start="10" data-end="10" data-id="4898210"></span>
+<span class="line" data-start="11" data-end="11" data-id="4898210"></span>        };
+<span class="line" data-start="12" data-end="12" data-id="4898210"></span>    },
+<span class="line" data-start="13" data-end="13" data-id="4898210"></span>    ...
+<span class="line" data-start="14" data-end="14" data-id="4898210"></span>};</code></pre>
+                </p>
+
+                <h4>自定义图例</h4>
+                <p>
+                    图例，在 Echarts 的配置项中，也叫 legend。通过它可以直观地看到不同颜色对应的数据分布情况。同时，它也是包含点击交互的，当你暂时不想关心某个数据项是，可以点击对应的图例，让它暂时隐藏，再次点击，又会重新渲染出来。
+                </p>
+
+                <p>
+                    我遇到过更进一步地需求：在柱状图的图例中，要默认展示当天的数据，当点击某一天时柱子时，图例中的数据要随之变化。需求的目的是，让用户能更直观地了解每一天的数据，当他需要看某两天的数据对比时，只需要点击柱子切换数据即可。效果如下：
+                    <img src="~@/assets/blog/bg-20190928-08.png">
+                    当想看 9月16日的数据时，点击对应的柱子：
+                    <img src="~@/assets/blog/bg-20190928-09.png">
+                </p>
             </div>
         </BlogContent>
     </div>
