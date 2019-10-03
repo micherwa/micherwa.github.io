@@ -181,7 +181,7 @@
 <span class="line" data-start="14" data-end="14" data-id="4898210"></span>};</code></pre>
                 </p>
 
-                <h4>自定义图例</h4>
+                <h4>4、自定义图例</h4>
                 <p>
                     图例，在 Echarts 的配置项中，也叫 legend。通过它可以直观地看到不同颜色对应的数据分布情况。同时，它也是包含点击交互的，当你暂时不想关心某个数据项是，可以点击对应的图例，让它暂时隐藏，再次点击，又会重新渲染出来。
                 </p>
@@ -189,8 +189,105 @@
                 <p>
                     我遇到过更进一步地需求：在柱状图的图例中，要默认展示当天的数据，当点击某一天时柱子时，图例中的数据要随之变化。需求的目的是，让用户能更直观地了解每一天的数据，当他需要看某两天的数据对比时，只需要点击柱子切换数据即可。效果如下：
                     <img src="~@/assets/blog/bg-20190928-08.png">
-                    当想看 9月16日的数据时，点击对应的柱子：
+                    当想看 9月16日的数据时，点击对应的柱子，则图例中的数据会刷新，同时左上角的时间也会随之变化：
                     <img src="~@/assets/blog/bg-20190928-09.png">
+                </p>
+
+                <p>
+                    实现的思路基本是这样的：
+                    <ul>
+                        <li>通过点击事件的回调方法，获取当日的具体时间。</li>
+                        <li>对左上角的时间做格式化设置。</li>
+                        <li>再次设置 extend 的 legend 配置。</li>
+                        <li>在 legend 中，通过 formatter 函数返回自定义模板，实现文字与数字的展现。</li>
+                        <li>具体的做法是，根据左上角的时间，过滤 chartData.rows 中的数据，找到对应的那一天的数据。</li>
+                        <li>配置自定义模板，输出带样式的结果。</li>
+                    </ul>
+                </p>
+
+                <p>
+                    匹配当日数据的具体方法，因为业务逻辑的不同，数据结构也会不同，这里就不细说了。我把事件回调的写法，还有自定义模板的输出的代码贴出来，给大家参考一下：
+                    <pre class="hljs ruby"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="11712821"></span>&lt;ve-histogram <span class="hljs-symbol">:data=<span class="hljs-string">"chartData"</span></span> <span class="hljs-symbol">:extend=<span class="hljs-string">"chartExtend"</span></span> <span class="hljs-symbol">:events=<span class="hljs-string">"{ click: handleChartEvents }"</span>&gt;&lt;/ve-histogram&gt;</span>
+<span class="line" data-start="2" data-end="2" data-id="11712821"></span>...
+<span class="line" data-start="3" data-end="3" data-id="11712821"></span>
+<span class="line" data-start="4" data-end="4" data-id="11712821"></span>handleChartEvents (e) {
+<span class="line" data-start="5" data-end="5" data-id="11712821"></span>    const date = e.name;
+<span class="line" data-start="6" data-end="6" data-id="11712821"></span>    <span class="hljs-regexp">//</span> 设置左上角的时间（带格式化），这里不再展开
+<span class="line" data-start="7" data-end="7" data-id="11712821"></span>    this.setCurrentDate(date);
+<span class="line" data-start="8" data-end="8" data-id="11712821"></span>    this.setChartExtend();
+<span class="line" data-start="9" data-end="9" data-id="11712821"></span>},
+<span class="line" data-start="10" data-end="10" data-id="11712821"></span>...
+<span class="line" data-start="11" data-end="11" data-id="11712821"></span>setChartExtend () {
+<span class="line" data-start="12" data-end="12" data-id="11712821"></span>    this.chartExtend = {
+<span class="line" data-start="13" data-end="13" data-id="11712821"></span>        <span class="hljs-symbol">legend:</span> {
+<span class="line" data-start="14" data-end="14" data-id="11712821"></span>            <span class="hljs-symbol">formatter:</span> (name) =&gt; {
+<span class="line" data-start="15" data-end="15" data-id="11712821"></span>                <span class="hljs-regexp">//</span> currentNumber 是已经匹配到的当日数据
+<span class="line" data-start="16" data-end="16" data-id="11712821"></span>                const result = [
+<span class="line" data-start="17" data-end="17" data-id="11712821"></span>                    <span class="hljs-string">`{a|${name}}`</span>,
+<span class="line" data-start="18" data-end="18" data-id="11712821"></span>                    <span class="hljs-string">`{b|${currentNumber}}`</span>
+<span class="line" data-start="19" data-end="19" data-id="11712821"></span>                ];
+<span class="line" data-start="20" data-end="20" data-id="11712821"></span>                <span class="hljs-keyword">return</span> result.join(<span class="hljs-string">'\n'</span>);
+<span class="line" data-start="21" data-end="21" data-id="11712821"></span>            },
+<span class="line" data-start="22" data-end="22" data-id="11712821"></span>            <span class="hljs-symbol">textStyle:</span> {
+<span class="line" data-start="23" data-end="23" data-id="11712821"></span>                <span class="hljs-symbol">height:</span> <span class="hljs-number">42</span>,
+<span class="line" data-start="24" data-end="24" data-id="11712821"></span>                <span class="hljs-symbol">rich:</span> {
+<span class="line" data-start="25" data-end="25" data-id="11712821"></span>                    <span class="hljs-symbol">a:</span> {
+<span class="line" data-start="26" data-end="26" data-id="11712821"></span>                        <span class="hljs-symbol">fontSize:</span> <span class="hljs-number">12</span>,
+<span class="line" data-start="27" data-end="27" data-id="11712821"></span>                        <span class="hljs-symbol">align:</span> <span class="hljs-string">'left'</span>,
+<span class="line" data-start="28" data-end="28" data-id="11712821"></span>                        <span class="hljs-symbol">padding:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">0</span>]
+<span class="line" data-start="29" data-end="29" data-id="11712821"></span>                    },
+<span class="line" data-start="30" data-end="30" data-id="11712821"></span>                    <span class="hljs-symbol">b:</span> {
+<span class="line" data-start="31" data-end="31" data-id="11712821"></span>                        <span class="hljs-symbol">fontSize:</span> <span class="hljs-number">24</span>,
+<span class="line" data-start="32" data-end="32" data-id="11712821"></span>                        <span class="hljs-symbol">align:</span> <span class="hljs-string">'left'</span>,
+<span class="line" data-start="33" data-end="33" data-id="11712821"></span>                        <span class="hljs-symbol">padding:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
+<span class="line" data-start="34" data-end="34" data-id="11712821"></span>                        <span class="hljs-symbol">lineHeight:</span> <span class="hljs-number">40</span>,
+<span class="line" data-start="35" data-end="35" data-id="11712821"></span>                        <span class="hljs-symbol">width:</span> <span class="hljs-number">60</span>
+<span class="line" data-start="36" data-end="36" data-id="11712821"></span>                    }
+<span class="line" data-start="37" data-end="37" data-id="11712821"></span>                }
+<span class="line" data-start="38" data-end="38" data-id="11712821"></span>            },
+<span class="line" data-start="39" data-end="39" data-id="11712821"></span>            <span class="hljs-regexp">//</span> 图例标记的图形宽度
+<span class="line" data-start="40" data-end="40" data-id="11712821"></span>            <span class="hljs-symbol">itemWidth:</span> <span class="hljs-number">14</span>,
+<span class="line" data-start="41" data-end="41" data-id="11712821"></span>            <span class="hljs-regexp">//</span> grid 距离整个容器顶部的高度
+<span class="line" data-start="42" data-end="42" data-id="11712821"></span>            <span class="hljs-symbol">grid:</span> {
+<span class="line" data-start="43" data-end="43" data-id="11712821"></span>                <span class="hljs-symbol">top:</span> <span class="hljs-number">120</span>
+<span class="line" data-start="44" data-end="44" data-id="11712821"></span>            }
+<span class="line" data-start="45" data-end="45" data-id="11712821"></span>        },
+<span class="line" data-start="46" data-end="46" data-id="11712821"></span>        ...
+<span class="line" data-start="47" data-end="47" data-id="11712821"></span>    };
+<span class="line" data-start="48" data-end="48" data-id="11712821"></span>},
+<span class="line" data-start="49" data-end="49" data-id="11712821"></span>...</code></pre>
+                </p>
+
+                <p>
+                    点击事件的回调里，可以拿到具体的时间 name，然后交给 setCurrentDate 方法做时间格式化的设置，并渲染到界面上，同时它也是后续匹配当日数据的依据。
+                </p>
+
+                <p>
+                    在 legend 的 formatter 方法中组装的自定义模板，分别有两个样式 a 和 b，你也可以取别的样式名字，但要记得对应地在 textStyle 的 rich 对象里设置样式。
+                </p>
+
+                <p>
+                    rich 是富文本样式的自定义写法，有点类似于平时常见的 css，但像 padding 之类的样式写法，又略有不同，而且调试起来并不容易。上述代码中的数字，是经过多次微调之后的结果。
+                </p>
+
+                <p>
+                    最后的 itemWidth 是为了设置颜色块的宽度，使之变为方形，更加美观。因为图例中添加的数字的样式，所以整体的高度变得大了。grid 的 top，可以调整主绘制区域到整个容器顶部的距离，从而使之距离图例，也能留出更合理的空白高度。
+                </p>
+
+                <p>
+                    除此之外，对于数据较多的图表，如果刚加载就展示全部数据的话，会比较乱。
+                    <img src="~@/assets/blog/bg-20190928-10.png">
+                    这时，我们就想，是否可以只展示其中某一类的数据呢？像下面这样：
+                    <img src="~@/assets/blog/bg-20190928-11.png">
+                </p>
+
+                <p>
+                    这里，就需要用到 legend 的 selected 属性。
+                </p>
+
+                <h4>5、标记</h4>
+                <p>
+
                 </p>
             </div>
         </BlogContent>
