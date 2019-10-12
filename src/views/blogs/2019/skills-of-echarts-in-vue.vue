@@ -36,47 +36,59 @@
 
                 <p>
                     一般常用的图表有：ve-line（折线图）、ve-histogram（柱状图）、ve-pie（饼图）、ve-ring（环图）等等。使用时，可以直接将单个图表引入到项目中。
-                    <pre class="hljs typescript"><code class=""><span class="hljs-keyword">import</span> VeLine <span class="hljs-keyword">from</span> <span class="hljs-string">'v-charts/lib/line.common'</span>;<br><br>Vue.component(VeLine.name, VeLine);</code></pre>
+                    <pre><code class="hljs bash" lang="bash">import VeLine from <span class="hljs-string">'v-charts/lib/line.common'</span>;
+
+Vue.component(VeLine.name, VeLine);
+</code></pre>
                 </p>
 
                 <p>
                     一种典型的 v-charts 的 data 属性数据格式如下：
-                    <pre class="hljs typescript"><code class="">{<br>  columns: [<span class="hljs-string">'日期'</span>, <span class="hljs-string">'访问用户'</span>, <span class="hljs-string">'下单用户'</span>],<br>  rows: [<br>    { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'2018-05-22'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">32371</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">19810</span> },<br>    { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'2018-05-23'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">12328</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">4398</span> },<br>    { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'2018-05-24'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">92381</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">52910</span> }<br>  ]<br>}</code></pre>
+                    <pre><code class="hljs bash" lang="bash">{
+  columns: [<span class="hljs-string">'日期'</span>, <span class="hljs-string">'访问用户'</span>, <span class="hljs-string">'下单用户'</span>],
+  rows: [
+    { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'2018-05-22'</span>, <span class="hljs-string">'访问用户'</span>: 32371, <span class="hljs-string">'下单用户'</span>: 19810 },
+    { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'2018-05-23'</span>, <span class="hljs-string">'访问用户'</span>: 12328, <span class="hljs-string">'下单用户'</span>: 4398 },
+    { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'2018-05-24'</span>, <span class="hljs-string">'访问用户'</span>: 92381, <span class="hljs-string">'下单用户'</span>: 52910 }
+  ]
+}
+</code></pre>
                     其中，columns 中是维度和指标的集合，v-charts 中的大部分图表都是单维度多指标，所以默认第一个值为 维度，剩余的值为指标。另外，rows 中是数据的集合。
                 </p>
                 <p>
                     再举一个柱状图与折线图组合的典型例子。
                     <img src="~@/assets/blog/bg-20190928-02.png">
                     它的代码实现也十分简单，只需额外配置 settings 参数即可，代码如下：
-                    <pre class="hljs xml"><code><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="4840363"></span><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
-<span class="line" data-start="2" data-end="2" data-id="4840363"></span>  <span class="hljs-tag">&lt;<span class="hljs-name">ve-histogram</span> <span class="hljs-attr">:data</span>=<span class="hljs-string">"chartData"</span> <span class="hljs-attr">:settings</span>=<span class="hljs-string">"chartSettings"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ve-histogram</span>&gt;</span>
-<span class="line" data-start="3" data-end="3" data-id="4840363"></span><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
-<span class="line" data-start="4" data-end="4" data-id="4840363"></span>
-<span class="line" data-start="5" data-end="5" data-id="4840363"></span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-</span><span class="line" data-start="6" data-end="6" data-id="4840363"></span><span class="javascript">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
-</span><span class="line" data-start="7" data-end="7" data-id="4840363"></span><span class="javascript">    data () {
-</span><span class="line" data-start="8" data-end="8" data-id="4840363"></span><span class="javascript">      <span class="hljs-keyword">this</span>.chartSettings = {
-</span><span class="line" data-start="9" data-end="9" data-id="4840363"></span><span class="javascript">        <span class="hljs-attr">axisSite</span>: { <span class="hljs-attr">right</span>: [<span class="hljs-string">'下单率'</span>] },
-</span><span class="line" data-start="10" data-end="10" data-id="4840363"></span><span class="javascript">        <span class="hljs-attr">yAxisType</span>: [<span class="hljs-string">'KMB'</span>, <span class="hljs-string">'percent'</span>],
-</span><span class="line" data-start="11" data-end="11" data-id="4840363"></span><span class="javascript">        <span class="hljs-attr">yAxisName</span>: [<span class="hljs-string">'数值'</span>, <span class="hljs-string">'比率'</span>],
-</span><span class="line" data-start="12" data-end="12" data-id="4840363"></span><span class="javascript">        <span class="hljs-attr">showLine</span>: [<span class="hljs-string">'下单率'</span>],
-</span><span class="line" data-start="13" data-end="13" data-id="4840363"></span><span class="javascript">      }
-</span><span class="line" data-start="14" data-end="14" data-id="4840363"></span><span class="javascript">      <span class="hljs-keyword">return</span> {
-</span><span class="line" data-start="15" data-end="15" data-id="4840363"></span><span class="javascript">        <span class="hljs-attr">chartData</span>: {
-</span><span class="line" data-start="16" data-end="16" data-id="4840363"></span><span class="javascript">          <span class="hljs-attr">columns</span>: [<span class="hljs-string">'日期'</span>, <span class="hljs-string">'访问用户'</span>, <span class="hljs-string">'下单用户'</span>, <span class="hljs-string">'下单率'</span>],
-</span><span class="line" data-start="17" data-end="17" data-id="4840363"></span><span class="javascript">          <span class="hljs-attr">rows</span>: [
-</span><span class="line" data-start="18" data-end="18" data-id="4840363"></span><span class="javascript">            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/1'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">1393</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">1093</span>, <span class="hljs-string">'下单率'</span>: <span class="hljs-number">0.32</span> },
-</span><span class="line" data-start="19" data-end="19" data-id="4840363"></span><span class="javascript">            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/2'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">3530</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">3230</span>, <span class="hljs-string">'下单率'</span>: <span class="hljs-number">0.26</span> },
-</span><span class="line" data-start="20" data-end="20" data-id="4840363"></span><span class="javascript">            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/3'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">2923</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">2623</span>, <span class="hljs-string">'下单率'</span>: <span class="hljs-number">0.76</span> },
-</span><span class="line" data-start="21" data-end="21" data-id="4840363"></span><span class="javascript">            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/4'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">1723</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">1423</span>, <span class="hljs-string">'下单率'</span>: <span class="hljs-number">0.49</span> },
-</span><span class="line" data-start="22" data-end="22" data-id="4840363"></span><span class="javascript">            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/5'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">3792</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">3492</span>, <span class="hljs-string">'下单率'</span>: <span class="hljs-number">0.323</span> },
-</span><span class="line" data-start="23" data-end="23" data-id="4840363"></span><span class="javascript">            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/6'</span>, <span class="hljs-string">'访问用户'</span>: <span class="hljs-number">4593</span>, <span class="hljs-string">'下单用户'</span>: <span class="hljs-number">4293</span>, <span class="hljs-string">'下单率'</span>: <span class="hljs-number">0.78</span> }
-</span><span class="line" data-start="24" data-end="24" data-id="4840363"></span><span class="javascript">          ]
-</span><span class="line" data-start="25" data-end="25" data-id="4840363"></span><span class="javascript">        }
-</span><span class="line" data-start="26" data-end="26" data-id="4840363"></span><span class="javascript">      }
-</span><span class="line" data-start="27" data-end="27" data-id="4840363"></span><span class="javascript">    }
-</span><span class="line" data-start="28" data-end="28" data-id="4840363"></span><span class="javascript">  }
-</span><span class="line" data-start="29" data-end="29" data-id="4840363"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+                    <pre><code class="hljs bash" lang="bash">&lt;template&gt;
+  &lt;ve-histogram :data=<span class="hljs-string">"chartData"</span> :settings=<span class="hljs-string">"chartSettings"</span>&gt;&lt;/ve-histogram&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  <span class="hljs-built_in">export</span> default {
+    <span class="hljs-function"><span class="hljs-title">data</span></span> () {
+      this.chartSettings = {
+        axisSite: { right: [<span class="hljs-string">'下单率'</span>] },
+        yAxisType: [<span class="hljs-string">'KMB'</span>, <span class="hljs-string">'percent'</span>],
+        yAxisName: [<span class="hljs-string">'数值'</span>, <span class="hljs-string">'比率'</span>],
+        showLine: [<span class="hljs-string">'下单率'</span>],
+      }
+      <span class="hljs-built_in">return</span> {
+        chartData: {
+          columns: [<span class="hljs-string">'日期'</span>, <span class="hljs-string">'访问用户'</span>, <span class="hljs-string">'下单用户'</span>, <span class="hljs-string">'下单率'</span>],
+          rows: [
+            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/1'</span>, <span class="hljs-string">'访问用户'</span>: 1393, <span class="hljs-string">'下单用户'</span>: 1093, <span class="hljs-string">'下单率'</span>: 0.32 },
+            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/2'</span>, <span class="hljs-string">'访问用户'</span>: 3530, <span class="hljs-string">'下单用户'</span>: 3230, <span class="hljs-string">'下单率'</span>: 0.26 },
+            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/3'</span>, <span class="hljs-string">'访问用户'</span>: 2923, <span class="hljs-string">'下单用户'</span>: 2623, <span class="hljs-string">'下单率'</span>: 0.76 },
+            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/4'</span>, <span class="hljs-string">'访问用户'</span>: 1723, <span class="hljs-string">'下单用户'</span>: 1423, <span class="hljs-string">'下单率'</span>: 0.49 },
+            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/5'</span>, <span class="hljs-string">'访问用户'</span>: 3792, <span class="hljs-string">'下单用户'</span>: 3492, <span class="hljs-string">'下单率'</span>: 0.323 },
+            { <span class="hljs-string">'日期'</span>: <span class="hljs-string">'1/6'</span>, <span class="hljs-string">'访问用户'</span>: 4593, <span class="hljs-string">'下单用户'</span>: 4293, <span class="hljs-string">'下单率'</span>: 0.78 }
+          ]
+        }
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
                 </p>
                 <p>
                     所以，如果没有很强烈的定制化需求的话，v-charts 已经可以满足大多数的基础需求了。
@@ -96,22 +108,24 @@
                     Echarts 提供了 colors 来自定义颜色，它接收一个数组作为结果。这里有一份出自产品小姐姐的 UI 配色方案，已经可以适用于绝大多数场景了。
                     <img src="~@/assets/blog/bg-20190928-03.png">
                     代码如下：
-                    <pre class="hljs groovy"><code style="word-break: break-word; white-space: initial;" class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="10492862"></span><span class="hljs-string">colors:</span> [<span class="hljs-string">'#60ACFC'</span>, <span class="hljs-string">'#35C5EB'</span>, <span class="hljs-string">'#4DBECF'</span>, <span class="hljs-string">'#65D5B2'</span>, <span class="hljs-string">'#5BC4A0'</span>, <span class="hljs-string">'#9DDD81'</span>, <span class="hljs-string">'#D4ED58'</span>, <span class="hljs-string">'#FFDB43'</span>, <span class="hljs-string">'#FEB54E'</span>, <span class="hljs-string">'#FF9D68'</span>]</code></pre>
+                    <pre><code class="hljs bash" lang="bash">colors: [<span class="hljs-string">'#60ACFC'</span>, <span class="hljs-string">'#35C5EB'</span>, <span class="hljs-string">'#4DBECF'</span>, <span class="hljs-string">'#65D5B2'</span>, <span class="hljs-string">'#5BC4A0'</span>, <span class="hljs-string">'#9DDD81'</span>, <span class="hljs-string">'#D4ED58'</span>, <span class="hljs-string">'#FFDB43'</span>, <span class="hljs-string">'#FEB54E'</span>, <span class="hljs-string">'#FF9D68'</span>]
+</code></pre>
                 </p>
 
                 <h4>2、虚线</h4>
                 <p>
                     v-charts 中的 x 轴实线看上去有点生硬，可以将它变为虚线，看上去就会清爽很多了，具体可以配置 setOption 下的 yAxis 属性。
-                    <pre class="hljs typescript"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="12852058"></span>yAxis (item) {
-<span class="line" data-start="2" data-end="2" data-id="12852058"></span>    item[<span class="hljs-number">0</span>].splitLine = <span class="hljs-built_in">Object</span>.assign({}, {
-<span class="line" data-start="3" data-end="3" data-id="12852058"></span>        lineStyle: {
-<span class="line" data-start="4" data-end="4" data-id="12852058"></span>            color: <span class="hljs-string">'#e1e2e2'</span>,
-<span class="line" data-start="5" data-end="5" data-id="12852058"></span>            <span class="hljs-keyword">type</span>: <span class="hljs-string">'dashed'</span>
-<span class="line" data-start="6" data-end="6" data-id="12852058"></span>        }
-<span class="line" data-start="7" data-end="7" data-id="12852058"></span>    });
-<span class="line" data-start="8" data-end="8" data-id="12852058"></span>
-<span class="line" data-start="9" data-end="9" data-id="12852058"></span>    <span class="hljs-keyword">return</span> item;
-<span class="line" data-start="10" data-end="10" data-id="12852058"></span>}</code></pre>
+                    <pre><code class="hljs bash" lang="bash">yAxis (item) {
+    item[0].splitLine = Object.assign({}, {
+        lineStyle: {
+            color: <span class="hljs-string">'#e1e2e2'</span>,
+            <span class="hljs-built_in">type</span>: <span class="hljs-string">'dashed'</span>
+        }
+    });
+
+    <span class="hljs-built_in">return</span> item;
+}
+</code></pre>
                     这里用到了 es6 中 function 的简写模式。其中的 item 指的是 y 轴，为什么是个数组呢？那是因为一般情况下单个直角坐标系 grid 组件最多只能放左右两个 y 轴。那么 item[0] 是指左侧的最常用的 y 轴，item[1] 是指当有双轴情况下的右侧的 y 轴。
                 </p>
                 <p>
@@ -123,16 +137,17 @@
                     当然，也可以定制 tooltip的虚线，效果如下：
                     <img src="~@/assets/blog/bg-20190928-04.png">
                     只需要配置 tooltip 下 axisPointer 的 lineStyle 即可，代码很简单：
-                    <pre class="hljs css"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="6410894"></span><span class="hljs-selector-tag">tooltip</span> : {
-<span class="line" data-start="2" data-end="2" data-id="6410894"></span>    <span class="hljs-attribute">axisPointer</span>: {
-<span class="line" data-start="3" data-end="3" data-id="6410894"></span>        lineStyle: {
-<span class="line" data-start="4" data-end="4" data-id="6410894"></span>            color: <span class="hljs-string">'#e1e2e2'</span>,
-<span class="line" data-start="5" data-end="5" data-id="6410894"></span>            type: <span class="hljs-string">'dashed'</span>,
-<span class="line" data-start="6" data-end="6" data-id="6410894"></span>            shadowColor: <span class="hljs-string">'rgba(0, 0, 0, 0.3)'</span>,
-<span class="line" data-start="7" data-end="7" data-id="6410894"></span>            shadowBlur: <span class="hljs-number">5</span>
-<span class="line" data-start="8" data-end="8" data-id="6410894"></span>        }
-<span class="line" data-start="9" data-end="9" data-id="6410894"></span>    }
-<span class="line" data-start="10" data-end="10" data-id="6410894"></span>}</code></pre>
+                    <pre><code class="hljs bash" lang="bash">tooltip : {
+    axisPointer: {
+        lineStyle: {
+            color: <span class="hljs-string">'#e1e2e2'</span>,
+            <span class="hljs-built_in">type</span>: <span class="hljs-string">'dashed'</span>,
+            shadowColor: <span class="hljs-string">'rgba(0, 0, 0, 0.3)'</span>,
+            shadowBlur: 5
+        }
+    }
+}
+</code></pre>
                 </p>
 
                 <h4>3、堆叠与面积</h4>
@@ -150,42 +165,44 @@
                 </p>
                 <p>
                     我们分别对柱状图和折线图设置了堆叠效果，可以发现 e.stack 的值是分开设置的，不然的话在数值上就会再次叠加。
-                    <pre class="hljs ruby"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="11585835"></span>&lt;ve-histogram <span class="hljs-symbol">:extend=<span class="hljs-string">"chartExtend"</span>&gt;&lt;/ve-histogram&gt;</span>
-<span class="line" data-start="2" data-end="2" data-id="11585835"></span>...
-<span class="line" data-start="3" data-end="3" data-id="11585835"></span>this.chartExtend = {
-<span class="line" data-start="4" data-end="4" data-id="11585835"></span>    <span class="hljs-symbol">series:</span> (v) =&gt; {
-<span class="line" data-start="5" data-end="5" data-id="11585835"></span>        Array.from(v).forEach((e, idx) =&gt; {
-<span class="line" data-start="6" data-end="6" data-id="11585835"></span>            <span class="hljs-keyword">if</span> (e.type === <span class="hljs-string">'bar'</span>) {
-<span class="line" data-start="7" data-end="7" data-id="11585835"></span>                e.stack = <span class="hljs-string">'bar'</span>;
-<span class="line" data-start="8" data-end="8" data-id="11585835"></span>            }
-<span class="line" data-start="9" data-end="9" data-id="11585835"></span>
-<span class="line" data-start="10" data-end="10" data-id="11585835"></span>            <span class="hljs-keyword">if</span> (e.type === <span class="hljs-string">'line'</span>) {
-<span class="line" data-start="11" data-end="11" data-id="11585835"></span>                e.stack = <span class="hljs-string">'line'</span>;
-<span class="line" data-start="12" data-end="12" data-id="11585835"></span>            }
-<span class="line" data-start="13" data-end="13" data-id="11585835"></span>        };
-<span class="line" data-start="14" data-end="14" data-id="11585835"></span>    },
-<span class="line" data-start="15" data-end="15" data-id="11585835"></span>    ...
-<span class="line" data-start="16" data-end="16" data-id="11585835"></span>};</code></pre>
+                    <pre><code class="hljs bash" lang="bash">&lt;ve-histogram :extend=<span class="hljs-string">"chartExtend"</span>&gt;&lt;/ve-histogram&gt;
+...
+this.chartExtend = {
+    series: (v) =&gt; {
+        Array.from(v).forEach((e, idx) =&gt; {
+            <span class="hljs-keyword">if</span> (e.type === <span class="hljs-string">'bar'</span>) {
+                e.stack = <span class="hljs-string">'bar'</span>;
+            }
+
+            <span class="hljs-keyword">if</span> (e.type === <span class="hljs-string">'line'</span>) {
+                e.stack = <span class="hljs-string">'line'</span>;
+            }
+        };
+    },
+    ...
+};
+</code></pre>
                 </p>
 
                 <p>
                     而面积图，往往在折线图中是为了突出某一块区域的对比。
                     <img src="~@/assets/blog/bg-20190928-07.png">
                     同样地，在 chartExend 中进行配置：
-                    <pre class="hljs ruby"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="4898210"></span>&lt;ve-line <span class="hljs-symbol">:extend=<span class="hljs-string">"chartExtend"</span>&gt;&lt;/ve-line&gt;</span>
-<span class="line" data-start="2" data-end="2" data-id="4898210"></span>...
-<span class="line" data-start="3" data-end="3" data-id="4898210"></span>this.chartExtend = {
-<span class="line" data-start="4" data-end="4" data-id="4898210"></span>    <span class="hljs-symbol">series:</span> (v) =&gt; {
-<span class="line" data-start="5" data-end="5" data-id="4898210"></span>        Array.from(v).forEach((e, idx) =&gt; {
-<span class="line" data-start="6" data-end="6" data-id="4898210"></span>            <span class="hljs-regexp">//</span> 将指定条件下的折线设置为面积图
-<span class="line" data-start="7" data-end="7" data-id="4898210"></span>            <span class="hljs-keyword">if</span> (...) {
-<span class="line" data-start="8" data-end="8" data-id="4898210"></span>                e.areaStyle = <span class="hljs-string">'line'</span>;
-<span class="line" data-start="9" data-end="9" data-id="4898210"></span>            }
-<span class="line" data-start="10" data-end="10" data-id="4898210"></span>
-<span class="line" data-start="11" data-end="11" data-id="4898210"></span>        };
-<span class="line" data-start="12" data-end="12" data-id="4898210"></span>    },
-<span class="line" data-start="13" data-end="13" data-id="4898210"></span>    ...
-<span class="line" data-start="14" data-end="14" data-id="4898210"></span>};</code></pre>
+                    <pre><code class="hljs bash" lang="bash">&lt;ve-line :extend=<span class="hljs-string">"chartExtend"</span>&gt;&lt;/ve-line&gt;
+...
+this.chartExtend = {
+    series: (v) =&gt; {
+        Array.from(v).forEach((e, idx) =&gt; {
+            // 将指定条件下的折线设置为面积图
+            <span class="hljs-keyword">if</span> (...) {
+                e.areaStyle = <span class="hljs-string">'line'</span>;
+            }
+
+        };
+    },
+    ...
+};
+</code></pre>
                 </p>
 
                 <h4>4、自定义图例</h4>
@@ -214,55 +231,56 @@
 
                 <p>
                     匹配当日数据的具体方法，因为业务逻辑的不同，数据结构也会不同，这里就不细说了。我把事件回调的写法，还有自定义模板的输出的代码贴出来，给大家参考一下：
-                    <pre class="hljs ruby"><code class=""><span class="line" data-start="0" data-start-original="1" data-end="1" data-id="11712821"></span>&lt;ve-histogram <span class="hljs-symbol">:data=<span class="hljs-string">"chartData"</span></span> <span class="hljs-symbol">:extend=<span class="hljs-string">"chartExtend"</span></span> <span class="hljs-symbol">:events=<span class="hljs-string">"{ click: handleChartEvents }"</span>&gt;&lt;/ve-histogram&gt;</span>
-<span class="line" data-start="2" data-end="2" data-id="11712821"></span>...
-<span class="line" data-start="3" data-end="3" data-id="11712821"></span>
-<span class="line" data-start="4" data-end="4" data-id="11712821"></span>handleChartEvents (e) {
-<span class="line" data-start="5" data-end="5" data-id="11712821"></span>    const date = e.name;
-<span class="line" data-start="6" data-end="6" data-id="11712821"></span>    <span class="hljs-regexp">//</span> 设置左上角的时间（带格式化），这里不再展开
-<span class="line" data-start="7" data-end="7" data-id="11712821"></span>    this.setCurrentDate(date);
-<span class="line" data-start="8" data-end="8" data-id="11712821"></span>    this.setChartExtend();
-<span class="line" data-start="9" data-end="9" data-id="11712821"></span>},
-<span class="line" data-start="10" data-end="10" data-id="11712821"></span>...
-<span class="line" data-start="11" data-end="11" data-id="11712821"></span>setChartExtend () {
-<span class="line" data-start="12" data-end="12" data-id="11712821"></span>    this.chartExtend = {
-<span class="line" data-start="13" data-end="13" data-id="11712821"></span>        <span class="hljs-symbol">legend:</span> {
-<span class="line" data-start="14" data-end="14" data-id="11712821"></span>            <span class="hljs-symbol">formatter:</span> (name) =&gt; {
-<span class="line" data-start="15" data-end="15" data-id="11712821"></span>                <span class="hljs-regexp">//</span> currentNumber 是已经匹配到的当日数据
-<span class="line" data-start="16" data-end="16" data-id="11712821"></span>                const result = [
-<span class="line" data-start="17" data-end="17" data-id="11712821"></span>                    <span class="hljs-string">`{a|${name}}`</span>,
-<span class="line" data-start="18" data-end="18" data-id="11712821"></span>                    <span class="hljs-string">`{b|${currentNumber}}`</span>
-<span class="line" data-start="19" data-end="19" data-id="11712821"></span>                ];
-<span class="line" data-start="20" data-end="20" data-id="11712821"></span>                <span class="hljs-keyword">return</span> result.join(<span class="hljs-string">'\n'</span>);
-<span class="line" data-start="21" data-end="21" data-id="11712821"></span>            },
-<span class="line" data-start="22" data-end="22" data-id="11712821"></span>            <span class="hljs-symbol">textStyle:</span> {
-<span class="line" data-start="23" data-end="23" data-id="11712821"></span>                <span class="hljs-symbol">height:</span> <span class="hljs-number">42</span>,
-<span class="line" data-start="24" data-end="24" data-id="11712821"></span>                <span class="hljs-symbol">rich:</span> {
-<span class="line" data-start="25" data-end="25" data-id="11712821"></span>                    <span class="hljs-symbol">a:</span> {
-<span class="line" data-start="26" data-end="26" data-id="11712821"></span>                        <span class="hljs-symbol">fontSize:</span> <span class="hljs-number">12</span>,
-<span class="line" data-start="27" data-end="27" data-id="11712821"></span>                        <span class="hljs-symbol">align:</span> <span class="hljs-string">'left'</span>,
-<span class="line" data-start="28" data-end="28" data-id="11712821"></span>                        <span class="hljs-symbol">padding:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">0</span>]
-<span class="line" data-start="29" data-end="29" data-id="11712821"></span>                    },
-<span class="line" data-start="30" data-end="30" data-id="11712821"></span>                    <span class="hljs-symbol">b:</span> {
-<span class="line" data-start="31" data-end="31" data-id="11712821"></span>                        <span class="hljs-symbol">fontSize:</span> <span class="hljs-number">24</span>,
-<span class="line" data-start="32" data-end="32" data-id="11712821"></span>                        <span class="hljs-symbol">align:</span> <span class="hljs-string">'left'</span>,
-<span class="line" data-start="33" data-end="33" data-id="11712821"></span>                        <span class="hljs-symbol">padding:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
-<span class="line" data-start="34" data-end="34" data-id="11712821"></span>                        <span class="hljs-symbol">lineHeight:</span> <span class="hljs-number">40</span>,
-<span class="line" data-start="35" data-end="35" data-id="11712821"></span>                        <span class="hljs-symbol">width:</span> <span class="hljs-number">60</span>
-<span class="line" data-start="36" data-end="36" data-id="11712821"></span>                    }
-<span class="line" data-start="37" data-end="37" data-id="11712821"></span>                }
-<span class="line" data-start="38" data-end="38" data-id="11712821"></span>            },
-<span class="line" data-start="39" data-end="39" data-id="11712821"></span>            <span class="hljs-regexp">//</span> 图例标记的图形宽度
-<span class="line" data-start="40" data-end="40" data-id="11712821"></span>            <span class="hljs-symbol">itemWidth:</span> <span class="hljs-number">14</span>,
-<span class="line" data-start="41" data-end="41" data-id="11712821"></span>            <span class="hljs-regexp">//</span> grid 距离整个容器顶部的高度
-<span class="line" data-start="42" data-end="42" data-id="11712821"></span>            <span class="hljs-symbol">grid:</span> {
-<span class="line" data-start="43" data-end="43" data-id="11712821"></span>                <span class="hljs-symbol">top:</span> <span class="hljs-number">120</span>
-<span class="line" data-start="44" data-end="44" data-id="11712821"></span>            }
-<span class="line" data-start="45" data-end="45" data-id="11712821"></span>        },
-<span class="line" data-start="46" data-end="46" data-id="11712821"></span>        ...
-<span class="line" data-start="47" data-end="47" data-id="11712821"></span>    };
-<span class="line" data-start="48" data-end="48" data-id="11712821"></span>},
-<span class="line" data-start="49" data-end="49" data-id="11712821"></span>...</code></pre>
+                    <pre><code class="hljs bash" lang="bash">&lt;ve-histogram :data=<span class="hljs-string">"chartData"</span> :extend=<span class="hljs-string">"chartExtend"</span> :events=<span class="hljs-string">"{ click: handleChartEvents }"</span>&gt;&lt;/ve-histogram&gt;
+...
+
+handleChartEvents (e) {
+    const date = e.name;
+    // 设置左上角的时间（带格式化），这里不再展开
+    this.setCurrentDate(date);
+    this.setChartExtend();
+},
+...
+<span class="hljs-function"><span class="hljs-title">setChartExtend</span></span> () {
+    this.chartExtend = {
+        legend: {
+            formatter: (name) =&gt; {
+                // currentNumber 是已经匹配到的当日数据
+                const result = [
+                    `{a|<span class="hljs-variable">${name}</span>}`,
+                    `{b|<span class="hljs-variable">${currentNumber}</span>}`
+                ];
+                <span class="hljs-built_in">return</span> result.join(<span class="hljs-string">'\n'</span>);
+            },
+            textStyle: {
+                height: 42,
+                rich: {
+                    a: {
+                        fontSize: 12,
+                        align: <span class="hljs-string">'left'</span>,
+                        padding: [0, 10, 15, 0]
+                    },
+                    b: {
+                        fontSize: 24,
+                        align: <span class="hljs-string">'left'</span>,
+                        padding: [0, 10, 0, 0],
+                        lineHeight: 40,
+                        width: 60
+                    }
+                }
+            },
+            // 图例标记的图形宽度
+            itemWidth: 14,
+            // grid 距离整个容器顶部的高度
+            grid: {
+                top: 120
+            }
+        },
+        ...
+    };
+},
+...
+</code></pre>
                 </p>
 
                 <p>
@@ -298,6 +316,7 @@
                     <img src="~@/assets/blog/bg-20190928-01.png">
                     这里的原始需求是：
                     <ul>
+                        <li>每种标记，代表一种活动类型。</li>
                         <li>有一些活动会发生在某些时间点，或时间段内，需要在活动发生的日期上标注出该活动的类型。</li>
                         <li>当同一天有多个活动发生时，采用复合图标，并当展示 tooltip 时，显示当日的每一个活动的信息。</li>
                         <li>tooltip的布局为：首先显示当前日期，中段展示各个活动的图标以及活动名称，最后展示指标名称和对应的数值。</li>
@@ -315,6 +334,22 @@
                         <li>tooltip 的样式要如何改写？还需要兼容没有活动的日期样式。</li>
                     </ul>
                 </p>
+
+                <p>思路解析：</p>
+
+                <p>
+                    首先为了做日期的定向匹配，需要设计数据结构，形如下面这样：
+                    <pre><code class="hljs bash" lang="bash">data: [
+    {
+        id: <span class="hljs-string">'51, 21, 34, 6'</span>,
+        date: <span class="hljs-string">'2019-10-10'</span>,
+        name: <span class="hljs-string">'test-name1, test-name2, test-name3, test-name4'</span>
+    },
+    ...
+]
+</code></pre>
+                </p>
+
             </div>
         </BlogContent>
     </div>
