@@ -1,8 +1,13 @@
 export default [
     {
-        path: '/2019/skills-of-echarts-in-vue',
-        name: 'skills-of-echarts-in-vue',
-        component: () => import('@/views/blogs/2019/skills-of-echarts-in-vue')
+        path: '/2019/skills-of-echarts-in-vue-2',
+        name: 'skills-of-echarts-in-vue-2',
+        component: () => import('@/views/blogs/2019/skills-of-echarts-in-vue-2')
+    },
+    {
+        path: '/2019/skills-of-echarts-in-vue-1',
+        name: 'skills-of-echarts-in-vue-1',
+        component: () => import('@/views/blogs/2019/skills-of-echarts-in-vue-1')
     },
     {
         path: '/2019/config-of-sublime-text-3',

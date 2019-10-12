@@ -7,11 +7,18 @@ export default [
     //     date: '2020-01-01',
     //     tags: ['言论与感想']
     // },
-
     {
-        title: '「干货」用 Echart 打造你的专属可视化界面（Vue 版）',
+        title: '「干货」用 Vue + Echarts 打造你的专属可视化界面（下）',
         subTitle: '',
-        routeName: 'skills-of-echarts-in-vue',
+        routeName: 'skills-of-echarts-in-vue-2',
+        descript: '',
+        date: '2019-10-22',
+        tags: ['Javascript']
+    },
+    {
+        title: '「干货」用 Vue + Echarts 打造你的专属可视化界面（上）',
+        subTitle: '',
+        routeName: 'skills-of-echarts-in-vue-1',
         descript: '',
         date: '2019-09-28',
         tags: ['Javascript']

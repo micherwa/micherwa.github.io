@@ -310,45 +310,7 @@ handleChartEvents (e) {
                     这里，就需要用到 legend 的 selected 属性。
                 </p>
 
-                <h4>5、标记</h4>
-                <p>
-                    先来回顾下本文开头的那张 “美美哒” 的图表，折线拐点处的一些 “小圆点”，被替换成了小图标。
-                    <img src="~@/assets/blog/bg-20190928-01.png">
-                    这里的原始需求是：
-                    <ul>
-                        <li>每种标记，代表一种活动类型。</li>
-                        <li>有一些活动会发生在某些时间点，或时间段内，需要在活动发生的日期上标注出该活动的类型。</li>
-                        <li>当同一天有多个活动发生时，采用复合图标，并当展示 tooltip 时，显示当日的每一个活动的信息。</li>
-                        <li>tooltip的布局为：首先显示当前日期，中段展示各个活动的图标以及活动名称，最后展示指标名称和对应的数值。</li>
-                        <li>没有活动的日期，拐点处与 tooltip 照常显示原先的样式。</li>
-                    </ul>
-                    所以，它的完整效果，应该是这样的：
-                    <img src="~@/assets/blog/bg-20190928-12.png">
-                </p>
-
-                <p>
-                    要实现这样的效果，需要思考以下几点：
-                    <ul>
-                        <li>如何通过日期的定向匹配，将活动的图标以“打点”的形式，定在折线拐点处。</li>
-                        <li>图标的大小，要怎么设置？它需要区别于正常的拐点标识。</li>
-                        <li>tooltip 的样式要如何改写？还需要兼容没有活动的日期样式。</li>
-                    </ul>
-                </p>
-
-                <p>思路解析：</p>
-
-                <p>
-                    首先为了做日期的定向匹配，需要设计数据结构，形如下面这样：
-                    <pre><code class="hljs bash" lang="bash">data: [
-    {
-        id: <span class="hljs-string">'51, 21, 34, 6'</span>,
-        date: <span class="hljs-string">'2019-10-10'</span>,
-        name: <span class="hljs-string">'test-name1, test-name2, test-name3, test-name4'</span>
-    },
-    ...
-]
-</code></pre>
-                </p>
+                <h4>5、mini图</h4>
 
             </div>
         </BlogContent>
