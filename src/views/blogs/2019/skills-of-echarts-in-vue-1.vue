@@ -312,6 +312,139 @@ handleChartEvents (e) {
 
                 <h4>5、mini图</h4>
 
+                <p>
+                    刚接到需求的时候，第一时间想到的是下面这张图的模样：
+                    <img src="~@/assets/blog/bg-20190928-17.png">
+                    这是一个不同缓动函数效果的官方示例，每一个缓动效果图都带有一个标题组件。
+                </p>
+                <p>
+                    研究了 <a href="https://echarts.apache.org/examples/zh/editor.html?c=line-easing" target="_blank">示例代码</a> 后，发现它的实现原理是：模拟了输入 x 轴的不断变大的值，通过不同的效果函数，来输出对应的 y 轴的值，达到呈现出不同的效果。
+                </p>
+
+                <p>
+                    很遗憾，这没法不适用于我们的需求。我们希望实现一个迷你的单一数据趋势图，没有任何坐标轴，但数据的趋势并不一定是线性增长的。然而，值得庆幸的是，可以借鉴其中的隐藏坐标轴的做法。具体的实现，还是要设置 extend，代码如下：
+                    <pre><code class="hljs bash" lang="bash">&lt;ve-line :data=<span class="hljs-string">"chartData"</span> :extend=<span class="hljs-string">"chartExtend"</span> width=<span class="hljs-string">"120px"</span> height=<span class="hljs-string">"40px"</span>&gt;
+...
+
+this.chartExtend = {
+    xAxis: {
+        show: <span class="hljs-literal">false</span>,
+    },
+    yAxis: {
+        show: <span class="hljs-literal">false</span>,
+    },
+    legend: {
+        show: <span class="hljs-literal">false</span>
+    },
+    grid: {
+        show: <span class="hljs-literal">true</span>,
+        left: 0,
+        top: 5,
+        width: <span class="hljs-string">'100%'</span>,
+        height: <span class="hljs-string">'100%'</span>,
+        borderWidth: 0,
+        backgroundColor: <span class="hljs-string">'#fff'</span>,
+    },
+    series: (v) =&gt; {
+        Array.from(v).forEach((e, idx) =&gt; {
+            e.symbol = <span class="hljs-string">'circle'</span>;
+            e.symbolSize = 2;
+            e.areaStyle = { opacity: 0.3 };
+        });
+        <span class="hljs-built_in">return</span> v;
+    },
+    tooltip: {
+        formatter: (params) =&gt; {
+            <span class="hljs-built_in">let</span> result = <span class="hljs-string">''</span>;
+            params.forEach(param =&gt; {
+                <span class="hljs-built_in">let</span> str = `<span class="hljs-variable">${param.marker}</span><span class="hljs-variable">${param.value[0]}</span> <span class="hljs-variable">${param.value[1]}</span>&lt;br&gt;`;
+                result += str;
+            });
+
+            <span class="hljs-built_in">return</span> result;
+        }
+    }
+};
+</code></pre>
+                </p>
+
+                <p>
+                    因为是迷你的图表，所以需要在布局中，将它调整为可控的大小。相应的，grid 属性的 top 和 left，也可以帮我们做微调。x 轴，y 轴，图例，这些都隐藏掉。最后，为了支持 tooltip，对其结构进行了 formatter。最终的呈现效果如下：
+                    <img src="~@/assets/blog/bg-20190928-18.png">
+                    正因为 mini 图的尺寸足够的小，所以比较适合于对某些重要数据，做周期性的趋势解读，并可以位于重要数据的附近。这也能使得界面的布局，看上去更为的协调。
+                </p>
+
+                <h4>6、双轴单线</h4>
+
+                <p>
+                    当一张图表中，存在双轴时，很大概率下都会出现 2 个 y 轴的刻度不一致的情况。
+                    <img src="~@/assets/blog/bg-20190928-02.png">
+                    想想也是啊，设置为双轴的原因，本来就是因为它们的数值差异过大。如果不设置双轴，某些数据就看不到了，并不是没有渲染，而是因为太小，导致其被数值大的数据 “淹没” 了。
+                </p>
+
+                <p>
+                    一种解决方案是，需要自己去定义 y 轴的 max，min，interval。因为系统不会再自动计算适配了。
+                    <pre><code class="hljs bash" lang="bash">yAxis:[
+    {......},
+    {
+      <span class="hljs-built_in">type</span>: <span class="hljs-string">'value'</span>,
+      name: <span class="hljs-string">'销售额(元)'</span>,
+      min: 0,
+      max: max,        // 计算最大值
+      interval: Math.ceil(max / 5),   //  平均分为5份
+      axisLabel: {
+        formatter: <span class="hljs-string">'{value}'</span>
+      }
+]
+</code></pre>
+                    这个方案可以将双轴的刻度重合在一起，实现 “单线” 的效果。但是，因为要自己算，所以略微有些麻烦，均分的份数可能会因为界面的美观，需要进行调整。如果双轴的单位不一致，比如左侧为数值，右侧为百分比，也挺麻烦的。
+                </p>
+
+                <p>
+                    所以，就想了一个 “偷懒” 的办法。既然只要展示 “单线”，那就把第二根线隐藏起来呗，其实尽管是 “双线”，但其实它们之间离得还是挺近的，从效果上来看，并没有太大的影响。
+                </p>
+
+                <p>
+                    实现方案也很简单，还记得之前介绍 “虚线” 是如何设置的么？
+                    <pre><code class="hljs bash" lang="bash">yAxis (item) {
+    item[0].splitLine = Object.assign({}, {
+        lineStyle: {
+            color: <span class="hljs-string">'#e1e2e2'</span>,
+            <span class="hljs-built_in">type</span>: <span class="hljs-string">'dashed'</span>
+        }
+    });
+
+    <span class="hljs-built_in">return</span> item;
+}
+</code></pre>
+                    其中的 item[0] 代表的是左侧最常用的 y 轴。那么右侧的自然就是 item[1] 了，把它隐藏起来就行了：
+                    <pre><code class="hljs bash" lang="bash">yAxis (item) {
+    item[0].splitLine = Object.assign({}, {
+        ...
+    });
+
+    item[1].splitLine = {
+        show: <span class="hljs-literal">false</span>
+    };
+
+    <span class="hljs-built_in">return</span> item;
+},
+</code></pre>
+                    是不是很简单？其实知道了对的方法，实现起来还是简直就是 easy 模式。但往往探究 “对的方法” 需要耗费大量的精力。
+                </p>
+
+                <h2>总结</h2>
+                <p>
+                    今天介绍了几种 Echarts 定制化的方案，多是由实际工作中提炼总结出来的小技巧，希望能帮到有需要的同学。如果你觉得本文还不错，还请点个 “赞” 或者 “关注”，以便让更多有需要的同学看到，感谢支持！
+                </p>
+
+                <p>
+                    可能细心的同学会问：本文开头的那张图中的“小图标”是如何实现的呢？文章中貌似没有涉及到。
+                </p>
+
+                <p>
+                    是的。由于篇幅的关系，我会单独再开一篇，专门来聊一聊关于 “标记” 的定制化方案，欢迎大家届时捧场，感谢！
+                </p>
             </div>
         </BlogContent>
     </div>
