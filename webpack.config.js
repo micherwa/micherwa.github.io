@@ -113,7 +113,7 @@ if (isDev) {
             ]
         },
         // cheap-module-eval-source-map is faster for development
-        devtool: 'cheap-source-map',
+        devtool: 'cheap-module-eval-source-map',
         devServer: {
             hot: true,
             contentBase: './src',
@@ -143,7 +143,7 @@ if (isDev) {
 if (isProd) {
     config = merge(config, {
         mode: 'production',
-        devtool: 'inline-source-map',
+        devtool: 'source-map',
         output: {
             publicPath: '/blog/',
             filename: 'js/[name].[chunkhash:8].js',

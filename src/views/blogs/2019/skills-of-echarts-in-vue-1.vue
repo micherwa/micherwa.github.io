@@ -6,36 +6,36 @@
             <div slot="content">
                 <h2>前言</h2>
                 <p>
-                    在近期的项目中，有大量处理可视化数据的需求。说起处理数据的可视化，相信很多同学跟我一样，都会想到用 Echarts 来实现。没错，Echarts 拥有高度可定制化的配置，以及非常详尽的开发文档，并且它的最新版已经更新到了 <a href="https://www.echartsjs.com/zh/download.html" target="_blank">v4.3</a>。
+                    在近期的项目中，有大量处理可视化数据的需求。说起这个，相信很多同学跟我一样，都会想到用 Echarts 来实现。没错，Echarts 拥有高度可定制化的配置，以及非常详尽的开发文档，并且它的最新版已经更新到了 <a href="https://www.echartsjs.com/zh/download.html" target="_blank">v4.3</a>。
                 </p>
                 <p>
-                    不过，正是因为 Echarts 的开发文档过于庞杂，对于不熟悉 Echarts 的同学来说，在查找某个效果时，可能需要耗费大量的精力。虽然它也配备了一些官方实例，但往往会遇到，只能借鉴其中的某个参数配置的情况，那就只能再回到文档中相互印证，还要自己做 demo，尝试效果。。。
+                    不过，也是因为 Echarts 的开发文档过于庞杂，对于不熟悉 Echarts 的同学来说，在查找某个效果时，可能需要耗费大量的精力。虽然它也配备了一些官方实例，但或许往往只能借鉴其中的个别配置，还需要回到对应的文档中做印证，另外还得自己做 demo，尝试效果。。。踩坑的过程，很艰辛。
                 </p>
 
                 <p>
-                    踩坑的过程，是艰辛的，却也收获满满。今天的这篇文章，主要总结近段时间结合 Echarts 实现数据可视化的一些心得体会。其实只需要一些小技巧，就能实现下面这样 “美美哒” 的图表了。
+                    但同时也是收获满满的。今天的这篇文章，主要总结近段时间结合 Echarts 实现数据可视化的一些心得体会。其实只需要一些小技巧，就能实现下面这样 “美美哒” 的图表了。
 
                     <img src="~@/assets/blog/bg-20190928-01.png">
 
-                    希望能给有需要的同学一些启发，相信你也可以定制出自己专属的 Echarts 数据可视化风格。
+                    希望给有需要的同学一些启发，相信你也可以定制出自己专属的 Echarts 数据可视化风格。
                 </p>
 
                 <h2>版本说明 与 v-charts</h2>
 
                 <p>
-                    在踩坑的期间，我也查找了不少资料。有一个不太友好的体验是，很多文章中只说了某个效果的实现，却没提到它的当前版本。当我拿来尝试的时候，却发现怎么也出不来效果，而且运气不好的话，还会报错，这让我很无奈。
+                    在踩坑的期间，我查找了不少资料。发现一个不太友好的体验：一些文章中仅仅叙述了某个效果的实现，却没提到它的当前版本。当我拿来尝试的时候，却发现怎么也出不来效果，而且运气不好的话，还会报错，这让我很无奈。
                 </p>
 
                 <p>
-                    所以，为了避免不必要的麻烦。先申明本篇文章中的各种配置以及它的效果，是基于 Echarts 目前的最新版 <strong>V4.3</strong> 实现的。
+                    所以，为了避免无谓的麻烦。首先需要申明，本篇文章中的各种配置以及它的效果，是基于 Echarts 目前的最新版 <strong>V4.3</strong> 实现的。
                 </p>
 
                 <p>
-                    然后，给大家推荐的一个图表组件：<a href="https://github.com/ElemeFE/v-charts" target="_blank"><strong>v-charts</strong></a>。它是由 “饿了么前端” 开发维护的基于 Vue2.0 和 Echarts 封装的图表组件。我用下来感觉挺不错的，文档很清晰，还有相配合的例子，非常容易上手。它目前的最新版是 <strong>v1.19.0</strong>。
+                    然后，因为项目采用了 Vue 搭建，所以我搭配了 <a href="https://github.com/ElemeFE/v-charts" target="_blank"><strong>v-charts</strong></a> 来实现图表效果。v-charts 是由 “饿了么前端” 开发维护的基于 Vue2.0 和 Echarts 封装的图表组件。我用下来感觉挺不错的，文档很清晰，还有相配合的例子，非常容易上手。它目前的最新版是 <strong>v1.19.0</strong>。
                 </p>
 
                 <p>
-                    一般常用的图表有：ve-line（折线图）、ve-histogram（柱状图）、ve-pie（饼图）、ve-ring（环图）等等。使用时，可以直接将单个图表引入到项目中。
+                    v-charts 一般常用的图表有：ve-line（折线图）、ve-histogram（柱状图）、ve-pie（饼图）、ve-ring（环图）等等。使用时，可以直接将单个图表引入到项目中。
                     <pre><code class="hljs bash" lang="bash">import VeLine from <span class="hljs-string">'v-charts/lib/line.common'</span>;
 
 Vue.component(VeLine.name, VeLine);
@@ -105,7 +105,7 @@ Vue.component(VeLine.name, VeLine);
 
                 <h4>1、配色</h4>
                 <p>
-                    Echarts 提供了 colors 来自定义颜色，它接收一个数组作为结果。这里有一份出自产品小姐姐的 UI 配色方案，已经可以适用于绝大多数场景了。
+                    Echarts 提供了 colors 来自定义颜色，它接收一个数组作为结果。这里有一份来自产品小姐姐的 UI 配色方案，已经可以适用于绝大多数场景了。
                     <img src="~@/assets/blog/bg-20190928-03.png">
                     代码如下：
                     <pre><code class="hljs bash" lang="bash">colors: [<span class="hljs-string">'#60ACFC'</span>, <span class="hljs-string">'#35C5EB'</span>, <span class="hljs-string">'#4DBECF'</span>, <span class="hljs-string">'#65D5B2'</span>, <span class="hljs-string">'#5BC4A0'</span>, <span class="hljs-string">'#9DDD81'</span>, <span class="hljs-string">'#D4ED58'</span>, <span class="hljs-string">'#FFDB43'</span>, <span class="hljs-string">'#FEB54E'</span>, <span class="hljs-string">'#FF9D68'</span>]
