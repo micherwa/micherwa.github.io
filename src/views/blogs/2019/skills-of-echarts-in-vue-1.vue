@@ -307,13 +307,56 @@ handleChartEvents (e) {
                 </p>
 
                 <p>
-                    这里，就需要用到 legend 的 selected 属性。
+                    这里，就需要用到 legend 的 selected 属性。它是一个对象，意思是图例选中状态表。用法很简单：
+                    <pre><code class="hljs bash" lang="bash">&lt;ve-line :extend=<span class="hljs-string">"chartExtend"</span>&gt;&lt;/ve-line&gt;
+...
+
+<span class="hljs-function"><span class="hljs-title">setChartExtend</span></span> () {
+    this.chartExtend = {
+        legend: {
+            formatter: (name) =&gt; {
+                <span class="hljs-built_in">return</span> `{a|<span class="hljs-variable">${name}</span>}`;
+            },
+            textStyle: {
+                // 这里的 rich 样式，是为了四等分的布局
+                rich: {
+                    a: {
+                        width: 240,
+                        height: 20,
+                        lineHeight: 22,
+                        align: <span class="hljs-string">'left'</span>
+                    }
+                }
+            },
+            width: 1090,
+            // 图例标记的图形宽度
+            itemWidth: 14,
+            selected: {
+                <span class="hljs-string">'T1-第7日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T1-第14日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T1-第30日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T2-第7日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T2-第14日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T2-第30日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T3-第7日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T3-第14日'</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">'T3-第30日'</span>: <span class="hljs-literal">false</span>,
+            }
+        },
+        ...
+    };
+}
+</code></pre>
+                    其中的 formatter 函数返回一个带样式的文本，通过样式将布局四等分。然后设置 selected，将默认不需要展示的数据隐藏起来。
+                </p>
+                <p>
+                    注意，selected 对象中的 key 均为指标的具体名称，不能用别名代替，否则是出不来效果的。
                 </p>
 
                 <h4>5、mini图</h4>
 
                 <p>
-                    刚接到需求的时候，第一时间想到的是下面这张图的模样：
+                    刚接到需求要实现 mini 图的时候，第一时间想到的是下面这张图的模样
                     <img src="~@/assets/blog/bg-20190928-17.png">
                     这是一个不同缓动函数效果的官方示例，每一个缓动效果图都带有一个标题组件。
                 </p>
