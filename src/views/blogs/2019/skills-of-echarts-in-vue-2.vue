@@ -7,7 +7,7 @@
                 <h2>前言</h2>
 
                 <p>
-                    接上一篇文章 <a href="" target="_blank">《「干货」用 Vue + Echarts 打造你的专属可视化界面（上）》</a>，今天着重介绍 <code>标记</code> 的用法，来实现下图中的效果。
+                    接上一篇文章 <a href="https://juejin.im/post/5da146316fb9a04def4e6327" target="_blank">《「干货」用 Vue + Echarts 打造你的专属可视化界面（上）》</a>，今天着重介绍 <code>标记</code> 的用法，来实现下图中的效果。
                     <img src="~@/assets/blog/bg-20190928-01.png">
                 </p>
                 <p>
@@ -382,7 +382,7 @@ getSymbolUrl (id) {
                 <h2>总结</h2>
 
                 <p>
-                    Echarts 可以实现的效果有很多，本篇涉及其中 “标记” 的渲染。在折线图的拐点处，用 symbol 做了匹配化的处理。在柱状图中，因为没有直接的 symbol，转而使用 markPoint 来实现，采用将标记定位在某个维度上的做法。效果都听不错的。
+                    Echarts 可以实现的效果有很多，本篇涉及其中 “标记” 的渲染。在折线图的拐点处，用 symbol 做了匹配化的处理。在柱状图中，因为没有直接的 symbol，转而使用 markPoint 来实现，采用将标记定位在某个维度上的做法。效果都挺不错的。
                 </p>
 
                 <p>
